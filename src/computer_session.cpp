@@ -74,9 +74,8 @@ static catacurses::window init_window()
 {
     const int width = FULL_SCREEN_WIDTH;
     const int height = FULL_SCREEN_HEIGHT;
-    const int x = std::max( 0, ( TERMX - width ) / 2 );
-    const int y = std::max( 0, ( TERMY - height ) / 2 );
-    return catacurses::newwin( height, width, point( x, y ) );
+    const point p( std::max( 0, ( TERMX - width ) / 2 ), std::max( 0, ( TERMY - height ) / 2 ) );
+    return catacurses::newwin( height, width, p );
 }
 
 computer_session::computer_session( computer &comp ) : comp( comp ),
@@ -91,9 +90,8 @@ void computer_session::use()
     ui.on_screen_resize( [this]( ui_adaptor & ui ) {
         const int width = getmaxx( win );
         const int height = getmaxy( win );
-        const int x = std::max( 0, ( TERMX - width ) / 2 );
-        const int y = std::max( 0, ( TERMY - height ) / 2 );
-        win = catacurses::newwin( height, width, point( x, y ) );
+        const point p( std::max( 0, ( TERMX - width ) / 2 ), std::max( 0, ( TERMY - height ) / 2 ) );
+        win = catacurses::newwin( height, width, p );
         ui.position_from_window( win );
     } );
     ui.mark_resize();
@@ -610,8 +608,6 @@ void computer_session::action_elevator_on()
 
 void computer_session::action_amigara_log()
 {
-    g->timed_events.add( timed_event_type::AMIGARA_WHISPERS, calendar::turn + 1_minutes );
-
     g->u.moves -= 30;
     reset_terminal();
     print_line( _( "NEPower Mine(%d:%d) Log" ), g->get_levx(), g->get_levy() );
@@ -665,8 +661,10 @@ void computer_session::action_amigara_log()
 
 void computer_session::action_amigara_start()
 {
-    g->timed_events.add( TIMED_EVENT_AMIGARA, calendar::turn + 10_seconds );
-
+    g->timed_events.add( TIMED_EVENT_AMIGARA, calendar::turn + 1_minutes );
+    if( !g->u.has_artifact_with( AEP_PSYSHIELD ) ) {
+        g->u.add_effect( effect_amigara, 2_minutes );
+    }
     // Disable this action to prevent further amigara events, which would lead to
     // further amigara monster, which would lead to further artifacts.
     comp.remove_option( COMPACT_AMIGARA_START );

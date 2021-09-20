@@ -295,7 +295,7 @@ void scen_blacklist::finalize()
 
 void reset_scenarios_blacklist()
 {
-    sc_blacklist = scen_blacklist();
+    sc_blacklist.scenarios.clear();
 }
 
 std::vector<string_id<profession>> scenario::permitted_professions() const

@@ -158,9 +158,4 @@ std::string replace_colors( std::string text );
  */
 std::string &capitalize_letter( std::string &str, size_t n = 0 );
 
-/**
- * Remove leading and trailing whitespaces.
- */
-std::string trim_whitespaces( const std::string &str );
-
 #endif // CATA_SRC_STRING_UTILS_H

@@ -21,7 +21,8 @@ static void reset_time()
 {
     calendar::turn = calendar::start_of_cataclysm;
     player &p = g->u;
-    p.set_stored_kcal( p.max_stored_kcal() );
+    p.set_stored_kcal( p.get_healthy_kcal() );
+    p.set_hunger( 0 );
     clear_avatar();
 }
 
@@ -52,8 +53,8 @@ static void print_stomach_contents( player &p, const bool print )
     if( !print ) {
         return;
     }
-    cata_printf( "stomach: %d player: %d/%d\n", p.stomach.get_calories(),
-                 p.get_stored_kcal(), p.max_stored_kcal() );
+    cata_printf( "stomach: %d player: %d/%d hunger: %0.1f\n", p.stomach.get_calories(),
+                 p.get_stored_kcal(), p.get_healthy_kcal(), p.get_hunger() );
     cata_printf( "metabolic rate: %.2f\n", p.metabolic_rate() );
 }
 
@@ -139,7 +140,7 @@ TEST_CASE( "starve_test_hunger3", "[starve][slow]" )
 }
 
 // does eating enough food per day keep you alive
-TEST_CASE( "all_nutrition_starve_test", "[!mayfail][starve][slow]" )
+TEST_CASE( "all_nutrition_starve_test", "[starve][slow]" )
 {
     // change this bool when editing the test
     const bool print_tests = false;
@@ -170,7 +171,7 @@ TEST_CASE( "all_nutrition_starve_test", "[!mayfail][starve][slow]" )
         print_stomach_contents( dummy, print_tests );
         cata_printf( "\n" );
     }
-    CHECK( dummy.get_stored_kcal() < dummy.max_stored_kcal() );
+    CHECK( dummy.get_stored_kcal() < dummy.get_healthy_kcal() );
     // We need to account for a day's worth of error since we're passing a day at a time and we are
     // close to 0 which is the max value for some vitamins
     CHECK( dummy.vitamin_get( vitamin_id( "vitA" ) ) >= -100 );
@@ -216,7 +217,7 @@ TEST_CASE( "Stomach calories become stored calories after less than 1 day", "[st
     player &dummy = g->u;
     reset_time();
     clear_stomach( dummy );
-    int kcal_before = dummy.max_stored_kcal() - dummy.bmr();
+    int kcal_before = dummy.max_stored_calories() - dummy.bmr();
     dummy.set_stored_kcal( kcal_before );
     dummy.stomach.mod_calories( 1000 );
 
@@ -254,7 +255,7 @@ TEST_CASE( "Eating above max kcal causes bloating", "[stomach]" )
     player &dummy = g->u;
     reset_time();
     clear_stomach( dummy );
-    dummy.set_stored_kcal( dummy.max_stored_kcal() - 10 );
+    dummy.set_stored_kcal( dummy.max_stored_calories() );
     item food( "protein_drink", calendar::start_of_cataclysm, 10 );
     REQUIRE( dummy.compute_effective_nutrients( food ).kcal > 0 );
     WHEN( "Character consumes calories above max" ) {
@@ -269,7 +270,7 @@ TEST_CASE( "Eating above max kcal causes bloating", "[stomach]" )
             CHECK( dummy.has_effect( effect_bloated ) );
         }
         THEN( "They are no longer above max calories" ) {
-            CHECK( dummy.get_stored_kcal() < dummy.max_stored_kcal() );
+            CHECK( dummy.get_hunger() >= 0 );
         }
     }
 

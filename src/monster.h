@@ -97,7 +97,7 @@ class monster : public Creature
         }
 
         void poly( const mtype_id &id );
-        bool can_upgrade() const;
+        bool can_upgrade();
         void hasten_upgrade();
         int get_upgrade_time() const;
         void allow_upgrade();
@@ -338,10 +338,8 @@ class monster : public Creature
          *  Returns false if movement is stopped. */
         bool move_effects( bool attacking ) override;
         /** Performs any monster-specific modifications to the arguments before passing to Creature::add_effect(). */
-        void add_effect( const efftype_id &eff_id, const time_duration &dur, const bodypart_str_id &bp,
-                         int intensity = 0, bool force = false, bool deferred = false ) override;
         void add_effect( const efftype_id &eff_id, const time_duration &dur, body_part bp = num_bp,
-                         int intensity = 0, bool force = false, bool deferred = false );
+                         int intensity = 0, bool force = false, bool deferred = false ) override;
         /** Returns a std::string containing effects for descriptions */
         std::string get_effect_status() const;
 
@@ -406,7 +404,6 @@ class monster : public Creature
         /**
          * Makes this monster into a fungus version
          * Returns false if no such monster exists
-         * Returns true if monster is immune to spores, or if it has been fungalized
          */
         bool make_fungus();
         void make_friendly();

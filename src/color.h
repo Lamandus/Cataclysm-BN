@@ -388,10 +388,6 @@ struct hash<nc_color> {
 };
 } // namespace std
 
-enum class report_color_error {
-    no, yes
-};
-
 class color_manager
 {
     private:
@@ -431,14 +427,12 @@ class color_manager
         nc_color get_random() const;
 
         color_id color_to_id( const nc_color &color ) const;
-        color_id name_to_id( const std::string &name,
-                             report_color_error color_error = report_color_error::yes ) const;
+        color_id name_to_id( const std::string &name ) const;
 
         std::string get_name( const nc_color &color ) const;
         std::string id_to_name( color_id id ) const;
 
-        nc_color name_to_color( const std::string &name,
-                                report_color_error color_error = report_color_error::yes ) const;
+        nc_color name_to_color( const std::string &name ) const;
 
         nc_color highlight_from_names( const std::string &name, const std::string &bg_name ) const;
 
@@ -498,12 +492,10 @@ nc_color yellow_background( const nc_color &c );
 nc_color magenta_background( const nc_color &c );
 nc_color cyan_background( const nc_color &c );
 
-nc_color color_from_string( const std::string &color,
-                            report_color_error color_error = report_color_error::yes );
+nc_color color_from_string( const std::string &color );
 std::string string_from_color( const nc_color &color );
 nc_color bgcolor_from_string( const std::string &color );
-color_tag_parse_result get_color_from_tag( const std::string &s,
-        report_color_error color_error = report_color_error::yes );
+color_tag_parse_result get_color_from_tag( const std::string &s );
 std::string get_tag_from_color( const nc_color &color );
 std::string colorize( const std::string &text, const nc_color &color );
 std::string colorize( const translation &text, const nc_color &color );

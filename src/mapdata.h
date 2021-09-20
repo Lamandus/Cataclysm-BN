@@ -275,9 +275,6 @@ struct map_data_common_t {
 
         std::string looks_like;
 
-        // Message text for notify and transform examine actions
-        std::string message;
-
         iexamine_function examine; // What happens when the terrain/furniture is examined
 
         /**
@@ -348,6 +345,8 @@ struct ter_t : map_data_common_t {
 
     trap_id trap; // The id of the trap located at this terrain. Limit one trap per tile currently.
 
+    int heat_radiation = 0; // In fire field intensity "units"
+
     ter_t();
 
     static size_t count();
@@ -370,8 +369,6 @@ struct furn_t : map_data_common_t {
     furn_str_id id;
     furn_str_id open;  // Open action: transform into furniture with matching id
     furn_str_id close; // Close action: transform into furniture with matching id
-    furn_str_id transforms_into; // Transform into what furniture?
-
     std::string crafting_pseudo_item;
     units::volume keg_capacity = 0_ml;
     int comfort = 0;

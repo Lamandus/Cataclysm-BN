@@ -247,8 +247,7 @@
   {
     "id": "morale_perm_masochist",
     "type": "morale_type",
-    "text": "Masochism",
-    "permanent": true
+    "text": "Masochism"
   },
   {
     "id": "morale_perm_noface",
@@ -268,26 +267,22 @@
   {
     "id": "morale_perm_fancy",
     "type": "morale_type",
-    "text": "Stylish",
-    "permanent": true
+    "text": "Stylish"
   },
   {
     "id": "morale_perm_optimist",
     "type": "morale_type",
-    "text": "Optimist",
-    "permanent": true
+    "text": "Optimist"
   },
   {
     "id": "morale_perm_badtemper",
     "type": "morale_type",
-    "text": "Bad Tempered",
-    "permanent": true
+    "text": "Bad Tempered"
   },
   {
     "id": "morale_perm_constrained",
     "type": "morale_type",
-    "text": "Uncomfy Gear",
-    "permanent": true
+    "text": "Uncomfy Gear"
   },
   {
     "id": "morale_perm_nomad",
@@ -347,8 +342,7 @@
   {
     "id": "morale_perm_filthy",
     "type": "morale_type",
-    "text": "Filthy Gear",
-    "permanent": true
+    "text": "Filthy Gear"
   },
   {
     "id": "morale_butcher",
@@ -381,39 +375,8 @@
     "text": "Failure"
   },
   {
-    "id": "morale_high",
-    "type": "morale_type",
-    "text": "High",
-    "permanent": true
-  },
-  {
-    "id": "morale_drunk",
-    "type": "morale_type",
-    "text": "Drunk",
-    "permanent": true
-  },
-  {
-    "id": "morale_xanax",
-    "type": "morale_type",
-    "text": "Xanax",
-    "permanent": true
-  },
-  {
-    "id": "morale_valium",
-    "type": "morale_type",
-    "text": "Anticonvulsant",
-    "permanent": true
-  },
-  {
-    "id": "morale_nicotine",
-    "type": "morale_type",
-    "text": "Nicotine",
-    "permanent": true
-  },
-  {
     "id": "morale_perm_debug",
     "type": "morale_type",
-    "text": "Debug Morale",
-    "permanent": true
+    "text": "Debug Morale"
   }
 ]

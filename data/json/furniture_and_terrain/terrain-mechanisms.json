@@ -513,7 +513,7 @@
     "color": "dark_gray",
     "move_cost": 0,
     "coverage": 50,
-    "flags": [ "TRANSPARENT", "MOUNTABLE", "PERMEABLE", "MINEABLE", "SEALED" ],
+    "flags": [ "TRANSPARENT", "MOUNTABLE", "PERMEABLE", "MINEABLE" ],
     "examine_action": "pedestal_wyrm",
     "bash": {
       "str_min": 100,

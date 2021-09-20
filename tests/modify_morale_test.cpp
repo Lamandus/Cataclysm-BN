@@ -54,7 +54,7 @@ TEST_CASE( "food enjoyability", "[food][modify_morale][fun]" )
 
         THEN( "character gets a morale bonus becase it tastes good" ) {
             dummy.modify_morale( toastem );
-            CHECK( dummy.get_morale( MORALE_FOOD_GOOD ) >= fun.first );
+            CHECK( dummy.has_morale( MORALE_FOOD_GOOD ) >= fun.first );
         }
     }
 
@@ -65,7 +65,7 @@ TEST_CASE( "food enjoyability", "[food][modify_morale][fun]" )
 
         THEN( "character gets a morale penalty because it tastes bad" ) {
             dummy.modify_morale( garlic );
-            CHECK( dummy.get_morale( MORALE_FOOD_BAD ) <= fun.first );
+            CHECK( dummy.has_morale( MORALE_FOOD_BAD ) <= fun.first );
         }
     }
 }
@@ -73,34 +73,40 @@ TEST_CASE( "food enjoyability", "[food][modify_morale][fun]" )
 TEST_CASE( "drugs", "[food][modify_morale][drug]" )
 {
     avatar dummy;
+    std::pair<int, int> fun;
+
 
     const std::vector<std::string> drugs_to_test = {
         {
             "gum",
             "caff_gum",
             "nic_gum",
+            "cig",
+            "ecig",
             "cigar",
-            // TODO: Change those to effects
+            "joint",
             "lsd",
+            "weed",
+            "crack",
+            "meth",
             "heroin",
+            "tobacco",
             "morphine"
         }
     };
 
     GIVEN( "avatar has baseline morale" ) {
         dummy.clear_morale();
-        dummy.clear_effects();
-        REQUIRE( dummy.get_morale_level() == 0 );
+        REQUIRE( dummy.has_morale( MORALE_FOOD_GOOD ) == 0 );
 
         for( std::string drug_name : drugs_to_test ) {
             item drug( drug_name );
-            std::pair<int, int> fun = dummy.fun_for( drug );
-
+            fun = dummy.fun_for( drug );
             REQUIRE( fun.first > 0 );
 
             THEN( "they enjoy " + drug_name ) {
                 dummy.modify_morale( drug );
-                CHECK( dummy.get_morale_level() >= fun.first );
+                CHECK( dummy.has_morale( MORALE_FOOD_GOOD ) >= fun.first );
             }
         }
     }
@@ -120,7 +126,7 @@ TEST_CASE( "cannibalism", "[food][modify_morale][cannibal]" )
         THEN( "they get a large morale penalty for eating humans" ) {
             dummy.clear_morale();
             dummy.modify_morale( human );
-            CHECK( dummy.get_morale( MORALE_CANNIBAL ) <= -60 );
+            CHECK( dummy.has_morale( MORALE_CANNIBAL ) <= -60 );
         }
 
         WHEN( "character is a psychopath" ) {
@@ -130,7 +136,7 @@ TEST_CASE( "cannibalism", "[food][modify_morale][cannibal]" )
             THEN( "their morale is unffected by eating humans" ) {
                 dummy.clear_morale();
                 dummy.modify_morale( human );
-                CHECK( dummy.get_morale( MORALE_CANNIBAL ) == 0 );
+                CHECK( dummy.has_morale( MORALE_CANNIBAL ) == 0 );
             }
         }
     }
@@ -142,7 +148,7 @@ TEST_CASE( "cannibalism", "[food][modify_morale][cannibal]" )
         THEN( "they get a morale bonus for eating humans" ) {
             dummy.clear_morale();
             dummy.modify_morale( human );
-            CHECK( dummy.get_morale( MORALE_CANNIBAL ) >= 20 );
+            CHECK( dummy.has_morale( MORALE_CANNIBAL ) >= 20 );
         }
     }
 }
@@ -161,11 +167,11 @@ TEST_CASE( "sweet junk food", "[food][modify_morale][junk][sweet]" )
             THEN( "they get a morale bonus from its sweetness" ) {
                 dummy.clear_morale();
                 dummy.modify_morale( necco );
-                CHECK( dummy.get_morale( MORALE_SWEETTOOTH ) >= 5 );
-                CHECK( dummy.get_morale( MORALE_SWEETTOOTH ) <= 5 );
+                CHECK( dummy.has_morale( MORALE_SWEETTOOTH ) >= 5 );
+                CHECK( dummy.has_morale( MORALE_SWEETTOOTH ) <= 5 );
 
                 AND_THEN( "they enjoy it" ) {
-                    CHECK( dummy.get_morale( MORALE_FOOD_GOOD ) > 0 );
+                    CHECK( dummy.has_morale( MORALE_FOOD_GOOD ) > 0 );
                 }
             }
         }
@@ -177,11 +183,11 @@ TEST_CASE( "sweet junk food", "[food][modify_morale][junk][sweet]" )
             THEN( "they get a significant morale bonus from its sweetness" ) {
                 dummy.clear_morale();
                 dummy.modify_morale( necco );
-                CHECK( dummy.get_morale( MORALE_SWEETTOOTH ) >= 10 );
-                CHECK( dummy.get_morale( MORALE_SWEETTOOTH ) <= 50 );
+                CHECK( dummy.has_morale( MORALE_SWEETTOOTH ) >= 10 );
+                CHECK( dummy.has_morale( MORALE_SWEETTOOTH ) <= 50 );
 
                 AND_THEN( "they enjoy it" ) {
-                    CHECK( dummy.get_morale( MORALE_FOOD_GOOD ) > 0 );
+                    CHECK( dummy.has_morale( MORALE_FOOD_GOOD ) );
                 }
             }
         }
@@ -193,7 +199,7 @@ TEST_CASE( "sweet junk food", "[food][modify_morale][junk][sweet]" )
             THEN( "they get an morale penalty due to indigestion" ) {
                 dummy.clear_morale();
                 dummy.modify_morale( necco );
-                CHECK( dummy.get_morale( MORALE_NO_DIGEST ) <= -25 );
+                CHECK( dummy.has_morale( MORALE_NO_DIGEST ) <= -25 );
             }
         }
     }
@@ -224,10 +230,10 @@ TEST_CASE( "junk food that is not ingested", "[modify_morale][junk][no_ingest]" 
         THEN( "they do not get an extra morale bonus for chewing gum" ) {
             dummy.clear_morale();
             dummy.modify_morale( caff_gum );
-            CHECK( dummy.get_morale( MORALE_SWEETTOOTH ) == 0 );
+            CHECK( dummy.has_morale( MORALE_SWEETTOOTH ) == 0 );
 
             AND_THEN( "they still enjoy it" ) {
-                CHECK( dummy.get_morale( MORALE_FOOD_GOOD ) > 0 );
+                CHECK( dummy.has_morale( MORALE_FOOD_GOOD ) > 0 );
             }
         }
     }
@@ -239,10 +245,10 @@ TEST_CASE( "junk food that is not ingested", "[modify_morale][junk][no_ingest]" 
         THEN( "they do not get an extra morale bonus for chewing gum" ) {
             dummy.clear_morale();
             dummy.modify_morale( caff_gum );
-            CHECK( dummy.get_morale( MORALE_SWEETTOOTH ) == 0 );
+            CHECK( dummy.has_morale( MORALE_SWEETTOOTH ) == 0 );
 
             AND_THEN( "they still enjoy it" ) {
-                CHECK( dummy.get_morale( MORALE_FOOD_GOOD ) > 0 );
+                CHECK( dummy.has_morale( MORALE_FOOD_GOOD ) > 0 );
             }
         }
     }
@@ -254,10 +260,10 @@ TEST_CASE( "junk food that is not ingested", "[modify_morale][junk][no_ingest]" 
         THEN( "they do not get a morale penalty for chewing gum" ) {
             dummy.clear_morale();
             dummy.modify_morale( caff_gum );
-            CHECK( dummy.get_morale( MORALE_ANTIJUNK ) == 0 );
+            CHECK( dummy.has_morale( MORALE_ANTIJUNK ) == 0 );
 
             AND_THEN( "they still enjoy it" ) {
-                CHECK( dummy.get_morale( MORALE_FOOD_GOOD ) > 0 );
+                CHECK( dummy.has_morale( MORALE_FOOD_GOOD ) > 0 );
             }
         }
     }
@@ -277,7 +283,7 @@ TEST_CASE( "food allergies and intolerances", "[food][modify_morale][allergy]" )
             REQUIRE( meat.has_flag( "ALLERGEN_MEAT" ) );
             dummy.clear_morale();
             dummy.modify_morale( meat );
-            CHECK( dummy.get_morale( MORALE_VEGETARIAN ) <= penalty );
+            CHECK( dummy.has_morale( MORALE_VEGETARIAN ) <= penalty );
         }
     }
 
@@ -290,7 +296,7 @@ TEST_CASE( "food allergies and intolerances", "[food][modify_morale][allergy]" )
             REQUIRE( milk.has_flag( "ALLERGEN_MILK" ) );
             dummy.clear_morale();
             dummy.modify_morale( milk );
-            CHECK( dummy.get_morale( MORALE_LACTOSE ) <= penalty );
+            CHECK( dummy.has_morale( MORALE_LACTOSE ) <= penalty );
         }
     }
 
@@ -303,7 +309,7 @@ TEST_CASE( "food allergies and intolerances", "[food][modify_morale][allergy]" )
             REQUIRE( wheat.has_flag( "ALLERGEN_WHEAT" ) );
             dummy.clear_morale();
             dummy.modify_morale( wheat );
-            CHECK( dummy.get_morale( MORALE_ANTIWHEAT ) <= penalty );
+            CHECK( dummy.has_morale( MORALE_ANTIWHEAT ) <= penalty );
         }
     }
 
@@ -316,7 +322,7 @@ TEST_CASE( "food allergies and intolerances", "[food][modify_morale][allergy]" )
             REQUIRE( veggy.has_flag( "ALLERGEN_VEGGY" ) );
             dummy.clear_morale();
             dummy.modify_morale( veggy );
-            CHECK( dummy.get_morale( MORALE_MEATARIAN ) <= penalty );
+            CHECK( dummy.has_morale( MORALE_MEATARIAN ) <= penalty );
         }
     }
 
@@ -329,7 +335,7 @@ TEST_CASE( "food allergies and intolerances", "[food][modify_morale][allergy]" )
             REQUIRE( fruit.has_flag( "ALLERGEN_FRUIT" ) );
             dummy.clear_morale();
             dummy.modify_morale( fruit );
-            CHECK( dummy.get_morale( MORALE_ANTIFRUIT ) <= penalty );
+            CHECK( dummy.has_morale( MORALE_ANTIFRUIT ) <= penalty );
         }
     }
 
@@ -342,7 +348,7 @@ TEST_CASE( "food allergies and intolerances", "[food][modify_morale][allergy]" )
             REQUIRE( junk.has_flag( "ALLERGEN_JUNK" ) );
             dummy.clear_morale();
             dummy.modify_morale( junk );
-            CHECK( dummy.get_morale( MORALE_ANTIJUNK ) <= penalty );
+            CHECK( dummy.has_morale( MORALE_ANTIJUNK ) <= penalty );
         }
     }
 }
@@ -364,7 +370,7 @@ TEST_CASE( "saprophage character", "[food][modify_morale][saprophage]" )
 
             THEN( "they enjoy it" ) {
                 dummy.modify_morale( toastem );
-                CHECK( dummy.get_morale( MORALE_FOOD_GOOD ) > 10 );
+                CHECK( dummy.has_morale( MORALE_FOOD_GOOD ) > 10 );
             }
         }
 
@@ -376,7 +382,7 @@ TEST_CASE( "saprophage character", "[food][modify_morale][saprophage]" )
 
             THEN( "they get a morale penalty due to indigestion" ) {
                 dummy.modify_morale( toastem );
-                CHECK( dummy.get_morale( MORALE_NO_DIGEST ) <= -25 );
+                CHECK( dummy.has_morale( MORALE_NO_DIGEST ) <= -25 );
             }
         }
     }
@@ -406,10 +412,10 @@ TEST_CASE( "ursine honey", "[food][modify_morale][ursine][honey]" )
 
             THEN( "they get an extra honey morale bonus for eating it" ) {
                 dummy.modify_morale( honeycomb );
-                CHECK( dummy.get_morale( MORALE_HONEY ) > 0 );
+                CHECK( dummy.has_morale( MORALE_HONEY ) > 0 );
 
                 AND_THEN( "they enjoy it" ) {
-                    CHECK( dummy.get_morale( MORALE_FOOD_GOOD ) > 0 );
+                    CHECK( dummy.has_morale( MORALE_FOOD_GOOD ) > 0 );
                 }
             }
         }

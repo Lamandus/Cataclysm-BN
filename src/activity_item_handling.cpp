@@ -8,7 +8,6 @@
 #include <list>
 #include <memory>
 #include <set>
-#include <sstream>
 #include <string>
 #include <tuple>
 #include <utility>
@@ -23,7 +22,6 @@
 #include "construction.h"
 #include "creature.h"
 #include "debug.h"
-#include "drop_token.h"
 #include "enums.h"
 #include "field.h"
 #include "field_type.h"
@@ -50,7 +48,6 @@
 #include "optional.h"
 #include "output.h"
 #include "pickup.h"
-#include "pickup_token.h"
 #include "player.h"
 #include "player_activity.h"
 #include "point.h"
@@ -106,7 +103,6 @@ static const zone_type_id zone_type_FARM_PLOT( "FARM_PLOT" );
 static const zone_type_id zone_type_FISHING_SPOT( "FISHING_SPOT" );
 static const zone_type_id zone_type_LOOT_CORPSE( "LOOT_CORPSE" );
 static const zone_type_id zone_type_LOOT_IGNORE( "LOOT_IGNORE" );
-static const zone_type_id zone_type_LOOT_IGNORE_FAVORITES( "LOOT_IGNORE_FAVORITES" );
 static const zone_type_id zone_type_MINING( "MINING" );
 static const zone_type_id zone_type_LOOT_UNSORTED( "LOOT_UNSORTED" );
 static const zone_type_id zone_type_LOOT_WOOD( "LOOT_WOOD" );
@@ -132,16 +128,33 @@ static const std::string flag_PLANT( "PLANT" );
 static const std::string flag_PLANTABLE( "PLANTABLE" );
 static const std::string flag_PLOWABLE( "PLOWABLE" );
 static const std::string flag_TREE( "TREE" );
-static const std::string flag_UNSAFE_CONSUME( "UNSAFE_CONSUME" );
 
 void cancel_aim_processing();
 //Generic activity: maximum search distance for zones, constructions, etc.
 const int ACTIVITY_SEARCH_DISTANCE = 60;
 
+<<<<<<< HEAD
+/** Activity-associated item */
+struct act_item {
+    /// inventory item
+    item_location loc;
+    /// How many items need to be processed
+    int count;
+    /// Amount of moves that processing will consume
+    int consumed_moves;
+
+    act_item( const item_location &loc, int count, int consumed_moves )
+        : loc( loc ),
+          count( count ),
+          consumed_moves( consumed_moves ) {}
+};
+
 // TODO: Deliberately unified with multidrop. Unify further.
 using drop_location = std::pair<item_location, int>;
 using drop_locations = std::list<std::pair<item_location, int>>;
 
+=======
+>>>>>>> upstream/upload
 static bool same_type( const std::list<item> &items )
 {
     return std::all_of( items.begin(), items.end(), [&items]( const item & it ) {
@@ -163,7 +176,7 @@ static void put_into_vehicle( Character &c, item_drop_reason reason, const std::
 
     // can't use constant reference here because of the spill_contents()
     for( auto it : items ) {
-        if( pickup::handle_spillable_contents( c, it, g->m ) ) {
+        if( Pickup::handle_spillable_contents( c, it, g->m ) ) {
             continue;
         }
         if( veh.add_item( part, it ) ) {
@@ -267,12 +280,7 @@ static void pass_to_ownership_handling( item obj, Character &c )
     obj.handle_pickup_ownership( c );
 }
 
-static void pass_to_ownership_handling( item obj, player *p )
-{
-    obj.handle_pickup_ownership( *p );
-}
-
-static void stash_on_pet( const std::list<item> &items, monster &pet, player *p )
+static void stash_on_pet( const std::list<item> &items, monster &pet, Character &who )
 {
     units::volume remaining_volume = pet.storage_item->get_storage() - pet.get_carried_volume();
     units::mass remaining_weight = pet.weight_capacity() - pet.get_carried_weight();
@@ -292,7 +300,7 @@ static void stash_on_pet( const std::list<item> &items, monster &pet, player *p 
             remaining_weight -= it.weight();
         }
         // TODO: if NPCs can have pets or move items onto pets
-        pass_to_ownership_handling( it, p );
+        pass_to_ownership_handling( it, who );
     }
 }
 
@@ -399,6 +407,7 @@ void put_into_vehicle_or_drop( Character &c, item_drop_reason reason, const std:
     drop_on_map( c, reason, items, where );
 }
 
+<<<<<<< HEAD
 static drop_locations convert_to_locations( const player_activity &act )
 {
     drop_locations res;
@@ -418,14 +427,18 @@ static drop_locations convert_to_locations( const player_activity &act )
     return res;
 }
 
-static std::list<pickup::act_item> convert_to_items( Character &p, const drop_locations &drop,
+static std::list<act_item> convert_to_items( Character &p, const drop_locations &drop,
+=======
+static std::list<pickup::act_item> convert_to_items( Character &p,
+        const drop_locations &drop,
+>>>>>>> upstream/upload
         std::function<bool( item_location loc )> filter )
 {
-    std::list<pickup::act_item> res;
+    std::list<act_item> res;
 
     for( const drop_location &rec : drop ) {
-        const item_location loc = rec.first;
-        const int count = rec.second;
+        const item_location loc = rec.loc;
+        const int count = rec.count;
 
         if( !filter( loc ) ) {
             continue;
@@ -458,13 +471,10 @@ static std::list<pickup::act_item> convert_to_items( Character &p, const drop_lo
     return res;
 }
 
-namespace pickup
-{
-
 // Prepares items for dropping by reordering them so that the drop
 // cost is minimal and "dependent" items get taken off first.
 // Implements the "backpack" logic.
-std::list<act_item> reorder_for_dropping( Character &p, const drop_locations &drop )
+static std::list<act_item> reorder_for_dropping( Character &p, const drop_locations &drop )
 {
     std::list<act_item> res = convert_to_items( p, drop,
     [&p]( item_location loc ) {
@@ -506,67 +516,22 @@ std::list<act_item> reorder_for_dropping( Character &p, const drop_locations &dr
                     && !second.loc->is_worn_only_with( *first.loc ) );
     } );
 
-    // Avoid tumbling to the ground. Unload cleanly.
-    units::volume dropped_inv_contents = std::accumulate( inv.begin(), inv.end(), 0_ml,
-    []( units::volume acc, const act_item & ait ) {
-        return acc + ait.loc->volume();
-    } );
-    const units::volume dropped_worn_storage = std::accumulate( worn.begin(), worn.end(), 0_ml,
-    []( units::volume acc, const act_item & ait ) {
-        return acc + ait.loc->get_storage();
-    } );
-    std::set<int> inv_indices;
-    std::transform( inv.begin(), inv.end(), std::inserter( inv_indices, inv_indices.begin() ),
-    [&p]( const act_item & ait ) {
-        return p.get_item_position( &*ait.loc );
-    } );
-
-    units::volume excessive_volume = p.volume_carried() - dropped_inv_contents
-                                     - p.volume_capacity_reduced_by( dropped_worn_storage );
-    if( excessive_volume > 0_ml ) {
-        invslice old_inv = p.inv.slice();
-        for( size_t i = 0; i < old_inv.size() && excessive_volume > 0_ml; i++ ) {
-            // TODO: Reimplement random dropping?
-            if( inv_indices.count( i ) != 0 ) {
-                continue;
-            }
-            std::list<item> &inv_stack = *old_inv[i];
-            for( item &item : inv_stack ) {
-                // Note: zero cost, but won't be contained on drop
-                act_item to_drop = act_item( item_location( p, &item ), item.count(), 0 );
-                inv.push_back( to_drop );
-                excessive_volume -= to_drop.loc->volume();
-                if( excessive_volume <= 0_ml ) {
-                    break;
-                }
-            }
-        }
-        // Need to re-sort
-        inv.sort( []( const act_item & first, const act_item & second ) {
-            return first.loc->volume() < second.loc->volume();
-        } );
-    }
-
+    // Cumulatively increases
+    units::volume storage_loss = 0_ml;
     // Cumulatively decreases
-    units::volume remaining_dropped_storage = dropped_worn_storage;
+    units::volume remaining_storage = p.volume_capacity();
 
     while( !worn.empty() && !inv.empty() ) {
-        units::volume front_storage = worn.front().loc->get_storage();
+        storage_loss += worn.front().loc->get_storage();
+        remaining_storage -= p.volume_capacity_reduced_by( storage_loss );
+        units::volume inventory_item_volume = inv.front().loc->volume();
         // Does not fit
-        // TODO: but maybe an item further down the line does
-        if( remaining_dropped_storage < inv.front().loc->volume() ) {
+        if( remaining_storage < inventory_item_volume ) {
             break;
         }
 
-        res.push_back( worn.front() );
-        worn.pop_front();
-        remaining_dropped_storage -= front_storage;
-        while( !inv.empty() ) {
-            units::volume inventory_item_volume = inv.front().loc->volume();
-            if( front_storage < inventory_item_volume ) {
-                break;
-            }
-            front_storage -= inventory_item_volume;
+        while( !inv.empty() && remaining_storage >= inventory_item_volume ) {
+            remaining_storage -= inventory_item_volume;
 
             res.push_back( inv.front() );
             // Free of charge
@@ -574,8 +539,10 @@ std::list<act_item> reorder_for_dropping( Character &p, const drop_locations &dr
 
             inv.pop_front();
         }
-    }
 
+        res.push_back( worn.front() );
+        worn.pop_front();
+    }
     // Now insert everything that remains
     std::copy( inv.begin(), inv.end(), std::back_inserter( res ) );
     std::copy( worn.begin(), worn.end(), std::back_inserter( res ) );
@@ -583,52 +550,8 @@ std::list<act_item> reorder_for_dropping( Character &p, const drop_locations &dr
     return res;
 }
 
-std::list<item> obtain_and_tokenize_items( player &p, std::list<act_item> &items )
-{
-    std::list<item> res;
-    drop_token_provider &token_provider = drop_token::get_provider();
-    item_drop_token last_token = token_provider.make_next( calendar::turn );
-    units::volume last_storage_volume = items.front().loc->get_storage();
-    while( !items.empty() && ( p.is_npc() || p.moves > 0 || items.front().consumed_moves == 0 ) ) {
-        act_item &ait = items.front();
-
-        assert( ait.loc );
-        assert( ait.loc.get_item() );
-
-        p.mod_moves( -ait.consumed_moves );
-
-        if( p.is_worn( *ait.loc ) ) {
-            p.takeoff( *ait.loc, &res );
-        } else if( ait.loc->count_by_charges() ) {
-            res.push_back( p.reduce_charges( const_cast<item *>( &*ait.loc ), ait.count ) );
-        } else {
-            res.push_back( p.i_rem( &*ait.loc ) );
-        }
-
-        // TODO: Get the item consistently instead of using back()
-        item &current_drop = res.back();
-
-        // Hack: if it consumes zero moves, it must have been contained
-        // TODO: Properly mark containment somehow
-        *current_drop.drop_token = token_provider.make_next( calendar::turn );;
-        if( ait.consumed_moves == 0 && last_storage_volume >= current_drop.volume() ) {
-            last_storage_volume -= current_drop.volume();
-            current_drop.drop_token->parent_number = last_token.parent_number;
-        } else {
-            last_token = *current_drop.drop_token;
-            last_storage_volume = current_drop.get_storage();
-        }
-
-        items.pop_front();
-    }
-
-    return res;
-}
-
-} // namespace pickup
-
 // TODO: Display costs in the multidrop menu
-static void debug_drop_list( const std::list<pickup::act_item> &list )
+static void debug_drop_list( const std::list<act_item> &list )
 {
     if( !debug_mode ) {
         return;
@@ -642,6 +565,18 @@ static void debug_drop_list( const std::list<pickup::act_item> &list )
     popup( res, PF_GET_KEY );
 }
 
+<<<<<<< HEAD
+static std::list<item> obtain_activity_items( player_activity &act, player &p )
+{
+    std::list<item> res;
+
+    std::list<act_item> items = reorder_for_dropping( p, convert_to_locations( act ) );
+
+    debug_drop_list( items );
+
+    while( !items.empty() && ( p.is_npc() || p.moves > 0 || items.front().consumed_moves == 0 ) ) {
+        act_item &ait = items.front();
+=======
 static void debug_tokens( const std::list<item> &items )
 {
     if( !debug_mode ) {
@@ -656,20 +591,39 @@ static void debug_tokens( const std::list<item> &items )
     popup( ss.str(), PF_GET_KEY );
 }
 
-static std::list<item> obtain_activity_items( player_activity &act, player &p )
+static std::list<item> obtain_activity_items( Character &who, std::list<pickup::act_item> &targets )
 {
-    std::list<pickup::act_item> items = pickup::reorder_for_dropping( p, convert_to_locations( act ) );
+    debug_drop_list( targets );
 
-    debug_drop_list( items );
+    std::list<item> res = pickup::obtain_and_tokenize_items( *who.as_player(), targets );
+>>>>>>> upstream/upload
 
-    std::list<item> res = pickup::obtain_and_tokenize_items( p, items );
+        assert( ait.loc );
+        assert( ait.loc.get_item() );
 
-    debug_tokens( res );
+        p.mod_moves( -ait.consumed_moves );
 
+        if( p.is_worn( *ait.loc ) ) {
+            p.takeoff( *ait.loc, &res );
+        } else if( ait.loc->count_by_charges() ) {
+            res.push_back( p.reduce_charges( const_cast<item *>( &*ait.loc ), ait.count ) );
+        } else {
+            res.push_back( p.i_rem( &*ait.loc ) );
+        }
+
+<<<<<<< HEAD
+        items.pop_front();
+    }
+    // Avoid tumbling to the ground. Unload cleanly.
+    const units::volume excessive_volume = p.volume_carried() - p.volume_capacity();
+    if( excessive_volume > 0_ml ) {
+        const auto excess = p.inv.remove_randomly_by_volume( excessive_volume );
+        res.insert( res.begin(), excess.begin(), excess.end() );
+    }
     // Load anything that remains (if any) into the activity
     act.targets.clear();
     act.values.clear();
-    for( const pickup::act_item &ait : items ) {
+    for( const act_item &ait : items ) {
         act.targets.push_back( ait.loc );
         act.values.push_back( ait.count );
     }
@@ -680,23 +634,22 @@ static std::list<item> obtain_activity_items( player_activity &act, player &p )
         p.cancel_activity();
     }
 
+=======
+>>>>>>> upstream/upload
     return res;
 }
 
-void activity_handlers::drop_do_turn( player_activity *act, player *p )
+void drop_activity_actor::do_turn( player_activity &, Character &who )
 {
-    const tripoint pos = act->placement + p->pos();
+    const tripoint pos = who.pos() + relpos;
 
-    bool force_ground = false;
-    for( auto &it : act->str_values ) {
-        if( it == "force_ground" ) {
-            force_ground = true;
-            break;
-        }
-    }
-
-    put_into_vehicle_or_drop( *p, item_drop_reason::deliberate, obtain_activity_items( *act, *p ),
+    put_into_vehicle_or_drop( who, item_drop_reason::deliberate,
+                              obtain_activity_items( who, items ),
                               pos, force_ground );
+
+    if( items.empty() ) {
+        who.cancel_activity();
+    }
 }
 
 void activity_on_turn_wear( player_activity &act, player &p )
@@ -744,16 +697,13 @@ void activity_on_turn_wear( player_activity &act, player &p )
     }
 }
 
-void activity_handlers::washing_finish( player_activity *act, player *p )
+void wash_activity_actor::finish( player_activity &act, Character &who )
 {
-    drop_locations items = convert_to_locations( *act );
-
     // Check again that we have enough water and soap incase the amount in our inventory changed somehow
     // Consume the water and soap
     units::volume total_volume = 0_ml;
-
-    for( const auto &it : items ) {
-        total_volume += it.first->volume() * it.second / it.first->count();
+    for( const auto &it : targets ) {
+        total_volume += it.loc->volume() * it.count / it.loc->count();
     }
     washing_requirements required = washing_requirements_for_volume( total_volume );
 
@@ -761,68 +711,71 @@ void activity_handlers::washing_finish( player_activity *act, player *p )
         return is_crafting_component( it ) && ( !it.count_by_charges() || it.made_of( LIQUID ) ||
                                                 it.contents_made_of( LIQUID ) );
     };
-    const inventory &crafting_inv = p->crafting_inventory();
+    const inventory &crafting_inv = who.crafting_inventory();
     if( !crafting_inv.has_charges( "water", required.water, is_liquid_crafting_component ) &&
         !crafting_inv.has_charges( "water_clean", required.water, is_liquid_crafting_component ) ) {
-        p->add_msg_if_player( _( "You need %1$i charges of water or clean water to wash these items." ),
-                              required.water );
-        act->set_to_null();
+        who.add_msg_if_player( _( "You need %1$i charges of water or clean water to wash these items." ),
+                               required.water );
+        act.set_to_null();
         return;
     } else if( !crafting_inv.has_charges( "soap", required.cleanser ) &&
                !crafting_inv.has_charges( "detergent", required.cleanser ) ) {
-        p->add_msg_if_player( _( "You need %1$i charges of cleansing agent to wash these items." ),
-                              required.cleanser );
-        act->set_to_null();
+        who.add_msg_if_player( _( "You need %1$i charges of cleansing agent to wash these items." ),
+                               required.cleanser );
+        act.set_to_null();
         return;
     }
 
-    for( auto &i : items ) {
-        item &it = *i.first;
-        if( i.second >= it.count() ) {
-            if( i.second > it.count() ) {
-                debugmsg( "Invalid item count to wash: tried %d, max %d", i.second, it.count() );
+    for( auto &i : targets ) {
+        item &it = *i.loc;
+        if( i.count >= it.count() ) {
+            if( i.count > it.count() ) {
+                debugmsg( "Invalid item count to wash: tried %d, max %d", i.count, it.count() );
             }
             it.item_tags.erase( "FILTHY" );
         } else {
             item it2 = it;
-            it.charges -= i.second;
-            it2.charges = i.second;
+            it.charges -= i.count;
+            it2.charges = i.count;
             it2.item_tags.erase( "FILTHY" );
             std::list<item> tmp;
             tmp.push_back( it2 );
-            put_into_vehicle_or_drop( *p, item_drop_reason::deliberate, tmp );
+            put_into_vehicle_or_drop( who, item_drop_reason::deliberate, tmp );
         }
-        p->on_worn_item_washed( it );
+        who.on_worn_item_washed( it );
     }
 
     std::vector<item_comp> comps;
     comps.push_back( item_comp( "water", required.water ) );
     comps.push_back( item_comp( "water_clean", required.water ) );
-    p->consume_items( comps, 1, is_liquid_crafting_component );
+    who.as_player()->consume_items( comps, 1, is_liquid_crafting_component );
 
     std::vector<item_comp> comps1;
     comps1.push_back( item_comp( "soap", required.cleanser ) );
     comps1.push_back( item_comp( "detergent", required.cleanser ) );
-    p->consume_items( comps1 );
+    who.as_player()->consume_items( comps1 );
 
-    p->add_msg_if_player( m_good, _( "You washed your items." ) );
+    who.add_msg_if_player( m_good, _( "You washed your items." ) );
 
     // Make sure newly washed components show up as available if player attempts to craft immediately
-    p->invalidate_crafting_inventory();
+    who.invalidate_crafting_inventory();
 
-    act->set_to_null();
+    act.set_to_null();
 }
 
-void activity_handlers::stash_do_turn( player_activity *act, player *p )
+void stash_activity_actor::do_turn( player_activity &, Character &who )
 {
-    const tripoint pos = act->placement + p->pos();
+    const tripoint pos = who.pos() + relpos;
 
     monster *pet = g->critter_at<monster>( pos );
     if( pet != nullptr && pet->has_effect( effect_pet ) ) {
-        stash_on_pet( obtain_activity_items( *act, *p ), *pet, p );
+        stash_on_pet( obtain_activity_items( who, items ), *pet, who );
+        if( items.empty() ) {
+            who.cancel_activity();
+        }
     } else {
-        p->add_msg_if_player( _( "The pet has moved somewhere else." ) );
-        p->cancel_activity();
+        who.add_msg_if_player( _( "The pet has moved somewhere else." ) );
+        who.cancel_activity();
     }
 }
 
@@ -879,7 +832,7 @@ static int move_cost_cart( const item &it, const tripoint &src, const tripoint &
     const int MAX_COST = 500;
 
     // cost to move item into the cart
-    const int pickup_cost = pickup::cost_to_move_item( g->u, it );
+    const int pickup_cost = Pickup::cost_to_move_item( g->u, it );
 
     // cost to move item out of the cart
     const int drop_cost = pickup_cost;
@@ -2290,11 +2243,6 @@ void activity_on_turn_move_loot( player_activity &act, player &p )
                 continue;
             }
 
-            // skip favorite items in ignore favorite zones
-            if( thisitem.is_favorite && mgr.has( zone_type_LOOT_IGNORE_FAVORITES, src ) ) {
-                continue;
-            }
-
             // Only if it's from a vehicle do we use the vehicle source location information.
             vehicle *this_veh = it->second ? src_veh : nullptr;
             const int this_part = it->second ? src_part : -1;
@@ -3174,16 +3122,12 @@ bool find_auto_consume( player &p, const bool food )
                 // not quenching enough
                 continue;
             }
-            if( comest.has_flag( flag_UNSAFE_CONSUME ) ) {
-                // Unsafe to drink or eat
-                continue;
-            }
             if( !food && it->is_watertight_container() && it->contents_made_of( SOLID ) ) {
                 // its frozen
                 continue;
             }
 
-            p.mod_moves( -pickup::cost_to_move_item( p, *it ) * std::max( rl_dist( p.pos(),
+            p.mod_moves( -Pickup::cost_to_move_item( p, *it ) * std::max( rl_dist( p.pos(),
                          g->m.getlocal( loc ) ), 1 ) );
             item_location item_loc;
             if( vp ) {

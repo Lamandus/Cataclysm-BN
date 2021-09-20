@@ -35,7 +35,6 @@
 #include "damage.h"
 #include "debug.h"
 #include "dispersion.h"
-#include "drop_token.h"
 #include "effect.h" // for weed_msg
 #include "enums.h"
 #include "explosion.h"
@@ -580,7 +579,7 @@ item &item::ammo_set( const itype_id &ammo, int qty )
     // check ammo is valid for the item
     const itype *atype = item_controller->find_template( ammo );
     if( !atype->ammo || !ammo_types().count( atype->ammo->type ) ) {
-        debugmsg( "Tried to set invalid ammo %s[%d] for %s", atype->get_id(), qty, typeId() );
+        debugmsg( "Tried to set invalid ammo of %s for %s", atype->nname( qty ), tname() );
         return *this;
     }
 
@@ -601,8 +600,8 @@ item &item::ammo_set( const itype_id &ammo, int qty )
         if( !magazine_current() ) {
             const itype *mag = find_type( magazine_default() );
             if( !mag->magazine ) {
-                debugmsg( "Tried to set ammo %s[%d] without suitable magazine for %s",
-                          atype->get_id(), qty, typeId() );
+                debugmsg( "Tried to set ammo of %s without suitable magazine for %s",
+                          atype->nname( qty ), tname() );
                 return *this;
             }
 
@@ -612,7 +611,7 @@ item &item::ammo_set( const itype_id &ammo, int qty )
                 auto iter = type->magazines.find( atype->ammo->type );
                 if( iter == type->magazines.end() ) {
                     debugmsg( "%s doesn't have a magazine for %s",
-                              typeId(), ammo );
+                              tname(), ammo );
                     return *this;
                 }
                 std::vector<itype_id> opts( iter->second.begin(), iter->second.end() );
@@ -3020,17 +3019,44 @@ void item::disassembly_info( std::vector<iteminfo> &info, const iteminfo_query *
     const recipe &dis = recipe_dictionary::get_uncraft( typeId() );
     const requirement_data &req = dis.disassembly_requirements();
     if( !req.is_empty() ) {
-        const requirement_data::alter_item_comp_vector &components = req.get_components();
-        const std::string components_list = enumerate_as_string( components.begin(), components.end(),
-        []( const std::vector<item_comp> &comps ) {
-            return comps.front().to_string();
+        const std::string approx_time = to_string_approx( time_duration::from_turns( dis.time / 100 ) );
+
+        const requirement_data::alter_item_comp_vector &comps_list = req.get_components();
+        const std::string comps_str = enumerate_as_string( comps_list.begin(), comps_list.end(),
+        []( const std::vector<item_comp> &comp_opts ) {
+            return comp_opts.front().to_string();
         } );
+
+        std::vector<std::string> reqs_list;
+        const requirement_data::alter_tool_comp_vector &tools_list = req.get_tools();
+        for( const std::vector<tool_comp> &it : tools_list ) {
+            if( !it.empty() ) {
+                reqs_list.push_back( it.front().to_string() );
+            }
+        }
+        const requirement_data::alter_quali_req_vector &quals_list = req.get_qualities();
+        for( const std::vector<quality_requirement> &it : quals_list ) {
+            if( !it.empty() ) {
+                reqs_list.push_back( it.front().to_colored_string() );
+            }
+        }
+
+        std::string descr;
+        if( reqs_list.empty() ) {
+            //~ 1 is approx. time (e.g. 'about 5 minutes'), 2 is a list of items
+            descr = string_format( _( "<bold>Disassembly</bold> takes %1$s and might yield: %2$s." ),
+                                   approx_time, comps_str );
+        } else {
+            const std::string reqs_str = enumerate_as_string( reqs_list );
+            descr = string_format(
+                        //~ 1 is approx. time, 2 is a list of items and tools with qualities, 3 is a list of items.
+                        //~ Bold text in the middle makes it easier to see where the second list starts.
+                        _( "<bold>Disassembly</bold> takes %1$s, requires %2$s and <bold>might yield</bold>: %3$s." ),
+                        approx_time, reqs_str, comps_str );
+        }
+
         insert_separation_line( info );
-        info.push_back( iteminfo( "DESCRIPTION",
-                                  string_format( _( "<bold>Disassembly</bold> takes %s and "
-                                          "might yield: %s." ),
-                                          to_string_approx( time_duration::from_turns( dis.time /
-                                                  100 ) ), components_list ) ) );
+        info.push_back( iteminfo( "DESCRIPTION", descr ) );
     }
 }
 
@@ -3128,8 +3154,8 @@ void item::bionic_info( std::vector<iteminfo> &info, const iteminfo_query *parts
     if( !bid->encumbrance.empty() ) {
         info.push_back( iteminfo( "DESCRIPTION", _( "<bold>Encumbrance</bold>: " ),
                                   iteminfo::no_newline ) );
-        for( const auto &element : bid->encumbrance ) {
-            info.push_back( iteminfo( "CBM", body_part_name_as_heading( element.first, 1 ),
+        for( const std::pair< const bodypart_str_id, int > element : sorted_lex( bid->encumbrance ) ) {
+            info.push_back( iteminfo( "CBM", body_part_name_as_heading( element.first->token, 1 ),
                                       " <num> ", iteminfo::no_newline, element.second ) );
         }
     }
@@ -3138,7 +3164,7 @@ void item::bionic_info( std::vector<iteminfo> &info, const iteminfo_query *parts
         info.push_back( iteminfo( "DESCRIPTION",
                                   _( "<bold>Environmental Protection</bold>: " ),
                                   iteminfo::no_newline ) );
-        for( const std::pair< const bodypart_str_id, size_t > element : sorted_lex( bid->env_protec ) ) {
+        for( const std::pair< const bodypart_str_id, int > element : sorted_lex( bid->env_protec ) ) {
             info.push_back( iteminfo( "CBM", body_part_name_as_heading( element.first->token, 1 ),
                                       " <num> ", iteminfo::no_newline, element.second ) );
         }
@@ -3148,7 +3174,7 @@ void item::bionic_info( std::vector<iteminfo> &info, const iteminfo_query *parts
         info.push_back( iteminfo( "DESCRIPTION",
                                   _( "<bold>Bash Protection</bold>: " ),
                                   iteminfo::no_newline ) );
-        for( const std::pair< const bodypart_str_id, size_t > element : sorted_lex( bid->bash_protec ) ) {
+        for( const std::pair< const bodypart_str_id, int > element : sorted_lex( bid->bash_protec ) ) {
             info.push_back( iteminfo( "CBM", body_part_name_as_heading( element.first->token, 1 ),
                                       " <num> ", iteminfo::no_newline, element.second ) );
         }
@@ -3158,7 +3184,7 @@ void item::bionic_info( std::vector<iteminfo> &info, const iteminfo_query *parts
         info.push_back( iteminfo( "DESCRIPTION",
                                   _( "<bold>Cut Protection</bold>: " ),
                                   iteminfo::no_newline ) );
-        for( const std::pair< const bodypart_str_id, size_t > element : sorted_lex( bid->cut_protec ) ) {
+        for( const std::pair< const bodypart_str_id, int > element : sorted_lex( bid->cut_protec ) ) {
             info.push_back( iteminfo( "CBM", body_part_name_as_heading( element.first->token, 1 ),
                                       " <num> ", iteminfo::no_newline, element.second ) );
         }
@@ -4934,7 +4960,7 @@ int item::reach_range( const Character &guy ) const
         }
     }
 
-    return std::max( 1, res );
+    return res;
 }
 
 void item::unset_flags()
@@ -5443,7 +5469,7 @@ int item::get_encumber_when_containing(
                 debugmsg( "Non-rigid item (%s) without storage capacity.", tname() );
             }
         } else {
-            encumber += contents_volume / 500_ml;
+            encumber += contents_volume / 250_ml;
         }
     }
 
@@ -6346,6 +6372,30 @@ bool item::is_faulty() const
 bool item::is_irremovable() const
 {
     return has_flag( flag_IRREMOVABLE );
+}
+
+int item::wind_resist() const
+{
+    std::vector<const material_type *> materials = made_of_types();
+    if( materials.empty() ) {
+        debugmsg( "Called item::wind_resist on an item (%s [%s]) made of nothing!", tname(), typeId() );
+        return 99;
+    }
+
+    int best = -1;
+    for( const material_type *mat : materials ) {
+        cata::optional<int> resistance = mat->wind_resist();
+        if( resistance && *resistance > best ) {
+            best = *resistance;
+        }
+    }
+
+    // Default to 99% effective
+    if( best == -1 ) {
+        return 99;
+    }
+
+    return best;
 }
 
 std::set<fault_id> item::faults_potential() const
@@ -7462,11 +7512,6 @@ void item::gun_cycle_mode()
     gun_set_mode( modes.begin()->first );
 
     return;
-}
-
-bool item::has_use() const
-{
-    return type->has_use();
 }
 
 const use_function *item::get_use( const std::string &use_name ) const
@@ -8873,10 +8918,7 @@ cata::optional<tripoint> item::get_cable_target( Character *p, const tripoint &p
         }
     }
 
-    int source_x = get_var( "source_x", 0 );
-    int source_y = get_var( "source_y", 0 );
-    int source_z = get_var( "source_z", 0 );
-    tripoint source( source_x, source_y, source_z );
+    tripoint source( get_var( "source_x", 0 ), get_var( "source_y", 0 ), get_var( "source_z", 0 ) );
 
     return g->m.getlocal( source );
 }

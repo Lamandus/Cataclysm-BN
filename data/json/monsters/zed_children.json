@@ -28,7 +28,6 @@
     "death_drops": { "subtype": "collection", "groups": [ [ "default_zombie_clothes", 100 ], [ "child_items", 65 ] ] },
     "death_function": [ "NORMAL" ],
     "burn_into": "mon_zombie_child_scorched",
-    "fungalize_into": "mon_zombie_child_fungus",
     "flags": [ "SEES", "HEARS", "SMELLS", "STUMBLES", "WARM", "BASHES", "BLEED", "POISON", "NO_BREATHE", "REVIVES", "FILTHY" ],
     "//": "no GUILT because it no longer looks enough like a child to evoke pity"
   },
@@ -66,7 +65,6 @@
     },
     "death_function": [ "NORMAL" ],
     "burn_into": "mon_zombie_child_scorched",
-    "fungalize_into": "mon_zombie_child_fungus",
     "upgrades": { "half_life": 14, "into_group": "GROUP_CHILD_ZOMBIE_UPGRADE" },
     "flags": [
       "SEES",
@@ -112,7 +110,6 @@
     "death_drops": { "subtype": "collection", "groups": [ [ "default_zombie_clothes", 100 ], [ "child_items", 65 ] ] },
     "death_function": [ "NORMAL" ],
     "burn_into": "mon_zombie_child_scorched",
-    "fungalize_into": "mon_zombie_child_fungus",
     "flags": [
       "SEES",
       "HEARS",
@@ -159,7 +156,6 @@
     "death_drops": { "subtype": "collection", "groups": [ [ "default_zombie_clothes", 100 ], [ "child_items", 65 ] ] },
     "death_function": [ "NORMAL" ],
     "burn_into": "mon_zombie_child_scorched",
-    "fungalize_into": "mon_zombie_child_fungus",
     "flags": [
       "SEES",
       "HEARS",
@@ -206,7 +202,6 @@
     "death_drops": { "subtype": "collection", "groups": [ [ "default_zombie_clothes", 100 ], [ "child_items", 65 ] ] },
     "death_function": [ "BOOMER" ],
     "burn_into": "mon_zombie_child_scorched",
-    "fungalize_into": "mon_zombie_child_fungus",
     "flags": [ "SEES", "HEARS", "STUMBLES", "WARM", "BLEED", "GUILT", "POISON", "NO_BREATHE", "REVIVES", "FILTHY" ],
     "//": "GUILT because it still looks enough like a child to evoke pity"
   },
@@ -239,7 +234,6 @@
     "death_drops": { "subtype": "collection", "groups": [ [ "default_zombie_clothes", 100 ], [ "child_items", 65 ] ] },
     "death_function": [ "NORMAL" ],
     "burn_into": "mon_zombie_child_scorched",
-    "fungalize_into": "mon_zombie_child_fungus",
     "flags": [
       "SEES",
       "HEARS",
@@ -287,7 +281,6 @@
     "death_drops": { "subtype": "collection", "groups": [ [ "default_zombie_clothes", 100 ], [ "child_items", 65 ] ] },
     "death_function": [ "NORMAL" ],
     "burn_into": "mon_zombie_child_scorched",
-    "fungalize_into": "mon_zombie_child_fungus",
     "flags": [
       "SEES",
       "HEARS",

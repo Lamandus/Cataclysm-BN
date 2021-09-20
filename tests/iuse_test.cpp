@@ -178,6 +178,8 @@ TEST_CASE( "anticonvulsant", "[iuse][anticonvulsant]" )
 
                     AND_THEN( "it has side-effects" ) {
                         CHECK( dummy.has_effect( efftype_id( "valium" ) ) );
+                        CHECK( dummy.has_effect( efftype_id( "high" ) ) );
+                        CHECK( dummy.has_effect( efftype_id( "took_anticonvulsant_visible" ) ) );
                     }
                 }
             }
@@ -371,7 +373,7 @@ TEST_CASE( "towel", "[iuse][towel]" )
 
     GIVEN( "avatar has poor morale due to being wet" ) {
         dummy.add_morale( MORALE_WET, -10, -10, 1_hours, 1_hours );
-        REQUIRE( dummy.get_morale( MORALE_WET ) == -10 );
+        REQUIRE( dummy.has_morale( MORALE_WET ) == -10 );
 
         WHEN( "they use a wet towel" ) {
             towel.convert( "towel_wet" );
@@ -379,7 +381,7 @@ TEST_CASE( "towel", "[iuse][towel]" )
             dummy.invoke_item( &towel );
 
             THEN( "it does not improve their morale" ) {
-                CHECK( dummy.get_morale( MORALE_WET ) == -10 );
+                CHECK( dummy.has_morale( MORALE_WET ) == -10 );
             }
         }
 
@@ -388,7 +390,7 @@ TEST_CASE( "towel", "[iuse][towel]" )
             dummy.invoke_item( &towel );
 
             THEN( "it improves their morale" ) {
-                CHECK( dummy.get_morale( MORALE_WET ) == 0 );
+                CHECK( dummy.has_morale( MORALE_WET ) == 0 );
 
                 AND_THEN( "the towel becomes wet" ) {
                     CHECK( towel.typeId() == "towel_wet" );
@@ -424,7 +426,7 @@ TEST_CASE( "towel", "[iuse][towel]" )
     GIVEN( "avatar is boomered and wet" ) {
         dummy.add_effect( efftype_id( "boomered" ), 1_hours );
         dummy.add_morale( MORALE_WET, -10, -10, 1_hours, 1_hours );
-        REQUIRE( dummy.has_morale( MORALE_WET ) );
+        REQUIRE( std::abs( dummy.has_morale( MORALE_WET ) ) );
 
         WHEN( "they use a dry towel" ) {
             REQUIRE_FALSE( towel.has_flag( flag_WET ) );
@@ -432,7 +434,7 @@ TEST_CASE( "towel", "[iuse][towel]" )
 
             THEN( "it removes the boomered effect, but not the wetness" ) {
                 CHECK_FALSE( dummy.has_effect( efftype_id( "boomered" ) ) );
-                CHECK( dummy.has_morale( MORALE_WET ) );
+                CHECK( std::abs( dummy.has_morale( MORALE_WET ) ) );
 
                 AND_THEN( "the towel becomes soiled" ) {
                     CHECK( towel.typeId() == "towel_soiled" );
@@ -451,21 +453,20 @@ TEST_CASE( "thorazine", "[iuse][thorazine]" )
     int charges_before = thorazine.charges;
     REQUIRE( charges_before >= 2 );
 
-    GIVEN( "avatar has hallucination, and visuals effects" ) {
+    GIVEN( "avatar has hallucination, visuals, and high effects" ) {
         dummy.add_effect( efftype_id( "hallu" ), 1_hours );
         dummy.add_effect( efftype_id( "visuals" ), 1_hours );
-        dummy.add_effect( efftype_id( "high" ), 1_hours );
         REQUIRE( dummy.has_effect( efftype_id( "hallu" ) ) );
         REQUIRE( dummy.has_effect( efftype_id( "visuals" ) ) );
-        REQUIRE( dummy.has_effect( efftype_id( "high" ) ) );
 
         WHEN( "they take some thorazine" ) {
             dummy.invoke_item( &thorazine );
 
-            THEN( "it relieves both of those effects with a single dose" ) {
+            THEN( "it relieves all those effects with a single dose" ) {
                 CHECK( thorazine.charges == charges_before - 1 );
                 REQUIRE_FALSE( dummy.has_effect( efftype_id( "hallu" ) ) );
                 REQUIRE_FALSE( dummy.has_effect( efftype_id( "visuals" ) ) );
+                REQUIRE_FALSE( dummy.has_effect( efftype_id( "high" ) ) );
 
                 AND_THEN( "it causes some fatigue" ) {
                     CHECK( dummy.get_fatigue() >= 5 );
@@ -496,11 +497,13 @@ TEST_CASE( "prozac", "[iuse][prozac]" )
     item &prozac = dummy.i_add( item( "prozac", calendar::start_of_cataclysm,
                                       item::default_charges_tag{} ) );
 
-    SECTION( "prozac gives prozac effect" ) {
+    SECTION( "prozac gives prozac and visible prozac effect" ) {
         REQUIRE_FALSE( dummy.has_effect( efftype_id( "took_prozac" ) ) );
+        REQUIRE_FALSE( dummy.has_effect( efftype_id( "took_prozac_visible" ) ) );
 
         dummy.invoke_item( &prozac );
         CHECK( dummy.has_effect( efftype_id( "took_prozac" ) ) );
+        CHECK( dummy.has_effect( efftype_id( "took_prozac_visible" ) ) );
     }
 
     SECTION( "taking prozac twice gives a stimulant effect" ) {
@@ -570,10 +573,12 @@ TEST_CASE( "xanax", "[iuse][xanax]" )
     item &xanax = dummy.i_add( item( "xanax", calendar::start_of_cataclysm,
                                      item::default_charges_tag{} ) );
 
-    SECTION( "xanax gives xanax effect" ) {
+    SECTION( "xanax gives xanax and visible xanax effects" ) {
         REQUIRE_FALSE( dummy.has_effect( efftype_id( "took_xanax" ) ) );
+        REQUIRE_FALSE( dummy.has_effect( efftype_id( "took_xanax_visible" ) ) );
 
         dummy.invoke_item( &xanax );
         CHECK( dummy.has_effect( efftype_id( "took_xanax" ) ) );
+        CHECK( dummy.has_effect( efftype_id( "took_xanax_visible" ) ) );
     }
 }

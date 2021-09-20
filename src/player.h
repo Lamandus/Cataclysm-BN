@@ -79,7 +79,6 @@ template<>
 struct ret_val<edible_rating>::default_failure : public
     std::integral_constant<edible_rating, edible_rating::inedible> {};
 
-
 struct stat_mod {
     int strength = 0;
     int dexterity = 0;
@@ -94,6 +93,7 @@ struct needs_rates {
     float hunger = 0.0f;
     float fatigue = 0.0f;
     float recovery = 0.0f;
+    float kcal = 0.0f;
 };
 
 class player : public Character
@@ -476,7 +476,7 @@ class player : public Character
 
         /** last time we checked for sleep */
         time_point last_sleep_check = calendar::turn_zero;
-        bool bio_soporific_powered_at_last_sleep_check = false;
+        bool bio_soporific_powered_at_last_sleep_check;
 
     public:
         /** Returns a value from 1.0 to 5.0 that acts as a multiplier
@@ -606,7 +606,7 @@ class player : public Character
         void make_craft( const recipe_id &id, int batch_size, const tripoint &loc = tripoint_zero );
         void make_all_craft( const recipe_id &id, int batch_size, const tripoint &loc = tripoint_zero );
         /** consume components and create an active, in progress craft containing them */
-        void start_craft( craft_command &command, const tripoint &loc );
+        item_location start_craft( craft_command &command, const tripoint &loc );
         /**
          * Calculate a value representing the success of the player at crafting the given recipe,
          * taking player skill, recipe difficulty, npc helpers, and player mutations into account.
@@ -662,13 +662,6 @@ class player : public Character
                                        const tripoint &origin = tripoint_zero, int radius = PICKUP_RANGE );
         std::list<item> consume_items( const std::vector<item_comp> &components, int batch = 1,
                                        const std::function<bool( const item & )> &filter = return_true<item> );
-        comp_selection<tool_comp>
-        select_tool_component( const std::vector<tool_comp> &tools, int batch, inventory &map_inv,
-                               const std::string &hotkeys = DEFAULT_HOTKEYS,
-                               bool can_cancel = false, bool player_inv = true,
-        std::function<int( int )> charges_required_modifier = []( int i ) {
-            return i;
-        } );
         /** Consume tools for the next multiplier * 5% progress of the craft */
         bool craft_consume_tools( item &craft, int mulitplier, bool start_craft );
         void consume_tools( const comp_selection<tool_comp> &tool, int batch );
@@ -681,22 +674,22 @@ class player : public Character
         // ---------------VALUES-----------------
         tripoint view_offset;
         // Is currently in control of a vehicle
-        bool controlling_vehicle = false;
+        bool controlling_vehicle;
         // Relative direction of a grab, add to posx, posy to get the coordinates of the grabbed thing.
         tripoint grab_point;
-        int volume = 0;
-        const profession *prof = nullptr;
+        int volume;
+        const profession *prof;
 
-        bool random_start_location = false;
+        bool random_start_location;
         start_location_id start_location;
 
         weak_ptr_fast<Creature> last_target;
         cata::optional<tripoint> last_target_pos;
         // Save favorite ammo location
         item_location ammo_location;
-        int scent = 0;
-        int cash = 0;
-        int movecounter = 0;
+        int scent;
+        int cash;
+        int movecounter;
 
         bool manual_examine = false;
         vproto_id starting_vehicle;
@@ -707,7 +700,7 @@ class player : public Character
         pimpl<craft_command> last_craft;
 
         recipe_id lastrecipe;
-        int last_batch = 0;
+        int last_batch;
         itype_id lastconsumed;        //used in crafting.cpp and construction.cpp
 
         std::set<character_id> follower_ids;

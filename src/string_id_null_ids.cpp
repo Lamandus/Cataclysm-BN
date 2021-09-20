@@ -31,7 +31,6 @@ MAKE_NULL_ID( martialart, "style_none" )
 MAKE_NULL_ID( recipe, "null" )
 MAKE_NULL_ID( translation, "null" )
 MAKE_NULL_ID( Item_group, "" )
-MAKE_NULL_ID( morale_type_data, "" )
 
 #define MAKE_NULL_ID2( type, ... ) \
     struct type; \

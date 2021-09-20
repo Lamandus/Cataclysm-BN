@@ -16,19 +16,18 @@
     "components": [ [ [ "crucible", 1 ], [ "crucible_clay", 1 ] ], [ [ "primitive_hammer", 1 ], [ "makeshift_hammer", 1 ] ] ],
     "blueprint_needs": {
       "time": "5 h 30 m",
-      "skills": [ [ "fabrication", 4 ] ],
+      "skills": [ [ "fabrication", 5 ] ],
       "inline": {
         "tools": [  ],
-        "qualities": [ [ { "id": "SAW_W" } ], [ { "id": "HAMMER", "level": 2 } ], [ { "id": "WRENCH" } ] ],
+        "qualities": [ [ { "id": "DIG", "level": 2 } ], [ { "id": "HAMMER", "level": 2 } ], [ { "id": "SAW_W" } ], [ { "id": "WRENCH" } ] ],
         "components": [
-          [ [ "2x4", 4 ] ],
-          [ [ "lock", 1 ] ],
-          [ [ "material_soil", 5 ] ],
-          [ [ "nail", 8 ] ],
-          [ [ "pipe", 8 ] ],
-          [ [ "rock", 80 ] ],
           [ [ "sheet_metal", 2 ] ],
-          [ [ "wood_panel", 1 ], [ "wood_sheet", 1 ] ]
+          [ [ "pipe", 8 ] ],
+          [ [ "lock", 1 ] ],
+          [ [ "2x4", 4 ] ],
+          [ [ "wood_sheet", 1 ], [ "wood_panel", 1 ] ],
+          [ [ "nail", 8 ] ],
+          [ [ "rock", 80 ] ]
         ]
       }
     }

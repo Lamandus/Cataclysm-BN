@@ -63,8 +63,6 @@ using npc_class_id = string_id<npc_class>;
 using mission_type_id = string_id<mission_type>;
 using mfaction_id = int_id<monfaction>;
 using overmap_location_str_id = string_id<overmap_location>;
-using drop_location = std::pair<item_location, int>;
-using drop_locations = std::list<drop_location>;
 
 void parse_tags( std::string &phrase, const Character &u, const Character &me,
                  const itype_id &item_type = "null" );
@@ -239,13 +237,19 @@ struct npc_personality {
 };
 
 struct npc_opinion {
-    int trust = 0;
-    int fear = 0;
-    int value = 0;
-    int anger = 0;
-    int owed = 0; // Positive when the npc owes the player. Negative if player owes them.
+    int trust;
+    int fear;
+    int value;
+    int anger;
+    int owed; // Positive when the npc owes the player. Negative if player owes them.
 
-    npc_opinion() = default;
+    npc_opinion() {
+        trust = 0;
+        fear  = 0;
+        value = 0;
+        anger = 0;
+        owed  = 0;
+    }
 
     npc_opinion( int T, int F, int V, int A, int O ) :
         trust( T ), fear( F ), value( V ), anger( A ), owed( O ) {
@@ -361,7 +365,7 @@ enum class ally_rule {
 };
 
 struct ally_rule_data {
-    ally_rule rule = ally_rule::DEFAULT;
+    ally_rule rule;
     std::string rule_true_text;
     std::string rule_false_text;
 };
@@ -483,13 +487,13 @@ const std::unordered_map<std::string, ally_rule_data> ally_rule_strs = { {
 };
 
 struct npc_follower_rules {
-    combat_engagement engagement = combat_engagement::NONE;
+    combat_engagement engagement;
     aim_rule aim = aim_rule::WHEN_CONVENIENT;
     cbm_recharge_rule cbm_recharge = cbm_recharge_rule::CBM_RECHARGE_SOME;
     cbm_reserve_rule cbm_reserve = cbm_reserve_rule::CBM_RESERVE_SOME;
-    ally_rule flags = ally_rule::DEFAULT;
-    ally_rule override_enable = ally_rule::DEFAULT;
-    ally_rule overrides = ally_rule::DEFAULT;
+    ally_rule flags;
+    ally_rule override_enable;
+    ally_rule overrides;
 
     pimpl<auto_pickup::npc_settings> pickup_whitelist;
 
@@ -518,7 +522,7 @@ struct npc_follower_rules {
 struct dangerous_sound {
     tripoint abs_pos;
     sounds::sound_t type;
-    int volume = 0;
+    int volume;
 };
 
 const direction npc_threat_dir[8] = { direction::NORTHWEST, direction::NORTH, direction::NORTHEAST, direction::EAST,
@@ -1252,7 +1256,7 @@ class npc : public player
         cata::optional<tripoint> assigned_camp = cata::nullopt;
 
     private:
-        npc_attitude attitude = NPCATT_NULL; // What we want to do to the player
+        npc_attitude attitude; // What we want to do to the player
         npc_attitude previous_attitude = NPCATT_NULL;
         bool known_to_u = false; // Does the player know this NPC?
         /**
@@ -1288,7 +1292,7 @@ class npc : public player
          */
         tripoint global_square_location() const override;
         cata::optional<tripoint> last_player_seen_pos; // Where we last saw the player
-        int last_seen_player_turn = 0; // Timeout to forgetting
+        int last_seen_player_turn; // Timeout to forgetting
         tripoint wanted_item_pos; // The square containing an item we want
         tripoint guard_pos;  // These are the local coordinates that a guard will return to inside of their goal tripoint
         tripoint chair_pos = no_goal_point; // This is the spot the NPC wants to move to to sit and relax.
@@ -1299,16 +1303,16 @@ class npc : public player
          */
         tripoint goal;
         tripoint wander_pos = no_goal_point;
-        int wander_time = 0;
+        int wander_time;
         item *known_stolen_item = nullptr; // the item that the NPC wants the player to drop or barter for.
         /**
          * Location and index of the corpse we'd like to pulp (if any).
          */
         cata::optional<tripoint> pulp_location;
         time_point restock;
-        bool fetching_item = false;
-        bool has_new_items = false; // If true, we have something new and should re-equip
-        int worst_item_value = 0; // The value of our least-wanted item
+        bool fetching_item;
+        bool has_new_items; // If true, we have something new and should re-equip
+        int  worst_item_value; // The value of our least-wanted item
 
         std::vector<tripoint> path; // Our movement plans
 
@@ -1325,11 +1329,11 @@ class npc : public player
         npc_personality personality;
         npc_opinion op_of_u;
         npc_chatbin chatbin;
-        int patience = 0; // Used when we expect the player to leave the area
+        int patience; // Used when we expect the player to leave the area
         npc_follower_rules rules;
-        bool marked_for_death = false; // If true, we die as soon as we respawn!
-        bool hit_by_player = false;
-        bool hallucination = false; // If true, NPC is an hallucination
+        bool marked_for_death; // If true, we die as soon as we respawn!
+        bool hit_by_player;
+        bool hallucination; // If true, NPC is an hallucination
         std::vector<npc_need> needs;
         cata::optional<int> confident_range_cache;
         // Dummy point that indicates that the goal is invalid.
@@ -1376,7 +1380,7 @@ class npc : public player
         // the index of the bionics for the fake gun;
         int cbm_weapon_index = -1;
 
-        bool dead = false;  // If true, we need to be cleaned up
+        bool dead;  // If true, we need to be cleaned up
 
         bool sees_dangerous_field( const tripoint &p ) const;
         bool could_move_onto( const tripoint &p ) const;
@@ -1410,7 +1414,7 @@ class npc_template
             male,
             female
         };
-        gender gender_override = gender::random;
+        gender gender_override;
 
         static void load( const JsonObject &jsobj );
         static void reset();

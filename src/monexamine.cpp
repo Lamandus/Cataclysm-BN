@@ -83,7 +83,6 @@ bool monexamine::pet_menu( monster &z )
         remove_bat,
         insert_bat,
         check_bat,
-        attack
     };
 
     uilist amenu;
@@ -98,7 +97,6 @@ bool monexamine::pet_menu( monster &z )
     amenu.addentry( swap_pos, true, 's', _( "Swap positions" ) );
     amenu.addentry( push_zlave, true, 'p', _( "Push %s" ), pet_name );
     amenu.addentry( rename, true, 'e', _( "Rename" ) );
-    amenu.addentry( attack, true, 'A', _( "Attack" ) );
     if( z.has_effect( effect_has_bag ) ) {
         amenu.addentry( give_items, true, 'g', _( "Place items into bag" ) );
         amenu.addentry( remove_bag, true, 'b', _( "Remove bag from %s" ), pet_name );
@@ -278,12 +276,6 @@ bool monexamine::pet_menu( monster &z )
             insert_battery( z );
             break;
         case check_bat:
-            break;
-        case attack:
-            if( query_yn( _( "You may be attacked!  Proceed?" ) ) ) {
-                get_player_character().melee_attack( z, true );
-            }
-            break;
         default:
             break;
     }
@@ -439,50 +431,6 @@ bool monexamine::pay_bot( monster &z )
     return false;
 }
 
-bool monexamine::mfriend_menu( monster &z )
-{
-    enum choices {
-        swap_pos = 0,
-        push_monster,
-        rename,
-        attack
-    };
-
-    uilist amenu;
-    const std::string pet_name = z.get_name();
-
-    amenu.text = string_format( _( "What to do with your %s?" ), pet_name );
-
-    amenu.addentry( swap_pos, true, 's', _( "Swap positions" ) );
-    amenu.addentry( push_monster, true, 'p', _( "Push %s" ), pet_name );
-    amenu.addentry( rename, true, 'e', _( "Rename" ) );
-    amenu.addentry( attack, true, 'a', _( "Attack" ) );
-
-    amenu.query();
-    const int choice = amenu.ret;
-
-    switch( choice ) {
-        case swap_pos:
-            swap( z );
-            break;
-        case push_monster:
-            push( z );
-            break;
-        case rename:
-            rename_pet( z );
-            break;
-        case attack:
-            if( query_yn( _( "You may be attacked!  Proceed?" ) ) ) {
-                get_player_character().melee_attack( z, true );
-            }
-            break;
-        default:
-            break;
-    }
-
-    return true;
-}
-
 void monexamine::attach_or_remove_saddle( monster &z )
 {
     if( z.has_effect( effect_saddled ) ) {
@@ -559,8 +507,8 @@ void monexamine::push( monster &z )
         return;
     }
 
-    int deltax = z.posx() - g->u.posx(), deltay = z.posy() - g->u.posy();
-    z.move_to( tripoint( z.posx() + deltax, z.posy() + deltay, z.posz() ) );
+    point delta( z.posx() - g->u.posx(), z.posy() - g->u.posy() );
+    z.move_to( tripoint( z.posx() + delta.x, z.posy() + delta.y, z.posz() ) );
 }
 
 void monexamine::rename_pet( monster &z )
@@ -642,14 +590,17 @@ bool monexamine::give_items_to( monster &z )
     drop_locations items = game_menus::inv::multidrop( g->u );
     drop_locations to_move;
     for( const drop_location &itq : items ) {
-        const item &it = *itq.first;
-        units::volume item_volume = it.volume() * itq.second;
-        units::mass item_weight = it.weight() * itq.second;
+        item it_copy = *itq.loc;
+        if( it_copy.count_by_charges() ) {
+            it_copy.charges = itq.count;
+        }
+        units::volume item_volume = it_copy.volume();
+        units::mass item_weight = it_copy.weight();
         if( max_weight < item_weight ) {
-            add_msg( _( "The %1$s is too heavy for the %2$s to carry." ), it.tname(), pet_name );
+            add_msg( _( "The %1$s is too heavy for the %2$s to carry." ), it_copy.tname(), pet_name );
             continue;
         } else if( max_volume < item_volume ) {
-            add_msg( _( "The %1$s is too big to fit in the %2$s." ), it.tname(), storage.tname() );
+            add_msg( _( "The %1$s is too big to fit in the %2$s." ), it_copy.tname(), storage.tname() );
             continue;
         } else {
             max_weight -= item_weight;

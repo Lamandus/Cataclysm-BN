@@ -18,7 +18,7 @@
     "volume": "50 ml",
     "stack_size": 1,
     "fun": -8,
-    "flags": [ "FREEZERBURN", "RAW" ],
+    "flags": [ "RAW" ],
     "rot_spawn": "GROUP_EGG_BIRD_WILD",
     "vitamins": [ [ "vitA", 9 ], [ "calcium", 3 ], [ "iron", 4 ], [ "vitB", 21 ] ],
     "rot_spawn_chance": 50
@@ -30,15 +30,6 @@
     "copy-from": "egg_bird",
     "rot_spawn": "GROUP_EGG_CHICKEN",
     "rot_spawn_chance": 70
-  },
-  {
-    "type": "COMESTIBLE",
-    "id": "egg_bird_unfert",
-    "copy-from": "egg_bird",
-    "looks_like": "egg_bird",
-    "name": { "str": "unfertilized bird egg" },
-    "description": "Nutritious egg laid by a bird.  This one is unfertilized and is probably from a farm.",
-    "rot_spawn_chance": 0
   },
   {
     "type": "COMESTIBLE",
@@ -275,7 +266,7 @@
     "material": "egg",
     "volume": "125 ml",
     "charges": 2,
-    "flags": [ "EATEN_HOT", "FREEZERBURN" ],
+    "flags": [ "EATEN_HOT" ],
     "fun": 3
   },
   {
@@ -290,8 +281,7 @@
     "price": 95,
     "price_postapoc": 50,
     "material": "egg",
-    "fun": 2,
-    "flags": [ "FREEZERBURN" ]
+    "fun": 2
   },
   {
     "type": "COMESTIBLE",
@@ -306,7 +296,6 @@
     "price": 95,
     "price_postapoc": 75,
     "material": "egg",
-    "fun": 2,
-    "flags": [ "FREEZERBURN" ]
+    "fun": 2
   }
 ]

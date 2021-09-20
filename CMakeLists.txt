@@ -8,8 +8,6 @@ SET(CMAKE_MODULE_PATH
     ${CMAKE_SOURCE_DIR}/CMakeModules
 )
 
-INCLUDE(AstyleFormatSource)
-
 SET(CMAKE_TLS_VERIFY ON)
 
 # Build options

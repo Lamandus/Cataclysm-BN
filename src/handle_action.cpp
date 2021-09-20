@@ -45,6 +45,7 @@
 #include "lightmap.h"
 #include "line.h"
 #include "magic.h"
+#include "make_static.h"
 #include "map.h"
 #include "mapdata.h"
 #include "mapsharing.h"
@@ -113,6 +114,8 @@ static const std::string flag_LITCIG( "LITCIG" );
 static const std::string flag_LOCKED( "LOCKED" );
 static const std::string flag_MAGIC_FOCUS( "MAGIC_FOCUS" );
 static const std::string flag_NO_QUICKDRAW( "NO_QUICKDRAW" );
+static const std::string flag_REACH_ATTACK( "REACH_ATTACK" );
+static const std::string flag_REACH3( "REACH3" );
 static const std::string flag_RELOAD_AND_SHOOT( "RELOAD_AND_SHOOT" );
 static const std::string flag_RELOAD_ONE( "RELOAD_ONE" );
 
@@ -198,43 +201,42 @@ input_context game::get_player_input( std::string &action )
 
     if( get_option<bool>( "ANIMATIONS" ) ) {
         const int TOTAL_VIEW = MAX_VIEW_DISTANCE * 2 + 1;
-        int iStartX = ( TERRAIN_WINDOW_WIDTH > TOTAL_VIEW ) ? ( TERRAIN_WINDOW_WIDTH - TOTAL_VIEW ) / 2 : 0;
-        int iStartY = ( TERRAIN_WINDOW_HEIGHT > TOTAL_VIEW ) ? ( TERRAIN_WINDOW_HEIGHT - TOTAL_VIEW ) / 2 :
-                      0;
-        int iEndX = ( TERRAIN_WINDOW_WIDTH > TOTAL_VIEW ) ? TERRAIN_WINDOW_WIDTH -
+        point iStart( ( TERRAIN_WINDOW_WIDTH > TOTAL_VIEW ) ? ( TERRAIN_WINDOW_WIDTH - TOTAL_VIEW ) / 2 : 0,
+                      ( TERRAIN_WINDOW_HEIGHT > TOTAL_VIEW ) ? ( TERRAIN_WINDOW_HEIGHT - TOTAL_VIEW ) / 2 :
+                      0 );
+        point iEnd( ( TERRAIN_WINDOW_WIDTH > TOTAL_VIEW ) ? TERRAIN_WINDOW_WIDTH -
                     ( TERRAIN_WINDOW_WIDTH - TOTAL_VIEW ) /
                     2 :
-                    TERRAIN_WINDOW_WIDTH;
-        int iEndY = ( TERRAIN_WINDOW_HEIGHT > TOTAL_VIEW ) ? TERRAIN_WINDOW_HEIGHT -
+                    TERRAIN_WINDOW_WIDTH, ( TERRAIN_WINDOW_HEIGHT > TOTAL_VIEW ) ? TERRAIN_WINDOW_HEIGHT -
                     ( TERRAIN_WINDOW_HEIGHT - TOTAL_VIEW ) /
-                    2 : TERRAIN_WINDOW_HEIGHT;
+                    2 : TERRAIN_WINDOW_HEIGHT );
 
         if( fullscreen ) {
-            iStartX = 0;
-            iStartY = 0;
-            iEndX = TERMX;
-            iEndY = TERMY;
+            iStart.x = 0;
+            iStart.y = 0;
+            iEnd.x = TERMX;
+            iEnd.y = TERMY;
         }
 
         //x% of the Viewport, only shown on visible areas
         const auto weather_info = get_weather_animation( weather.weather );
-        int offset_x = u.posx() + u.view_offset.x - getmaxx( w_terrain ) / 2;
-        int offset_y = u.posy() + u.view_offset.y - getmaxy( w_terrain ) / 2;
+        point offset( u.view_offset.xy() + point( -getmaxx( w_terrain ) / 2 + u.posx(),
+                      -getmaxy( w_terrain ) / 2 + u.posy() ) );
 
 #if defined(TILES)
         if( tile_iso && use_tiles ) {
-            iStartX = 0;
-            iStartY = 0;
-            iEndX = MAPSIZE_X;
-            iEndY = MAPSIZE_Y;
-            offset_x = 0;
-            offset_y = 0;
+            iStart.x = 0;
+            iStart.y = 0;
+            iEnd.x = MAPSIZE_X;
+            iEnd.y = MAPSIZE_Y;
+            offset.x = 0;
+            offset.y = 0;
         }
 #endif //TILES
 
         // TODO: Move the weather calculations out of here.
         const bool bWeatherEffect = ( weather_info.glyph != '?' );
-        const int dropCount = static_cast<int>( iEndX * iEndY * weather_info.factor );
+        const int dropCount = static_cast<int>( iEnd.x * iEnd.y * weather_info.factor );
 
         weather_printable wPrint;
         wPrint.colGlyph = weather_info.color;
@@ -273,19 +275,17 @@ input_context game::get_player_input( std::string &action )
                 wPrint.vdrops.clear();
 
                 for( int i = 0; i < dropCount; i++ ) {
-                    const int iRandX = rng( iStartX, iEndX - 1 );
-                    const int iRandY = rng( iStartY, iEndY - 1 );
-                    const int mapx = iRandX + offset_x;
-                    const int mapy = iRandY + offset_y;
+                    const point iRand{ rng( iStart.x, iEnd.x - 1 ), rng( iStart.y, iEnd.y - 1 ) };
+                    const point map( iRand + offset );
 
-                    const tripoint mapp( mapx, mapy, u.posz() );
+                    const tripoint mapp( map, u.posz() );
 
                     const lit_level lighting = visibility_cache[mapp.x][mapp.y];
 
                     if( m.is_outside( mapp ) && m.get_visibility( lighting, cache ) == VIS_CLEAR &&
                         !critter_at( mapp, true ) ) {
                         // Suppress if a critter is there
-                        wPrint.vdrops.emplace_back( std::make_pair( iRandX, iRandY ) );
+                        wPrint.vdrops.emplace_back( std::make_pair( iRand.x, iRand.y ) );
                     }
                 }
             }
@@ -373,12 +373,10 @@ inline static void rcdrive( const point &d )
         u.add_msg_if_player( m_warning, _( "No radio car connected." ) );
         return;
     }
-    int cx = 0;
-    int cy = 0;
-    int cz = 0;
-    car_location_string >> cx >> cy >> cz;
+    tripoint c;
+    car_location_string >> c.x >> c.y >> c.z;
 
-    auto rc_pairs = m.get_rc_items( tripoint( cx, cy, cz ) );
+    auto rc_pairs = m.get_rc_items( c );
     auto rc_pair = rc_pairs.begin();
     for( ; rc_pair != rc_pairs.end(); ++rc_pair ) {
         if( rc_pair->second->typeId() == "radio_car_on" && rc_pair->second->active ) {
@@ -392,14 +390,14 @@ inline static void rcdrive( const point &d )
     }
     item *rc_car = rc_pair->second;
 
-    tripoint dest( cx + d.x, cy + d.y, cz );
+    tripoint dest( c + d );
     if( m.impassable( dest ) || !m.can_put_items_ter_furn( dest ) ||
         m.has_furn( dest ) ) {
         sounds::sound( dest, 7, sounds::sound_t::combat,
                        _( "sound of a collision with an obstacle." ), true, "misc", "rc_car_hits_obstacle" );
         return;
     } else if( !m.add_item_or_charges( dest, *rc_car ).is_null() ) {
-        tripoint src( cx, cy, cz );
+        tripoint src( c );
         //~ Sound of moving a remote controlled car
         sounds::sound( src, 6, sounds::sound_t::movement, _( "zzz…" ), true, "misc", "rc_car_drives" );
         u.moves -= 50;
@@ -981,7 +979,7 @@ static void sleep()
         // some bionics
         // bio_alarm is useful for waking up during sleeping
         // turning off bio_leukocyte has 'unpleasant side effects'
-        if( bio.info().sleep_friendly ) {
+        if( bio.info().has_flag( STATIC( flag_str_id( "BIONIC_SLEEP_FRIENDLY" ) ) ) ) {
             continue;
         }
 
@@ -1036,7 +1034,7 @@ static void sleep()
     }
     if( u.has_alarm_clock() ) {
         /* Reuse menu to ask player whether they want to set an alarm. */
-        bool can_hibernate = u.get_kcal_percent() > 0.95 && u.has_active_mutation( trait_HIBERNATE );
+        bool can_hibernate = u.get_hunger() < -60 && u.has_active_mutation( trait_HIBERNATE );
 
         as_m.reset();
         as_m.text = can_hibernate ?
@@ -1249,22 +1247,23 @@ static void read()
     }
 }
 
-// Perform a reach attach using wielded weapon
-static void reach_attack( avatar &you )
+// Perform a reach attach
+// range - the range of the current weapon.
+// u - player
+static void reach_attack( int range, player &u )
 {
     g->temp_exit_fullscreen();
-
-    target_handler::trajectory traj = target_handler::mode_reach( you, you.weapon );
-
-    if( !traj.empty() ) {
-        you.reach_attack( traj.back() );
+    std::vector<tripoint> trajectory = target_handler().target_ui( u, TARGET_MODE_REACH, &u.weapon,
+                                       range );
+    if( !trajectory.empty() ) {
+        u.reach_attack( trajectory.back() );
     }
     g->reenter_fullscreen();
 }
 
 static void fire()
 {
-    avatar &u = g->u;
+    player &u = g->u;
 
     // Use vehicle turret or draw a pistol from a holster if unarmed
     if( !u.is_armed() ) {
@@ -1313,18 +1312,32 @@ static void fire()
     }
 
     if( u.weapon.is_gun() && !u.weapon.gun_current_mode().melee() ) {
-        avatar_action::fire_wielded_weapon( u );
-    } else if( u.weapon.reach_range( u ) > 1 ) {
+        avatar_action::fire_wielded_weapon( g->u, g->m );
+    } else if( u.weapon.has_flag( flag_REACH_ATTACK ) ) {
+        int range = u.weapon.has_flag( flag_REACH3 ) ? 3 : 2;
         if( u.has_effect( effect_relax_gas ) ) {
             if( one_in( 8 ) ) {
                 add_msg( m_good, _( "Your willpower asserts itself, and so do you!" ) );
-                reach_attack( u );
+                reach_attack( range, u );
             } else {
                 u.moves -= rng( 2, 8 ) * 10;
                 add_msg( m_bad, _( "You're too pacified to strike anything…" ) );
             }
         } else {
-            reach_attack( u );
+            reach_attack( range, u );
+        }
+    } else if( u.weapon.is_gun() && u.weapon.gun_current_mode().flags.count( flag_REACH_ATTACK ) ) {
+        int range = u.weapon.gun_current_mode().qty;
+        if( u.has_effect( effect_relax_gas ) ) {
+            if( one_in( 8 ) ) {
+                add_msg( m_good, _( "Your willpower asserts itself, and so do you!" ) );
+                reach_attack( range, u );
+            } else {
+                u.moves -= rng( 2, 8 ) * 10;
+                add_msg( m_bad, _( "You're too pacified to strike anything…" ) );
+            }
+        } else {
+            reach_attack( range, u );
         }
     }
 }
@@ -2002,8 +2015,10 @@ bool game::handle_action()
                 break;
 
             case ACTION_FIRE_BURST: {
+                gun_mode_id original_mode = u.weapon.gun_get_mode_id();
                 if( u.weapon.gun_set_mode( gun_mode_id( "AUTO" ) ) ) {
-                    avatar_action::fire_wielded_weapon( u );
+                    avatar_action::fire_wielded_weapon( u, m );
+                    u.weapon.gun_set_mode( original_mode );
                 }
                 break;
             }

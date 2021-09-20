@@ -11,9 +11,5 @@
     "type": "monster_adjustment",
     "species": "ZOMBIE",
     "flag": { "name": "REVIVES", "value": false }
-  },
-  {
-    "type": "MONSTER_BLACKLIST",
-    "monsters": [ "mon_zombie_necro" ]
   }
 ]

@@ -59,7 +59,6 @@
 #include "debug.h"
 #include "dependency_tree.h"
 #include "distribution_grid.h"
-#include "drop_token.h"
 #include "editmap.h"
 #include "enums.h"
 #include "event.h"
@@ -218,12 +217,14 @@ static const efftype_id effect_ridden( "ridden" );
 static const efftype_id effect_riding( "riding" );
 static const efftype_id effect_sleep( "sleep" );
 static const efftype_id effect_stunned( "stunned" );
+static const efftype_id effect_tetanus( "tetanus" );
 static const efftype_id effect_tied( "tied" );
 
 static const bionic_id bio_remote( "bio_remote" );
 
 static const trait_id trait_BADKNEES( "BADKNEES" );
 static const trait_id trait_ILLITERATE( "ILLITERATE" );
+static const trait_id trait_INFRESIST( "INFRESIST" );
 static const trait_id trait_LEG_TENT_BRACE( "LEG_TENT_BRACE" );
 static const trait_id trait_M_IMMUNE( "M_IMMUNE" );
 static const trait_id trait_PARKOUR( "PARKOUR" );
@@ -589,8 +590,6 @@ void game::setup()
 
     remoteveh_cache_time = calendar::before_time_starts;
     remoteveh_cache = nullptr;
-
-    token_provider_ptr->clear();
     // back to menu for save loading, new game etc
 }
 
@@ -768,14 +767,6 @@ bool game::start_game()
             }
         }
     }
-    if( scen->has_flag( "BORDERED" ) ) {
-        overmap &starting_om = get_cur_om();
-        for( int z = -OVERMAP_DEPTH; z <= OVERMAP_HEIGHT; z++ ) {
-            starting_om.place_special_forced( overmap_special_id( "world" ), { 0, 0, z },
-                                              om_direction::type::north );
-        }
-
-    }
     for( auto &e : u.inv_dump() ) {
         e->set_owner( g->u );
     }
@@ -950,33 +941,6 @@ void game::create_starting_npcs()
     //One random starting NPC mission
     tmp->add_new_mission( mission::reserve_random( ORIGIN_OPENER_NPC, tmp->global_omt_location(),
                           tmp->getID() ) );
-}
-
-static std::string generate_memorial_filename( const std::string &char_name )
-{
-    // <name>-YYYY-MM-DD-HH-MM-SS.txt
-    //       123456789012345678901234 ~> 24 chars + a null
-    constexpr size_t suffix_len = 24 + 1;
-    constexpr size_t max_name_len = FILENAME_MAX - suffix_len;
-
-    const size_t name_len = char_name.size();
-    // Here -1 leaves space for the ~
-    const size_t truncated_name_len = ( name_len >= max_name_len ) ? ( max_name_len - 1 ) : name_len;
-
-    std::ostringstream memorial_file_path;
-
-    memorial_file_path << ensure_valid_file_name( char_name );
-
-    // Add a ~ if the player name was actually truncated.
-    memorial_file_path << ( ( truncated_name_len != name_len ) ? "~-" : "-" );
-
-    // Add a timestamp for uniqueness.
-    char buffer[suffix_len] {};
-    std::time_t t = std::time( nullptr );
-    std::strftime( buffer, suffix_len, "%Y-%m-%d-%H-%M-%S", std::localtime( &t ) );
-    memorial_file_path << buffer;
-
-    return memorial_file_path.str();
 }
 
 bool game::cleanup_at_end()
@@ -1178,9 +1142,8 @@ bool game::cleanup_at_end()
         const bool is_suicide = uquit == QUIT_SUICIDE;
         events().send<event_type::game_over>( is_suicide, sLastWords );
         // Struck the save_player_data here to forestall Weirdness
-        std::string char_filename = generate_memorial_filename( u.name );
-        move_save_to_graveyard( char_filename );
-        write_memorial_file( char_filename, sLastWords );
+        move_save_to_graveyard();
+        write_memorial_file( sLastWords );
         memorial().clear();
         std::vector<std::string> characters = list_active_characters();
         // remove current player from the active characters list, as they are dead
@@ -1445,6 +1408,7 @@ bool game::do_turn()
     reset_light_level();
 
     perhaps_add_random_npc();
+    process_voluntary_act_interrupt();
     process_activity();
     // Process NPC sound events before they move or they hear themselves talking
     for( npc &guy : all_npcs() ) {
@@ -1460,7 +1424,7 @@ bool game::do_turn()
         sfx::do_hearing_loss();
     }
 
-    if( !u.has_effect( efftype_id( "sleep" ) ) || uquit == QUIT_WATCH ) {
+    if( !u.has_effect( effect_sleep ) || uquit == QUIT_WATCH ) {
         if( u.moves > 0 || uquit == QUIT_WATCH ) {
             while( u.moves > 0 || uquit == QUIT_WATCH ) {
                 cleanup_dead();
@@ -1496,32 +1460,6 @@ bool game::do_turn()
             // Reset displayed sound markers now that the turn is over.
             // We only want this to happen if the player had a chance to examine the sounds.
             sounds::reset_markers();
-        } else {
-            // Rate limit key polling to 10 times a second.
-            static auto start = std::chrono::time_point_cast<std::chrono::milliseconds>(
-                                    std::chrono::system_clock::now() );
-            const auto now = std::chrono::time_point_cast<std::chrono::milliseconds>(
-                                 std::chrono::system_clock::now() );
-            if( ( now - start ).count() > 100 ) {
-                handle_key_blocking_activity();
-                start = now;
-            }
-
-            mon_info_update();
-
-            // If player is performing a task and a monster is dangerously close, warn them
-            // regardless of previous safemode warnings
-            if( u.activity && !u.has_activity( activity_id( "ACT_AIM" ) ) &&
-                u.activity.moves_left > 0 &&
-                !u.activity.is_distraction_ignored( distraction_type::hostile_spotted_near ) ) {
-                Creature *hostile_critter = is_hostile_very_close();
-                if( hostile_critter != nullptr ) {
-                    cancel_activity_or_ignore_query( distraction_type::hostile_spotted_near,
-                                                     string_format( _( "The %s is dangerously close!" ),
-                                                             hostile_critter->get_name() ) );
-                }
-            }
-
         }
     }
 
@@ -1563,7 +1501,7 @@ bool game::do_turn()
         overmap_npc_move();
     }
     if( calendar::once_every( 10_seconds ) ) {
-        for( const tripoint elem : m.get_furn_field_locations() ) {
+        for( const tripoint &elem : m.get_furn_field_locations() ) {
             const auto &furn = m.furn( elem ).obj();
             for( const emit_id &e : furn.emissions ) {
                 g->m.emit_field( elem, e );
@@ -1657,6 +1595,45 @@ void game::set_driving_view_offset( const point &p )
     u.view_offset.y += driving_view_offset.y;
 }
 
+void game::process_voluntary_act_interrupt()
+{
+    if( u.has_effect( effect_sleep ) ) {
+        // Can't interrupt
+        return;
+    }
+
+    bool has_activity = u.activity && u.activity.moves_left > 0;
+    bool is_travelling = u.has_destination() && !u.omt_path.empty();
+
+    if( !has_activity && !is_travelling ) {
+        // Nohing to interrupt
+        return;
+    }
+
+    // Key poll may be quite expensive, so limit it to 10 times per second.
+    static auto last_poll = std::chrono::steady_clock::now();
+    auto now = std::chrono::steady_clock::now();
+    int64_t difference = std::chrono::duration_cast<std::chrono::milliseconds>
+                         ( now - last_poll ).count();
+
+    if( difference > 100 ) {
+        handle_key_blocking_activity();
+        last_poll = now;
+    }
+
+    // If player is performing a task and a monster is dangerously close, warn them
+    // regardless of previous safemode warnings
+    if( has_activity && !u.has_activity( activity_id( "ACT_AIM" ) ) &&
+        !u.activity.is_distraction_ignored( distraction_type::hostile_spotted_near ) ) {
+        Creature *hostile_critter = is_hostile_very_close();
+        if( hostile_critter != nullptr ) {
+            cancel_activity_or_ignore_query( distraction_type::hostile_spotted_near,
+                                             string_format( _( "The %s is dangerously close!" ),
+                                                     hostile_critter->get_name() ) );
+        }
+    }
+}
+
 void game::process_activity()
 {
     if( !u.activity ) {
@@ -1696,8 +1673,8 @@ void game::catch_a_monster( monster *fish, const tripoint &pos, player *p,
 
 static bool cancel_auto_move( player &p, const std::string &text )
 {
-    if( p.has_destination() && query_yn( _( "%s, cancel Auto-move?" ), text ) )  {
-        add_msg( m_warning, _( "%s. Auto-move canceled" ), text );
+    if( p.has_destination() && query_yn( _( "%s Cancel Auto-move?" ), text ) )  {
+        add_msg( m_warning, _( "Auto-move canceled." ) );
         if( !p.omt_path.empty() ) {
             p.omt_path.clear();
         }
@@ -1709,6 +1686,7 @@ static bool cancel_auto_move( player &p, const std::string &text )
 
 bool game::cancel_activity_or_ignore_query( const distraction_type type, const std::string &text )
 {
+    invalidate_main_ui_adaptor();
     if( u.has_distant_destination() ) {
         if( cancel_auto_move( u, text ) ) {
             return true;
@@ -1757,6 +1735,7 @@ bool game::cancel_activity_or_ignore_query( const distraction_type type, const s
 
 bool game::cancel_activity_query( const std::string &text )
 {
+    invalidate_main_ui_adaptor();
     if( u.has_distant_destination() ) {
         if( cancel_auto_move( u, text ) ) {
             return true;
@@ -1806,26 +1785,30 @@ int get_heat_radiation( const tripoint &location, bool direct )
     // Stored as intensity-distance pairs
     int temp_mod = 0;
     int best_fire = 0;
-    for( const tripoint &dest : g->m.points_in_radius( location, 6 ) ) {
+    Character &player_character = get_avatar();
+    map &here = get_map();
+    // Convert it to an int id once, instead of 139 times per turn
+    const field_type_id fd_fire_int = fd_fire.id();
+    for( const tripoint &dest : here.points_in_radius( location, 6 ) ) {
         int heat_intensity = 0;
 
-        maptile mt = g->m.maptile_at( dest );
+        maptile mt = here.maptile_at( dest );
 
-        int ffire = maptile_field_intensity( mt, fd_fire );
+        int ffire = maptile_field_intensity( mt, fd_fire_int );
         if( ffire > 0 ) {
             heat_intensity = ffire;
-        } else if( g->m.tr_at( dest ).loadid == tr_lava ) {
-            heat_intensity = 3;
+        } else  {
+            heat_intensity = mt.get_ter()->heat_radiation;
         }
         if( heat_intensity == 0 ) {
             // No heat source here
             continue;
         }
-        if( g->u.pos() == location ) {
-            if( !g->m.pl_line_of_sight( dest, -1 ) ) {
+        if( player_character.pos() == location ) {
+            if( !here.pl_line_of_sight( dest, -1 ) ) {
                 continue;
             }
-        } else if( !g->m.sees( location, dest, -1 ) ) {
+        } else if( !here.sees( location, dest, -1 ) ) {
             continue;
         }
         // Ensure fire_dist >= 1 to avoid divide-by-zero errors.
@@ -1967,15 +1950,14 @@ std::set<character_id> game::get_follower_list()
 
 void game::handle_key_blocking_activity()
 {
+<<<<<<< HEAD
     if( ( u.activity && u.activity.moves_left > 0 ) || ( u.has_destination() &&
             !u.omt_path.empty() ) ) {
         input_context ctxt = get_default_mode_input_context();
         const std::string action = ctxt.handle_input( 0 );
         bool refresh = true;
         if( action == "pause" ) {
-            if( u.activity.interruptable_with_kb ) {
-                cancel_activity_query( _( "Confirm:" ) );
-            }
+            cancel_activity_query( _( "Confirm:" ) );
         } else if( action == "player_data" ) {
             u.disp_info();
         } else if( action == "messages" ) {
@@ -1988,7 +1970,27 @@ void game::handle_key_blocking_activity()
         if( refresh ) {
             ui_manager::redraw();
             refresh_display();
+=======
+    input_context ctxt = get_default_mode_input_context();
+    const std::string action = ctxt.handle_input( 0 );
+    bool refresh = true;
+    if( action == "pause" ) {
+        if( u.activity.interruptable_with_kb ) {
+            cancel_activity_query( _( "Confirm:" ) );
+>>>>>>> upstream/upload
         }
+    } else if( action == "player_data" ) {
+        u.disp_info();
+    } else if( action == "messages" ) {
+        Messages::display_messages();
+    } else if( action == "help" ) {
+        get_help().display_help();
+    } else if( action != "HELP_KEYBINDINGS" ) {
+        refresh = false;
+    }
+    if( refresh ) {
+        ui_manager::redraw();
+        refresh_display();
     }
 }
 
@@ -2272,25 +2274,24 @@ std::pair<tripoint, tripoint> game::mouse_edge_scrolling( input_context &ctxt, c
     }
     const input_event event = ctxt.get_raw_input();
     if( event.type == CATA_INPUT_MOUSE ) {
-        const int threshold_x = projected_window_width() / 100;
-        const int threshold_y = projected_window_height() / 100;
-        if( event.mouse_pos.x <= threshold_x ) {
+        const point threshold( projected_window_width() / 100, projected_window_height() / 100 );
+        if( event.mouse_pos.x <= threshold.x ) {
             ret.first.x -= speed;
             if( iso ) {
                 ret.first.y -= speed;
             }
-        } else if( event.mouse_pos.x >= projected_window_width() - threshold_x ) {
+        } else if( event.mouse_pos.x >= projected_window_width() - threshold.x ) {
             ret.first.x += speed;
             if( iso ) {
                 ret.first.y += speed;
             }
         }
-        if( event.mouse_pos.y <= threshold_y ) {
+        if( event.mouse_pos.y <= threshold.y ) {
             ret.first.y -= speed;
             if( iso ) {
                 ret.first.x += speed;
             }
-        } else if( event.mouse_pos.y >= projected_window_height() - threshold_y ) {
+        } else if( event.mouse_pos.y >= projected_window_height() - threshold.y ) {
             ret.first.y += speed;
             if( iso ) {
                 ret.first.x -= speed;
@@ -2680,19 +2681,14 @@ void game::win_screen()
     popup( msg );
 }
 
-void game::move_save_to_graveyard( const std::string &dirname )
+void game::move_save_to_graveyard()
 {
-    const std::string save_dir           = get_world_base_save_path();
-    const std::string graveyard_dir      = PATH_INFO::graveyarddir() + "/";
-    const std::string graveyard_save_dir = graveyard_dir + dirname + "/";
-    const std::string prefix             = base64_encode( u.name ) + ".";
+    const std::string &save_dir      = get_world_base_save_path();
+    const std::string &graveyard_dir = PATH_INFO::graveyarddir();
+    const std::string &prefix        = base64_encode( u.name ) + ".";
 
     if( !assure_dir_exist( graveyard_dir ) ) {
         debugmsg( "could not create graveyard path '%s'", graveyard_dir );
-    }
-
-    if( !assure_dir_exist( graveyard_save_dir ) ) {
-        debugmsg( "could not create graveyard path '%s'", graveyard_save_dir );
     }
 
     const auto save_files = get_files_from_path( prefix, save_dir );
@@ -2701,7 +2697,7 @@ void game::move_save_to_graveyard( const std::string &dirname )
     }
 
     for( const auto &src_path : save_files ) {
-        const std::string dst_path = graveyard_save_dir +
+        const std::string dst_path = graveyard_dir +
                                      src_path.substr( src_path.rfind( '/' ), std::string::npos );
 
         if( rename_file( src_path, dst_path ) ) {
@@ -3057,7 +3053,7 @@ std::vector<std::string> game::list_active_characters()
  * state at the time the memorial was made (usually upon death) and
  * accomplishments in a human-readable format.
  */
-void game::write_memorial_file( const std::string &filename, std::string sLastWords )
+void game::write_memorial_file( std::string sLastWords )
 {
     const std::string &memorial_dir = PATH_INFO::memorialdir();
     const std::string &memorial_active_world_dir = memorial_dir +
@@ -3074,9 +3070,33 @@ void game::write_memorial_file( const std::string &filename, std::string sLastWo
         return;
     }
 
-    std::string path = memorial_active_world_dir + filename + ".txt";
+    // <name>-YYYY-MM-DD-HH-MM-SS.txt
+    //       123456789012345678901234 ~> 24 chars + a null
+    constexpr size_t suffix_len   = 24 + 1;
+    constexpr size_t max_name_len = FILENAME_MAX - suffix_len;
 
-    write_to_file( path, [&]( std::ostream & fout ) {
+    const size_t name_len = u.name.size();
+    // Here -1 leaves space for the ~
+    const size_t truncated_name_len = ( name_len >= max_name_len ) ? ( max_name_len - 1 ) : name_len;
+
+    std::ostringstream memorial_file_path;
+    memorial_file_path << memorial_active_world_dir;
+
+    memorial_file_path << ensure_valid_file_name( u.name );
+
+    // Add a ~ if the player name was actually truncated.
+    memorial_file_path << ( ( truncated_name_len != name_len ) ? "~-" : "-" );
+
+    // Add a timestamp for uniqueness.
+    char buffer[suffix_len] {};
+    std::time_t t = std::time( nullptr );
+    std::strftime( buffer, suffix_len, "%Y-%m-%d-%H-%M-%S", std::localtime( &t ) );
+    memorial_file_path << buffer;
+
+    memorial_file_path << ".txt";
+
+    const std::string path_string = memorial_file_path.str();
+    write_to_file( memorial_file_path.str(), [&]( std::ostream & fout ) {
         memorial().write( fout, sLastWords );
     }, _( "player memorial" ) );
 }
@@ -3120,7 +3140,7 @@ void game::display_faction_epilogues()
 }
 
 struct npc_dist_to_player {
-    const tripoint ppos;
+    const tripoint ppos{};
     npc_dist_to_player() : ppos( g->u.global_omt_location() ) { }
     // Operator overload required to leverage sort API.
     bool operator()( const shared_ptr_fast<npc> &a,
@@ -3327,8 +3347,8 @@ static shared_ptr_fast<game::draw_callback_t> create_zone_callback(
             }
         }
         if( zone_blink && zone_start && zone_end ) {
-            const int offset_x = ( g->u.posx() + g->u.view_offset.x ) - getmaxx( g->w_terrain ) / 2;
-            const int offset_y = ( g->u.posy() + g->u.view_offset.y ) - getmaxy( g->w_terrain ) / 2;
+            const point offset2( g->u.view_offset.xy() + point( g->u.posx() - getmaxx( g->w_terrain ) / 2,
+                                 g->u.posy() - getmaxy( g->w_terrain ) / 2 ) );
 
             tripoint offset;
 #if defined(TILES)
@@ -3336,7 +3356,7 @@ static shared_ptr_fast<game::draw_callback_t> create_zone_callback(
                 offset = tripoint_zero; //TILES
             } else {
 #endif
-                offset = tripoint( offset_x, offset_y, 0 ); //CURSES
+                offset = tripoint( offset2, 0 ); //CURSES
 #if defined(TILES)
             }
 #endif
@@ -3562,17 +3582,15 @@ void game::draw_minimap()
     draw_border( w_minimap );
 
     const tripoint curs = u.global_omt_location();
-    const int cursx = curs.x;
-    const int cursy = curs.y;
+    const point curs2( curs.xy() );
     const tripoint targ = u.get_active_mission_target();
     bool drew_mission = targ == overmap::invalid_tripoint;
 
     for( int i = -2; i <= 2; i++ ) {
         for( int j = -2; j <= 2; j++ ) {
-            const int omx = cursx + i;
-            const int omy = cursy + j;
+            const point om( curs2 + point( i, j ) );
             nc_color ter_color;
-            tripoint omp( omx, omy, get_levz() );
+            tripoint omp( om, get_levz() );
             std::string ter_sym;
             const bool seen = overmap_buffer.seen( omp );
             const bool vehicle_here = overmap_buffer.has_vehicle( omp );
@@ -3698,11 +3716,11 @@ void game::draw_minimap()
 
     // Print arrow to mission if we have one!
     if( !drew_mission ) {
-        double slope = ( cursx != targ.x ) ? static_cast<double>( targ.y - cursy ) / static_cast<double>
-                       ( targ.x - cursx ) : 4;
+        double slope = ( curs2.x != targ.x ) ? static_cast<double>( targ.y - curs2.y ) / static_cast<double>
+                       ( targ.x - curs2.x ) : 4;
 
-        if( cursx == targ.x || std::fabs( slope ) > 3.5 ) { // Vertical slope
-            if( targ.y > cursy ) {
+        if( curs2.x == targ.x || std::fabs( slope ) > 3.5 ) { // Vertical slope
+            if( targ.y > curs2.y ) {
                 mvwputch( w_minimap, point( 3, 6 ), c_red, "*" );
             } else {
                 mvwputch( w_minimap, point( 3, 0 ), c_red, "*" );
@@ -3711,8 +3729,8 @@ void game::draw_minimap()
             int arrowx = -1;
             int arrowy = -1;
             if( std::fabs( slope ) >= 1. ) { // y diff is bigger!
-                arrowy = ( targ.y > cursy ? 6 : 0 );
-                arrowx = static_cast<int>( 3 + 3 * ( targ.y > cursy ? slope : ( 0 - slope ) ) );
+                arrowy = ( targ.y > curs2.y ? 6 : 0 );
+                arrowx = static_cast<int>( 3 + 3 * ( targ.y > curs2.y ? slope : ( 0 - slope ) ) );
                 if( arrowx < 0 ) {
                     arrowx = 0;
                 }
@@ -3720,8 +3738,8 @@ void game::draw_minimap()
                     arrowx = 6;
                 }
             } else {
-                arrowx = ( targ.x > cursx ? 6 : 0 );
-                arrowy = static_cast<int>( 3 + 3 * ( targ.x > cursx ? slope : ( 0 - slope ) ) );
+                arrowx = ( targ.x > curs2.x ? 6 : 0 );
+                arrowy = static_cast<int>( 3 + 3 * ( targ.x > curs2.x ? slope : ( 0 - slope ) ) );
                 if( arrowy < 0 ) {
                     arrowy = 0;
                 }
@@ -3746,8 +3764,8 @@ void game::draw_minimap()
             if( i > -3 && i < 3 && j > -3 && j < 3 ) {
                 continue; // only do hordes on the border, skip inner map
             }
-            const int omx = cursx + i;
-            const int omy = cursy + j;
+            const int omx = curs2.x + i;
+            const int omy = curs2.y + j;
             tripoint omp( omx, omy, get_levz() );
             if( overmap_buffer.get_horde_size( omp ) >= HORDE_VISIBILITY_SIZE ) {
                 const tripoint cur_pos {
@@ -3882,7 +3900,7 @@ std::unordered_set<tripoint> game::get_fishable_locations( int distance, const t
     const tripoint fishing_boundary_min( fish_pos + point( -distance, -distance ) );
     const tripoint fishing_boundary_max( fish_pos + point( distance, distance ) );
 
-    const box fishing_boundaries( fishing_boundary_min, fishing_boundary_max );
+    const inclusive_box fishing_boundaries( fishing_boundary_min, fishing_boundary_max );
 
     const auto get_fishable_terrain = [&]( tripoint starting_point,
     std::unordered_set<tripoint> &fishable_terrain ) {
@@ -3898,7 +3916,7 @@ std::unordered_set<tripoint> game::get_fishable_locations( int distance, const t
             }
 
             // This point is out of bounds, so bail.
-            if( !fishing_boundaries.contains_inclusive( current_point ) ) {
+            if( !fishing_boundaries.contains( current_point ) ) {
                 continue;
             }
 
@@ -5197,17 +5215,17 @@ bool game::forced_door_closing( const tripoint &p, const ter_id &door_type, int 
     const int &x = p.x;
     const int &y = p.y;
     const std::string &door_name = door_type.obj().name();
-    int kbx = x; // Used when player/monsters are knocked back
-    int kby = y; // and when moving items out of the way
+    // sed when player/monsters are knocked back and when moving items out of the way
+    point kb( x, y );
     const auto valid_location = [&]( const tripoint & p ) {
         return g->is_empty( p );
     };
     if( const cata::optional<tripoint> pos = random_point( m.points_in_radius( p, 2 ),
             valid_location ) ) {
-        kbx = -pos->x + x + x;
-        kby = -pos->y + y + y;
+        kb.x = -pos->x + x + x;
+        kb.y = -pos->y + y + y;
     }
-    const tripoint kbp( kbx, kby, p.z );
+    const tripoint kbp( kb, p.z );
     if( kbp == p ) {
         // can't pushback any creatures anywhere, that means the door can't close.
         return false;
@@ -5649,24 +5667,17 @@ void game::examine( const tripoint &examp )
     Creature *c = critter_at( examp );
     if( c != nullptr ) {
         monster *mon = dynamic_cast<monster *>( c );
-        if( mon != nullptr ) {
-            add_msg( _( "There is a %s." ), mon->get_name() );
-            if( mon->has_effect( effect_pet ) && !u.is_mounted() ) {
-                if( monexamine::pet_menu( *mon ) ) {
-                    return;
-                }
-            } else if( mon->has_flag( MF_RIDEABLE_MECH ) && !mon->has_effect( effect_pet ) ) {
-                if( monexamine::mech_hack( *mon ) ) {
-                    return;
-                }
-            } else if( mon->has_flag( MF_PAY_BOT ) ) {
-                if( monexamine::pay_bot( *mon ) ) {
-                    return;
-                }
-            } else if( mon->attitude_to( u ) == Creature::A_FRIENDLY && !u.is_mounted() ) {
-                if( monexamine::mfriend_menu( *mon ) ) {
-                    return;
-                }
+        if( mon != nullptr && mon->has_effect( effect_pet ) && !u.is_mounted() ) {
+            if( monexamine::pet_menu( *mon ) ) {
+                return;
+            }
+        } else if( mon && mon->has_flag( MF_RIDEABLE_MECH ) && !mon->has_effect( effect_pet ) ) {
+            if( monexamine::mech_hack( *mon ) ) {
+                return;
+            }
+        } else if( mon && mon->has_flag( MF_PAY_BOT ) ) {
+            if( monexamine::pay_bot( *mon ) ) {
+                return;
             }
         } else if( u.is_mounted() ) {
             add_msg( m_warning, _( "You cannot do that while mounted." ) );
@@ -5767,7 +5778,7 @@ void game::examine( const tripoint &examp )
         } else {
             sounds::process_sound_markers( &u );
             if( !u.is_mounted() ) {
-                pickup::pick_up( examp, 0 );
+                Pickup::pick_up( examp, 0 );
             }
         }
     }
@@ -5792,12 +5803,12 @@ void game::pickup( const tripoint &p )
     } );
     add_draw_callback( hilite_cb );
 
-    pickup::pick_up( p, 0 );
+    Pickup::pick_up( p, 0 );
 }
 
 void game::pickup_feet()
 {
-    pickup::pick_up( u.pos(), 1 );
+    Pickup::pick_up( u.pos(), 1 );
 }
 
 //Shift player by one tile, look_around(), then restore previous position.
@@ -5938,14 +5949,30 @@ void game::print_all_tile_info( const tripoint &lp, const catacurses::window &w_
             print_visibility_info( w_look, column, line, visibility );
 
             if( creature != nullptr ) {
-                std::vector<std::string> buf;
                 if( u.sees_with_infrared( *creature ) ) {
-                    creature->describe_infrared( buf );
+                    std::string size_str;
+                    switch( creature->get_size() ) {
+                        case MS_TINY:
+                            size_str = pgettext( "infrared size", "tiny" );
+                            break;
+                        case MS_SMALL:
+                            size_str = pgettext( "infrared size", "small" );
+                            break;
+                        case MS_MEDIUM:
+                            size_str = pgettext( "infrared size", "medium" );
+                            break;
+                        case MS_LARGE:
+                            size_str = pgettext( "infrared size", "large" );
+                            break;
+                        case MS_HUGE:
+                            size_str = pgettext( "infrared size", "huge" );
+                            break;
+                    }
+                    mvwprintw( w_look, point( 1, ++line ), _( "You see a figure radiating heat." ) );
+                    mvwprintw( w_look, point( 1, ++line ), _( "It is %s in size." ),
+                               size_str );
                 } else if( u.sees_with_specials( *creature ) ) {
-                    creature->describe_specials( buf );
-                }
-                for( const std::string &s : buf ) {
-                    mvwprintw( w_look, point( 1, ++line ), s );
+                    mvwprintw( w_look, point( 1, ++line ), _( "You sense a creature here." ) );
                 }
             }
             break;
@@ -6800,24 +6827,19 @@ look_around_result game::look_around( const bool show_window, tripoint &center,
 
             center_print( w_info, 0, c_white, string_format( _( "< <color_green>Look Around</color> >" ) ) );
 
-            std::string extended_descr_text = string_format( _( "%s - %s" ),
-                                              ctxt.get_desc( "EXTENDED_DESCRIPTION" ),
-                                              ctxt.get_action_name( "EXTENDED_DESCRIPTION" ) );
             std::string fast_scroll_text = string_format( _( "%s - %s" ),
                                            ctxt.get_desc( "TOGGLE_FAST_SCROLL" ),
                                            ctxt.get_action_name( "TOGGLE_FAST_SCROLL" ) );
             std::string pixel_minimap_text = string_format( _( "%s - %s" ),
                                              ctxt.get_desc( "toggle_pixel_minimap" ),
                                              ctxt.get_action_name( "toggle_pixel_minimap" ) );
-
-            center_print( w_info, getmaxy( w_info ) - 2, c_light_gray, extended_descr_text );
             mvwprintz( w_info, point( 1, getmaxy( w_info ) - 1 ), fast_scroll ? c_light_green : c_green,
                        fast_scroll_text );
             right_print( w_info, getmaxy( w_info ) - 1, 1, pixel_minimap_option ? c_light_green : c_green,
                          pixel_minimap_text );
 
             int first_line = 1;
-            const int last_line = getmaxy( w_info ) - 3;
+            const int last_line = getmaxy( w_info ) - 2;
             pre_print_all_tile_info( lp, w_info, first_line, last_line, cache );
 
             wnoutrefresh( w_info );
@@ -7095,8 +7117,7 @@ static void centerlistview( const tripoint &active_item_position, int ui_width )
             u.view_offset.x = active_item_position.x;
             u.view_offset.y = active_item_position.y;
         } else {
-            int xpos = POSX + active_item_position.x;
-            int ypos = POSY + active_item_position.y;
+            point pos( active_item_position.xy() + point( POSX, POSY ) );
 
             // item/monster list UI is on the right, so get the difference between its width
             // and the width of the sidebar on the right (if any)
@@ -7110,18 +7131,18 @@ static void centerlistview( const tripoint &active_item_position, int ui_width )
             to_map_font_dim_width( right_offset );
             int terrain_width = TERRAIN_WINDOW_WIDTH - right_offset;
 
-            if( xpos < 0 ) {
-                u.view_offset.x = xpos;
-            } else if( xpos >= terrain_width ) {
-                u.view_offset.x = xpos - ( terrain_width - 1 );
+            if( pos.x < 0 ) {
+                u.view_offset.x = pos.x;
+            } else if( pos.x >= terrain_width ) {
+                u.view_offset.x = pos.x - ( terrain_width - 1 );
             } else {
                 u.view_offset.x = 0;
             }
 
-            if( ypos < 0 ) {
-                u.view_offset.y = ypos;
-            } else if( ypos >= TERRAIN_WINDOW_HEIGHT ) {
-                u.view_offset.y = ypos - ( TERRAIN_WINDOW_HEIGHT - 1 );
+            if( pos.y < 0 ) {
+                u.view_offset.y = pos.y;
+            } else if( pos.y >= TERRAIN_WINDOW_HEIGHT ) {
+                u.view_offset.y = pos.y - ( TERRAIN_WINDOW_HEIGHT - 1 );
             } else {
                 u.view_offset.y = 0;
             }
@@ -7248,12 +7269,11 @@ void game::reset_item_list_state( const catacurses::window &window, int height, 
     int usedwidth = letters;
     const int gap_spaces = ( width - usedwidth ) / gaps;
     usedwidth += gap_spaces * gaps;
-    int xpos = gap_spaces + ( width - usedwidth ) / 2;
-    const int ypos = TERMY - height - 1;
+    point pos( gap_spaces + ( width - usedwidth ) / 2, TERMY - height - 1 );
 
     for( int i = 0; i < n; i++ ) {
-        xpos += shortcut_print( window, point( xpos, ypos ), c_white, c_light_green,
-                                tokens[i] ) + gap_spaces;
+        pos.x += shortcut_print( window, pos, c_white, c_light_green,
+                                 tokens[i] ) + gap_spaces;
     }
 }
 
@@ -7297,7 +7317,7 @@ void game::list_items_monsters()
     }
 
     if( ret == game::vmenu_ret::FIRE ) {
-        avatar_action::fire_wielded_weapon( u );
+        avatar_action::fire_wielded_weapon( u, m );
     }
     reenter_fullscreen();
 }
@@ -8037,7 +8057,6 @@ game::vmenu_ret game::list_monsters( const std::vector<Creature *> &monster_list
         } else if( action == "fire" ) {
             if( cCurMon != nullptr && rl_dist( u.pos(), cCurMon->pos() ) <= max_gun_range ) {
                 u.last_target = shared_from( *cCurMon );
-                u.recoil = MAX_RECOIL;
                 u.view_offset = stored_view_offset;
                 return game::vmenu_ret::FIRE;
             }
@@ -8694,14 +8713,14 @@ void game::reload_item()
     reload( item_loc );
 }
 
-void game::reload_wielded( bool prompt )
+void game::reload_wielded()
 {
     if( u.weapon.is_null() || !u.weapon.is_reloadable() ) {
         add_msg( _( "You aren't holding something you can reload." ) );
         return;
     }
     item_location item_loc = item_location( u, &u.weapon );
-    reload( item_loc, prompt );
+    reload( item_loc );
 }
 
 void game::reload_weapon( bool try_everything )
@@ -9260,9 +9279,8 @@ bool game::walk_move( const tripoint &dest_loc )
             u.burn_move_stamina( 0.50 * ( previous_moves - u.moves ) );
         }
     }
-    // Max out recoil & reset aim point
+    // Max out recoil
     u.recoil = MAX_RECOIL;
-    u.last_target_pos = cata::nullopt;
 
     // Print a message if movement is slow
     const int mcost_to = m.move_cost( dest_loc ); //calculate this _after_ calling grabbed_move
@@ -9444,6 +9462,9 @@ point game::place_player( const tripoint &dest_loc )
                          body_part_name_accusative( bp->token ),
                          m.has_flag_ter( "SHARP", dest_loc ) ? m.tername( dest_loc ) : m.furnname(
                              dest_loc ) );
+                if( !u.has_trait( trait_INFRESIST ) ) {
+                    u.add_effect( effect_tetanus, 1_turns, num_bp );
+                }
             }
         }
     }
@@ -9605,7 +9626,7 @@ point game::place_player( const tripoint &dest_loc )
     if( !u.is_mounted() && get_option<bool>( "AUTO_PICKUP" ) && !u.is_hauling() &&
         ( !get_option<bool>( "AUTO_PICKUP_SAFEMODE" ) || mostseen == 0 ) &&
         ( m.has_items( u.pos() ) || get_option<bool>( "AUTO_PICKUP_ADJACENT" ) ) ) {
-        pickup::pick_up( u.pos(), -1 );
+        Pickup::pick_up( u.pos(), -1 );
     }
 
     // If the new tile is a boardable part, board it
@@ -9769,8 +9790,7 @@ bool game::phasing_move( const tripoint &dest_loc )
     tripoint dest = dest_loc;
     // tile is impassable
     int tunneldist = 0;
-    const int dx = sgn( dest.x - u.posx() );
-    const int dy = sgn( dest.y - u.posy() );
+    const point d( sgn( dest.x - u.posx() ), sgn( dest.y - u.posy() ) );
     while( m.impassable( dest ) ||
            ( critter_at( dest ) != nullptr && tunneldist > 0 ) ) {
         //add 1 to tunnel distance for each impassable tile in the line
@@ -9794,8 +9814,8 @@ bool game::phasing_move( const tripoint &dest_loc )
             return false;
         }
 
-        dest.x += dx;
-        dest.y += dy;
+        dest.x += d.x;
+        dest.y += d.y;
     }
 
     if( tunneldist != 0 ) {
@@ -10662,7 +10682,7 @@ void game::start_hauling( const tripoint &pos )
     // Whether the destination is inside a vehicle (not supported)
     const bool to_vehicle = false;
     // Destination relative to the player
-    const tripoint relative_destination = tripoint_zero;
+    const tripoint relative_destination{};
 
     u.assign_activity( player_activity( move_items_activity_actor(
                                             target_items,
@@ -10901,9 +10921,8 @@ void game::vertical_notes( int z_before, int z_after )
 
 point game::update_map( player &p )
 {
-    int x = p.posx();
-    int y = p.posy();
-    return update_map( x, y );
+    point p2( p.posx(), p.posy() );
+    return update_map( p2.x, p2.y );
 }
 
 point game::update_map( int &x, int &y )
@@ -10940,10 +10959,10 @@ point game::update_map( int &x, int &y )
 
     // this handles loading/unloading submaps that have scrolled on or off the viewport
     // NOLINTNEXTLINE(cata-use-named-point-constants)
-    rectangle size_1( point( -1, -1 ), point( 1, 1 ) );
+    inclusive_rectangle size_1( point( -1, -1 ), point( 1, 1 ) );
     point remaining_shift = shift;
     while( remaining_shift != point_zero ) {
-        point this_shift = clamp_inclusive( remaining_shift, size_1 );
+        point this_shift = clamp( remaining_shift, size_1 );
         m.shift( this_shift );
         remaining_shift -= this_shift;
     }
@@ -11105,11 +11124,10 @@ void game::update_stair_monsters()
 
     // Attempt to spawn zombies.
     for( size_t i = 0; i < coming_to_stairs.size(); i++ ) {
-        int mposx = stairx[si];
-        int mposy = stairy[si];
+        point mpos( stairx[si], stairy[si] );
         monster &critter = coming_to_stairs[i];
         const tripoint dest {
-            mposx, mposy, g->get_levz()
+            mpos, g->get_levz()
         };
 
         // We might be not be visible.
@@ -11168,8 +11186,7 @@ void game::update_stair_monsters()
             continue;
         } else if( u.pos() == dest ) {
             // Monster attempts to push player of stairs
-            int pushx = -1;
-            int pushy = -1;
+            point push( point_north_west );
             int tries = 0;
 
             // the critter is now right on top of you and will attack unless
@@ -11180,12 +11197,11 @@ void game::update_stair_monsters()
             critter.spawn( dest );
             while( tries < creature_push_attempts ) {
                 tries++;
-                pushx = rng( -1, 1 );
-                pushy = rng( -1, 1 );
-                int iposx = mposx + pushx;
-                int iposy = mposy + pushy;
-                tripoint pos( iposx, iposy, get_levz() );
-                if( ( pushx != 0 || pushy != 0 ) && !critter_at( pos ) &&
+                push.x = rng( -1, 1 );
+                push.y = rng( -1, 1 );
+                point ipos( mpos + push );
+                tripoint pos( ipos, get_levz() );
+                if( ( push.x != 0 || push.y != 0 ) && !critter_at( pos ) &&
                     critter.can_move_to( pos ) ) {
                     bool resiststhrow = ( u.is_throw_immune() ) ||
                                         ( u.has_trait( trait_LEG_TENT_BRACE ) );
@@ -11214,8 +11230,8 @@ void game::update_stair_monsters()
                         msg = _( "The %s pushed you back!" );
                     }
                     add_msg( m_warning, msg.c_str(), critter.name() );
-                    u.setx( u.posx() + pushx );
-                    u.sety( u.posy() + pushy );
+                    u.setx( u.posx() + push.x );
+                    u.sety( u.posy() + push.y );
                     return;
                 }
             }
@@ -11236,20 +11252,18 @@ void game::update_stair_monsters()
             const int creature_throw_resist = 4;
 
             int tries = 0;
-            int pushx = 0;
-            int pushy = 0;
+            point push2;
             while( tries < creature_push_attempts ) {
                 tries++;
-                pushx = rng( -1, 1 );
-                pushy = rng( -1, 1 );
-                int iposx = mposx + pushx;
-                int iposy = mposy + pushy;
-                tripoint pos( iposx, iposy, get_levz() );
-                if( ( pushx == 0 && pushy == 0 ) || ( ( iposx == u.posx() ) && ( iposy == u.posy() ) ) ) {
+                push2.x = rng( -1, 1 );
+                push2.y = rng( -1, 1 );
+                point ipos2( mpos + push2 );
+                tripoint pos( ipos2, get_levz() );
+                if( ( push2.x == 0 && push2.y == 0 ) || ( ( ipos2.x == u.posx() ) && ( ipos2.y == u.posy() ) ) ) {
                     continue;
                 }
                 if( !critter_at( pos ) && other.can_move_to( pos ) ) {
-                    other.setpos( tripoint( iposx, iposy, get_levz() ) );
+                    other.setpos( tripoint( ipos2, get_levz() ) );
                     other.moves -= 50;
                     std::string msg;
                     if( one_in( creature_throw_resist ) ) {
@@ -11710,7 +11724,7 @@ void game::process_artifact( item &it, player &p )
 
             case AEP_HUNGER:
                 if( one_in( 100 ) ) {
-                    p.mod_stored_kcal( -10 );
+                    p.mod_hunger( 1 );
                 }
                 break;
 

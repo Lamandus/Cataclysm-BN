@@ -242,7 +242,7 @@ void DynamicDataLoader::initialize()
     add( "activity_type", &activity_type::load );
     add( "vitamin", &vitamin::load_vitamin );
     add( "material", &materials::load );
-    add( "bionic", &load_bionic );
+    add( "bionic", &bionic_data::load_bionic );
     add( "profession", &profession::load_profession );
     add( "profession_item_substitutions", &profession::load_item_substitutions );
     add( "skill", &Skill::load_skill );
@@ -356,7 +356,6 @@ void DynamicDataLoader::initialize()
     } );
 
     add( "charge_removal_blacklist", charge_removal_blacklist::load );
-    add( "to_cbc_migration", to_cbc_migration::load );
 
     add( "MONSTER", []( const JsonObject & jo, const std::string & src ) {
         MonsterGenerator::generator().load_monster( jo, src );
@@ -527,6 +526,7 @@ void DynamicDataLoader::unload_data()
     anatomy::reset();
     ascii_art::reset();
     behavior::reset();
+    bionic_data::reset();
     body_part_type::reset();
     charge_removal_blacklist::reset();
     clear_techniques_and_martial_arts();
@@ -571,7 +571,6 @@ void DynamicDataLoader::unload_data()
     recipe_dictionary::reset();
     recipe_group::reset();
     requirement_data::reset();
-    reset_bionics();
     reset_constructions();
     reset_effect_types();
     reset_furn_ter();
@@ -594,7 +593,6 @@ void DynamicDataLoader::unload_data()
     spell_type::reset_all();
     start_locations::reset();
     ter_furn_transform::reset_all();
-    to_cbc_migration::reset();
     trap::reset();
     unload_talk_topics();
     vehicle_prototype::reset();
@@ -636,6 +634,7 @@ void DynamicDataLoader::finalize_loaded_data( loading_ui &ui )
     const std::vector<named_entry> entries = {{
             { _( "Flags" ), &json_flag::finalize_all },
             { _( "Body parts" ), &body_part_type::finalize_all },
+            { _( "Bionics" ), &bionic_data::finalize_all },
             { _( "Field types" ), &field_types::finalize_all },
             { _( "Ammo effects" ), &ammo_effects::finalize_all },
             { _( "Emissions" ), &emit::finalize },
@@ -653,7 +652,6 @@ void DynamicDataLoader::finalize_loaded_data( loading_ui &ui )
             },
             { _( "Vehicle parts" ), &vpart_info::finalize },
             { _( "Traps" ), &trap::finalize },
-            { _( "Bionics" ), &finalize_bionics },
             { _( "Terrain" ), &set_ter_ids },
             { _( "Furniture" ), &finalize_furn },
             { _( "Overmap land use codes" ), &overmap_land_use_codes::finalize },
@@ -662,7 +660,6 @@ void DynamicDataLoader::finalize_loaded_data( loading_ui &ui )
             { _( "Overmap specials" ), &overmap_specials::finalize },
             { _( "Overmap locations" ), &overmap_locations::finalize },
             { _( "Start locations" ), &start_locations::finalize_all },
-            { _( "Zone manager" ), &zone_manager::reset_manager },
             { _( "Vehicle prototypes" ), &vehicle_prototype::finalize },
             { _( "Mapgen weights" ), &calculate_mapgen_weights },
             {
@@ -760,7 +757,7 @@ void DynamicDataLoader::check_consistency( loading_ui &ui )
             { _( "Start locations" ), &start_locations::check_consistency },
             { _( "Ammunition types" ), &ammunition_type::check_consistency },
             { _( "Traps" ), &trap::check_consistency },
-            { _( "Bionics" ), &check_bionics },
+            { _( "Bionics" ), &bionic_data::check_consistency },
             { _( "Gates" ), &gates::check },
             { _( "NPC classes" ), &npc_class::check_consistency },
             { _( "Behaviors" ), &behavior::check_consistency },
@@ -784,7 +781,6 @@ void DynamicDataLoader::check_consistency( loading_ui &ui )
             { _( "Achievements" ), &achievement::check_consistency },
             { _( "Disease types" ), &disease_type::check_disease_consistency },
             { _( "Factions" ), &faction_template::check_consistency },
-            { _( "Effects" ), &effect_type::check_consistency },
         }
     };
 

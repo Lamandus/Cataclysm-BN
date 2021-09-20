@@ -7,36 +7,19 @@
 #include <vector>
 
 #include "clone_ptr.h"
+#include "item_handling_util.h"
 #include "item_location.h"
-#include "memory_fast.h"
 #include "optional.h"
-#include "pickup_token.h"
 #include "point.h"
 #include "type_id.h"
-#include "units_energy.h"
 
 class Character;
-class Creature;
 class JsonIn;
 class JsonOut;
 class player_activity;
 
 class activity_actor
 {
-    private:
-        /**
-         * Returns true if `this` activity is resumable, and `this` and @p other
-         * are "equivalent" i.e. similar enough that `this` activity
-         * can be resumed instead of starting @p other.
-         * Many activities are not resumable, so the default is returning
-         * false.
-         * @pre @p other is the same type of actor as `this`
-         */
-        virtual bool can_resume_with_internal( const activity_actor &,
-                                               const Character & ) const {
-            return false;
-        }
-
     public:
         virtual ~activity_actor() = default;
 
@@ -65,27 +48,6 @@ class activity_actor
         virtual void finish( player_activity &act, Character &who ) = 0;
 
         /**
-         * Called just before Character::cancel_activity() executes.
-         * This may be used to perform cleanup
-         */
-        virtual void canceled( player_activity &/*act*/, Character &/*who*/ ) {};
-
-        /**
-         * Called in player_activity::can_resume_with
-         * which allows suspended activities to be resumed instead of
-         * starting a new activity in certain cases.
-         * Checks that @p other has the same type as `this` so that
-         * `can_resume_with_internal` can safely `static_cast` @p other.
-         */
-        bool can_resume_with( const activity_actor &other, const Character &who ) const {
-            if( other.get_type() == get_type() ) {
-                return can_resume_with_internal( other, who );
-            }
-
-            return false;
-        }
-
-        /**
          * Returns a deep copy of this object. Example implementation:
          * \code
          * class my_activity_actor {
@@ -106,6 +68,8 @@ class activity_actor
         virtual void serialize( JsonOut &jsout ) const = 0;
 };
 
+<<<<<<< HEAD
+=======
 class aim_activity_actor : public activity_actor
 {
     private:
@@ -289,6 +253,35 @@ class dig_channel_activity_actor : public activity_actor
         static std::unique_ptr<activity_actor> deserialize( JsonIn &jsin );
 };
 
+class drop_activity_actor : public activity_actor
+{
+    private:
+        std::list<pickup::act_item> items;
+        bool force_ground = false;
+        tripoint relpos;
+
+    public:
+        drop_activity_actor() = default;
+        drop_activity_actor( Character &ch, const drop_locations &items,
+                             bool force_ground, const tripoint &relpos );
+
+        activity_id get_type() const override {
+            return activity_id( "ACT_DROP" );
+        }
+
+        void start( player_activity &, Character & ) override;
+        void do_turn( player_activity &, Character &who ) override;
+        void finish( player_activity &, Character & ) override {};
+
+        std::unique_ptr<activity_actor> clone() const override {
+            return std::make_unique<drop_activity_actor>( *this );
+        }
+
+        void serialize( JsonOut &jsout ) const override;
+        static std::unique_ptr<activity_actor> deserialize( JsonIn &jsin );
+};
+
+>>>>>>> upstream/upload
 class hacking_activity_actor : public activity_actor
 {
     private:
@@ -350,7 +343,8 @@ class pickup_activity_actor : public activity_actor
 {
     private:
         /** Target items and the quantities thereof */
-        std::vector<pickup::pick_drop_selection> target_items;
+        std::vector<item_location> target_items;
+        std::vector<int> quantities;
 
         /**
          * Position of the character when the activity is started. This is
@@ -361,10 +355,10 @@ class pickup_activity_actor : public activity_actor
         cata::optional<tripoint> starting_pos;
 
     public:
-        pickup_activity_actor( const std::vector<pickup::pick_drop_selection> &target_items,
-                               const cata::optional<tripoint> &starting_pos )
-            : target_items( target_items )
-            , starting_pos( starting_pos ) {}
+        pickup_activity_actor( const std::vector<item_location> &target_items,
+                               const std::vector<int> &quantities,
+                               const cata::optional<tripoint> &starting_pos ) : target_items( target_items ),
+            quantities( quantities ), starting_pos( starting_pos ) {}
 
         activity_id get_type() const override {
             return activity_id( "ACT_PICKUP" );
@@ -406,20 +400,12 @@ class migration_cancel_activity_actor : public activity_actor
 class open_gate_activity_actor : public activity_actor
 {
     private:
-        int moves_total;
+        int moves;
         tripoint placement;
-
-        /**
-         * @pre @p other is a open_gate_activity_actor
-         */
-        bool can_resume_with_internal( const activity_actor &other, const Character & ) const override {
-            const open_gate_activity_actor &og_actor = static_cast<const open_gate_activity_actor &>( other );
-            return placement == og_actor.placement;
-        }
 
     public:
         open_gate_activity_actor( int gate_moves, const tripoint &gate_placement ) :
-            moves_total( gate_moves ), placement( gate_placement ) {}
+            moves( gate_moves ), placement( gate_placement ) {}
 
         activity_id get_type() const override {
             return activity_id( "ACT_OPEN_GATE" );
@@ -431,6 +417,59 @@ class open_gate_activity_actor : public activity_actor
 
         std::unique_ptr<activity_actor> clone() const override {
             return std::make_unique<open_gate_activity_actor>( *this );
+        }
+
+        void serialize( JsonOut &jsout ) const override;
+        static std::unique_ptr<activity_actor> deserialize( JsonIn &jsin );
+};
+
+class stash_activity_actor : public activity_actor
+{
+    private:
+        std::list<pickup::act_item> items;
+        tripoint relpos;
+
+    public:
+        stash_activity_actor() = default;
+        stash_activity_actor( Character &ch, const drop_locations &items, const tripoint &relpos );
+
+        activity_id get_type() const override {
+            return activity_id( "ACT_STASH" );
+        }
+
+        void start( player_activity &, Character & ) override;
+        void do_turn( player_activity &, Character &who ) override;
+        void finish( player_activity &, Character & ) override {};
+
+        std::unique_ptr<activity_actor> clone() const override {
+            return std::make_unique<stash_activity_actor>( *this );
+        }
+
+        void serialize( JsonOut &jsout ) const override;
+        static std::unique_ptr<activity_actor> deserialize( JsonIn &jsin );
+};
+
+class wash_activity_actor : public activity_actor
+{
+    private:
+        iuse_locations targets;
+        int moves_total = 0;
+
+    public:
+        wash_activity_actor() = default;
+        wash_activity_actor( const iuse_locations &targets, int moves_total ) :
+            targets( targets ), moves_total( moves_total ) {};
+
+        activity_id get_type() const override {
+            return activity_id( "ACT_WASH" );
+        }
+
+        void start( player_activity &act, Character & ) override;
+        void do_turn( player_activity &, Character & ) override {};
+        void finish( player_activity &act, Character &who ) override;
+
+        std::unique_ptr<activity_actor> clone() const override {
+            return std::make_unique<wash_activity_actor>( *this );
         }
 
         void serialize( JsonOut &jsout ) const override;

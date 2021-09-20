@@ -43,7 +43,6 @@ class field_entry
         mongroup_id monster_spawn_group() const;
 
         float light_emitted() const;
-        float local_light_override() const;
         float translucency() const;
         bool is_transparent() const;
         int convection_temperature_mod() const;

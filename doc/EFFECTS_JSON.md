@@ -27,18 +27,18 @@ Notice the "effects" field. Each effect has four potential fields:
 ```
 Valid "bp" entries are (no entry means the effect is untargeted):
 ```C++
-"torso"
-"head"
-"eyes"
-"mouth"
-"arm_l"
-"arm_r"
-"hand_l"
-"hand_r"
-"leg_l"
-"leg_r"
-"foot_l"
-"foot_r"
+"TORSO"
+"HEAD"
+"EYES"
+"MOUTH"
+"ARM_L"
+"ARM_R"
+"HAND_L"
+"HAND_R"
+"LEG_L"
+"LEG_R"
+"FOOT_L"
+"FOOT_R"
 ```
 
 ### Creature attacks
@@ -292,12 +292,6 @@ main part (arms, head, legs, etc.).
 them more pkill. "pain_sizing" and "hurt_sizing" cause large/huge mutations to affect the chance of pain
 and hurt effects triggering. "harmful_cough" means that the coughs caused by this effect can hurt the player.
 
-### Morale
-```C++
-    "morale": "morale_high"
-```
-Type of morale effect provided. Mandatory if there is a morale effect, must not be specified otherwise.
-
 ### Effect effects
 ```C++
     "base_mods" : {
@@ -444,8 +438,6 @@ Valid arguments:
 "healing_head"      - Percentage of healing value for head
 "healing_torso"     - Percentage of healing value for torso
 
-"morale"            - Amount of morale provided. Must be a single number (resistance not supported).
-
 ```
 Each argument can also take either one or two values.
 ```C++
@@ -485,14 +477,12 @@ as if it were equal to 1 (i.e. trigger every time)
     "apply_message": "You feel lightheaded.",
     "int_dur_factor": 1000,
     "miss_messages": [["You feel woozy.", 1]],
-    "morale": "morale_drunk",
     "base_mods": {
         "str_mod": [1],
         "vomit_chance": [-43],
         "sleep_chance": [-1003],
         "sleep_min": [2500],
-        "sleep_max": [3500],
-        "morale": [ 5 ]
+        "sleep_max": [3500]
     },
     "scaling_mods": {
         "str_mod": [-0.67],
@@ -500,8 +490,7 @@ as if it were equal to 1 (i.e. trigger every time)
         "dex_mod": [-1],
         "int_mod": [-1.42],
         "vomit_chance": [21],
-        "sleep_chance": [501],
-        "morale": [ 10 ]
+        "sleep_chance": [501]
     }
 ```
 First when "drunk" is applied to the player if they aren't already drunk it prints the message,
@@ -515,7 +504,6 @@ As it moves up through the intensity levels its effects will be:
 ```C++
 Intensity 1
     +1 STR
-    +5 morale
     No other effects (since both "X_chance"s are negative)
 Intensity 2
     1 - .67 = .33 =         0 STR (Round towards zero)
@@ -524,7 +512,6 @@ Intensity 2
     0 -1.42 =               -1 INT
     -43 + 21 =              still negative, so no vomiting
     -1003 + 501 =           still negative, so no passing out
-    5 + 10 =                15 morale
 Intensity 3
     1 - 2 * .67 = -.34 =    0 STR (round towards zero)
     0 - 2 * 1 =             -2 PER
@@ -532,7 +519,6 @@ Intensity 3
     0 - 2 * 1.43 =          -2 INT
     -43 + 2 * 21 = -1       still negative, no vomiting
     -1003 + 2 * 501 = -1    still negative, no passing out
-    5 + 2 * 10 =            25 morale
 Intensity 4
     1 - 3 * .67 = - 1.01 =  -1 STR
     0 - 3 * 1 =             -3 PER
@@ -540,5 +526,4 @@ Intensity 4
     0 - 3 * 1.43 =          -4 INT
     -43 + 3 * 21 = 20       "vomit_chance_bot" doesn't exist, so a 1 in 20 chance of vomiting. "vomit_tick" doesn't exist, so it rolls every turn.
     -1003 + 3 * 501 = 500   "sleep_chance_bot" doesn't exist, so a 1 in 500 chance of passing out for rng(2500, 3500) turns. "sleep_tick" doesn't exist, so it rolls every turn.
-    5 + 3 * 10 =            35 morale
 ```

@@ -59,14 +59,13 @@
       "skills": [ [ "fabrication", 3 ] ],
       "inline": {
         "tools": [  ],
-        "qualities": [ [ { "id": "SAW_W" } ], [ { "id": "HAMMER", "level": 2 } ], [ { "id": "SMOOTH" } ] ],
+        "qualities": [ [ { "id": "DIG", "level": 2 } ], [ { "id": "HAMMER", "level": 2 } ], [ { "id": "SAW_W" } ], [ { "id": "SMOOTH" } ] ],
         "components": [
           [ [ "2x4", 12 ] ],
-          [ [ "alien_pod_resin", 69 ] ],
-          [ [ "material_soil", 2 ] ],
+          [ [ "wood_sheet", 4 ], [ "wood_panel", 8 ] ],
           [ [ "nail", 80 ] ],
           [ [ "rock", 40 ] ],
-          [ [ "wood_panel", 8 ], [ "wood_sheet", 4 ] ]
+          [ [ "alien_pod_resin", 69 ] ]
         ]
       }
     }

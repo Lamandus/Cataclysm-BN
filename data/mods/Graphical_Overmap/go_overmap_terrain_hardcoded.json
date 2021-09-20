@@ -73,32 +73,8 @@
   },
   {
     "type": "overmap_terrain",
-    "id": "mine_entrance_roof",
-    "copy-from": "mine_entrance_roof",
-    "sym": "\u00D3"
-  },
-  {
-    "type": "overmap_terrain",
-    "id": "mine_shaft_middle",
-    "copy-from": "mine_shaft_middle",
-    "sym": "\u00D3"
-  },
-  {
-    "type": "overmap_terrain",
-    "id": "mine_shaft_lower",
-    "copy-from": "mine_shaft_lower",
-    "sym": "\u00D3"
-  },
-  {
-    "type": "overmap_terrain",
-    "id": "mine_shaft_middle",
-    "copy-from": "mine_shaft_middle",
-    "sym": "\u00D3"
-  },
-  {
-    "type": "overmap_terrain",
-    "id": "mine_shaft_lower",
-    "copy-from": "mine_shaft_lower",
+    "id": "mine_shaft",
+    "copy-from": "mine_shaft",
     "sym": "\u00D3"
   },
   {
@@ -118,6 +94,18 @@
     "id": "mine_finale",
     "copy-from": "mine_finale",
     "sym": "\u00D3"
+  },
+  {
+    "type": "overmap_terrain",
+    "id": "spiral_hub",
+    "copy-from": "spiral_hub",
+    "sym": "\u00EA"
+  },
+  {
+    "type": "overmap_terrain",
+    "id": "spiral",
+    "copy-from": "spiral",
+    "sym": "\u00EA"
   },
   {
     "type": "overmap_terrain",

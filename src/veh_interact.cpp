@@ -240,8 +240,7 @@ veh_interact::~veh_interact() = default;
 void veh_interact::allocate_windows()
 {
     // grid window
-    const int grid_x = 1;
-    const int grid_y = 1;
+    const point grid( point_south_east );
     const int grid_w = TERMX - 2; // exterior borders take 2
     const int grid_h = TERMY - 2; // exterior borders take 2
 
@@ -250,7 +249,7 @@ void veh_interact::allocate_windows()
 
     page_size = grid_h - ( mode_h + stats_h + name_h ) - 2;
 
-    const int pane_y = grid_y + mode_h + 1;
+    const int pane_y = grid.y + mode_h + 1;
 
     const int pane_w = ( grid_w / 3 ) - 1;
 
@@ -262,7 +261,7 @@ void veh_interact::allocate_windows()
     const int name_y = pane_y + page_size + 1;
     const int stats_y = name_y + name_h;
 
-    const int list_x = grid_x + disp_w + 1;
+    const int list_x = grid.x + disp_w + 1;
     const int msg_x  = list_x + pane_w + 1;
 
     // covers right part of w_name and w_stats in vertical/hybrid
@@ -270,17 +269,17 @@ void veh_interact::allocate_windows()
     const int details_x = list_x;
 
     const int details_h = 7;
-    const int details_w = grid_x + grid_w - details_x;
+    const int details_w = grid.x + grid_w - details_x;
 
     // make the windows
     w_border = catacurses::newwin( TERMY, TERMX, point_zero );
-    w_mode  = catacurses::newwin( mode_h,    grid_w, point( grid_x, grid_y ) );
+    w_mode  = catacurses::newwin( mode_h,    grid_w, grid );
     w_msg   = catacurses::newwin( page_size, pane_w, point( msg_x, pane_y ) );
-    w_disp  = catacurses::newwin( disp_h,    disp_w, point( grid_x, pane_y ) );
-    w_parts = catacurses::newwin( parts_h,   disp_w, point( grid_x, parts_y ) );
+    w_disp  = catacurses::newwin( disp_h,    disp_w, point( grid.x, pane_y ) );
+    w_parts = catacurses::newwin( parts_h,   disp_w, point( grid.x, parts_y ) );
     w_list  = catacurses::newwin( page_size, pane_w, point( list_x, pane_y ) );
-    w_stats = catacurses::newwin( stats_h,   grid_w, point( grid_x, stats_y ) );
-    w_name  = catacurses::newwin( name_h,    grid_w, point( grid_x, name_y ) );
+    w_stats = catacurses::newwin( stats_h,   grid_w, point( grid.x, stats_y ) );
+    w_name  = catacurses::newwin( name_h,    grid_w, point( grid.x, name_y ) );
     w_details = catacurses::newwin( details_h, details_w, point( details_x, details_y ) );
 }
 
@@ -336,18 +335,11 @@ shared_ptr_fast<ui_adaptor> veh_interact::create_or_get_ui_adaptor()
     if( !current_ui ) {
         ui = current_ui = make_shared_fast<ui_adaptor>();
         current_ui->on_screen_resize( [this]( ui_adaptor & current_ui ) {
-            if( ui_hidden ) {
-                current_ui.position( point_zero, point_zero );
-                return;
-            }
             allocate_windows();
             current_ui.position_from_window( catacurses::stdscr );
         } );
         current_ui->mark_resize();
         current_ui->on_redraw( [this]( const ui_adaptor & ) {
-            if( ui_hidden ) {
-                return;
-            }
             display_grid();
             display_name();
             display_stats();
@@ -377,14 +369,6 @@ shared_ptr_fast<ui_adaptor> veh_interact::create_or_get_ui_adaptor()
         } );
     }
     return current_ui;
-}
-
-void veh_interact::hide_ui( const bool hide )
-{
-    if( hide != ui_hidden ) {
-        ui_hidden = hide;
-        create_or_get_ui_adaptor()->mark_resize();
-    }
 }
 
 void veh_interact::do_main_loop()
@@ -703,33 +687,16 @@ bool veh_interact::update_part_requirements()
         }
     }
 
-    const auto get_rq_mechanics = []( const vpart_info & vpi ) {
-        for( const std::pair<const skill_id, int> &it : vpi.install_skills ) {
-            if( it.first == skill_mechanics ) {
-                return it.second;
-            }
-        }
-        return 0;
-    };
-
-    // Difficulty of installing additional engines depends on most complex
-    // installed engine and # of installed engines,
-    // but can never be less than 6 or more than 10.
-    // Engines without E_HIGHER_SKILL flag are excluded from the check.
     bool is_engine = sel_vpart_info->has_flag( "ENGINE" );
+    //count current engines, some engines don't require higher skill
+    int engines = 0;
     int dif_eng = 0;
     if( is_engine && sel_vpart_info->has_flag( "E_HIGHER_SKILL" ) ) {
-        int engines = 0;
-        int dif_max = get_rq_mechanics( *sel_vpart_info );
         for( const vpart_reference &vp : veh->get_avail_parts( "ENGINE" ) ) {
             if( vp.has_feature( "E_HIGHER_SKILL" ) ) {
                 engines++;
-                dif_max = std::max( dif_max, get_rq_mechanics( vp.info() ) );
+                dif_eng = dif_eng / 2 + 8;
             }
-        }
-        if( engines > 0 ) {
-            int lvl = std::max( 6, dif_max + 3 );
-            dif_eng = std::min( 10, lvl + ( engines - 1 ) * 2 );
         }
     }
 
@@ -759,16 +726,23 @@ bool veh_interact::update_part_requirements()
     std::string additional_requirements;
     bool lifting_or_jacking_required = false;
 
+    bool allow_more_eng = engines < 2 || g->u.has_trait( trait_DEBUG_HS );
+
     if( dif_eng > 0 ) {
-        if( g->u.get_skill_level( skill_mechanics ) < dif_eng ) {
+        if( !allow_more_eng || g->u.get_skill_level( skill_mechanics ) < dif_eng ) {
             ok = false;
         }
-        additional_requirements += string_format(
-                                       //~ %1$s represents the internal color name which shouldn't be translated,
-                                       //~ %2$s is skill name, and %3$i is skill level
-                                       _( "> %1$s%2$s %3$i</color> to install alongside other engines." ),
+        if( allow_more_eng ) {
+            //~ %1$s represents the internal color name which shouldn't be translated, %2$s is skill name, and %3$i is skill level
+            additional_requirements += string_format( _( "> %1$s%2$s %3$i</color> for extra engines." ),
                                        status_color( g->u.get_skill_level( skill_mechanics ) >= dif_eng ),
                                        skill_mechanics.obj().name(), dif_eng ) + "\n";
+        } else {
+            additional_requirements +=
+                _( "> <color_red>You cannot install any more engines on this vehicle.</color>" ) +
+                std::string( "\n" );
+        }
+
     }
 
     if( dif_steering > 0 ) {
@@ -1910,10 +1884,6 @@ void veh_interact::do_siphon()
     };
 
     auto act = [&]( const vehicle_part & pt ) {
-        on_out_of_scope restore_ui( [&]() {
-            hide_ui( false );
-        } );
-        hide_ui( true );
         const item &base = pt.get_base();
         const int idx = veh->find_part( base );
         item liquid( base.contents.back() );
@@ -2034,8 +2004,22 @@ int veh_interact::part_at( const point &d )
  */
 bool veh_interact::can_potentially_install( const vpart_info &vpart )
 {
-    return g->u.has_trait( trait_DEBUG_HS ) ||
-           vpart.install_requirements().can_make_with_inventory( crafting_inv, is_crafting_component );
+    bool engine_reqs_met = true;
+    bool can_make = vpart.install_requirements().can_make_with_inventory( crafting_inv,
+                    is_crafting_component );
+    bool hammerspace = g->u.has_trait( trait_DEBUG_HS );
+
+    int engines = 0;
+    if( vpart.has_flag( VPFLAG_ENGINE ) && vpart.has_flag( "E_HIGHER_SKILL" ) ) {
+        for( const vpart_reference &vp : veh->get_avail_parts( "ENGINE" ) ) {
+            if( vp.has_feature( "E_HIGHER_SKILL" ) ) {
+                engines++;
+            }
+        }
+        engine_reqs_met = engines < 2;
+    }
+
+    return hammerspace || ( can_make && engine_reqs_met );
 }
 
 /**
@@ -2170,10 +2154,12 @@ void veh_interact::display_veh()
 
         const point &pivot = veh->pivot_point();
         const point &com = veh->local_center_of_mass();
+        const point cur = -dd;
 
         mvwprintz( w_disp, point_zero, c_green, "CoM   %d,%d", com.x, com.y );
         // NOLINTNEXTLINE(cata-use-named-point-constants)
         mvwprintz( w_disp, point( 0, 1 ), c_red,   "Pivot %d,%d", pivot.x, pivot.y );
+        mvwprintz( w_disp, point( 0, 2 ), c_dark_gray, "Cur   %d,%d", cur.x, cur.y );
 
         const point com_s = ( com + dd ).rotate( 3 ) + h_size;
         const point pivot_s = ( pivot + dd ).rotate( 3 ) + h_size;
@@ -2924,8 +2910,7 @@ void veh_interact::complete_vehicle( player &p )
     }
     vehicle *const veh = &vp->vehicle();
 
-    int dx = p.activity.values[4];
-    int dy = p.activity.values[5];
+    point d( p.activity.values[4], p.activity.values[5] );
     int vehicle_part = p.activity.values[6];
     const vpart_id part_id( p.activity.str_values[0] );
 
@@ -2966,16 +2951,16 @@ void veh_interact::complete_vehicle( player &p )
 
             p.invalidate_crafting_inventory();
 
-            int partnum = !base.is_null() ? veh->install_part( point( dx, dy ), part_id,
+            int partnum = !base.is_null() ? veh->install_part( d, part_id,
                           std::move( base ) ) : -1;
             if( partnum < 0 ) {
-                debugmsg( "complete_vehicle install part fails dx=%d dy=%d id=%s", dx, dy, part_id.c_str() );
+                debugmsg( "complete_vehicle install part fails dx=%d dy=%d id=%s", d.x, d.y, part_id.c_str() );
                 break;
             }
 
             // Need map-relative coordinates to compare to output of look_around.
             // Need to call coord_translate() directly since it's a new part.
-            const point q = veh->coord_translate( point( dx, dy ) );
+            const point q = veh->coord_translate( d );
 
             if( vpinfo.has_flag( VPFLAG_CONE_LIGHT ) ||
                 vpinfo.has_flag( VPFLAG_WIDE_CONE_LIGHT ) ||

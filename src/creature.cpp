@@ -899,15 +899,7 @@ void Creature::add_effect( const effect &eff, bool force, bool deferred )
                 force, deferred );
 }
 
-
 void Creature::add_effect( const efftype_id &eff_id, const time_duration &dur, body_part bp,
-                           int intensity, bool force, bool deferred )
-{
-    add_effect( eff_id, dur, convert_bp( bp ), intensity, force, deferred );
-}
-
-void Creature::add_effect( const efftype_id &eff_id, const time_duration &dur,
-                           const bodypart_str_id &base_bp,
                            int intensity, bool force, bool deferred )
 {
     // Check our innate immunity
@@ -928,10 +920,9 @@ void Creature::add_effect( const efftype_id &eff_id, const time_duration &dur,
     }
     const effect_type &type = eff_id.obj();
 
-    bodypart_str_id bp = base_bp;
     // Mutate to a main (HP'd) body_part if necessary.
     if( type.get_main_parts() ) {
-        bp = bp->main_part;
+        bp = mutate_to_main_part( bp );
     }
 
     bool found = false;
@@ -970,7 +961,7 @@ void Creature::add_effect( const efftype_id &eff_id, const time_duration &dur,
                 e.set_intensity( e.get_max_intensity() );
             }
             if( e.get_intensity() != prev_int ) {
-                on_effect_int_change( e.get_id(), e.get_intensity(), e.get_bp() );
+                on_effect_int_change( eff_id, e.get_intensity(), bp );
             }
         }
     }
@@ -1016,7 +1007,7 @@ void Creature::add_effect( const efftype_id &eff_id, const time_duration &dur,
                 add_msg( type.gain_game_message_type(), _( type.get_apply_message() ) );
             }
         }
-        on_effect_int_change( e.get_id(), e.get_intensity(), e.get_bp() );
+        on_effect_int_change( eff_id, e.get_intensity(), bp );
         // Perform any effect addition effects.
         // only when not deferred
         if( !deferred ) {
@@ -1050,10 +1041,6 @@ void Creature::clear_effects()
 }
 bool Creature::remove_effect( const efftype_id &eff_id, body_part bp )
 {
-    return remove_effect( eff_id, convert_bp( bp ) );
-}
-bool Creature::remove_effect( const efftype_id &eff_id, const bodypart_str_id &bp )
-{
     if( !has_effect( eff_id, bp ) ) {
         //Effect doesn't exist, so do nothing
         return false;
@@ -1070,29 +1057,23 @@ bool Creature::remove_effect( const efftype_id &eff_id, const bodypart_str_id &b
     }
 
     // num_bp means remove all of a given effect id
-    if( !bp ) {
+    if( bp == num_bp ) {
         for( auto &it : ( *effects )[eff_id] ) {
-            auto &e = it.second;
-            if( !e.is_removed() ) {
-                on_effect_int_change( e.get_id(), 0, e.get_bp() );
-                e.set_removed();
+            if( !it.second.is_removed() ) {
+                on_effect_int_change( eff_id, 0, it.first );
+                it.second.set_removed();
             }
         }
     } else {
-        effect &e = get_effect( eff_id, bp->token );
-        on_effect_int_change( e.get_id(), 0, e.get_bp() );
-        e.set_removed();
+        on_effect_int_change( eff_id, 0, bp );
+        get_effect( eff_id, bp ).set_removed();
     }
     return true;
 }
 bool Creature::has_effect( const efftype_id &eff_id, body_part bp ) const
 {
-    return has_effect( eff_id, convert_bp( bp ) );
-}
-bool Creature::has_effect( const efftype_id &eff_id, const bodypart_str_id &bp ) const
-{
     // num_bp means anything targeted or not
-    if( !bp ) {
+    if( bp == num_bp ) {
         auto got = effects->find( eff_id );
         return got != effects->end() && !got->second.begin()->second.is_removed();
     } else {
@@ -1109,10 +1090,9 @@ bool Creature::has_effect( const efftype_id &eff_id, const bodypart_str_id &bp )
 
 bool Creature::has_effect_with_flag( const std::string &flag, body_part bp ) const
 {
-    const auto &tmp = convert_bp( bp ).id();
     for( const auto &elem : *effects ) {
         for( const auto &_it : elem.second ) {
-            if( tmp == _it.first && !_it.second.is_removed() && _it.second.has_flag( flag ) ) {
+            if( bp == _it.first && !_it.second.is_removed() && _it.second.has_flag( flag ) ) {
                 return true;
             }
         }
@@ -1129,7 +1109,7 @@ const effect &Creature::get_effect( const efftype_id &eff_id, body_part bp ) con
 {
     auto got_outer = effects->find( eff_id );
     if( got_outer != effects->end() ) {
-        auto got_inner = got_outer->second.find( convert_bp( bp ) );
+        auto got_inner = got_outer->second.find( bp );
         if( got_inner != got_outer->second.end() && !got_inner->second.is_removed() ) {
             return got_inner->second;
         }
@@ -1161,7 +1141,8 @@ void Creature::process_effects()
     // id's and body_part's of all effects to be removed. If we ever get player or
     // monster specific removals these will need to be moved down to that level and then
     // passed in to this function.
-    std::vector<std::pair<efftype_id, bodypart_str_id>> to_remove;
+    using effect_to_remove = std::pair<efftype_id, body_part>;
+    std::vector<effect_to_remove> to_remove;
 
     // Decay/removal of effects
     for( auto &elem : *effects ) {
@@ -1171,8 +1152,8 @@ void Creature::process_effects()
                 continue;
             }
             // Add any effects that others remove to the removal list
-            for( const efftype_id &removed_effect : _it.second.get_removes_effects() ) {
-                to_remove.emplace_back( removed_effect, bodypart_str_id::NULL_ID() );
+            for( const auto &removed_effect : _it.second.get_removes_effects() ) {
+                to_remove.emplace_back( removed_effect, num_bp );
             }
             effect &e = _it.second;
             const int prev_int = e.get_intensity();
@@ -1188,12 +1169,12 @@ void Creature::process_effects()
     }
 
     // Run the on-remove effects
-    for( const std::pair<efftype_id, bodypart_str_id> &r : to_remove ) {
+    for( const effect_to_remove &r : to_remove ) {
         remove_effect( r.first, r.second );
     }
     // Actually remove effects. This should be the last thing done in process_effects().
-    for( const std::pair<efftype_id, bodypart_str_id> &r : to_remove ) {
-        if( !r.second ) {
+    for( const effect_to_remove &r : to_remove ) {
+        if( r.second == num_bp ) {
             effects->erase( r.first );
         } else {
             ( *effects )[r.first].erase( r.second );
@@ -1690,14 +1671,13 @@ void Creature::draw( const catacurses::window &w, const tripoint &origin, bool i
         return;
     }
 
-    int draw_x = getmaxx( w ) / 2 + posx() - origin.x;
-    int draw_y = getmaxy( w ) / 2 + posy() - origin.y;
+    point draw( -origin.xy() + point( getmaxx( w ) / 2 + posx(), getmaxy( w ) / 2 + posy() ) );
     if( inverted ) {
-        mvwputch_inv( w, point( draw_x, draw_y ), basic_symbol_color(), symbol() );
+        mvwputch_inv( w, draw, basic_symbol_color(), symbol() );
     } else if( is_symbol_highlighted() ) {
-        mvwputch_hi( w, point( draw_x, draw_y ), basic_symbol_color(), symbol() );
+        mvwputch_hi( w, draw, basic_symbol_color(), symbol() );
     } else {
-        mvwputch( w, point( draw_x, draw_y ), symbol_color(), symbol() );
+        mvwputch( w, draw, symbol_color(), symbol() );
     }
 }
 
@@ -1853,37 +1833,4 @@ void Creature::load_hit_range( const JsonObject &jo )
 void Creature::reset_hit_range()
 {
     dispersion_for_even_chance_of_good_hit = default_dispersion_for_ecogh;
-}
-
-void Creature::describe_infrared( std::vector<std::string> &buf ) const
-{
-    std::string size_str;
-    switch( get_size() ) {
-        case m_size::MS_TINY:
-            size_str = pgettext( "infrared size", "tiny" );
-            break;
-        case m_size::MS_SMALL:
-            size_str = pgettext( "infrared size", "small" );
-            break;
-        case m_size::MS_MEDIUM:
-            size_str = pgettext( "infrared size", "medium" );
-            break;
-        case m_size::MS_LARGE:
-            size_str = pgettext( "infrared size", "large" );
-            break;
-        case m_size::MS_HUGE:
-            size_str = pgettext( "infrared size", "huge" );
-            break;
-        default:
-            debugmsg( "Creature has invalid size class." );
-            size_str = "invalid";
-            break;
-    }
-    buf.push_back( _( "You see a figure radiating heat." ) );
-    buf.push_back( string_format( _( "It is %s in size." ), size_str ) );
-}
-
-void Creature::describe_specials( std::vector<std::string> &buf ) const
-{
-    buf.push_back( _( "You sense a creature here." ) );
 }

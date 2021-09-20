@@ -15,8 +15,6 @@
 #include "color.h"
 #include "cursesdef.h"
 #include "debug.h"
-#include "effect.h"
-#include "enum_conversions.h"
 #include "enums.h"
 #include "input.h"
 #include "int_id.h"
@@ -47,27 +45,26 @@ static const trait_id trait_ROOTS2( "ROOTS2" );
 static const trait_id trait_ROOTS3( "ROOTS3" );
 static const trait_id trait_STYLISH( "STYLISH" );
 
-namespace io
+namespace
 {
 
-template<>
-std::string enum_to_string<morale_subtype_t>( morale_subtype_t data )
+bool is_permanent_morale( const morale_type &id )
 {
-    switch( data ) {
-        // *INDENT-OFF*
-        case morale_subtype_t::single: return "single";
-        case morale_subtype_t::by_item: return "by_item";
-        case morale_subtype_t::by_effect: return "by_effect";
-        // *INDENT-ON*
-        case morale_subtype_t::last:
-            break;
-    }
-    debugmsg( "Invalid morale_subtype_t" );
-    abort();
+    static const std::set<morale_type> permanent_morale = {{
+            MORALE_PERM_OPTIMIST,
+            MORALE_PERM_BADTEMPER,
+            MORALE_PERM_FANCY,
+            MORALE_PERM_MASOCHIST,
+            MORALE_PERM_CONSTRAINED,
+            MORALE_PERM_FILTHY,
+            MORALE_PERM_DEBUG
+        }
+    };
+
+    return permanent_morale.count( id ) != 0;
 }
 
-} // namespace io
-
+} // namespace
 
 // Morale multiplier
 struct morale_mult {
@@ -128,11 +125,7 @@ static const morale_mult prozac_bad( 0.25, 1.0 );
 
 std::string player_morale::morale_point::get_name() const
 {
-    if( subtype.has_description() ) {
-        return type.obj().describe( subtype.describe() );
-    } else {
-        return type.obj().describe();
-    }
+    return type.obj().describe( item_type );
 }
 
 int player_morale::morale_point::get_net_bonus() const
@@ -158,20 +151,14 @@ bool player_morale::morale_point::is_permanent() const
     return ( duration == 0_turns );
 }
 
-bool player_morale::morale_point::type_matches( const morale_type &_type ) const
+bool player_morale::morale_point::matches( const morale_type &_type, const itype *_item_type ) const
 {
-    return _type == type;
-}
-
-bool player_morale::morale_point::matches( const morale_type &_type,
-        const morale_subtype &_subtype ) const
-{
-    return _type == type && subtype.matches( _subtype );
+    return ( _type == type ) && ( _item_type == nullptr || _item_type == item_type );
 }
 
 bool player_morale::morale_point::matches( const morale_point &mp ) const
 {
-    return type == mp.type && subtype.matches( mp.subtype );
+    return ( type == mp.type ) && ( item_type == mp.item_type );
 }
 
 void player_morale::morale_point::add( const int new_bonus, const int new_max_bonus,
@@ -244,7 +231,7 @@ bool player_morale::mutation_data::get_active() const
     return active;
 }
 
-void player_morale::mutation_data::set_active( player_morale &sender, bool new_active )
+void player_morale::mutation_data::set_active( player_morale *sender, bool new_active )
 {
     if( active != new_active ) {
         active = new_active;
@@ -272,9 +259,9 @@ player_morale::player_morale() :
     using namespace std::placeholders;
     // Cannot use 'this' because the object is copyable
     const auto set_optimist       = std::bind( &player_morale::set_permanent, _1, MORALE_PERM_OPTIMIST,
-                                    _2 );
+                                    _2, nullptr );
     const auto set_badtemper      = std::bind( &player_morale::set_permanent, _1, MORALE_PERM_BADTEMPER,
-                                    _2 );
+                                    _2, nullptr );
     const auto set_stylish        = std::bind( &player_morale::set_stylish, _1, _2 );
     const auto update_constrained = std::bind( &player_morale::update_constrained_penalty, _1 );
     const auto update_masochist   = std::bind( &player_morale::update_masochist_bonus, _1 );
@@ -299,20 +286,18 @@ player_morale::player_morale() :
     mutations[trait_CENOBITE]      = mutation_data( update_masochist );
 }
 
-void player_morale::add( morale_type type, const morale_subtype &subtype, int bonus, int max_bonus,
+void player_morale::add( morale_type type, int bonus, int max_bonus,
                          const time_duration &duration, const time_duration &decay_start,
-                         bool capped )
+                         bool capped, const itype *item_type )
 {
-    if( ( duration == 0_turns ) && !type->is_permanent() ) {
-        std::string full_desc = subtype.has_description()
-                                ? type.obj().describe( subtype.describe() )
-                                : type.obj().describe();
-        debugmsg( "Tried to set a non-permanent morale \"%s\" as permanent.", full_desc );
+    if( ( duration == 0_turns ) & !is_permanent_morale( type ) ) {
+        debugmsg( "Tried to set a non-permanent morale \"%s\" as permanent.",
+                  type.obj().describe( item_type ) );
         return;
     }
 
-    for( morale_point &m : points ) {
-        if( m.matches( type, subtype ) ) {
+    for( auto &m : points ) {
+        if( m.matches( type, item_type ) ) {
             const int prev_bonus = m.get_net_bonus();
 
             m.add( bonus, max_bonus, duration, decay_start, capped );
@@ -327,7 +312,7 @@ void player_morale::add( morale_type type, const morale_subtype &subtype, int bo
         }
     }
 
-    morale_point new_morale( type, subtype, bonus, max_bonus, duration, decay_start, capped );
+    morale_point new_morale( type, item_type, bonus, max_bonus, duration, decay_start, capped );
 
     if( !new_morale.is_expired() ) {
         points.push_back( new_morale );
@@ -335,57 +320,19 @@ void player_morale::add( morale_type type, const morale_subtype &subtype, int bo
     }
 }
 
-void player_morale::add( morale_type type, int bonus, int max_bonus,
-                         const time_duration &duration, const time_duration &decay_start,
-                         bool capped )
+void player_morale::set_permanent( const morale_type &type, int bonus, const itype *item_type )
 {
-    morale_subtype subtype;
-    add( type, subtype, bonus, max_bonus, duration, decay_start, capped );
+    add( type, bonus, bonus, 0_turns, 0_turns, true, item_type );
 }
 
-void player_morale::add( morale_type type, int bonus, int max_bonus,
-                         const time_duration &duration, const time_duration &decay_start,
-                         bool capped, const itype &item_type )
+int player_morale::has( const morale_type &type, const itype *item_type ) const
 {
-    morale_subtype subtype( item_type );
-    add( type, subtype, bonus, max_bonus, duration, decay_start, capped );
-}
-
-void player_morale::add( morale_type type, int bonus, int max_bonus,
-                         const time_duration &duration, const time_duration &decay_start,
-                         bool capped, const efftype_id &effect_type )
-{
-    morale_subtype subtype( effect_type );
-    add( type, subtype, bonus, max_bonus, duration, decay_start, capped );
-}
-
-void player_morale::set_permanent( const morale_type &type, int bonus )
-{
-    set_permanent_typed( type, bonus, morale_subtype() );
-}
-
-void player_morale::set_permanent_typed( const morale_type &type, int bonus,
-        const morale_subtype &subtype )
-{
-    // Hack: should replace instead of remove+readd
-    remove( type, subtype );
-    add( type, subtype, bonus, 0, 0_turns, 0_turns, false );
-}
-
-bool player_morale::has( const morale_type &type ) const
-{
-    return std::any_of( points.begin(), points.end(), [&type]( const morale_point & m ) {
-        return m.type_matches( type );
-    } );
-}
-
-int player_morale::get( const morale_type &type ) const
-{
-    // TODO: This should be well defined for multiple bonuses of the same type!
-    auto iter = std::find_if( points.begin(), points.end(), [&type]( const morale_point & m ) {
-        return m.type_matches( type );
-    } );
-    return iter != points.end() ? iter->get_net_bonus() : 0;
+    for( auto &m : points ) {
+        if( m.matches( type, item_type ) ) {
+            return m.get_net_bonus();
+        }
+    }
+    return 0;
 }
 
 void player_morale::remove_if( const std::function<bool( const morale_point & )> &func )
@@ -398,18 +345,12 @@ void player_morale::remove_if( const std::function<bool( const morale_point & )>
     }
 }
 
-void player_morale::remove( const morale_type &type )
+void player_morale::remove( const morale_type &type, const itype *item_type )
 {
-    remove_if( [ type ]( const morale_point & m ) -> bool {
-        return m.type_matches( type );
+    remove_if( [ type, item_type ]( const morale_point & m ) -> bool {
+        return m.matches( type, item_type );
     } );
-}
 
-void player_morale::remove( const morale_type &type, const morale_subtype &subtype )
-{
-    remove_if( [ &type, &subtype ]( const morale_point & m ) -> bool {
-        return m.matches( type, subtype );
-    } );
 }
 
 void player_morale::remove_expired()
@@ -440,21 +381,21 @@ void player_morale::calculate_percentage()
     int sum_of_positive_squares = 0;
     int sum_of_negative_squares = 0;
 
-    for( const morale_point &m : points ) {
+    for( auto &m : points ) {
         const int bonus = m.get_net_bonus( mult );
         if( bonus > 0 ) {
-            sum_of_positive_squares += bonus * bonus;
+            sum_of_positive_squares += std::pow( bonus, 2 );
         } else {
-            sum_of_negative_squares += bonus * bonus;
+            sum_of_negative_squares += std::pow( bonus, 2 );
         }
     }
 
-    for( morale_point &m : points ) {
+    for( auto &m : points ) {
         const int bonus = m.get_net_bonus( mult );
         if( bonus > 0 ) {
-            m.set_percent_contribution( bonus * bonus * 100.0 / sum_of_positive_squares );
+            m.set_percent_contribution( ( std::pow( bonus, 2 ) / sum_of_positive_squares ) * 100 );
         } else {
-            m.set_percent_contribution( bonus * bonus * 100.0 / sum_of_negative_squares );
+            m.set_percent_contribution( ( std::pow( bonus, 2 ) / sum_of_negative_squares ) * 100 );
         }
     }
 }
@@ -463,10 +404,10 @@ int player_morale::get_total_negative_value() const
 {
     const morale_mult mult = get_temper_mult();
     int sum = 0;
-    for( const morale_point &m : points ) {
+    for( auto &m : points ) {
         const int bonus = m.get_net_bonus( mult );
         if( bonus < 0 ) {
-            sum += bonus * bonus;
+            sum += std::pow( bonus, 2 );
         }
     }
     return std::sqrt( sum );
@@ -476,10 +417,10 @@ int player_morale::get_total_positive_value() const
 {
     const morale_mult mult = get_temper_mult();
     int sum = 0;
-    for( const morale_point &m : points ) {
+    for( auto &m : points ) {
         const int bonus = m.get_net_bonus( mult );
         if( bonus > 0 ) {
-            sum += bonus * bonus;
+            sum += std::pow( bonus, 2 );
         }
 
     }
@@ -497,9 +438,9 @@ int player_morale::get_level() const
         for( auto &m : points ) {
             const int bonus = m.get_net_bonus( mult );
             if( bonus > 0 ) {
-                sum_of_positive_squares += bonus * bonus;
+                sum_of_positive_squares += std::pow( bonus, 2 );
             } else {
-                sum_of_negative_squares += bonus * bonus;
+                sum_of_negative_squares += std::pow( bonus, 2 );
             }
         }
 
@@ -761,8 +702,7 @@ void player_morale::display( int focus_eq, int pain_penalty, int fatigue_penalty
     ui.on_screen_resize( [&]( ui_adaptor & ui ) {
         win_w = std::min( max_window_width, FULL_SCREEN_WIDTH );
         win_h = FULL_SCREEN_HEIGHT;
-        const int win_x = ( TERMX - win_w ) / 2;
-        const int win_y = ( TERMY - win_h ) / 2;
+        const point win( ( TERMX - win_w ) / 2, ( TERMY - win_h ) / 2 );
 
         rows_visible = std::max( win_h - static_lines_height, 0 );
         if( rows_total < rows_visible ) {
@@ -771,7 +711,7 @@ void player_morale::display( int focus_eq, int pain_penalty, int fatigue_penalty
             offset = rows_total - rows_visible;
         }
 
-        w = catacurses::newwin( win_h, win_w, point( win_x, win_y ) );
+        w = catacurses::newwin( win_h, win_w, win );
 
         ui.position_from_window( w );
     } );
@@ -853,9 +793,7 @@ bool player_morale::consistent_with( const player_morale &morale ) const
             } );
 
             if( iter == rhs.points.end() || lhp.get_net_bonus() != iter->get_net_bonus() ) {
-                debugmsg( "Morale \"%s\" is inconsistent: lhs %d != rhs %s",
-                          lhp.get_name(), lhp.get_net_bonus(),
-                          ( iter == rhs.points.end() ? "N/A" : std::to_string( iter->get_net_bonus() ).c_str() ) );
+                debugmsg( "Morale \"%s\" is inconsistent.", lhp.get_name() );
                 return false;
             }
         }
@@ -911,7 +849,7 @@ void player_morale::set_mutation( const trait_id &mid, bool active )
 {
     const auto &mutation = mutations.find( mid );
     if( mutation != mutations.end() ) {
-        mutation->second.set_active( *this, active );
+        mutation->second.set_active( this, active );
     }
 }
 
@@ -972,29 +910,17 @@ void player_morale::on_worn_item_washed( const item &it )
     update_squeamish_penalty();
 }
 
-void player_morale::on_effect_int_change( const efftype_id &eid, int intensity,
-        const bodypart_str_id &bp_id )
+void player_morale::on_effect_int_change( const efftype_id &eid, int intensity, body_part bp )
 {
-    if( eid == effect_took_prozac && !bp_id ) {
+    const bodypart_id bo_id = convert_bp( bp ).id();
+    if( eid == effect_took_prozac && bp == num_bp ) {
         set_prozac( intensity != 0 );
-    } else if( eid == effect_took_prozac_bad && !bp_id ) {
+    } else if( eid == effect_took_prozac_bad && bp == num_bp ) {
         set_prozac_bad( intensity != 0 );
-    } else if( eid == effect_cold && bp_id ) {
-        body_parts[bp_id].cold = intensity;
-    } else if( eid == effect_hot && bp_id ) {
-        body_parts[bp_id].hot = intensity;
-    }
-
-    const morale_type &mt = eid->get_morale_type();
-    if( mt ) {
-        morale_subtype subtype( eid );
-        if( intensity > 0 ) {
-            effect ugly_hack( &*eid, 1_turns, bp_id, intensity, calendar::turn_zero );
-            int value = ugly_hack.get_amount( "MORALE" );
-            set_permanent_typed( mt, value, subtype );
-        } else {
-            remove( mt, subtype );
-        }
+    } else if( eid == effect_cold && bp < num_bp ) {
+        body_parts[bo_id].cold = intensity;
+    } else if( eid == effect_hot && bp < num_bp ) {
+        body_parts[bo_id].hot = intensity;
     }
 }
 
@@ -1171,28 +1097,4 @@ void player_morale::update_squeamish_penalty()
     }
     penalty += 2 * std::min( static_cast<int>( no_body_part.filthy ), 3 );
     set_permanent( MORALE_PERM_FILTHY, -penalty );
-}
-
-// For some reason, moving this to header breaks things
-player_morale::morale_subtype::morale_subtype() = default;
-
-bool player_morale::morale_subtype::has_description() const
-{
-    return subtype_type == morale_subtype_t::by_item;
-}
-
-// TODO: Get rid of this ugly include that is only used here!
-#include "itype.h"
-std::string player_morale::morale_subtype::describe() const
-{
-    switch( subtype_type ) {
-        case morale_subtype_t::by_item:
-            return item_type->nname( 1 );
-        // TODO: Implement (may need passing an entire effect here...)
-        case morale_subtype_t::by_effect:
-        default:
-            debugmsg( "Tried to get description from morale_subtype \"%s\"",
-                      io::enum_to_string<morale_subtype_t>( subtype_type ) );
-            return "ERROR";
-    }
 }

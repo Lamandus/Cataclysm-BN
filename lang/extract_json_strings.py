@@ -103,7 +103,6 @@ ignorable = {
     "SCENARIO_BLACKLIST",
     "scent_type",
     "skill_boost",
-    "to_cbc_migration",
     "TRAIT_BLACKLIST",
     "trait_group",
     "uncraft",

@@ -43,6 +43,7 @@
 #include "lightmap.h"
 #include "line.h"
 #include "magic_enchantment.h"
+#include "make_static.h"
 #include "map.h"
 #include "map_iterator.h"
 #include "mapdata.h"
@@ -1422,7 +1423,7 @@ void player::process_one_effect( effect &it, bool is_new )
 {
     bool reduced = resists_effect( it );
     double mod = 1;
-    body_part bp = it.get_bp()->token;
+    body_part bp = it.get_bp();
     int val = 0;
 
     // Still hardcoded stuff, do this first since some modify their other traits
@@ -1481,8 +1482,8 @@ void player::process_one_effect( effect &it, bool is_new )
     if( val != 0 ) {
         mod = 1;
         if( is_new || it.activated( calendar::turn, "HUNGER", val, reduced, mod ) ) {
-            mod_stored_kcal( -10 * bound_mod_to_vals( ( max_stored_kcal() - get_stored_kcal() ) / 10,
-                             val, it.get_max_val( "HUNGER", reduced ), it.get_min_val( "HUNGER", reduced ) ) );
+            mod_hunger( bound_mod_to_vals( get_hunger(), val, it.get_max_val( "HUNGER", reduced ),
+                                           it.get_min_val( "HUNGER", reduced ) ) );
         }
     }
 
@@ -1937,7 +1938,7 @@ bool player::can_interface_armor() const
 {
     bool okay = std::any_of( my_bionics->begin(), my_bionics->end(),
     []( const bionic & b ) {
-        return b.powered && b.info().armor_interface;
+        return b.powered && b.info().has_flag( STATIC( flag_str_id( "BIONIC_ARMOR_INTERFACE" ) ) );
     } );
     return okay;
 }
@@ -2022,7 +2023,7 @@ static bool query_consume_ownership( item &target, player &p )
     if( !target.is_owned_by( p, true ) ) {
         bool choice = true;
         if( p.get_value( "THIEF_MODE" ) == "THIEF_ASK" ) {
-            choice = pickup::query_thief();
+            choice = Pickup::query_thief();
         }
         if( p.get_value( "THIEF_MODE" ) == "THIEF_HONEST" || !choice ) {
             return false;
@@ -2129,7 +2130,7 @@ bool player::consume( item_location loc )
             }
         }
     } else if( inv_item ) {
-        if( pickup::handle_spillable_contents( *this, target, g->m ) ) {
+        if( Pickup::handle_spillable_contents( *this, target, g->m ) ) {
             i_rem( &target );
         }
         inv.restack( *this );
@@ -3055,9 +3056,9 @@ bool player::add_or_drop_with_msg( item &it, const bool unloading )
     it.charges = this->i_add_to_container( it, unloading );
     if( it.is_ammo() && it.charges == 0 ) {
         return true;
-    } else if( !this->can_pick_volume( it ) ) {
+    } else if( !this->can_pickVolume( it ) ) {
         put_into_vehicle_or_drop( *this, item_drop_reason::too_large, { it } );
-    } else if( !this->can_pick_weight( it, !get_option<bool>( "DANGEROUS_PICKUPS" ) ) ) {
+    } else if( !this->can_pickWeight( it, !get_option<bool>( "DANGEROUS_PICKUPS" ) ) ) {
         put_into_vehicle_or_drop( *this, item_drop_reason::too_heavy, { it } );
     } else {
         auto &ni = this->i_add( it );
@@ -4370,7 +4371,7 @@ void player::environmental_revert_effect()
     morale->clear();
 
     set_all_parts_hp_to_max();
-    set_stored_kcal( max_stored_kcal() );
+    set_hunger( 0 );
     set_thirst( 0 );
     set_fatigue( 0 );
     set_healthy( 0 );

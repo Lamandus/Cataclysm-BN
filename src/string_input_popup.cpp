@@ -371,7 +371,6 @@ const std::string &string_input_popup::query_string( const bool loop, const bool
         const std::string action = ctxt->handle_input();
         const input_event ev = ctxt->get_raw_input();
         ch = ev.type == CATA_INPUT_KEYBOARD ? ev.get_first_input() : 0;
-        _handled = true;
 
         if( callbacks[ch] ) {
             if( callbacks[ch]() ) {
@@ -379,8 +378,10 @@ const std::string &string_input_popup::query_string( const bool loop, const bool
             }
         }
 
-        if( _ignore_custom_actions && action != "ANY_INPUT" ) {
-            _handled = false;
+        // This class only registers the ANY_INPUT action by default. If the
+        // client provides their own input_context with registered actions
+        // besides ANY_INPUT, ignore those so that the client may handle them.
+        if( action != "ANY_INPUT" ) {
             continue;
         }
 
@@ -404,25 +405,15 @@ const std::string &string_input_popup::query_string( const bool loop, const bool
             }
             return _text;
         } else if( ch == KEY_UP ) {
-            if( !_identifier.empty() ) {
-                if( _hist_use_uilist ) {
-                    show_history( ret );
-                } else {
-                    update_input_history( ret, true );
-                }
+            if( _hist_use_uilist ) {
+                show_history( ret );
             } else {
-                _handled = false;
+                update_input_history( ret, true );
             }
-        } else if( ch == KEY_DOWN ) {
-            if( !_identifier.empty() ) {
-                if( !_hist_use_uilist ) {
-                    update_input_history( ret, false );
-                }
-            } else {
-                _handled = false;
-            }
+        } else if( ch == KEY_DOWN && !_hist_use_uilist ) {
+            update_input_history( ret, false );
         } else if( ch == KEY_DOWN || ch == KEY_NPAGE || ch == KEY_PPAGE || ch == KEY_BTAB || ch == 9 ) {
-            _handled = false;
+            /* absolutely nothing */
         } else if( ch == KEY_RIGHT ) {
             if( _position + 1 <= static_cast<int>( ret.size() ) ) {
                 _position++;
@@ -474,8 +465,6 @@ const std::string &string_input_popup::query_string( const bool loop, const bool
         } else if( ev.edit.empty() ) {
             edit.erase( 0 );
             ctxt->set_edittext( edit.c_str() );
-        } else {
-            _handled = false;
         }
     } while( loop );
     _text = ret.str();

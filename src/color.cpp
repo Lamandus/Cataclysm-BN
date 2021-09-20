@@ -89,23 +89,19 @@ void color_manager::finalize()
     }
 }
 
-nc_color color_manager::name_to_color( const std::string &name,
-                                       const report_color_error color_error ) const
+nc_color color_manager::name_to_color( const std::string &name ) const
 {
-    const color_id id = name_to_id( name, color_error );
-    const color_struct &entry = color_array[id];
+    const auto id = name_to_id( name );
+    auto &entry = color_array[id];
 
     return entry.custom > 0 ? entry.custom : entry.color;
 }
 
-color_id color_manager::name_to_id( const std::string &name,
-                                    const report_color_error color_error ) const
+color_id color_manager::name_to_id( const std::string &name ) const
 {
     auto iter = name_map.find( name );
     if( iter == name_map.end() ) {
-        if( color_error == report_color_error::yes ) {
-            debugmsg( "couldn't parse color: %s", name );
-        }
+        debugmsg( "couldn't parse color: %s", name );
         return def_c_unset;
     }
 
@@ -549,8 +545,7 @@ nc_color cyan_background( const nc_color &c )
  * @param color The color to get, as a std::string.
  * @return The nc_color constant that matches the input.
  */
-nc_color color_from_string( const std::string &color,
-                            const report_color_error color_error )
+nc_color color_from_string( const std::string &color )
 {
     if( color.empty() ) {
         return c_unset;
@@ -566,14 +561,12 @@ nc_color color_from_string( const std::string &color,
         while( ( pos = new_color.find( i.second, pos ) ) != std::string::npos ) {
             new_color.replace( pos, i.second.length(), i.first );
             pos += i.first.length();
-            if( color_error == report_color_error::yes ) {
-                debugmsg( "Deprecated foreground color suffix was used: (%s) in (%s).  Please update mod that uses that.",
-                          i.second, color );
-            }
+            debugmsg( "Deprecated foreground color suffix was used: (%s) in (%s).  Please update mod that uses that.",
+                      i.second, color );
         }
     }
 
-    const nc_color col = all_colors.name_to_color( new_color, color_error );
+    const nc_color col = all_colors.name_to_color( new_color );
     if( col > 0 ) {
         return col;
     }
@@ -626,8 +619,7 @@ nc_color bgcolor_from_string( const std::string &color )
     return i_white;
 }
 
-color_tag_parse_result get_color_from_tag( const std::string &s,
-        const report_color_error color_error )
+color_tag_parse_result get_color_from_tag( const std::string &s )
 {
     if( s.empty() || s[0] != '<' ) {
         return { color_tag_parse_result::non_color_tag, {} };
@@ -643,12 +635,7 @@ color_tag_parse_result get_color_from_tag( const std::string &s,
         return { color_tag_parse_result::non_color_tag, {} };
     }
     std::string color_name = s.substr( 7, tag_close - 7 );
-    const nc_color color = color_from_string( color_name, color_error );
-    if( color != c_unset ) {
-        return { color_tag_parse_result::open_color_tag, color };
-    } else {
-        return { color_tag_parse_result::non_color_tag, color };
-    }
+    return { color_tag_parse_result::open_color_tag, color_from_string( color_name ) };
 }
 
 std::string get_tag_from_color( const nc_color &color )
@@ -735,8 +722,7 @@ void color_manager::show_gui()
     const int iHeaderHeight = 4;
     int iContentHeight = 0;
 
-    int iOffsetX = 0;
-    int iOffsetY = 0;
+    point iOffset;
 
     std::vector<int> vLines;
     vLines.push_back( -1 );
@@ -756,15 +742,15 @@ void color_manager::show_gui()
     const auto init_windows = [&]( ui_adaptor & ui ) {
         iContentHeight = FULL_SCREEN_HEIGHT - 2 - iHeaderHeight;
 
-        iOffsetX = TERMX > FULL_SCREEN_WIDTH ? ( TERMX - FULL_SCREEN_WIDTH ) / 2 : 0;
-        iOffsetY = calc_offset_y();
+        iOffset.x = TERMX > FULL_SCREEN_WIDTH ? ( TERMX - FULL_SCREEN_WIDTH ) / 2 : 0;
+        iOffset.y = calc_offset_y();
 
         w_colors_border = catacurses::newwin( FULL_SCREEN_HEIGHT, FULL_SCREEN_WIDTH,
-                                              point( iOffsetX, iOffsetY ) );
+                                              iOffset );
         w_colors_header = catacurses::newwin( iHeaderHeight, FULL_SCREEN_WIDTH - 2,
-                                              point( 1 + iOffsetX, 1 + iOffsetY ) );
+                                              iOffset + point_south_east );
         w_colors = catacurses::newwin( iContentHeight, FULL_SCREEN_WIDTH - 2,
-                                       point( 1 + iOffsetX, iHeaderHeight + 1 + iOffsetY ) );
+                                       iOffset + point( 1, iHeaderHeight + 1 ) );
 
         ui.position_from_window( w_colors_border );
     };

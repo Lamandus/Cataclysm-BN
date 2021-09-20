@@ -6,7 +6,6 @@
 #include <string>
 #include <utility>
 
-#include "avatar_action.h"
 #include "activity_handlers.h" // put_into_vehicle_or_drop and drop_on_map
 #include "advanced_inv.h"
 #include "avatar.h"
@@ -21,7 +20,6 @@
 #include "iexamine.h"
 #include "int_id.h"
 #include "item.h"
-#include "item_group.h"
 #include "item_location.h"
 #include "json.h"
 #include "line.h"
@@ -30,12 +28,10 @@
 #include "mapdata.h"
 #include "npc.h"
 #include "output.h"
-#include "options.h"
 #include "pickup.h"
 #include "player.h"
 #include "player_activity.h"
 #include "point.h"
-#include "ranged.h"
 #include "rng.h"
 #include "sounds.h"
 #include "timed_event.h"
@@ -45,6 +41,8 @@
 
 static const skill_id skill_computer( "computer" );
 
+<<<<<<< HEAD
+=======
 static const mtype_id mon_zombie( "mon_zombie" );
 static const mtype_id mon_zombie_fat( "mon_zombie_fat" );
 static const mtype_id mon_zombie_rot( "mon_zombie_rot" );
@@ -467,6 +465,45 @@ std::unique_ptr<activity_actor> dig_channel_activity_actor::deserialize( JsonIn 
     return actor.clone();
 }
 
+drop_activity_actor::drop_activity_actor( Character &ch, const drop_locations &items,
+        bool force_ground, const tripoint &relpos )
+    : force_ground( force_ground ), relpos( relpos )
+{
+    this->items = pickup::reorder_for_dropping( ch, items );
+}
+
+void drop_activity_actor::start( player_activity &act, Character & )
+{
+    // Set moves_left to value other than zero to indicate ongoing activity
+    act.moves_total = 1;
+    act.moves_left = 1;
+}
+
+void drop_activity_actor::serialize( JsonOut &jsout ) const
+{
+    jsout.start_object();
+
+    jsout.member( "items", items );
+    jsout.member( "force_ground", force_ground );
+    jsout.member( "relpos", relpos );
+
+    jsout.end_object();
+}
+
+std::unique_ptr<activity_actor> drop_activity_actor::deserialize( JsonIn &jsin )
+{
+    drop_activity_actor actor;
+
+    JsonObject data = jsin.get_object();
+
+    data.read( "items", actor.items );
+    data.read( "force_ground", actor.force_ground );
+    data.read( "relpos", actor.relpos );
+
+    return actor.clone();
+}
+
+>>>>>>> upstream/upload
 void hacking_activity_actor::start( player_activity &act, Character & )
 {
     act.moves_total = to_moves<int>( 5_minutes );
@@ -672,7 +709,7 @@ void move_items_activity_actor::do_turn( player_activity &act, Character &who )
             }
             const tripoint src = target.position();
             const int distance = src.z == dest.z ? std::max( rl_dist( src, dest ), 1 ) : 1;
-            who.mod_moves( -pickup::cost_to_move_item( who, newit ) * distance );
+            who.mod_moves( -Pickup::cost_to_move_item( who, newit ) * distance );
             if( to_vehicle ) {
                 put_into_vehicle_or_drop( who, item_drop_reason::deliberate, { newit }, dest );
             } else {
@@ -737,7 +774,7 @@ void pickup_activity_actor::do_turn( player_activity &, Character &who )
     const bool autopickup = who.activity.auto_resume;
 
     // False indicates that the player canceled pickup when met with some prompt
-    const bool keep_going = pickup::do_pickup( target_items, autopickup );
+    const bool keep_going = Pickup::do_pickup( target_items, quantities, autopickup );
 
     // If there are items left we ran out of moves, so continue the activity
     // Otherwise, we are done.
@@ -762,6 +799,7 @@ void pickup_activity_actor::serialize( JsonOut &jsout ) const
     jsout.start_object();
 
     jsout.member( "target_items", target_items );
+    jsout.member( "quantities", quantities );
     jsout.member( "starting_pos", starting_pos );
 
     jsout.end_object();
@@ -769,11 +807,12 @@ void pickup_activity_actor::serialize( JsonOut &jsout ) const
 
 std::unique_ptr<activity_actor> pickup_activity_actor::deserialize( JsonIn &jsin )
 {
-    pickup_activity_actor actor( {}, cata::nullopt );
+    pickup_activity_actor actor( {}, {}, cata::nullopt );
 
     JsonObject data = jsin.get_object();
 
     data.read( "target_items", actor.target_items );
+    data.read( "quantities", actor.quantities );
     data.read( "starting_pos", actor.starting_pos );
 
     return actor.clone();
@@ -809,8 +848,8 @@ std::unique_ptr<activity_actor> migration_cancel_activity_actor::deserialize( Js
 
 void open_gate_activity_actor::start( player_activity &act, Character & )
 {
-    act.moves_total = moves_total;
-    act.moves_left = moves_total;
+    act.moves_total = moves;
+    act.moves_left = moves;
 }
 
 void open_gate_activity_actor::finish( player_activity &act, Character & )
@@ -823,7 +862,7 @@ void open_gate_activity_actor::serialize( JsonOut &jsout ) const
 {
     jsout.start_object();
 
-    jsout.member( "moves", moves_total );
+    jsout.member( "moves", moves );
     jsout.member( "placement", placement );
 
     jsout.end_object();
@@ -835,8 +874,71 @@ std::unique_ptr<activity_actor> open_gate_activity_actor::deserialize( JsonIn &j
 
     JsonObject data = jsin.get_object();
 
-    data.read( "moves", actor.moves_total );
+    data.read( "moves", actor.moves );
     data.read( "placement", actor.placement );
+
+    return actor.clone();
+}
+
+void wash_activity_actor::start( player_activity &act, Character & )
+{
+    act.moves_total = moves_total;
+    act.moves_left = moves_total;
+}
+
+stash_activity_actor::stash_activity_actor( Character &ch, const drop_locations &items,
+        const tripoint &relpos ) : relpos( relpos )
+{
+    this->items = pickup::reorder_for_dropping( ch, items );
+}
+
+void stash_activity_actor::start( player_activity &act, Character & )
+{
+    // Set moves_left to value other than zero to indicate ongoing activity
+    act.moves_total = 1;
+    act.moves_left = 1;
+}
+
+void stash_activity_actor::serialize( JsonOut &jsout ) const
+{
+    jsout.start_object();
+
+    jsout.member( "items", items );
+    jsout.member( "relpos", relpos );
+
+    jsout.end_object();
+}
+
+std::unique_ptr<activity_actor> stash_activity_actor::deserialize( JsonIn &jsin )
+{
+    stash_activity_actor actor;
+
+    JsonObject data = jsin.get_object();
+
+    data.read( "items", actor.items );
+    data.read( "relpos", actor.relpos );
+
+    return actor.clone();
+}
+
+void wash_activity_actor::serialize( JsonOut &jsout ) const
+{
+    jsout.start_object();
+
+    jsout.member( "targets", targets );
+    jsout.member( "moves_total", moves_total );
+
+    jsout.end_object();
+}
+
+std::unique_ptr<activity_actor> wash_activity_actor::deserialize( JsonIn &jsin )
+{
+    wash_activity_actor actor;
+
+    JsonObject data = jsin.get_object();
+
+    data.read( "targets", actor.targets );
+    data.read( "moves_total", actor.moves_total );
 
     return actor.clone();
 }
@@ -847,14 +949,20 @@ namespace activity_actors
 // Please keep this alphabetically sorted
 const std::unordered_map<activity_id, std::unique_ptr<activity_actor>( * )( JsonIn & )>
 deserialize_functions = {
+<<<<<<< HEAD
+=======
     { activity_id( "ACT_AIM" ), &aim_activity_actor::deserialize },
     { activity_id( "ACT_DIG" ), &dig_activity_actor::deserialize },
     { activity_id( "ACT_DIG_CHANNEL" ), &dig_channel_activity_actor::deserialize },
+    { activity_id( "ACT_DROP" ), &drop_activity_actor::deserialize },
+>>>>>>> upstream/upload
     { activity_id( "ACT_HACKING" ), &hacking_activity_actor::deserialize },
     { activity_id( "ACT_MIGRATION_CANCEL" ), &migration_cancel_activity_actor::deserialize },
     { activity_id( "ACT_MOVE_ITEMS" ), &move_items_activity_actor::deserialize },
     { activity_id( "ACT_OPEN_GATE" ), &open_gate_activity_actor::deserialize },
     { activity_id( "ACT_PICKUP" ), &pickup_activity_actor::deserialize },
+    { activity_id( "ACT_STASH" ), &stash_activity_actor::deserialize },
+    { activity_id( "ACT_WASH" ), &wash_activity_actor::deserialize },
 };
 } // namespace activity_actors
 

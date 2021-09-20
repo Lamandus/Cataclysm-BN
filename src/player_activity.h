@@ -19,7 +19,6 @@
 #include "point.h"
 #include "type_id.h"
 
-class activity_actor;
 class Character;
 class JsonIn;
 class JsonOut;
@@ -41,8 +40,6 @@ class player_activity
         int moves_total = 0;
         /** The number of moves remaining in this activity before it is complete. */
         int moves_left = 0;
-        /** Controls whether this activity can be cancelled with 'pause' action */
-        bool interruptable_with_kb = true;
 
         // The members in the following block are deprecated, prefer creating a new
         // activity_actor.
@@ -73,7 +70,6 @@ class player_activity
         // TODO: delete this constructor once migration to the activity_actor system is complete
         player_activity( activity_id, int turns = 0, int Index = -1, int pos = INT_MIN,
                          const std::string &name_in = "" );
-        ~player_activity();
         /**
          * Create a new activity with the given actor
          */
@@ -126,15 +122,12 @@ class player_activity
         // used to migrate the item indices to item_location
         // obsolete after 0.F stable
         void migrate_item_position( Character &guy );
-        /** Convert from the old enumeration to the new string_id */
-        void deserialize_legacy_type( int legacy_type, activity_id &dest );
 
         /**
-         * Preform necessary initialization to start or resume the activity. Must be
+         * Preform necessary initialization to start the activity. Must be
          * called whenever a Character starts a new activity.
-         * When resuming an activity, do not call activity_actor::start
          */
-        void start_or_resume( Character &who, bool resuming );
+        void start( Character &who );
 
         /**
          * Performs the activity for a single turn. If the activity is complete
@@ -142,11 +135,6 @@ class player_activity
          * any, are needed to conclude the activity.
          */
         void do_turn( player &p );
-
-        /**
-         * Performs activity-specific cleanup when Character::cancel_activity() is called
-         */
-        void canceled( Character &who );
 
         /**
          * Returns true if activities are similar enough that this activity

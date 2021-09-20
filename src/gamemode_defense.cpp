@@ -135,7 +135,7 @@ void defense_game::per_turn()
         g->u.set_thirst( 0 );
     }
     if( !hunger ) {
-        g->u.set_stored_kcal( g->u.max_stored_kcal() );
+        g->u.set_hunger( 0 );
     }
     if( !sleep ) {
         g->u.set_fatigue( 0 );
@@ -879,9 +879,9 @@ void defense_game::caravan()
     ui.on_screen_resize( [&]( ui_adaptor & ui ) {
         const int width = FULL_SCREEN_WIDTH;
         const int height = FULL_SCREEN_HEIGHT;
-        const int offsetx = std::max( 0, TERMX - FULL_SCREEN_WIDTH ) / 2;
-        const int offsety = std::max( 0, TERMY - FULL_SCREEN_HEIGHT ) / 2;
-        w = catacurses::newwin( height, width, point( offsetx, offsety ) );
+        const point offset( std::max( 0, TERMX - FULL_SCREEN_WIDTH ) / 2, std::max( 0,
+                            TERMY - FULL_SCREEN_HEIGHT ) / 2 );
+        w = catacurses::newwin( height, width, offset );
         ui.position_from_window( w );
     } );
     ui.mark_resize();
@@ -1061,7 +1061,7 @@ void defense_game::caravan()
             }
 
             for( int j = 0; j < item_count[0][i]; j++ ) {
-                if( g->u.can_pick_volume( tmp ) && g->u.can_pick_weight( tmp ) ) {
+                if( g->u.can_pickVolume( tmp ) && g->u.can_pickWeight( tmp ) ) {
                     g->u.i_add( tmp );
                 } else { // Could fit it in the inventory!
                     dropped_some = true;

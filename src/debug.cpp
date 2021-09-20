@@ -39,7 +39,6 @@
 #include "output.h"
 #include "path_info.h"
 #include "point.h"
-#include "sdl_wrappers.h"
 #include "string_utils.h"
 #include "translations.h"
 #include "type_id.h"
@@ -67,6 +66,14 @@
 #       include <unistd.h>
 #   endif
 #endif
+
+#if defined(TILES)
+#   if defined(_MSC_VER) && defined(USE_VCPKG)
+#       include <SDL2/SDL.h>
+#   else
+#       include <SDL.h>
+#   endif
+#endif // TILES
 
 #if defined(__ANDROID__)
 // used by android_version() function for __system_property_get().
@@ -179,9 +186,8 @@ static void debug_error_prompt(
             " DEBUG    : %s\n\n"
             " FUNCTION : %s\n"
             " FILE     : %s\n"
-            " LINE     : %s\n"
-            " VERSION  : BN %s\n",
-            text, funcname, filename, line, getVersionString()
+            " LINE     : %s\n",
+            text, funcname, filename, line
         );
 
 #if defined(BACKTRACE)

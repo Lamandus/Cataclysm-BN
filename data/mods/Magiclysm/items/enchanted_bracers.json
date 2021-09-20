@@ -12,7 +12,7 @@
     "material": [ "steel", "leather" ],
     "symbol": "[",
     "color": "light_gray",
-    "covers": [ "arms" ],
+    "covers": [ "ARMS" ],
     "coverage": 45,
     "encumbrance": 10,
     "warmth": 10,
@@ -26,7 +26,7 @@
     "name": { "str": "steel bracer" },
     "weight": "770 g",
     "volume": "1250 ml",
-    "covers": [ "arm_either" ]
+    "covers": [ "ARM_EITHER" ]
   },
   {
     "copy-from": "mbracer_steel_single",

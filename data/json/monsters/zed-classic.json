@@ -42,8 +42,7 @@
       "NO_BREATHE",
       "REVIVES",
       "PUSH_MON",
-      "FILTHY",
-      "NO_FUNG_DMG"
+      "FILTHY"
     ]
   },
   {
@@ -73,7 +72,6 @@
     "special_attacks": [ { "type": "bite", "cooldown": 5 }, [ "GRAB", 7 ], [ "scratch", 20 ] ],
     "death_drops": "default_zombie_death_drops",
     "death_function": [ "NORMAL" ],
-    "fungalize_into": "mon_zombie_fungus",
     "burn_into": "mon_zombie_scorched",
     "upgrades": { "half_life": 14, "into_group": "GROUP_ZOMBIE_UPGRADE" },
     "flags": [
@@ -123,7 +121,6 @@
     "special_attacks": [ [ "GRAB", 7 ], [ "scratch", 20 ] ],
     "death_drops": "mon_zombie_cop_death_drops",
     "death_function": [ "NORMAL" ],
-    "fungalize_into": "mon_zombie_fungus",
     "burn_into": "mon_zombie_scorched",
     "flags": [
       "SEES",
@@ -213,7 +210,6 @@
     "special_attacks": [ [ "DANCE", 30 ] ],
     "death_drops": "mon_zombie_hulk_death_drops",
     "death_function": [ "NORMAL" ],
-    "fungalize_into": "mon_zombie_fungus",
     "regenerates": 50,
     "flags": [ "WARM", "BASHES", "DESTROYS", "NO_BREATHE", "POISON", "FILTHY" ]
   },
@@ -246,7 +242,6 @@
     "special_attacks": [ { "type": "bite", "cooldown": 5, "min_mul": 0.75, "//": "Fat zombies have stronger jaws" }, [ "scratch", 20 ] ],
     "death_drops": "default_zombie_death_drops",
     "death_function": [ "NORMAL" ],
-    "fungalize_into": "mon_zombie_fungus",
     "burn_into": "mon_zombie_scorched",
     "upgrades": { "half_life": 10, "into_group": "GROUP_ZOMBIE_FAT" },
     "flags": [
@@ -310,8 +305,7 @@
       "NO_BREATHE",
       "REVIVES",
       "PUSH_MON",
-      "FILTHY",
-      "NO_FUNG_DMG"
+      "FILTHY"
     ]
   },
   {
@@ -357,8 +351,7 @@
       "NO_BREATHE",
       "REVIVES",
       "PUSH_MON",
-      "FILTHY",
-      "NO_FUNG_DMG"
+      "FILTHY"
     ]
   },
   {
@@ -388,7 +381,6 @@
     "special_attacks": [ { "type": "bite", "cooldown": 2, "accuracy": 3, "no_infection_chance": 10 }, [ "GRAB", 7 ], [ "scratch", 20 ] ],
     "death_drops": "default_zombie_death_drops",
     "death_function": [ "NORMAL" ],
-    "fungalize_into": "mon_zombie_fungus",
     "burn_into": "mon_zombie_scorched",
     "upgrades": { "half_life": 23, "into": "mon_devourer" },
     "flags": [
@@ -487,7 +479,6 @@
     "death_drops": "default_zombie_death_drops",
     "death_function": [ "NORMAL" ],
     "burn_into": "mon_zombie_scorched",
-    "fungalize_into": "mon_zombie_fungus",
     "upgrades": { "half_life": 14, "into_group": "GROUP_ZOMBIE_UPGRADE" },
     "flags": [
       "SEES",

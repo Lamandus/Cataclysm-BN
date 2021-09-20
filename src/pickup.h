@@ -7,21 +7,17 @@
 class item;
 class item_location;
 class Character;
-class JsonIn;
-class JsonOut;
 class map;
 struct tripoint;
 
-namespace pickup
+namespace Pickup
 {
-
-struct pick_drop_selection;
-
 /**
  * Returns `false` if the player was presented a prompt and decided to cancel the pickup.
  * `true` in other cases.
  */
-bool do_pickup( std::vector<pick_drop_selection> &targets, bool autopickup );
+bool do_pickup( std::vector<item_location> &targets, std::vector<int> &quantities,
+                bool autopickup );
 bool query_thief();
 
 enum from_where : int {
@@ -46,6 +42,6 @@ int cost_to_move_item( const Character &who, const item &it );
  * @param m map they are on
  */
 bool handle_spillable_contents( Character &c, item &it, map &m );
-} // namespace pickup
+} // namespace Pickup
 
 #endif // CATA_SRC_PICKUP_H
