@@ -809,7 +809,7 @@
     "volume": "250 ml",
     "phase": "liquid",
     "flags": [ "EATEN_COLD" ],
-    "//": "most store-bought oj is fortified with calcium.",
+    "//2": "most store-bought oj is fortified with calcium.",
     "vitamins": [ [ "vitA", 2 ], [ "vitC", 146 ], [ "calcium", 28 ], [ "iron", 2 ] ],
     "fun": 3
   },
