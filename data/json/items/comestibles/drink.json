@@ -333,6 +333,7 @@
   {
     "type": "COMESTIBLE",
     "id": "cranberry_juice",
+    "//": "should not be obsoleted together with its recipe, because generic juice spawns as juice.",
     "name": "cranberry juice",
     "weight": "250 g",
     "color": "magenta",
@@ -789,6 +790,7 @@
   {
     "type": "COMESTIBLE",
     "id": "oj",
+    "//": "should not be obsoleted together with its recipe, because generic juice spawns as juice.",
     "name": "orange juice",
     "weight": "263 g",
     "color": "yellow",
