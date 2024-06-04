@@ -3386,6 +3386,12 @@
   {
     "type": "recipe",
     "result": "cranberry_juice",
+    "id_suffix": "jarred",
+    "obsolete": true
+  };
+  {
+    "type": "recipe",
+    "result": "cranberry_juice",
     "id_suffix": "jarred_3l",
     "obsolete": true
   }
