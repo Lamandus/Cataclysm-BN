@@ -261,7 +261,8 @@
       [ "recharge_station", 10 ],
       [ "tarp", 15 ],
       [ "tempered_glass_sheet", 25 ],
-      [ "rigid_plastic_sheet", 30 ]
+      [ "rigid_plastic_sheet", 30 ],
+      [ "trash_can_empty", 25 ]
     ]
   },
   {
@@ -446,6 +447,18 @@
       [ "pump_complex", 10 ],
       [ "well_pump", 50 ]
     ]
+  },
+  {
+    "id": "spares_drivebelts",
+    "type": "item_group",
+    "//": "belts used for the MISSION_GET_DRIVEBELTS quest",
+    "items": [ [ "drivebelt", 200 ], [ "drivebelt_makeshift", 100 ] ]
+  },
+  {
+    "id": "blankets",
+    "type": "item_group",
+    "//": "Blankets used for the MISSION_LUMBERMILL_GET_6_BLANKETS quest",
+    "items": [ [ "blanket", 100 ], [ "fur_blanket", 100 ], [ "electric_blanket", 100 ], [ "down_blanket", 100 ] ]
   },
   {
     "id": "file_room",
