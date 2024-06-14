@@ -6188,7 +6188,10 @@ static int phys_resist( const item &it, damage_type dt, clothing_mod_type cmt,
             base_resistance = iter->second;
         }
 
-        float damaged_resistance = base_resistance * eff_thickness / it.get_thickness();
+        // We can have 0 thickness items, so need to check for it to ensure we don't get NaN in calcs
+        const int thickness = it.get_thickness();
+        const float damaged_resistance = ( thickness == 0 ) ? 0.0f : base_resistance * eff_thickness /
+                                         thickness;
 
         return std::lround( damaged_resistance + mod );
     }
@@ -9916,11 +9919,15 @@ detached_ptr<item> item::process_internal( detached_ptr<item> &&self, player *ca
     }
     // All foods that go bad have temperature
     if( ( self->is_food() || self->is_corpse() ) ) {
-        bool comestible = self->is_comestible();
         item &obj = *self;
         self = process_rot( std::move( self ), seals, pos, carrier, flag, weather_generator );
-        if( comestible && !self ) {
-            here.rotten_item_spawn( obj, pos );
+        // If the item has rotted away, then self becomes a null pointer.
+        if( !self ) {
+            if( obj.is_comestible() ) {
+                here.rotten_item_spawn( obj, pos );
+            } else if( obj.is_corpse() ) {
+                here.handle_decayed_corpse( obj, pos );
+            }
         }
     }
     return std::move( self );
@@ -10122,6 +10129,11 @@ std::string item::type_name( unsigned int quantity ) const
     }
 
     return ret_name;
+}
+
+const mtype *item::get_corpse_mon() const
+{
+    return corpse;
 }
 
 std::string item::get_corpse_name()
