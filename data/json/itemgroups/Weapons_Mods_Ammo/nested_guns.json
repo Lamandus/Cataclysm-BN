@@ -27,13 +27,26 @@
     ]
   },
   {
+    "id": "nested_glock_20",
+    "type": "item_group",
+    "//": "this is a distribution for the gun, reasonable number of backup mags, and some ammo to repack",
+    "subtype": "collection",
+    "ammo": 100,
+    "entries": [
+      { "item": "glock_20", "ammo-group": "on_hand_10mm", "charges": [ 0, 15 ] },
+      { "group": "nested_glock20_mag" },
+      { "group": "nested_glock20_mag", "prob": 50 },
+      { "group": "on_hand_10mm" }
+    ]
+  },
+  {
     "id": "nested_glock_21",
     "type": "item_group",
     "//": "this is a distribution for the gun, reasonable number of backup mags, and some ammo to repack",
     "subtype": "collection",
     "ammo": 100,
     "entries": [
-      { "item": "glock_21", "ammo-group": "on_hand_45", "charges": [ 0, 15 ] },
+      { "item": "glock_21", "ammo-group": "on_hand_45", "charges": [ 0, 13 ] },
       { "group": "nested_glock21_mag" },
       { "group": "nested_glock21_mag", "prob": 50 },
       { "group": "on_hand_45" }
@@ -63,6 +76,19 @@
       { "group": "nested_glock22_mag" },
       { "group": "nested_glock22_mag", "prob": 50 },
       { "group": "on_hand_357sig" }
+    ]
+  },
+  {
+    "id": "nested_asr_10mm",
+    "type": "item_group",
+    "//": "this is a distribution for the gun, reasonable number of backup mags, and some ammo to repack",
+    "subtype": "collection",
+    "ammo": 100,
+    "entries": [
+      { "item": "asr_10mm", "ammo-group": "on_hand_10mm", "charges": [ 0, 15 ] },
+      { "group": "nested_glock20_mag" },
+      { "group": "nested_glock20_mag", "prob": 50 },
+      { "group": "on_hand_10mm" }
     ]
   },
   {
@@ -1183,6 +1209,32 @@
       { "group": "nested_m9_mag" },
       { "group": "nested_m9_mag", "prob": 50 },
       { "group": "on_hand_9mm" }
+    ]
+  },
+  {
+    "id": "nested_mkg_guard",
+    "type": "item_group",
+    "//": "this is a distribution for the gun, reasonable number of backup mags, and some ammo to repack",
+    "subtype": "collection",
+    "ammo": 100,
+    "entries": [
+      { "item": "mkg_guard", "ammo-group": "on_hand_45", "charges": [ 0, 13 ] },
+      { "group": "nested_glock21_mag" },
+      { "group": "nested_glock21_mag", "prob": 50 },
+      { "group": "on_hand_45" }
+    ]
+  },
+  {
+    "id": "nested_mkg_banshee",
+    "type": "item_group",
+    "//": "this is a distribution for the gun, reasonable number of backup mags, and some ammo to repack",
+    "subtype": "collection",
+    "ammo": 100,
+    "entries": [
+      { "item": "mkg_banshee", "ammo-group": "on_hand_40", "charges": [ 0, 15 ] },
+      { "group": "nested_glock22_mag" },
+      { "group": "nested_glock22_mag", "prob": 50 },
+      { "group": "on_hand_40" }
     ]
   },
   {
