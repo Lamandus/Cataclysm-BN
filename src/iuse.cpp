@@ -2540,7 +2540,7 @@ struct digging_moves_and_byproducts {
 };
 
 static digging_moves_and_byproducts dig_pit_moves_and_byproducts( player *p, item *it, bool deep,
-        bool channel )
+        bool channel, const tripoint &pos )
 {
     // Vastly simplified version of DDA's version, which had a 77-line-long explanation.
     //
@@ -2579,7 +2579,7 @@ static digging_moves_and_byproducts dig_pit_moves_and_byproducts( player *p, ite
         result_terrain = deep ? ter_id( "t_pit" ) : ter_id( "t_pit_shallow" );
     }
 
-    return { moves, static_cast<int>( dig_minutes / 15 ), "digging_soil_loam_50L", result_terrain };
+    return { moves, static_cast<int>( dig_minutes / 15 ), g->m.ter( pos )->digging_result, result_terrain };
 }
 
 int iuse::dig( player *p, item *it, bool t, const tripoint & )
@@ -2658,7 +2658,7 @@ int iuse::dig( player *p, item *it, bool t, const tripoint & )
     }
 
     digging_moves_and_byproducts moves_and_byproducts = dig_pit_moves_and_byproducts( p, it,
-            can_deepen, false );
+            can_deepen, false, dig_point );
 
     const std::vector<npc *> helpers = character_funcs::get_crafting_helpers( *p, 3 );
     for( const npc *np : helpers ) {
@@ -2725,7 +2725,7 @@ int iuse::dig_channel( player *p, item *it, bool t, const tripoint & )
     }
 
     digging_moves_and_byproducts moves_and_byproducts = dig_pit_moves_and_byproducts( p, it, false,
-            true );
+            true, dig_point );
 
     const std::vector<npc *> helpers = character_funcs::get_crafting_helpers( *p, 3 );
     for( const npc *np : helpers ) {
@@ -3145,7 +3145,9 @@ int iuse::jackhammer( player *p, item *it, bool, const tripoint &pos )
         return 0;
     }
 
-    int moves = to_moves<int>( 30_minutes );
+    // Base time of 30 minutes at 8 strength
+    int moves = to_moves<int>( 10_minutes );
+    moves += ( 24 - std::min( p->str_cur, 24 ) ) * to_moves<int>( 75_seconds );
     if( g->m.move_cost( pnt ) == 2 ) {
         // We're breaking up some flat surface like pavement, which is much easier
         moves /= 2;
@@ -3235,8 +3237,9 @@ int iuse::pickaxe( player *p, item *it, bool, const tripoint &pos )
         return 0;
     }
 
-    int moves = to_moves<int>( 20_minutes );
-    moves += ( ( MAX_STAT + 4 ) - std::min( p->str_cur, MAX_STAT ) ) * to_moves<int>( 5_minutes );
+    // Base time of 90 minutes at 8 strength
+    int moves = to_moves<int>( 30_minutes );
+    moves += ( 24 - std::min( p->str_cur, 24 ) ) * to_moves<int>( 225_seconds );
     if( g->m.move_cost( pnt ) == 2 ) {
         // We're breaking up some flat surface like pavement, which is much easier
         moves /= 2;
@@ -3289,12 +3292,21 @@ int iuse::burrow( player *p, item *it, bool, const tripoint &pos )
         return 0;
     }
 
-    int moves = to_moves<int>( 5_minutes );
-    moves += ( ( MAX_STAT + 3 ) - std::min( p->str_cur, MAX_STAT ) ) * to_moves<int>( 2_minutes );
+    // Base time of 60 minutes at 8 strength
+    int moves = to_moves<int>( 20_minutes );
+    moves += ( 24 - std::min( p->str_cur, 24 ) ) * to_moves<int>( 150_seconds );
     if( g->m.move_cost( pnt ) == 2 ) {
         // We're breaking up some flat surface like pavement, which is much easier
         moves /= 2;
     }
+
+    // For consistency, makes as much sense as NPCs helping you mine faster when you're the only one with the tool
+    const std::vector<npc *> helpers = character_funcs::get_crafting_helpers( *p, 3 );
+    for( const npc *np : helpers ) {
+        add_msg( m_info, _( "%s helps with this task…" ), np->name );
+    }
+    moves = moves * ( 10 - helpers.size() ) / 10;
+
     p->assign_activity( ACT_BURROW, moves, -1, 0 );
     p->activity->placement = pnt;
     p->add_msg_if_player( _( "You start tearing into the %1$s with your %2$s." ),
