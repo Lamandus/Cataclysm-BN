@@ -22,6 +22,7 @@
 #include "bionics.h"
 #include "cata_utility.h"
 #include "catacharset.h"
+#include "cata_tiles.h"
 #include "character.h"
 #include "character_martial_arts.h"
 #include "color.h"
@@ -35,6 +36,7 @@
 #include "int_id.h"
 #include "inventory.h"
 #include "json.h"
+#include "lightmap.h"
 #include "magic.h"
 #include "magic_enchantment.h"
 #include "make_static.h"
@@ -54,6 +56,7 @@
 #include "recipe_dictionary.h"
 #include "rng.h"
 #include "scenario.h"
+#include "sdltiles.h"
 #include "skill.h"
 #include "start_location.h"
 #include "string_formatter.h"
@@ -1099,11 +1102,35 @@ tab_direction set_traits( avatar &u, points_left &points )
     ui_adaptor ui;
     catacurses::window w;
     catacurses::window w_description;
+    character_preview_window character_preview;
+    character_preview.init( &u );
+    const bool use_character_preview = get_option<bool>( "USE_CHARACTER_PREVIEW" ) &&
+                                       get_option<bool>( "USE_TILES" );
+
     const auto init_windows = [&]( ui_adaptor & ui ) {
+        page_width = std::min( ( TERMX - 4 ) / used_pages, 38 );
+        const int int_page_width = static_cast<int>( page_width );
+
         w = catacurses::newwin( TERMY, TERMX, point_zero );
         w_description = catacurses::newwin( 3, TERMX - 2, point( 1, TERMY - 4 ) );
+
+        if( use_character_preview ) {
+            constexpr int preview_nlines_min = 7;
+            constexpr int preview_ncols_min = 10;
+            const int preview_nlines = std::max( ( TERMY - 9 ) / 3, preview_nlines_min );
+            const int preview_ncols = std::max( ( TERMX - int_page_width * 3 - 4 ) / 3 - 5, preview_ncols_min );
+            constexpr auto orientation = character_preview_window::Orientation{
+                character_preview_window::TOP_RIGHT,
+                character_preview_window::Margin{0, 2, 5, 0}
+            };
+            character_preview.prepare(
+                preview_nlines, preview_ncols,
+                &orientation, int_page_width * 3 + 5
+            );
+        }
+
         ui.position_from_window( w );
-        page_width = std::min( ( TERMX - 4 ) / used_pages, 38 );
+
         iContentHeight = TERMY - 9;
 
         for( int i = 0; i < 3; i++ ) {
@@ -1123,6 +1150,12 @@ tab_direction set_traits( avatar &u, points_left &points )
     ctxt.register_action( "NEXT_TAB" );
     ctxt.register_action( "HELP_KEYBINDINGS" );
     ctxt.register_action( "QUIT" );
+#if defined(TILES)
+    ctxt.register_action( "zoom_in" );
+    ctxt.register_action( "zoom_out" );
+    ctxt.register_action( "TOGGLE_CHARACTER_PREVIEW_CLOTHES" );
+#endif
+
 
     ui.on_redraw( [&]( const ui_adaptor & ) {
         werase( w );
@@ -1224,14 +1257,29 @@ tab_direction set_traits( avatar &u, points_left &points )
             draw_scrollbar( w, iCurrentLine[iCurrentPage], iContentHeight, traits_size[iCurrentPage],
                             point( page_width * iCurrentPage, 5 ) );
         }
-
+        // Draws main window, traits description window and character preview window
         wnoutrefresh( w );
         wnoutrefresh( w_description );
+        // Draws character preview
+        if( use_character_preview ) {
+            character_preview.display();
+        }
     } );
 
     do {
         ui_manager::redraw();
         const std::string action = ctxt.handle_input();
+#if defined(TILES)
+        if( action == "zoom_in" && use_character_preview ) {
+            character_preview.zoom_in();
+        }
+        if( action == "zoom_out" && use_character_preview ) {
+            character_preview.zoom_out();
+        }
+        if( action == "TOGGLE_CHARACTER_PREVIEW_CLOTHES" && use_character_preview ) {
+            character_preview.toggle_clothes();
+        }
+#endif
         if( action == "LEFT" ) {
             iCurWorkingPage--;
             if( iCurWorkingPage < 0 ) {
@@ -1320,10 +1368,13 @@ tab_direction set_traits( avatar &u, points_left &points )
 
             recalc_display_cache();
         } else if( action == "PREV_TAB" ) {
+            character_preview.clear();
             return tab_direction::BACKWARD;
         } else if( action == "NEXT_TAB" ) {
+            character_preview.clear();
             return tab_direction::FORWARD;
         } else if( action == "QUIT" && query_yn( _( "Return to main menu?" ) ) ) {
+            character_preview.clear();
             return tab_direction::QUIT;
         }
     } while( true );
@@ -3180,6 +3231,146 @@ std::string points_left::to_string()
         return _( "Freeform" );
     }
 }
+
+void character_preview_window::init( Character *character )
+{
+#if defined(TILES)
+    this->character = character;
+
+    // Collecting profession clothes
+    std::vector<detached_ptr<item>> prof_items = character->prof->items( character->male,
+                                 character->get_mutations() );
+    for( detached_ptr<item> &it : prof_items ) {
+        if( it->is_armor() ) {
+            clothes.push_back( std::move( it ) );
+        }
+    }
+    toggle_clothes();
+#endif
+}
+
+void character_preview_window::prepare( const int nlines, const int ncols,
+                                        const Orientation *orientation, const int hide_below_ncols )
+{
+#if defined(TILES)
+    zoom = DEFAULT_ZOOM;
+    tilecontext->set_draw_scale( zoom );
+    termx_pixels = termx_to_pixel_value();
+    termy_pixels = termy_to_pixel_value();
+    this->hide_below_ncols = hide_below_ncols;
+
+    // Trying to ensure that tile will fit in border
+    const int win_width = ncols * termx_pixels;
+    const int win_height = nlines * termy_pixels;
+    int t_width = tilecontext->get_tile_width();
+    int t_height = tilecontext->get_tile_height();
+    while( zoom != MIN_ZOOM && ( win_width < t_width || win_height < t_height ) ) {
+        zoom_out();
+        t_width = tilecontext->get_tile_width();
+        t_height = tilecontext->get_tile_height();
+    }
+
+    // Final size of character preview window
+    const int box_ncols = t_width / termx_pixels + 4;
+    const int box_nlines = t_height / termy_pixels + 3;
+
+    // Setting window just a little bit more than a tile itself
+    point start;
+    switch( orientation->type ) {
+        case( TOP_LEFT ):
+            start = point_zero;
+            break;
+        case( TOP_RIGHT ):
+            start = point{TERMX - box_ncols, 0};
+            break;
+        case( BOTTOM_LEFT ):
+            start = point{0, TERMY - box_nlines};
+            break;
+        case( BOTTOM_RIGHT ):
+            start = point{TERMX - box_ncols, TERMY - box_nlines};
+            break;
+    }
+
+    start.x += orientation->margin.left - orientation->margin.right;
+    start.y += orientation->margin.top - orientation->margin.bottom;
+    w_preview = catacurses::newwin( box_nlines, box_ncols, start );
+    ncols_width = box_ncols;
+    nlines_width = box_nlines;
+    pos = start;
+#endif
+}
+
+point character_preview_window::calc_character_pos() const
+{
+#if defined(TILES)
+    const int t_width = tilecontext->get_tile_width();
+    const int t_height = tilecontext->get_tile_height();
+    return point(
+               pos.x * termx_pixels + ncols_width * termx_pixels / 2 - t_width / 2,
+               pos.y * termy_pixels + nlines_width * termy_pixels / 2 - t_height / 2
+           );
+#endif
+}
+
+void character_preview_window::zoom_in()
+{
+#if defined(TILES)
+    zoom = zoom * 2 % ( MAX_ZOOM * 2 );
+    if( zoom == 0 ) {
+        zoom = MIN_ZOOM;
+    }
+    tilecontext->set_draw_scale( zoom );
+#endif
+}
+
+void character_preview_window::zoom_out()
+{
+#if defined(TILES)
+    zoom = zoom / 2;
+    if( zoom < MIN_ZOOM ) {
+        zoom = MAX_ZOOM;
+    }
+    tilecontext->set_draw_scale( zoom );
+#endif
+}
+
+void character_preview_window::toggle_clothes()
+{
+    if( !show_clothes ) {
+        character->worn_clear();
+    } else {
+        for( detached_ptr<item> &it : clothes ) {
+            character->wear_item( item::spawn( *std::move( it ) ), false );
+        }
+    }
+    show_clothes = !show_clothes;
+}
+
+void character_preview_window::display() const
+{
+#if defined(TILES)
+    // If device width is too small - ignore display
+    if( TERMX - ncols_width < hide_below_ncols ) {
+        return;
+    }
+
+    // Drawing UI across character tile
+    werase( w_preview );
+    draw_border( w_preview, BORDER_COLOR, _( "CHARACTER PREVIEW" ), BORDER_COLOR );
+    wnoutrefresh( w_preview );
+
+    // Drawing character itself
+    const point pos = calc_character_pos();
+    tilecontext->display_character( *character, pos );
+#endif
+}
+
+void character_preview_window::clear() const
+{
+    character->worn_clear();
+    tilecontext->set_draw_scale( DEFAULT_TILESET_ZOOM );
+}
+
 
 namespace newcharacter
 {
