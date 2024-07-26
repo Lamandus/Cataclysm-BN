@@ -4,7 +4,7 @@
     "id": "mil_surplus",
     "terrain": {
       ".": "t_region_groundcover_urban",
-      "!": "t_region_groundcover_barren",
+      "!": "t_region_groundcover_urban",
       "~": "t_sidewalk",
       "-": "t_wall_w",
       "|": "t_wall_w",
