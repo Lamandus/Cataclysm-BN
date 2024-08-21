@@ -1875,9 +1875,9 @@ void item::food_info( const item *food_item, std::vector<iteminfo> &info,
 
     bool show_nutr = parts->test( iteminfo_parts::FOOD_NUTRITION ) ||
                      parts->test( iteminfo_parts::FOOD_VITAMINS );
-    if( min_nutr != max_nutr && show_nutr ) {
+    if( show_nutr && !food_item->has_flag( flag_NUTRIENT_OVERRIDE ) ) {
         info.emplace_back(
-            "FOOD", _( "Nutrition will <color_cyan>vary with chosen ingredients</color>." ) );
+            "FOOD", _( "Nutrition will <color_cyan>vary with available ingredients</color>." ) );
         if( recipe_dict.is_item_on_loop( food_item->typeId() ) ) {
             info.emplace_back(
                 "FOOD", _( "Nutrition range cannot be calculated accurately due to "
@@ -5417,32 +5417,43 @@ std::map<std::string, attack_statblock> item::get_attacks() const
 
     // consider any melee gunmods
     if( is_gun() ) {
-        // TODO: Multiple bayonets with multiple attacks each - add all attacks, resolve id conflicts
-        const std::vector<const item *> &mods = gunmods();
-        float best_damage = 0.0f;
-        const attack_statblock *best = nullptr;
-        for( const item *gunmod_ptr : mods ) {
-            const item &gunmod = *gunmod_ptr;
-            if( gunmod.has_flag( flag_MELEE_GUNMOD ) ) {
-                // TODO: Handle multiple attacks here - add all of them as separate attacks
-                assert( !gunmod.type->attacks.empty() );
-                const attack_statblock &first_attack = gunmod.type->attacks.begin()->second;
-                float damage_sum = std::accumulate( first_attack.damage.begin(), first_attack.damage.end(),
-                                                    0.0f, []( float amount_sum,
-                const damage_unit & du ) {
-                    // Ignore multipliers for now because it's a temporary hack
-                    return amount_sum + du.amount;
-                } );
-                if( damage_sum > best_damage ) {
-                    best = &first_attack;
-                    best_damage = damage_sum;
+        if( get_option<bool>( "LIMITED_BAYONETS" ) ) {
+            // TODO: Multiple bayonets with multiple attacks each - add all attacks, resolve id conflicts
+            const std::vector<const item *> &mods = gunmods();
+            float best_damage = 0.0f;
+            const attack_statblock *best = nullptr;
+            for( const item *gunmod_ptr : mods ) {
+                const item &gunmod = *gunmod_ptr;
+                if( gunmod.has_flag( flag_MELEE_GUNMOD ) ) {
+                    // TODO: Handle multiple attacks here - add all of them as separate attacks
+                    assert( !gunmod.type->attacks.empty() );
+                    const attack_statblock &first_attack = gunmod.type->attacks.begin()->second;
+                    float damage_sum = std::accumulate( first_attack.damage.begin(), first_attack.damage.end(),
+                                                        0.0f, []( float amount_sum,
+                    const damage_unit & du ) {
+                        // Ignore multipliers for now because it's a temporary hack
+                        return amount_sum + du.amount;
+                    } );
+                    if( damage_sum > best_damage ) {
+                        best = &first_attack;
+                        best_damage = damage_sum;
+                    }
                 }
             }
-        }
-        if( best != nullptr ) {
-            attack_statblock gunmod_attack = *best;
-            gunmod_attack.to_hit = type->m_to_hit;
-            result["BAYONET"] = gunmod_attack;
+            if( best != nullptr ) {
+                attack_statblock gunmod_attack = *best;
+                gunmod_attack.to_hit = type->m_to_hit;
+                result["BAYONET"] = gunmod_attack;
+            }
+        } else {
+            // Old logic here - max dmg for each type
+            const std::vector<const item *> &mods = gunmods();
+            for( const item *it : mods ) {
+                const attack_statblock &attack = melee::default_attack( *it );
+                for( auto &dmg : attack.damage ) {
+                    result["DEFAULT"].damage.add( dmg );
+                }
+            }
         }
     }
 
