@@ -1324,7 +1324,8 @@
       [ "haori", 2 ],
       [ "hakama", 4 ],
       [ "eclipse_glasses", 1 ],
-      [ "thermos", 20 ]
+      [ "thermos", 20 ],
+      [ "pirate_flag", 1 ]
     ]
   },
   {
@@ -2315,6 +2316,7 @@
       [ "aep_suit", 4 ],
       [ "armor_scrapsuit", 12 ],
       [ "armor_chitin", 2 ],
+      [ "armor_scute", 2 ],
       [ "armor_acidchitin", 1 ],
       [ "armor_lightplate", 1 ],
       [ "exosuit_survivor", 1 ],

@@ -93,6 +93,7 @@
 #include "ret_val.h"
 #include "rot.h"
 #include "rng.h"
+#include "scores_ui.h"
 #include "skill.h"
 #include "stomach.h"
 #include "string_formatter.h"
@@ -550,6 +551,9 @@ void item::deactivate()
     }
 
     active = false;
+    if( is_tool() ) {
+        type->tool->turns_active = 0;
+    }
 
     // Is not placed in the world, so either a template of some kind or a temporary item.
     if( !has_position() ) {
@@ -1496,7 +1500,7 @@ double item::effective_dps( const player &guy, const monster &mon,
     const float mon_dodge = mon.get_dodge();
     // TODO: Handle multiple attacks
     float base_hit = guy.get_dex() / 4.0f + guy.get_hit_weapon( *this, attack );
-    base_hit *= std::max( 0.25f, 1.0f - guy.encumb( bp_torso ) / 100.0f );
+    base_hit *= std::max( 0.25f, 1.0f - guy.encumb( body_part_torso ) / 100.0f );
     float mon_defense = mon_dodge + mon.size_melee_penalty() / 5.0;
     constexpr double hit_trials = 10000.0;
     const int rng_mean = std::max( std::min( static_cast<int>( base_hit - mon_defense ), 20 ),
@@ -3377,6 +3381,15 @@ void item::bionic_info( std::vector<iteminfo> &info, const iteminfo_query *parts
         info.emplace_back( "CBM", _( "<bold>Power Capacity</bold>:" ), _( " <num> J" ),
                            iteminfo::no_newline,
                            units::to_joule( bid->capacity ) );
+    }
+
+    insert_separation_line( info );
+
+    if( !bid->required_bionics.empty() ) {
+        for( const bionic_id &req_bid : bid->required_bionics ) {
+            info.emplace_back( "CBM", string_format( "* This CBM requires another CBM to also be installed: %s",
+                               req_bid->name ) );
+        }
     }
 
     insert_separation_line( info );
@@ -5572,7 +5585,8 @@ int item::reach_range( const Character &guy ) const
 
 bool item::can_shatter() const
 {
-    return made_of( material_id( "glass" ) ) || has_flag( flag_SHATTERS );
+    static const std::set<material_id> is_glass{ material_id( "glass" ) };
+    return only_made_of( is_glass ) || has_flag( flag_SHATTERS );
 }
 
 void item::unset_flags()
@@ -6894,7 +6908,8 @@ int item::get_reload_time() const
 
 bool item::is_silent() const
 {
-    return gun_noise().volume < 5;
+    // Most guns with a suppressor installed will be under this value, also see item::gun_noise in ranged.cpp
+    return gun_noise().volume < 50;
 }
 
 bool item::is_gunmod() const
@@ -9902,83 +9917,100 @@ detached_ptr<item> item::process_tool( detached_ptr<item> &&self, player *carrie
     }
 
     int energy = 0;
-    if( self->type->tool->turns_per_charge > 0 &&
-        to_turn<int>( calendar::turn ) % self->type->tool->turns_per_charge == 0 ) {
-        energy = std::max( self->ammo_required(), 1 );
-
+    const bool uses_UPS = self->has_flag( flag_USE_UPS );
+    bool revert_destroy = false;
+    if( self->type->tool->turns_per_charge > 0 ) {
+        if( self->type->tool->turns_active >= self->type->tool->turns_per_charge ) {
+            energy = std::max( self->ammo_required(), 1 );
+            self->type->tool->turns_active = 0;
+        }
+        self->type->tool->turns_active += 1;
     } else if( self->type->tool->power_draw > 0 ) {
         // power_draw in mW / 1000000 to give kJ (battery unit) per second
         energy = self->type->tool->power_draw / 1000000;
         // energy_bat remainder results in chance at additional charge/discharge
         energy += x_in_y( self->type->tool->power_draw % 1000000, 1000000 ) ? 1 : 0;
     }
-    energy -= self->ammo_consume( energy, pos );
 
-    // for power armor pieces, try to use power armor interface first.
-    if( carrier && self->is_power_armor() && character_funcs::can_interface_armor( *carrier ) ) {
-        if( carrier->use_charges_if_avail( itype_bio_armor, energy ) ) {
-            energy = 0;
-        }
-    }
+    // If ammo_required is 0 we just skip over this and go to tick processing.
+    if( energy || self->ammo_required() > 0 ) {
+        // No need to look for charges if energy is 0
+        if( energy ) {
+            energy -= self->ammo_consume( energy, pos );
 
-    // for items in player possession if insufficient charges within tool try UPS
-    if( carrier && ( self->has_flag( flag_USE_UPS ) ) ) {
-        if( carrier->use_charges_if_avail( itype_UPS, energy ) ) {
-            energy = 0;
-        }
-    }
-
-    // if insufficient available charges shutdown the tool
-    if( energy > 0 ) {
-        if( carrier ) {
-            if( self->is_power_armor() ) {
-                if( self->has_flag( flag_USE_UPS ) ) {
-                    carrier->add_msg_if_player( m_info, _( "You need a UPS or Bionic Power Interface to run the %s!" ),
-                                                self->tname() );
-                } else {
-                    carrier->add_msg_if_player( m_info, _( "You need a Bionic Power Interface to run the %s!" ),
-                                                self->tname() );
+            // for power armor pieces, try to use power armor interface first.
+            if( carrier && self->is_power_armor() && character_funcs::can_interface_armor( *carrier ) ) {
+                if( carrier->use_charges_if_avail( itype_bio_armor, energy ) ) {
+                    energy = 0;
                 }
-            } else if( self->has_flag( flag_USE_UPS ) ) {
-                carrier->add_msg_if_player( m_info, _( "You need a UPS to run the %s!" ), self->tname() );
             }
-        }
-        if( carrier && self->type->can_use( "set_transform" ) ) {
-            const set_transform_iuse *actor = dynamic_cast<const set_transform_iuse *>
-                                              ( self->get_use( "set_transform" )->get_actor_ptr() );
-            if( actor == nullptr ) {
-                debugmsg( "iuse_actor type descriptor and actual type mismatch." );
-                return std::move( self );
-            }
-            flag_id transformed_flag( actor->flag );
-            for( auto &elem : carrier->worn ) {
-                if( elem->is_active() && elem->has_flag( transformed_flag ) ) {
-                    if( !elem->type->can_use( "set_transformed" ) ) {
-                        debugmsg( "Expected set_transformed function" );
-                        return std::move( self );
-                    }
-                    const set_transformed_iuse *actor = dynamic_cast<const set_transformed_iuse *>
-                                                        ( elem->get_use( "set_transformed" )->get_actor_ptr() );
-                    if( actor == nullptr ) {
-                        debugmsg( "iuse_actor type descriptor and actual type mismatch" );
-                        return std::move( self );
-                    }
-                    actor->bypass( *carrier, *elem, false, pos );
+
+            // for items in player possession if insufficient charges within tool try UPS
+            if( carrier && uses_UPS ) {
+                if( carrier->use_charges_if_avail( itype_UPS, energy ) ) {
+                    energy = 0;
                 }
             }
         }
 
-        // If no revert is defined, invoke the item (for use in grenades)
+        // HACK: this means that UPS items will last one more check longer than they should since they don't trigger when
+        // their ammo_remaining is 0, since that doesn't check the UPS "stock" available (which is an expensive check)
+        // It's done like this cause grenades must be destroyed when charge reaches 0, or it will linger an extra turn.
+        if( ( self->ammo_remaining() == 0 && !uses_UPS ) || energy > 0 ) {
+            revert_destroy = true;
+            if( carrier ) {
+                if( self->is_power_armor() ) {
+                    if( uses_UPS ) {
+                        carrier->add_msg_if_player( m_info, _( "You need a UPS or Bionic Power Interface to run the %s!" ),
+                                                    self->tname() );
+                    } else {
+
+                    }
+                } else if( uses_UPS ) {
+                    carrier->add_msg_if_player( m_info, _( "You need a UPS to run the %s!" ), self->tname() );
+                }
+            }
+            if( carrier && self->type->can_use( "set_transform" ) ) {
+                const set_transform_iuse *actor = dynamic_cast<const set_transform_iuse *>
+                                                  ( self->get_use( "set_transform" )->get_actor_ptr() );
+                if( actor == nullptr ) {
+                    debugmsg( "iuse_actor type descriptor and actual type mismatch." );
+                    return std::move( self );
+                }
+                flag_id transformed_flag( actor->flag );
+                for( auto &elem : carrier->worn ) {
+                    if( elem->is_active() && elem->has_flag( transformed_flag ) ) {
+                        if( !elem->type->can_use( "set_transformed" ) ) {
+                            debugmsg( "Expected set_transformed function" );
+                            return std::move( self );
+                        }
+                        const set_transformed_iuse *actor = dynamic_cast<const set_transformed_iuse *>
+                                                            ( elem->get_use( "set_transformed" )->get_actor_ptr() );
+                        if( actor == nullptr ) {
+                            debugmsg( "iuse_actor type descriptor and actual type mismatch" );
+                            return std::move( self );
+                        }
+                        actor->bypass( *carrier, *elem, false, pos );
+                    }
+                }
+            }
+        }
+    }
+
+    // Process tick even if it's to be destroyed/reverted later, more for grenades
+    // It technically gives an extra turn of action, but before the rework items functioned at 0 charges for a bit anyway.
+    self->type->tick( carrier != nullptr ? *carrier : you, *self, pos );
+
+    if( revert_destroy ) {
+        // If no revert is defined, destroy it (candles and the like).
         if( self->is_active() && self->revert( carrier ) ) {
             self->deactivate();
             return std::move( self );
         } else {
-            self->type->invoke( carrier != nullptr ? *carrier : you, *self, pos );
             return detached_ptr<item>();
         }
     }
 
-    self->type->tick( carrier != nullptr ? *carrier : you, *self, pos );
     return std::move( self );
 }
 
@@ -10125,6 +10157,12 @@ detached_ptr<item> item::process_internal( detached_ptr<item> &&self, player *ca
         if( !self ) {
             return std::move( self );
         }
+    }
+    if( self->has_flag( flag_WATER_DISABLE ) && carrier->is_underwater() ) {
+        carrier->add_msg_if_player( "Your %s gurgles and splutters.", self->tname() );
+        self->revert( carrier );
+        self->deactivate();
+        return std::move( self );
     }
     if( self->has_flag( flag_CABLE_SPOOL ) ) {
         // DO NOT process this as a tool! It really isn't!
@@ -10701,4 +10739,44 @@ const location_vector<item> &item::get_components() const
 location_vector<item> &item::get_components()
 {
     return components;
+}
+
+bool item::init_kill_tracker()
+{
+    if( kills ) {
+        return true;
+    } else if( get_option<bool>( "ENABLE_EVENTS" ) ) {
+        kills = std::make_unique<kill_tracker>( false );
+        return true;
+    } else {
+        return false;
+    }
+}
+void item::add_monster_kill( mtype_id mon )
+{
+    if( init_kill_tracker() ) {
+        kills->add_monster( mon );
+    }
+}
+void item::add_npc_kill( std::string npc )
+{
+    if( init_kill_tracker() ) {
+        kills->add_npc( npc );
+    }
+}
+void item::show_kill_list()
+{
+    if( !kills ) {
+        debugmsg( "Tried to display empty kill list" );
+        return;
+    }
+    show_kills( *kills );
+}
+int item::kill_count()
+{
+    if( !kills ) {
+        return 0;
+    } else {
+        return kills->monster_kill_count() + kills->npc_kill_count();
+    }
 }

@@ -770,7 +770,7 @@
     "id": "dao",
     "type": "GENERIC",
     "category": "weapons",
-    "weapon_category": [ "1H_SWORDS" ],
+    "weapon_category": [ "SHORT_SWORDS" ],
     "name": { "str_sp": "dao" },
     "description": "An ancient Chinese sword consisting of a curved blade and a guard with a cupped design.  Existing since the Shang dynasty, this one is made of bronze.  One of the four major weapons in folklore, alongside the jian sword, qiang spear, and gun staff.",
     "weight": "850 g",
@@ -1426,7 +1426,7 @@
     "id": "katana",
     "type": "GENERIC",
     "category": "weapons",
-    "weapon_category": [ "1H_SWORDS", "JAPANESE_SWORDS" ],
+    "weapon_category": [ "JAPANESE_SWORDS" ],
     "name": { "str": "katana" },
     "description": "This is a rare sword from Japan.  Deadly against unarmored targets, and still very effective against armor.",
     "weight": "1133 g",
@@ -1477,7 +1477,7 @@
     "id": "butterfly_swords",
     "type": "GENERIC",
     "category": "weapons",
-    "weapon_category": [ "KNIVES" ],
+    "weapon_category": [ "SHORT_SWORDS" ],
     "symbol": "/",
     "color": "light_gray",
     "name": { "str": "pair of butterfly swords", "str_pl": "pairs of butterfly swords" },
@@ -1516,7 +1516,15 @@
     "charges_per_use": 75,
     "techniques": [ "WBLOCK_1", "SPIN", "SWEEP" ],
     "qualities": [ [ "AXE", 3 ] ],
-    "use_action": "CS_LAJATANG_OFF",
+    "use_action": {
+      "type": "transform",
+      "active": true,
+      "target": "cs_lajatang_on",
+      "msg": "You turn on the chainsaw lajatang.",
+      "moves": 80,
+      "transform_charges": 5,
+      "need_dry": true
+    },
     "flags": [ "NONCONDUCTIVE", "POWERED", "ALWAYS_TWOHAND" ]
   },
   {
@@ -1529,11 +1537,12 @@
     "cutting": 140,
     "to_hit": -1,
     "revert_to": "cs_lajatang_off",
-    "use_action": "CS_LAJATANG_ON",
+    "revert_msg": "Your chainsaw lajatang goes quiet",
+    "use_action": { "type": "transform", "target": "cs_lajatang_off", "msg": "You turn off the chainsaw lajatang." },
     "qualities": [ [ "BUTCHER", -250 ] ],
     "turns_per_charge": 1,
     "charges_per_use": 0,
-    "flags": [ "MESSY", "FRAGILE_MELEE", "TRADER_AVOID", "NONCONDUCTIVE", "ALWAYS_TWOHAND" ]
+    "flags": [ "MESSY", "FRAGILE_MELEE", "TRADER_AVOID", "NONCONDUCTIVE", "ALWAYS_TWOHAND", "WATER_DISABLE" ]
   },
   {
     "id": "ecs_lajatang_off",
@@ -1555,7 +1564,15 @@
     "charges_per_use": 375,
     "techniques": [ "WBLOCK_1", "SPIN", "SWEEP" ],
     "qualities": [ [ "AXE", 3 ] ],
-    "use_action": "ECS_LAJATANG_OFF",
+    "use_action": {
+      "type": "transform",
+      "active": true,
+      "target": "ecs_lajatang_on",
+      "msg": "You turn on the chainsaw lajatang.",
+      "moves": 80,
+      "transform_charges": 5,
+      "need_dry": true
+    },
     "flags": [ "NONCONDUCTIVE", "POWERED", "ALWAYS_TWOHAND" ],
     "magazines": [
       [ "battery", [ "heavy_battery_cell", "heavy_plus_battery_cell", "heavy_atomic_battery_cell", "heavy_disposable_cell" ] ]
@@ -1574,16 +1591,17 @@
     "power_draw": 4000000,
     "charges_per_use": 0,
     "revert_to": "ecs_lajatang_off",
-    "use_action": "ECS_LAJATANG_ON",
+    "revert_msg": "Your chainsaw lajatang goes quiet",
+    "use_action": { "type": "transform", "target": "cs_lajatang_off", "msg": "You turn off the chainsaw lajatang." },
     "qualities": [ [ "BUTCHER", -250 ] ],
-    "flags": [ "MESSY", "DURABLE_MELEE", "TRADER_AVOID", "NONCONDUCTIVE", "ALWAYS_TWOHAND" ],
+    "flags": [ "MESSY", "DURABLE_MELEE", "TRADER_AVOID", "NONCONDUCTIVE", "ALWAYS_TWOHAND", "WATER_DISABLE" ],
     "magazine_well": "1000 ml"
   },
   {
     "id": "cutlass",
     "type": "GENERIC",
     "category": "weapons",
-    "weapon_category": [ "SHORT_SWORDS", "MEDIEVAL_SWORDS" ],
+    "weapon_category": [ "SHORT_SWORDS", "MEDIEVAL_SWORDS", "DUELING_SWORDS" ],
     "name": { "str": "cutlass", "str_pl": "cutlasses" },
     "description": "This is a broad saber known for its use by sailors and pirates, as its short blade is easy to handle in close quarters.",
     "weight": "955 g",
@@ -1685,6 +1703,7 @@
     "id": "combatsaw_off",
     "type": "TOOL",
     "category": "weapons",
+    "weapon_category": [ "2H_SWORDS" ],
     "name": { "str": "combat chainsaw (off)", "str_pl": "combat chainsaws (off)" },
     "description": "This is a chainsaw that has been lightened, tuned, and extensively modified to be a more effective weapon.  Unfortunately these modifications have rendered it much less effective as a woodcutting tool.",
     "weight": "5122 g",
@@ -1700,7 +1719,15 @@
     "charges_per_use": 75,
     "max_charges": 450,
     "qualities": [ [ "AXE", 3 ] ],
-    "use_action": "COMBATSAW_OFF",
+    "use_action": {
+      "type": "transform",
+      "active": true,
+      "target": "combatsaw_on",
+      "msg": "You turn on the combat chainsaw.",
+      "moves": 60,
+      "transform_charges": 5,
+      "need_dry": true
+    },
     "techniques": [ "WBLOCK_1", "SWEEP" ],
     "flags": [ "ALWAYS_TWOHAND", "POWERED" ]
   },
@@ -1716,13 +1743,15 @@
     "charges_per_use": 0,
     "revert_to": "combatsaw_off",
     "qualities": [ [ "BUTCHER", -120 ] ],
-    "use_action": "COMBATSAW_ON",
-    "flags": [ "MESSY", "DURABLE_MELEE", "TRADER_AVOID", "ALWAYS_TWOHAND" ]
+    "revert_msg": "Your combat chainsaw goes quiet",
+    "use_action": { "type": "transform", "target": "combatsaw_off", "msg": "You turn off the combat chainsaw." },
+    "flags": [ "MESSY", "DURABLE_MELEE", "TRADER_AVOID", "ALWAYS_TWOHAND", "WATER_DISABLE" ]
   },
   {
     "id": "e_combatsaw_off",
     "type": "TOOL",
     "category": "weapons",
+    "weapon_category": [ "2H_SWORDS" ],
     "name": { "str": "electric combat chainsaw (off)", "str_pl": "electric combat chainsaws (off)" },
     "description": "This is an electric chainsaw that has been lightened, tuned, and extensively modified to be a more effective weapon.  Unfortunately these modifications have rendered it much less effective as a woodcutting tool.",
     "weight": "5122 g",
@@ -1737,7 +1766,15 @@
     "ammo": "battery",
     "charges_per_use": 375,
     "qualities": [ [ "AXE", 3 ] ],
-    "use_action": "E_COMBATSAW_OFF",
+    "use_action": {
+      "type": "transform",
+      "active": true,
+      "target": "e_combatsaw_on",
+      "msg": "You turn on the combat chainsaw.",
+      "moves": 60,
+      "transform_charges": 5,
+      "need_dry": true
+    },
     "techniques": [ "WBLOCK_1", "SWEEP" ],
     "flags": [ "ALWAYS_TWOHAND", "POWERED" ],
     "magazines": [
@@ -1760,8 +1797,9 @@
     "charges_per_use": 0,
     "revert_to": "e_combatsaw_off",
     "qualities": [ [ "BUTCHER", -120 ] ],
-    "use_action": "E_COMBATSAW_ON",
-    "flags": [ "MESSY", "DURABLE_MELEE", "TRADER_AVOID", "ALWAYS_TWOHAND" ],
+    "revert_msg": "Your combat chainsaw goes quiet",
+    "use_action": { "type": "transform", "target": "e_combatsaw_off", "msg": "You turn off the combat chainsaw." },
+    "flags": [ "MESSY", "DURABLE_MELEE", "TRADER_AVOID", "ALWAYS_TWOHAND", "WATER_DISABLE" ],
     "magazine_well": "500 ml"
   },
   {
@@ -1852,5 +1890,49 @@
     "description": "A custom 3D-printed two-handed sword made out of carbon fiber.  It is more lightweight than a normal sword thanks to its method of manufacturing, but it can only be repaired using a 3D printer.",
     "material": [ "carbon_fiber" ],
     "proportional": { "weight": 0.6, "price": 2, "price_postapoc": 2 }
+  },
+  {
+    "id": "knife_stinger",
+    "type": "GENERIC",
+    "copy-from": "dagger_medieval",
+    "name": { "str": "stinger dagger" },
+    "description": "A dagger made from a sharpened mutant insect stinger.  It's only natural that the Cataclysm would advent new, creative forms of old weapons.",
+    "material": [ "chitin" ],
+    "relic_data": {
+      "passive_effects": [
+        {
+          "has": "WIELD",
+          "condition": "ALWAYS",
+          "hit_you_effect": [
+            {
+              "id": "poison",
+              "once_in": 10,
+              "message": "The stinger injects a small amount of poison into your target.",
+              "npc_message": "%1$s stings their target."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "tooth_leiomano",
+    "copy-from": "glass_macuahuitl",
+    "type": "GENERIC",
+    "name": { "str": "sharktooth leiomano" },
+    "description": "A flat wooden club with razor-sharp teeth set into the edges.  This was a weapon of various Polynesian peoples, and was used to great effect.",
+    "weight": "850 g",
+    "price_postapoc": "3 USD",
+    "material": [ "wood", "bone_heavy" ],
+    "cutting": 21
+  },
+  {
+    "id": "sword_bone",
+    "type": "GENERIC",
+    "copy-from": "machete",
+    "name": { "str": "bone machete" },
+    "description": "This shortsword is carved from a single massive bone, and is capable of slicing foes in with swiftness and efficiency.",
+    "material": [ "bone_heavy" ],
+    "proportional": { "weight": 0.8, "cutting": 0.9 }
   }
 ]
