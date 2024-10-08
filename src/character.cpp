@@ -6826,7 +6826,7 @@ float Character::active_light() const
     for( const std::pair<const trait_id, char_trait_data> &mut : my_mutations ) {
         if( mut.second.powered ) {
             float curr_lum = 0.0f;
-            for( const auto elem : mut.first->lumination ) {
+            for( const auto &elem : mut.first->lumination ) {
                 int coverage = 0;
                 for( const item * const &i : worn ) {
                     if( i->covers( convert_bp( elem.first ).id() ) && !i->has_flag( flag_ALLOWS_NATURAL_ATTACKS ) &&
@@ -9100,12 +9100,12 @@ dealt_damage_instance Character::deal_damage( Creature *source, bodypart_id bp,
 
             if( has_grab_break_tec() && ( rng( 0, get_dex() )  > rng( 0, 10 ) ) ) {
                 if( has_effect( effect_grabbed ) ) {
-                    add_msg_if_player( m_warning, _( "The %s tries to grab you as well, but you bat it away!" ),
-                                       source->disp_name() );
+                    add_msg_if_player( m_warning, _( "%s tries to grab you as well, but you bat it away!" ),
+                                       source->disp_name( false, true ) );
                 } else {
-                    add_msg_player_or_npc( m_info, _( "The %s tries to grab you, but you break its grab!" ),
-                                           _( "The %s tries to grab <npcname>, but they break its grab!" ),
-                                           source->disp_name() );
+                    add_msg_player_or_npc( m_info, _( "%s tries to grab you, but you break its grab!" ),
+                                           _( "%s tries to grab <npcname>, but they break its grab!" ),
+                                           source->disp_name( false, true ) );
                 }
             } else {
                 int prev_effect = get_effect_int( effect_grabbed );

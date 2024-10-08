@@ -137,7 +137,7 @@ void vehicle::add_toggle_to_opts( std::vector<uilist_entry> &options,
                               name );
     options.emplace_back( -1, allow, key, msg );
 
-    actions.emplace_back( [ = ] {
+    actions.emplace_back( [ =, this ] {
         for( const vpart_reference &vp : found )
         {
             vehicle_part &e = vp.part();
@@ -1593,9 +1593,9 @@ bool vehicle::can_close( int part_index, Character &who )
                     who.add_msg_if_player( m_info, _( "There's some buffoon in the way!" ) );
                 } else if( mon->is_monster() ) {
                     // TODO: Houseflies, mosquitoes, etc shouldn't count
-                    who.add_msg_if_player( m_info, _( "The %s is in the way!" ), mon->get_name() );
+                    who.add_msg_if_player( m_info, _( "%s is in the way!" ), mon->disp_name( false, true ) );
                 } else {
-                    who.add_msg_if_player( m_info, _( "%s is in the way!" ), mon->disp_name() );
+                    who.add_msg_if_player( m_info, _( "%s is in the way!" ), mon->disp_name( false, true ) );
                 }
                 return false;
             }

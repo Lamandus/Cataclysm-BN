@@ -2576,7 +2576,7 @@ int learn_spell_actor::use( player &p, item &, bool, const tripoint & ) const
     if( study_spell->moves_total == 10100 ) {
         study_spell->str_values[0] = "gain_level";
         study_spell->values[0] = 0; // reserved for xp
-        study_spell->values[1] = p.magic->get_spell( spell_id( spells[action] ) ).get_level() + 1;
+        study_spell->values[1] = 0; // reserved for levels
     }
     study_spell->name = spells[action];
     p.assign_activity( std::move( study_spell ), false );
@@ -4667,7 +4667,7 @@ int deploy_tent_actor::use( player &p, item &it, bool, const tripoint & ) const
             return 0;
         }
         if( const Creature *const c = g->critter_at( dest ) ) {
-            add_msg( m_info, _( "The %s is in the way." ), c->disp_name() );
+            add_msg( m_info, _( "%s is in the way." ), c->disp_name( false, true ) );
             return 0;
         }
         if( here.impassable( dest ) || !here.has_flag( "FLAT", dest ) ) {
