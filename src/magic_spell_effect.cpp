@@ -439,7 +439,7 @@ static std::set<tripoint> spell_effect_area(
         explosion_colors[pt] = sp.damage_type_color();
     }
 
-    if( sp.id()->sprite.length() > 0 ) {
+    if( !sp.id()->sprite.empty() ) {
         explosion_handler::draw_custom_explosion( get_player_character().pos(), explosion_colors,
                 sp.id()->sprite );
     } else {
@@ -569,7 +569,7 @@ area_expander::area_expander() : frontier( area_node_comparator( area ) )
 // Check whether we have already visited this node.
 int area_expander::contains( const tripoint &pt ) const
 {
-    return area_search.count( pt ) > 0;
+    return area_search.contains( pt );
 }
 
 // Adds node to a search tree. Returns true if new node is allocated.
@@ -872,8 +872,8 @@ static bool add_summoned_mon( const mtype_id &id, const tripoint &pos, const tim
     }
     if( !permanent ) {
         spawned_mon.set_summon_time( time );
+        spawned_mon.no_extra_death_drops = true;
     }
-    spawned_mon.no_extra_death_drops = true;
     return true;
 }
 
@@ -976,7 +976,7 @@ void spell_effect::explosion( const spell &sp, Creature &caster, const tripoint 
 
 void spell_effect::flashbang( const spell &sp, Creature &caster, const tripoint &target )
 {
-    if( sp.id()->sprite.length() > 0 ) {
+    if( !sp.id()->sprite.empty() ) {
         explosion_handler::flashbang( target, caster.is_avatar() &&
                                       !sp.is_valid_target( valid_target::target_self ), sp.id()->sprite );
     } else {
