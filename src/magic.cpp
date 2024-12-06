@@ -209,6 +209,7 @@ void spell_type::load( const JsonObject &jo, const std::string & )
         { "translocate", spell_effect::translocate },
         { "area_pull", spell_effect::area_pull },
         { "area_push", spell_effect::area_push },
+        { "directed_push", spell_effect::directed_push },
         { "timed_event", spell_effect::timed_event },
         { "ter_transform", spell_effect::transform_blast },
         { "noise", spell_effect::noise },
@@ -869,7 +870,8 @@ std::string spell::energy_cost_string( const Character &guy ) const
         return colorize( std::to_string( energy_cost( guy ) ), c_light_blue );
     }
     if( energy_source() == hp_energy ) {
-        auto pair = get_hp_bar( energy_cost( guy ), guy.get_hp_max() / num_hp_parts );
+        auto pair = get_hp_bar( energy_cost( guy ), guy.get_hp_max() /
+                                std::max<size_t>( 1lu, guy.get_all_body_parts( true ).size() ) );
         return colorize( pair.first, pair.second );
     }
     if( energy_source() == stamina_energy ) {

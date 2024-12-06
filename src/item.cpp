@@ -168,6 +168,7 @@ static const trait_flag_str_id trait_flag_CANNIBAL( "CANNIBAL" );
 static const bionic_id bio_digestion( "bio_digestion" );
 
 static const trait_id trait_CARNIVORE( "CARNIVORE" );
+static const trait_id trait_ILLITERATE( "ILLITERATE" );
 static const trait_id trait_LIGHTWEIGHT( "LIGHTWEIGHT" );
 static const trait_id trait_SAPROVORE( "SAPROVORE" );
 static const trait_id trait_SQUEAMISH( "SQUEAMISH" );
@@ -1151,7 +1152,8 @@ bool item::merge_charges( detached_ptr<item> &&rhs, bool force )
 
 void item::put_in( detached_ptr<item> &&payload )
 {
-    if( !payload ) {
+    if( !payload || payload->typeId() == itype_id::NULL_ID() ) {
+        debugmsg( "Tried to insert non-item into %s", debug_name() );
         return;
     }
     if( &*payload == this ) {
@@ -1699,7 +1701,8 @@ void item::basic_info( std::vector<iteminfo> &info, const iteminfo_query *parts,
         const std::map<std::string, std::string>::const_iterator idescription =
             item_vars.find( "description" );
         const std::optional<translation> snippet = SNIPPET.get_snippet_by_id( snip_id );
-        if( snippet.has_value() ) {
+        if( snippet.has_value() && ( !get_avatar().has_trait( trait_ILLITERATE ) ||
+                                     !has_flag( flag_SNIPPET_NEEDS_LITERACY ) ) ) {
             // Just use the dynamic description
             info.emplace_back( "DESCRIPTION", snippet.value().translated() );
         } else if( idescription != item_vars.end() ) {
@@ -2221,10 +2224,17 @@ void item::ammo_info( std::vector<iteminfo> &info, const iteminfo_query *parts, 
     }
 }
 
+namespace
+{
+auto nname( const itype_id &id ) -> std::string
+{
+    return item::nname( id );
+}
+} // namespace
+
 void item::gun_info( const item *mod, std::vector<iteminfo> &info, const iteminfo_query *parts,
                      int /* batch */, bool /* debug */ ) const
 {
-    const std::string space = "  ";
     const islot_gun &gun = *mod->type->gun;
     const Skill &skill = *mod->gun_skill();
     avatar &viewer = get_avatar();
@@ -2538,12 +2548,12 @@ void item::gun_info( const item *mod, std::vector<iteminfo> &info, const iteminf
     }
 
     if( !magazine_integral() && parts->test( iteminfo_parts::GUN_ALLOWED_MAGAZINES ) ) {
-        insert_separation_line( info );
-        const std::set<itype_id> compat = magazine_compatible();
-        info.emplace_back( "DESCRIPTION", _( "<bold>Compatible magazines</bold>: " ) +
-        enumerate_as_string( compat.begin(), compat.end(), []( const itype_id & id ) {
-            return item::nname( id );
-        } ) );
+        const auto &compat = magazine_compatible();
+        if( !compat.empty() ) {
+            insert_separation_line( info );
+            info.emplace_back( "DESCRIPTION", _( "<bold>Compatible magazines</bold>: " )
+                               + enumerate_as_string( compat, ::nname ) );
+        }
     }
 
     if( !gun.valid_mod_locations.empty() && parts->test( iteminfo_parts::DESCRIPTION_GUN_MODS ) ) {
@@ -3012,14 +3022,15 @@ void item::book_info( std::vector<iteminfo> &info, const iteminfo_query *parts, 
     }
     if( book.skill ) {
         const SkillLevel &skill = you.get_skill_level_object( book.skill );
-        if( skill.can_train() && parts->test( iteminfo_parts::BOOK_SKILLRANGE_MAX ) ) {
+        if( parts->test( iteminfo_parts::BOOK_SKILLRANGE_MAX ) ) {
             const std::string skill_name = book.skill->name();
-            std::string fmt = string_format( _( "Can bring your <info>%s skill to</info> "
-                                                "<num>." ), skill_name );
-            info.emplace_back( "BOOK", "", fmt, iteminfo::no_flags, book.level );
-            fmt = string_format( _( "Your current <stat>%s skill</stat> is <num>." ),
-                                 skill_name );
-            info.emplace_back( "BOOK", "", fmt, iteminfo::no_flags, skill.level() );
+            const std::string fmt = string_format( _( "Can bring <info>%s skill to</info> "
+                                                   "<num>." ), skill_name );
+            info.emplace_back( "BOOK", "", skill.can_train() ? fmt : colorize( fmt, c_brown ),
+                               iteminfo::no_flags, book.level );
+            info.emplace_back( "BOOK", "",
+                               string_format( _( "Your current <stat>%s skill</stat> is <num>." ), skill_name ),
+                               iteminfo::no_flags, skill.level() );
         }
 
         if( book.req != 0 && parts->test( iteminfo_parts::BOOK_SKILLRANGE_MIN ) ) {
@@ -3173,11 +3184,11 @@ void item::tool_info( std::vector<iteminfo> &info, const iteminfo_query *parts, 
         }
 
         if( parts->test( iteminfo_parts::TOOL_MAGAZINE_COMPATIBLE ) ) {
-            const std::set<itype_id> compat = magazine_compatible();
-            info.emplace_back( "TOOL", _( "Compatible magazines: " ),
-            enumerate_as_string( compat.begin(), compat.end(), []( const itype_id & id ) {
-                return item::nname( id );
-            } ) );
+            const auto &compat = magazine_compatible();
+            if( !compat.empty() ) {
+                info.emplace_back( "TOOL", _( "Compatible magazines: " )
+                                   + enumerate_as_string( compat, ::nname ) );
+            }
         }
     } else if( ammo_capacity() != 0 && parts->test( iteminfo_parts::TOOL_CAPACITY ) ) {
         std::string tmp;
@@ -3483,14 +3494,15 @@ void item::combat_info( std::vector<iteminfo> &info, const iteminfo_query *parts
                         bool /*debug*/ ) const
 {
     const std::string space = "  ";
+    const std::string newline = "\n";
 
     bool print_attacks = false;
 
     // Old behavior - default to it for now
-    if( type->attacks.size() == 1 ) {
+    if( type->attacks.contains( "DEFAULT" ) ) {
         const auto &attack = melee::default_attack( *this );
         int dmg_bash = damage_melee( DT_BASH );
-        int dmg_cut  = damage_melee( DT_CUT );
+        int dmg_cut = damage_melee( DT_CUT );
         int dmg_stab = damage_melee( DT_STAB );
         if( dmg_bash || dmg_cut || dmg_stab || type->m_to_hit > 0 ) {
             print_attacks = true;
@@ -3542,29 +3554,21 @@ void item::combat_info( std::vector<iteminfo> &info, const iteminfo_query *parts
         for( const auto &attack_pr : type->attacks ) {
             const auto &attack = attack_pr.second;
 
-            int dmg_bash = damage_melee( attack, DT_BASH );
-            int dmg_cut  = damage_melee( attack, DT_CUT );
-            int dmg_stab = damage_melee( attack, DT_STAB );
-            // @todo Other types
-
             if( parts->test( iteminfo_parts::BASE_DAMAGE ) ) {
                 insert_separation_line( info );
-                std::string sep;
-                if( dmg_bash ) {
-                    info.emplace_back( "BASE", _( "Bash: " ), "", iteminfo::no_newline, dmg_bash );
-                    sep = space;
+                info.emplace_back( "BASE", _( "<bold>Melee damage</bold>:" ), "", iteminfo::no_newline );
+                // if we have any armour penetration numbers, put every damage type on its own line
+                bool line_by_line = attack.damage.has_armor_piercing();
+                if( line_by_line ) {
+                    info.emplace_back( "BASE", newline, "", iteminfo::no_newline );
+                } else {
+                    info.emplace_back( "BASE", space, "", iteminfo::no_newline );
                 }
-                if( dmg_cut ) {
-                    info.emplace_back( "BASE", sep + _( "Cut: " ), "", iteminfo::no_newline, dmg_cut );
-                    sep = space;
-                }
-                if( dmg_stab ) {
-                    info.emplace_back( "BASE", sep + _( "Pierce: " ), "", iteminfo::no_newline, dmg_stab );
-                }
+                damage_statblock_info( info, attack.damage, line_by_line );
             }
 
             if( parts->test( iteminfo_parts::BASE_TOHIT ) ) {
-                info.emplace_back( "BASE", space + _( "To-hit bonus: " ), "",
+                info.emplace_back( "BASE", _( "To-hit bonus: " ), "",
                                    iteminfo::show_plus, attack.to_hit );
             }
 
@@ -3682,7 +3686,42 @@ void item::combat_info( std::vector<iteminfo> &info, const iteminfo_query *parts
         }
         insert_separation_line( info );
     }
+}
 
+// TODO: Deduplicated with ammo_info()
+void item::damage_statblock_info( std::vector<iteminfo> &info, damage_instance attack,
+                                  bool line_by_line ) const
+{
+    const std::string space = "  ";
+    const std::string newline = "\n";
+    std::string sep;
+
+    /* TODO: All damage types can be defined for an attack, and will be displayed in the item description.
+             However, non-physical types will be ignored by the melee damage roll, so they don't actually do any damage.
+       TODO: damage_instance isn't ordered, so the damage types will be displayed in whatever order they were defined.
+             This will probably be fine, but it might be a good idea to sort the damage_units. */
+    for( const auto damage : attack ) {
+        if( damage.amount != 0.0 ) {
+            info.emplace_back( "BASE", sep + damage.get_name() + _( ": " ), "", iteminfo::no_newline,
+                               damage.amount );
+
+            if( damage.res_pen != 0.0 && damage.res_mult != 1.0 ) {
+                // Both flat AP and an armor multiplier
+                info.emplace_back( "BASE", _( "  Armor-pierce: " ), "", iteminfo::no_newline, damage.res_pen );
+                info.emplace_back( "BASE", _( "/" ), "",
+                                   iteminfo::no_newline | iteminfo::is_decimal | iteminfo::lower_is_better, damage.res_mult );
+            } else if( damage.res_mult != 1.0 ) {
+                // Only armor multiplier
+                info.emplace_back( "BASE", _( "  Armor multiplier: " ), "",
+                                   iteminfo::no_newline | iteminfo::is_decimal | iteminfo::lower_is_better, damage.res_mult );
+            } else if( damage.res_pen != 0.0 ) {
+                // Only flat AP
+                info.emplace_back( "BASE", _( "Armor-pierce: " ), "", iteminfo::no_newline, damage.res_pen );
+            }
+            sep = line_by_line ? newline : space;
+        }
+    }
+    info.emplace_back( "BASE", sep, "", iteminfo::no_newline );
 }
 
 void item::contents_info( std::vector<iteminfo> &info, const iteminfo_query *parts, int batch,
@@ -8019,21 +8058,17 @@ std::string item::ammo_sort_name() const
 
 bool item::magazine_integral() const
 {
-    for( const item *m : is_gun() ? gunmods() : toolmods() ) {
-        if( !m->type->mod->magazine_adaptor.empty() ) {
-            return false;
-        }
-    }
-    if( is_gun() ) {
+    // If it has a default magazine, it can't have an integral magazine.
+    if( magazine_default() ) {
+        return false;
+    } else if( is_gun() ) {
         // We have an integral magazine if we're a gun with an ammo capacity (clip)
         return type->gun->clip;
     } else if( is_tool() ) {
         // Or we are a tool with max_charges defined
         return type->tool->max_charges;
     }
-
-    // Or we're a non-gun/tool item with no magazines.
-    return ( type->magazines.empty() );
+    return true;
 }
 
 itype_id item::magazine_default( bool conversion ) const
@@ -8043,14 +8078,15 @@ itype_id item::magazine_default( bool conversion ) const
             for( const item *m : is_gun() ? gunmods() : toolmods() ) {
                 if( !m->type->mod->magazine_adaptor.empty() ) {
                     auto mags = m->type->mod->magazine_adaptor.find( ammotype( *ammo_types( conversion ).begin() ) );
-                    if( mags != m->type->mod->magazine_adaptor.end() ) {
+                    if( mags != m->type->mod->magazine_adaptor.end() &&
+                        !( *mags->second.begin() )->has_flag( flag_SPEEDLOADER ) ) {
                         return *( mags->second.begin() );
                     }
                 }
             }
         }
         auto mag = type->magazine_default.find( ammotype( *ammo_types( conversion ).begin() ) );
-        if( mag != type->magazine_default.end() ) {
+        if( mag != type->magazine_default.end() && !mag->second->has_flag( flag_SPEEDLOADER ) ) {
             return mag->second;
         }
     }

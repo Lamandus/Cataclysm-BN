@@ -152,6 +152,7 @@ static const itype_id itype_marloss_seed( "marloss_seed" );
 static const itype_id itype_mycus_fruit( "mycus_fruit" );
 static const itype_id itype_nail( "nail" );
 static const itype_id itype_petrified_eye( "petrified_eye" );
+static const itype_id itype_plut_generator_item( "plut_generator_item" );
 static const itype_id itype_sheet( "sheet" );
 static const itype_id itype_stick( "stick" );
 static const itype_id itype_string_36( "string_36" );
@@ -187,7 +188,6 @@ static const trait_id trait_M_DEPENDENT( "M_DEPENDENT" );
 static const trait_id trait_M_FERTILE( "M_FERTILE" );
 static const trait_id trait_M_SPORES( "M_SPORES" );
 static const trait_id trait_NOPAIN( "NOPAIN" );
-static const trait_id trait_PARKOUR( "PARKOUR" );
 static const trait_id trait_PROBOSCIS( "PROBOSCIS" );
 static const trait_id trait_THRESH_MARLOSS( "THRESH_MARLOSS" );
 static const trait_id trait_THRESH_MYCUS( "THRESH_MYCUS" );
@@ -855,6 +855,19 @@ void iexamine::toilet( player &p, const tripoint &examp )
     }
 }
 
+/** Toggle the lights in a overmap terrain*/
+void iexamine::toggle_lights( player &/*p*/, const tripoint &examp )
+{
+    map &here = get_map();
+    const auto flag = here.has_flag_furn( "L_OFF", examp ) ? "L_OFF" : "L_ON";
+
+    for( const auto &light_loc : here.find_furnitures_with_flag_in_omt( examp, flag ) ) {
+        here.furn_set( light_loc, here.get_furn_transforms_into( light_loc ) );
+    };
+
+    add_msg( _( here.furn( examp ).obj().message ) );
+}
+
 /**
  * Open or close gate.
  */
@@ -1060,7 +1073,8 @@ void iexamine::chainfence( player &p, const tripoint &examp )
     }
 
     map &here = get_map();
-    if( here.has_flag( flag_CLIMB_SIMPLE, examp ) && p.has_trait( trait_PARKOUR ) ) {
+    if( here.has_flag( flag_CLIMB_SIMPLE, examp ) &&
+        p.mutation_value( "movecost_obstacle_modifier" ) <= 0.5f ) {
         add_msg( _( "You vault over the obstacle with ease." ) );
         p.moves -= 100; // Not tall enough to warrant spider-climbing, so only relevant trait.
     } else if( here.has_flag( flag_CLIMB_SIMPLE, examp ) ) {
@@ -1074,7 +1088,7 @@ void iexamine::chainfence( player &p, const tripoint &examp )
                !p.wearing_something_on( bodypart_id( "torso" ) ) ) {
         add_msg( _( "You quickly scale the fence." ) );
         p.moves -= 90;
-    } else if( p.has_trait( trait_PARKOUR ) ) {
+    } else if( p.mutation_value( "movecost_obstacle_modifier" ) <= 0.5f ) {
         add_msg( _( "This obstacle is no match for your freerunning abilities." ) );
         p.moves -= 100;
     } else {
@@ -5155,8 +5169,7 @@ void iexamine::autodoc( player &p, const tripoint &examp )
             }
 
             int broken_limbs_count = 0;
-            for( int i = 0; i < num_hp_parts; i++ ) {
-                const bodypart_id &part = player::hp_to_bp( static_cast<hp_part>( i ) ).id();
+            for( const bodypart_id &part : patient.get_all_body_parts( true ) ) {
                 const bool broken = patient.is_limb_broken( part );
                 if( !broken ) {
                     continue;
@@ -5228,8 +5241,8 @@ void iexamine::autodoc( player &p, const tripoint &examp )
                 }
             }
 
-            for( int i = 0; i < num_hp_parts; i++ ) {
-                const bodypart_str_id &bp_healed = player::hp_to_bp( static_cast<hp_part>( i ) );
+            for( const bodypart_id &bp : patient.get_all_body_parts( true ) ) {
+                const bodypart_str_id &bp_healed = bp.id();
                 if( patient.has_effect( effect_bleed, bp_healed ) ) {
                     patient.remove_effect( effect_bleed, bp_healed );
                     patient.add_msg_player_or_npc( m_good,
@@ -5250,9 +5263,9 @@ void iexamine::autodoc( player &p, const tripoint &examp )
                     patient.add_effect( effect_disinfected, 1_turns, bp_healed );
                     effect &e = patient.get_effect( effect_disinfected, bp_healed );
                     e.set_duration( e.get_int_dur_factor() * disinfectant_intensity );
-                    hp_part target_part = player::bp_to_hp( bp_healed );
-                    patient.damage_disinfected[target_part] =
-                        patient.get_part_hp_max( bp_healed ) - patient.get_part_hp_cur( bp_healed );
+                    bodypart_str_id target_part = player::bp_to_hp( bp_healed );
+                    bodypart &part = patient.get_part( target_part );
+                    part.set_damage_disinfected( part.get_hp_max() - part.get_hp_cur() );
 
                 }
             }
@@ -5303,6 +5316,7 @@ namespace sm_rack
 {
 const int MIN_CHARCOAL = 100;
 const int CHARCOAL_PER_LITER = 25;
+const units::volume MAX_FOOD_VOLUME_MILLING = units::from_liter( 100 );
 const units::volume MAX_FOOD_VOLUME = units::from_liter( 20 );
 const units::volume MAX_FOOD_VOLUME_PORTABLE = units::from_liter( 15 );
 } // namespace sm_rack
@@ -5354,11 +5368,10 @@ static void mill_activate( player &p, const tripoint &examp )
         add_msg( _( "This mill is empty.  Fill it with starchy products such as wheat, barley or oats and try again." ) );
         return;
     }
-    // TODO: currently mill just uses sm_rack defined max volume
-    if( food_volume > sm_rack::MAX_FOOD_VOLUME ) {
+    if( food_volume > sm_rack::MAX_FOOD_VOLUME_MILLING ) {
         add_msg( _( "This mill is overloaded with products, and the millstone can't turn.  Remove some and try again." ) );
         add_msg( pgettext( "volume units", "You think that you can load about %s %s in it." ),
-                 format_volume( sm_rack::MAX_FOOD_VOLUME ), volume_units_long() );
+                 format_volume( sm_rack::MAX_FOOD_VOLUME_MILLING ), volume_units_long() );
         return;
     }
 
@@ -5889,8 +5902,8 @@ void iexamine::quern_examine( player &p, const tripoint &examp )
     }
 
     const bool empty = f_volume == 0_ml;
-    const bool full = f_volume >= sm_rack::MAX_FOOD_VOLUME;
-    const auto remaining_capacity = sm_rack::MAX_FOOD_VOLUME - f_volume;
+    const bool full = f_volume >= sm_rack::MAX_FOOD_VOLUME_MILLING;
+    const auto remaining_capacity = sm_rack::MAX_FOOD_VOLUME_MILLING - f_volume;
 
     uilist smenu;
     smenu.text = _( "What to do with the mill?" );
@@ -6307,6 +6320,24 @@ void iexamine::migo_nerve_cluster( player &p, const tripoint &examp )
     }
 }
 
+void iexamine::cardreader_plutgen( player &p, const tripoint &examp )
+{
+    map &here = get_map();
+    itype_id card_type = itype_id_military;
+    if( p.has_amount( card_type, 1 ) && query_yn( _( "Swipe your ID card?" ) ) ) {
+        // The duration taken may need modification.
+        p.mod_moves( -100 );
+        p.use_amount( card_type, 1 );
+        add_msg( _( "You insert your ID card." ) );
+        add_msg( m_good,
+                 _( "The plutonium generator beeps twice, then disengages from the surrounding conduits with a series of mechanical clunks." ) );
+        here.ter_set( examp, t_concrete );
+        here.add_item_or_charges( examp, item::spawn( itype_plut_generator_item, calendar::turn ) );
+    } else {
+        add_msg( _( "The plutonium generator has significant security measures in place. Without the necessary ID, you'll have to remove it by hand." ) );
+    }
+}
+
 /**
  * Given then name of one of the above functions, returns the matching function
  * pointer. If no match is found, defaults to iexamine::none but prints out a
@@ -6326,6 +6357,7 @@ iexamine_function iexamine_function_from_string( const std::string &function_nam
             { "vending", &iexamine::vending },
             { "toilet", &iexamine::toilet },
             { "elevator", &iexamine::elevator },
+            { "toggle_lights", &iexamine::toggle_lights},
             { "controls_gate", &iexamine::controls_gate },
             { "cardreader", &iexamine::cardreader },
             { "cardreader_robofac", &iexamine::cardreader_robofac },
@@ -6400,6 +6432,7 @@ iexamine_function iexamine_function_from_string( const std::string &function_nam
             { "dimensional_portal", &iexamine::dimensional_portal },
             { "check_power", &iexamine::check_power },
             { "migo_nerve_cluster", &iexamine::migo_nerve_cluster },
+            { "cardreader_plutgen", &iexamine::cardreader_plutgen },
         }
     };
 
@@ -6416,9 +6449,8 @@ iexamine_function iexamine_function_from_string( const std::string &function_nam
 void iexamine::practice_survival_while_foraging( player *p )
 {
     ///\EFFECT_INT Intelligence caps survival skill gains from foraging
-    const int max_forage_skill = p->int_cur / 3 + 1;
-    ///\EFFECT_SURVIVAL decreases survival skill gain from foraging (NEGATIVE)
-    const int max_exp = 2 * ( max_forage_skill - p->get_skill_level( skill_survival ) );
+    const int max_forage_skill = p->int_cur / 2 + 1;
+    const int max_exp = 2 * max_forage_skill;
     // Award experience for foraging attempt regardless of success
     p->practice( skill_survival, rng( 1, max_exp ), max_forage_skill );
 }

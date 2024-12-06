@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: cataclysm-bn\n"
-"POT-Creation-Date: 2024-10-05 01:14+0000\n"
+"POT-Creation-Date: 2024-11-30 01:19+0000\n"
 "Last-Translator: Coolthulhu <Coolthulhu@gmail.com>, 2023\n"
 "Language-Team: Greek (https://app.transifex.com/bn-team/teams/113585/el/)\n"
 "MIME-Version: 1.0\n"
@@ -2477,6 +2477,19 @@ msgid ""
 msgstr ""
 
 #: data/json/bionics.json
+msgid "Monofilament Whip"
+msgstr ""
+
+#. ~ Description for {'str': 'Monofilament Whip'}
+#: data/json/bionics.json
+msgid ""
+"Your left hand conceals three meters of monomolecular filament on an "
+"artificial diamond spool, extending behind a small counterweight in your "
+"thumbtip.  It requires a small amount of bionic power to activate, and "
+"prevents you from holding anything else while extended."
+msgstr ""
+
+#: data/json/bionics.json
 msgid "Shotgun Arm"
 msgstr ""
 
@@ -3691,9 +3704,10 @@ msgstr[1] ""
 #: data/json/bionics.json
 msgid ""
 "A small hydrogen fuel cell fixed to your scapula.  Fairly efficient and "
-"produces minimal heat, though the low density of even compressed hydrogen is"
-" a hindrance.  A network of compressors and fuel tanks has been distributed "
-"throughout your body to store fuel."
+"high-yield, though the low density of compressed hydrogen and potential "
+"waste heat is a hindrance.  A network of compressors and fuel tanks has been"
+" distributed throughout your body, able to compactly store 2 liters of "
+"hydrogen."
 msgstr ""
 
 #: data/json/bionics.json
@@ -3941,7 +3955,7 @@ msgstr ""
 msgid "Dodging and melee is hampered."
 msgstr ""
 
-#: data/json/body_parts.json src/character.cpp src/debug_menu.cpp
+#: data/json/body_parts.json src/debug_menu.cpp
 msgid "Torso"
 msgstr ""
 
@@ -3959,7 +3973,7 @@ msgctxt "bodypart_accusative"
 msgid "head"
 msgstr ""
 
-#: data/json/body_parts.json src/character.cpp src/debug_menu.cpp
+#: data/json/body_parts.json src/debug_menu.cpp
 msgid "Head"
 msgstr ""
 
@@ -3995,7 +4009,7 @@ msgid "mouth"
 msgstr ""
 
 #: data/json/body_parts.json
-msgid "Running is slowed."
+msgid "Stamina regeneration is slowed."
 msgstr ""
 
 #: data/json/body_parts.json
@@ -4166,6 +4180,10 @@ msgid "feet"
 msgstr ""
 
 #: data/json/body_parts.json
+msgid "Running is slowed."
+msgstr ""
+
+#: data/json/body_parts.json
 msgid "L. Foot"
 msgstr ""
 
@@ -4240,6 +4258,22 @@ msgstr ""
 
 #: data/json/clothing_mods.json
 msgid "Undo resizing for mutated anatomy"
+msgstr ""
+
+#: data/json/clothing_mods.json
+msgid "Pad with Nomex"
+msgstr ""
+
+#: data/json/clothing_mods.json
+msgid "Destroy Nomex padding"
+msgstr ""
+
+#: data/json/clothing_mods.json
+msgid "Add pockets"
+msgstr ""
+
+#: data/json/clothing_mods.json
+msgid "Remove pockets"
 msgstr ""
 
 #: data/json/construction.json
@@ -5697,6 +5731,14 @@ msgstr ""
 msgid "Remove Mi-Go gas emitter"
 msgstr ""
 
+#: data/json/construction_group.json
+msgid "Install a ceiling lamp"
+msgstr ""
+
+#: data/json/construction_group.json
+msgid "Install a light switch"
+msgstr ""
+
 #: data/json/dreams.json
 msgid "You have a strange dream about lizards."
 msgstr ""
@@ -5714,11 +5756,11 @@ msgstr ""
 msgid "Your dreams give you an oddly medicated feeling."
 msgstr ""
 
-#: data/json/dreams.json
+#: data/json/dreams.json data/mods/Monster_Girls/dreams.json
 msgid "You have a strange dream about birds."
 msgstr ""
 
-#: data/json/dreams.json
+#: data/json/dreams.json data/mods/Monster_Girls/dreams.json
 msgid "Your dreams give you a strange feathered feeling."
 msgstr ""
 
@@ -5738,35 +5780,35 @@ msgstr ""
 msgid "Your dreams give you a strange furry feeling."
 msgstr ""
 
-#: data/json/dreams.json
+#: data/json/dreams.json data/mods/Monster_Girls/dreams.json
 msgid "You have a strange dream about bears."
 msgstr ""
 
-#: data/json/dreams.json
+#: data/json/dreams.json data/mods/Monster_Girls/dreams.json
 msgid "Your dreams give you a rough furry feeling."
 msgstr ""
 
-#: data/json/dreams.json
+#: data/json/dreams.json data/mods/Monster_Girls/dreams.json
 msgid "You have a strange dream about cats."
 msgstr ""
 
-#: data/json/dreams.json
+#: data/json/dreams.json data/mods/Monster_Girls/dreams.json
 msgid "Your dreams give you a sleek furry feeling."
 msgstr ""
 
-#: data/json/dreams.json
+#: data/json/dreams.json data/mods/Monster_Girls/dreams.json
 msgid "You have a strange dream about wolves."
 msgstr ""
 
-#: data/json/dreams.json
+#: data/json/dreams.json data/mods/Monster_Girls/dreams.json
 msgid "Your dreams give you a thick furry feeling."
 msgstr ""
 
-#: data/json/dreams.json
+#: data/json/dreams.json data/mods/Monster_Girls/dreams.json
 msgid "You have a strange dream about cattle."
 msgstr ""
 
-#: data/json/dreams.json
+#: data/json/dreams.json data/mods/Monster_Girls/dreams.json
 msgid "Your dreams give you a strange content, furry feeling."
 msgstr ""
 
@@ -5778,19 +5820,19 @@ msgstr ""
 msgid "Your dreams give you a strange chitinous feeling."
 msgstr ""
 
-#: data/json/dreams.json
+#: data/json/dreams.json data/mods/Monster_Girls/dreams.json
 msgid "You have a strange dream about plants."
 msgstr ""
 
-#: data/json/dreams.json
+#: data/json/dreams.json data/mods/Monster_Girls/dreams.json
 msgid "Your dreams give you a strange plantlike feeling."
 msgstr ""
 
-#: data/json/dreams.json
+#: data/json/dreams.json data/mods/Monster_Girls/dreams.json
 msgid "You have a strange dream about slime."
 msgstr ""
 
-#: data/json/dreams.json
+#: data/json/dreams.json data/mods/Monster_Girls/dreams.json
 msgid "Your dreams give you a strange slimy feeling."
 msgstr ""
 
@@ -5810,11 +5852,11 @@ msgstr ""
 msgid "Your dreams give you a strange wet feeling."
 msgstr ""
 
-#: data/json/dreams.json
+#: data/json/dreams.json data/mods/Monster_Girls/dreams.json
 msgid "You have a strange dream about spiders."
 msgstr ""
 
-#: data/json/dreams.json
+#: data/json/dreams.json data/mods/Monster_Girls/dreams.json
 msgid "Your dreams give you a strange webbed feeling."
 msgstr ""
 
@@ -5826,7 +5868,7 @@ msgstr ""
 msgid "Your dreams give you a strange fuzzy feeling."
 msgstr ""
 
-#: data/json/dreams.json
+#: data/json/dreams.json data/mods/Monster_Girls/dreams.json
 msgid "You have a strange dream."
 msgstr ""
 
@@ -5834,7 +5876,7 @@ msgstr ""
 msgid "You feel… OK."
 msgstr ""
 
-#: data/json/dreams.json
+#: data/json/dreams.json data/mods/Monster_Girls/dreams.json
 msgid "You feel a yearning…"
 msgstr ""
 
@@ -5854,11 +5896,11 @@ msgstr ""
 msgid "You feel warm."
 msgstr ""
 
-#: data/json/dreams.json
+#: data/json/dreams.json data/mods/Monster_Girls/dreams.json
 msgid "You dream of a massive block of cheese bigger than you."
 msgstr ""
 
-#: data/json/dreams.json
+#: data/json/dreams.json data/mods/Monster_Girls/dreams.json
 msgid "You dream of being cozy in a dark place."
 msgstr ""
 
@@ -5897,7 +5939,7 @@ msgid ""
 "treatment."
 msgstr ""
 
-#: data/json/dreams.json
+#: data/json/dreams.json data/mods/Monster_Girls/dreams.json
 msgid "You have strange dreams of soaring through the sky."
 msgstr ""
 
@@ -5921,7 +5963,7 @@ msgstr ""
 msgid "Whilst dreaming, you see a disturbingly bestial version of yourself."
 msgstr ""
 
-#: data/json/dreams.json
+#: data/json/dreams.json data/mods/Monster_Girls/dreams.json
 msgid "You dream of foraging in the woods… mouth-first?"
 msgstr ""
 
@@ -5929,7 +5971,7 @@ msgstr ""
 msgid "Your dream-reflection is rather bearish."
 msgstr ""
 
-#: data/json/dreams.json
+#: data/json/dreams.json data/mods/Monster_Girls/dreams.json
 msgid "You easily bound from the street to a roof..oh, only a dream."
 msgstr ""
 
@@ -5937,7 +5979,7 @@ msgstr ""
 msgid "As you dream, your reflection looks rather catlike."
 msgstr ""
 
-#: data/json/dreams.json
+#: data/json/dreams.json data/mods/Monster_Girls/dreams.json
 msgid "You have a disturbing dream of someone invading your territory."
 msgstr ""
 
@@ -5945,7 +5987,7 @@ msgstr ""
 msgid "Your dream-self's muzzle looks… wait, muzzle?"
 msgstr ""
 
-#: data/json/dreams.json
+#: data/json/dreams.json data/mods/Monster_Girls/dreams.json
 msgid "You dream of grazing in an open field."
 msgstr ""
 
@@ -5964,19 +6006,19 @@ msgid ""
 "reflection."
 msgstr ""
 
-#: data/json/dreams.json
+#: data/json/dreams.json data/mods/Monster_Girls/dreams.json
 msgid "You have a confusing dream of growing in a garden."
 msgstr ""
 
-#: data/json/dreams.json
+#: data/json/dreams.json data/mods/Monster_Girls/dreams.json
 msgid "You are confused by a plantlike image of yourself in a dream."
 msgstr ""
 
-#: data/json/dreams.json
+#: data/json/dreams.json data/mods/Monster_Girls/dreams.json
 msgid "You have a strange dream of living in sludge."
 msgstr ""
 
-#: data/json/dreams.json
+#: data/json/dreams.json data/mods/Monster_Girls/dreams.json
 msgid "In your dream you see an odd, slimy reflection of yourself."
 msgstr ""
 
@@ -5997,11 +6039,11 @@ msgid ""
 "While dreaming, a reflection of yourself appears almost like an octopus."
 msgstr ""
 
-#: data/json/dreams.json
+#: data/json/dreams.json data/mods/Monster_Girls/dreams.json
 msgid "You have a strange dream of spinning webs"
 msgstr ""
 
-#: data/json/dreams.json
+#: data/json/dreams.json data/mods/Monster_Girls/dreams.json
 msgid "In your dream you see a very spiderlike version of yourself."
 msgstr ""
 
@@ -6023,11 +6065,11 @@ msgstr ""
 msgid "Your dream-self looks competent and in control."
 msgstr ""
 
-#: data/json/dreams.json
+#: data/json/dreams.json data/mods/Monster_Girls/dreams.json
 msgid "You dream of a home in the forests."
 msgstr ""
 
-#: data/json/dreams.json
+#: data/json/dreams.json data/mods/Monster_Girls/dreams.json
 msgid "You feel beautiful, and yet riven with worry…"
 msgstr ""
 
@@ -6051,11 +6093,11 @@ msgid ""
 "to help…"
 msgstr ""
 
-#: data/json/dreams.json
+#: data/json/dreams.json data/mods/Monster_Girls/dreams.json
 msgid "You dream of… sneaking."
 msgstr ""
 
-#: data/json/dreams.json
+#: data/json/dreams.json data/mods/Monster_Girls/dreams.json
 msgid "You dream of a cold winter night.  Your jacket is too big to put on."
 msgstr ""
 
@@ -6079,7 +6121,7 @@ msgid ""
 "with the steady drip of an IV line."
 msgstr ""
 
-#: data/json/dreams.json
+#: data/json/dreams.json data/mods/Monster_Girls/dreams.json
 msgid ""
 "You have a realistic dream of flying south with your flock for the winter."
 msgstr ""
@@ -6111,19 +6153,19 @@ msgid ""
 "anticipation."
 msgstr ""
 
-#: data/json/dreams.json
+#: data/json/dreams.json data/mods/Monster_Girls/dreams.json
 msgid ""
 "In your dream, you stalk and kill a young wolf, using only your teeth and "
 "claws."
 msgstr ""
 
-#: data/json/dreams.json
+#: data/json/dreams.json data/mods/Monster_Girls/dreams.json
 msgid ""
 "A warm, sunny spot high up where you can watch your prey.  What a great "
 "dream!"
 msgstr ""
 
-#: data/json/dreams.json
+#: data/json/dreams.json data/mods/Monster_Girls/dreams.json
 msgid "You dream of pursuing and killing a rat, for some reason."
 msgstr ""
 
@@ -6131,7 +6173,7 @@ msgstr ""
 msgid "You dream of tearing into a fresh kill."
 msgstr ""
 
-#: data/json/dreams.json
+#: data/json/dreams.json data/mods/Monster_Girls/dreams.json
 msgid "You dream of finally finding the perfect place to make your den."
 msgstr ""
 
@@ -6139,7 +6181,7 @@ msgstr ""
 msgid "You terrifyingly dream of being led to a slaughterhouse by a farmer."
 msgstr ""
 
-#: data/json/dreams.json
+#: data/json/dreams.json data/mods/Monster_Girls/dreams.json
 msgid "You find it hard to wake from a vivid dream of grazing on a farm."
 msgstr ""
 
@@ -6151,21 +6193,21 @@ msgstr ""
 msgid "Your disturbingly lifelike dream has you pollinating plants."
 msgstr ""
 
-#: data/json/dreams.json
+#: data/json/dreams.json data/mods/Monster_Girls/dreams.json
 msgid "You have a confusing and scary dream of becoming a plant."
 msgstr ""
 
-#: data/json/dreams.json
+#: data/json/dreams.json data/mods/Monster_Girls/dreams.json
 msgid ""
 "The transition from your lifelike dreams of living as a plant to reality "
 "shocks you."
 msgstr ""
 
-#: data/json/dreams.json
+#: data/json/dreams.json data/mods/Monster_Girls/dreams.json
 msgid "Your vivid dream of living as a slime blob frightens you."
 msgstr ""
 
-#: data/json/dreams.json
+#: data/json/dreams.json data/mods/Monster_Girls/dreams.json
 msgid ""
 "You find it hard to control your limbs after dreaming of amorphous blob "
 "life."
@@ -6188,7 +6230,7 @@ msgstr ""
 msgid "You dream of living as a terrifying octopus mutant."
 msgstr ""
 
-#: data/json/dreams.json
+#: data/json/dreams.json data/mods/Monster_Girls/dreams.json
 msgid "You vividly dream of living in a web and consuming insects."
 msgstr ""
 
@@ -6213,11 +6255,11 @@ msgstr ""
 msgid "Your success in restoring civilization was only a dream.  For now."
 msgstr ""
 
-#: data/json/dreams.json
+#: data/json/dreams.json data/mods/Monster_Girls/dreams.json
 msgid "NO!  You will not allow this corruption to prevail!"
 msgstr ""
 
-#: data/json/dreams.json
+#: data/json/dreams.json data/mods/Monster_Girls/dreams.json
 msgid "You see yourself reflected in the beauty of the forest."
 msgstr ""
 
@@ -6238,13 +6280,13 @@ msgid ""
 "After an exciting and tasty hunt, you retire to your nest.  Mmm, yes, nest."
 msgstr ""
 
-#: data/json/dreams.json
+#: data/json/dreams.json data/mods/Monster_Girls/dreams.json
 msgid ""
 "You weave between the zombies' legs, too small for them to catch.  The gas "
 "station isn't far now, with all its soda and chips and- UGH, dream…"
 msgstr ""
 
-#: data/json/dreams.json
+#: data/json/dreams.json data/mods/Monster_Girls/dreams.json
 msgid ""
 "Once you finish your tasty dinner of seeds, you look around for your drink, "
 "but you already ate it."
@@ -6264,11 +6306,11 @@ msgid ""
 "wonderful pain."
 msgstr ""
 
-#: data/json/dreams.json
+#: data/json/dreams.json data/mods/Monster_Girls/dreams.json
 msgid "You wonder if your nest will be good enough."
 msgstr ""
 
-#: data/json/dreams.json
+#: data/json/dreams.json data/mods/Monster_Girls/dreams.json
 msgid ""
 "Your dream of soaring over the landscape becomes a nightmare when you find "
 "yourself with arms and a glider!"
@@ -6292,39 +6334,39 @@ msgstr ""
 msgid "A fond memory of throating some prey animal bubbles up."
 msgstr ""
 
-#: data/json/dreams.json
+#: data/json/dreams.json data/mods/Monster_Girls/dreams.json
 msgid ""
 "You wonder if you could find one of those 'salmon runs', or if they were "
 "just a legend…"
 msgstr ""
 
-#: data/json/dreams.json
+#: data/json/dreams.json data/mods/Monster_Girls/dreams.json
 msgid "Ah, the wolf-slaying dream again.  That's a good one…"
 msgstr ""
 
-#: data/json/dreams.json
+#: data/json/dreams.json data/mods/Monster_Girls/dreams.json
 msgid "Boing!  and you've pounced another yummy critter."
 msgstr ""
 
-#: data/json/dreams.json
+#: data/json/dreams.json data/mods/Monster_Girls/dreams.json
 msgid ""
 "Your nightmare of sentient rats turns successful, as you grab their King and"
 " shake it apart!"
 msgstr ""
 
-#: data/json/dreams.json
+#: data/json/dreams.json data/mods/Monster_Girls/dreams.json
 msgid "You dream of the hunt, the feed, and your pack."
 msgstr ""
 
-#: data/json/dreams.json
+#: data/json/dreams.json data/mods/Monster_Girls/dreams.json
 msgid "Oh, you should really patrol your territory again, maybe expand."
 msgstr ""
 
-#: data/json/dreams.json
+#: data/json/dreams.json data/mods/Monster_Girls/dreams.json
 msgid "You dream of jumping the gate and leading your herd to freedom."
 msgstr ""
 
-#: data/json/dreams.json
+#: data/json/dreams.json data/mods/Monster_Girls/dreams.json
 msgid "The herd moves along and you with them, finding greener pastures."
 msgstr ""
 
@@ -6337,41 +6379,41 @@ msgid ""
 "You dream of a weirdly shaped plant, whose nectar surpassed your every wish…"
 msgstr ""
 
-#: data/json/dreams.json
+#: data/json/dreams.json data/mods/Monster_Girls/dreams.json
 msgid "You dream of bees fighting over your sweet nectar.  Mmm."
 msgstr ""
 
-#: data/json/dreams.json
+#: data/json/dreams.json data/mods/Monster_Girls/dreams.json
 msgid ""
 "How grand it would be to sink your roots deep into the soil as the seasons "
 "pass you by."
 msgstr ""
 
-#: data/json/dreams.json
+#: data/json/dreams.json data/mods/Monster_Girls/dreams.json
 msgid "You dream of a gigantic knot of roots, beating like a heart."
 msgstr ""
 
-#: data/json/dreams.json
+#: data/json/dreams.json data/mods/Monster_Girls/dreams.json
 msgid "You have a disturbing dream of termites chewing all over your body."
 msgstr ""
 
-#: data/json/dreams.json
+#: data/json/dreams.json data/mods/Monster_Girls/dreams.json
 msgid ""
 "You dream of sharing your roots with a vast forest, all plants provided for "
 "as the canopy grows ever upwards."
 msgstr ""
 
-#: data/json/dreams.json
+#: data/json/dreams.json data/mods/Monster_Girls/dreams.json
 msgid "A family of caterpillars munches away at your leaves."
 msgstr ""
 
-#: data/json/dreams.json
+#: data/json/dreams.json data/mods/Monster_Girls/dreams.json
 msgid ""
 "Fire rages around you, licking at your bark and engulfing the saplings and "
 "bushes near your roots.  The once chatty forest is quiet in its wake."
 msgstr ""
 
-#: data/json/dreams.json
+#: data/json/dreams.json data/mods/Monster_Girls/dreams.json
 msgid ""
 "You dream of communing with an ancient pine.  Trees are the true survivors "
 "of this world, it tells you."
@@ -6383,13 +6425,13 @@ msgid ""
 "thoughtful!"
 msgstr ""
 
-#: data/json/dreams.json
+#: data/json/dreams.json data/mods/Monster_Girls/dreams.json
 msgid ""
 "Your vivid dream of your pseudopods calcifying into rigid structures "
 "terrifies you."
 msgstr ""
 
-#: data/json/dreams.json
+#: data/json/dreams.json data/mods/Monster_Girls/dreams.json
 msgid ""
 "Ah, the painting-the-planet dream again.  Maybe if you assimilated more…"
 msgstr ""
@@ -6412,11 +6454,11 @@ msgstr ""
 msgid "You dream of recruiting a cult of fishfolk to serve your needs."
 msgstr ""
 
-#: data/json/dreams.json
+#: data/json/dreams.json data/mods/Monster_Girls/dreams.json
 msgid "You excitedly web up an interloper and prepare to feast… nope, dream."
 msgstr ""
 
-#: data/json/dreams.json
+#: data/json/dreams.json data/mods/Monster_Girls/dreams.json
 msgid "Your dreams of having to live without a web frighten you."
 msgstr ""
 
@@ -6438,12 +6480,12 @@ msgstr ""
 msgid "There are underground Faults in the world.  Faults you should remedy."
 msgstr ""
 
-#: data/json/dreams.json
+#: data/json/dreams.json data/mods/Monster_Girls/dreams.json
 msgid ""
 "You pant, terrified at the thought of that FUNGUS destroying your home!"
 msgstr ""
 
-#: data/json/dreams.json
+#: data/json/dreams.json data/mods/Monster_Girls/dreams.json
 msgid "You wish others could understand, and join your struggle…"
 msgstr ""
 
@@ -6463,12 +6505,12 @@ msgstr ""
 msgid "You stir, saddened that your beautiful hatchlings were only a dream."
 msgstr ""
 
-#: data/json/dreams.json
+#: data/json/dreams.json data/mods/Monster_Girls/dreams.json
 msgid ""
 "You curl up some more in your nest.  Geez, shredded paper really *is* comfy."
 msgstr ""
 
-#: data/json/dreams.json
+#: data/json/dreams.json data/mods/Monster_Girls/dreams.json
 msgid ""
 "You hear the sirens again, but this time you stay in your hole in the wall."
 "  Nobody will think to look there!"
@@ -8996,10 +9038,10 @@ msgid "You've been struck by lightning, and feel… different."
 msgstr ""
 
 #: data/json/effects.json
-msgid "Grown of Fusion"
+msgid "Fused"
 msgstr ""
 
-#. ~ Description of effect 'Grown of Fusion'.
+#. ~ Description of effect 'Fused'.
 #: data/json/effects.json
 msgid ""
 "AI effect to increase stats after fusing with another critter. 1 stack means"
@@ -10197,6 +10239,13 @@ msgstr ""
 #. ~ Please leave anything in <angle brackets> unchanged.
 #: data/json/flags.json
 msgid ""
+"This gear has certain parts padded with nomex to <good>increase fire "
+"protection</good> with some <bad>increase to encumbrance</bad>."
+msgstr ""
+
+#. ~ Please leave anything in <angle brackets> unchanged.
+#: data/json/flags.json
+msgid ""
 "This gear has certain parts padded with steel to <good>increase "
 "protection</good> with moderate <bad>increase to encumbrance</bad>."
 msgstr ""
@@ -10206,6 +10255,13 @@ msgstr ""
 msgid ""
 "This gear has certain parts padded with superalloy to <good>increase "
 "protection</good> with moderate <bad>increase to encumbrance</bad>."
+msgstr ""
+
+#. ~ Please leave anything in <angle brackets> unchanged.
+#: data/json/flags.json
+msgid ""
+"This gear has been modified to <good>increase carry volume</good> with some "
+"<bad>increase to encumbrance</bad>."
 msgstr ""
 
 #. ~ Please leave anything in <angle brackets> unchanged.
@@ -10347,6 +10403,11 @@ msgstr ""
 #. ~ Please leave anything in <angle brackets> unchanged.
 #: data/json/flags.json
 msgid "It can show the automated weather forcast."
+msgstr ""
+
+#. ~ Please leave anything in <angle brackets> unchanged.
+#: data/json/flags.json
+msgid "You have marked this article to not display a sprite when worn."
 msgstr ""
 
 #. ~ 'close' action message of some gate object.
@@ -10640,12 +10701,16 @@ msgstr ""
 msgid "Create a zombie slave"
 msgstr ""
 
+#. ~ Use action menu_text for chaos dagger.
 #. ~ Use action menu_text for {'str': 'large space heater'}.
 #. ~ Use action menu_text for {'str': 'small space heater'}.
-#: data/json/item_actions.json data/json/items/tool/misc.json src/iuse.cpp
+#: data/json/item_actions.json data/json/artifact/premade_artifacts.json
+#: data/json/items/tool/misc.json src/iuse.cpp
 msgid "Turn on"
 msgstr ""
 
+#. ~ Use action menu_text for {'str': 'chaos dagger (shifting)', 'str_pl':
+#. 'chaos daggers (shifting)'}.
 #. ~ Use action menu_text for {'str': 'mining helmet (on)', 'str_pl': 'mining
 #. helmets (on)'}.
 #. ~ Use action menu_text for {'str': 'pair of thermal electric socks (on)',
@@ -10656,6 +10721,8 @@ msgstr ""
 #. 'str_pl': 'pairs of thermal electric gloves (on)'}.
 #. ~ Use action menu_text for {'str': 'thermal electric balaclava (on)',
 #. 'str_pl': 'thermal electric balaclavas (on)'}.
+#. ~ Use action menu_text for {'str': 'liquid cooling suit (on)', 'str_pl':
+#. 'liquid cooling suits (on)'}.
 #. ~ Use action menu_text for {'str': 'headlamp (on)', 'str_pl': 'headlamps
 #. (on)'}.
 #. ~ Use action menu_text for {'str': 'survivor headlamp (on)', 'str_pl':
@@ -10725,6 +10792,9 @@ msgstr ""
 #. 'large space heaters (on)'}.
 #. ~ Use action menu_text for {'str': 'small space heater (on)', 'str_pl':
 #. 'small space heaters (on)'}.
+#. ~ Use action menu_text for {'str': 'liquid cooling outfit (on)', 'str_pl':
+#. 'liquid cooling outfits (on)'}.
+#. ~ Use action menu_text for {'str': 'liquid cooling balaclava (on)'}.
 #. ~ Use action menu_text for {'str': 'hazardous environment helmet (on)',
 #. 'str_pl': 'hazardous environment helmets (on)'}.
 #. ~ Use action menu_text for {'str': 'cryopod bodyglove (on)', 'str_pl':
@@ -10737,10 +10807,11 @@ msgstr ""
 #. 'C.R.I.T. gasmasks (on)'}.
 #. ~ Use action menu_text for {'str': 'heat cube (torch on)', 'str_pl': 'heat
 #. cubes (torch on)'}.
-#: data/json/item_actions.json data/json/items/tool_armor.json
-#: data/json/items/armor/cloaks.json data/json/items/armor/power_armor.json
-#: data/json/items/melee/bludgeons.json data/json/items/tool/electronics.json
-#: data/json/items/tool/lighting.json data/json/items/tool/misc.json
+#: data/json/item_actions.json data/json/artifact/premade_artifacts.json
+#: data/json/items/tool_armor.json data/json/items/armor/cloaks.json
+#: data/json/items/armor/power_armor.json data/json/items/melee/bludgeons.json
+#: data/json/items/tool/electronics.json data/json/items/tool/lighting.json
+#: data/json/items/tool/misc.json data/json/obsoletion/items.json
 #: data/mods/Aftershock/items/obsolete.json
 #: data/mods/Aftershock/items/tool_armor.json
 #: data/mods/Aftershock/items/tools.json
@@ -14024,6 +14095,20 @@ msgid "<npcname> brutally impales %s with their weapon"
 msgstr ""
 
 #: data/json/martialarts_fictional.json
+msgid "Biojutsu Wrap Attack"
+msgstr ""
+
+#: data/json/martialarts_fictional.json
+#, c-format
+msgid "You wrap your weapon around %s and quickly yank it back"
+msgstr ""
+
+#: data/json/martialarts_fictional.json
+#, c-format
+msgid "<npcname> wraps their weapon around %s and quickly yanks it back"
+msgstr ""
+
+#: data/json/martialarts_fictional.json
 msgid "Biojutsu Takedown"
 msgstr ""
 
@@ -15854,7 +15939,7 @@ msgstr ""
 msgid "moving items"
 msgstr ""
 
-#: data/json/player_activities.json data/json/skills.json
+#: data/json/player_activities.json
 msgid "driving"
 msgstr ""
 
@@ -16082,7 +16167,7 @@ msgstr ""
 msgid "canceling activity serialized with legacy code"
 msgstr ""
 
-#: data/json/player_activities.json data/json/skills.json
+#: data/json/player_activities.json
 msgid "throwing"
 msgstr ""
 
@@ -16336,6 +16421,36 @@ msgid ""
 "Thanks to your time in the lab, you're familiar with the basics of "
 "conducting science.  Now that the world has ended, only one question "
 "remains: Can you undo the very Cataclysm you helped create?"
+msgstr ""
+
+#: data/json/professions.json
+msgctxt "profession_male"
+msgid "Bionic Lab-tech"
+msgstr ""
+
+#: data/json/professions.json
+msgctxt "profession_female"
+msgid "Bionic Lab-tech"
+msgstr ""
+
+#. ~ Profession (male Bionic Lab-tech) description
+#: data/json/professions.json
+msgctxt "prof_desc_male"
+msgid ""
+"You've spent your career keeping up with the latest advances in science, "
+"even enrolling as a subject yourself to benefit from cutting-edge bionics "
+"that would assist your own studies.  Now however, you're starting to wish "
+"they offered courses on xenobiology."
+msgstr ""
+
+#. ~ Profession (female Bionic Lab-tech) description
+#: data/json/professions.json
+msgctxt "prof_desc_female"
+msgid ""
+"You've spent your career keeping up with the latest advances in science, "
+"even enrolling as a subject yourself to benefit from cutting-edge bionics "
+"that would assist your own studies.  Now however, you're starting to wish "
+"they offered courses on xenobiology."
 msgstr ""
 
 #: data/json/professions.json
@@ -19784,6 +19899,64 @@ msgstr ""
 
 #: data/json/professions.json
 msgctxt "profession_male"
+msgid "Monster Hunter"
+msgstr ""
+
+#: data/json/professions.json
+msgctxt "profession_female"
+msgid "Monster Hunter"
+msgstr ""
+
+#. ~ Profession (male Monster Hunter) description
+#: data/json/professions.json
+msgctxt "prof_desc_male"
+msgid ""
+"With the fall of civilization, you took to living off the land and grew into"
+" a competent hunter.  The abominations that thrive in this new world may not"
+" be good eating, but their hides and bones make for quite practical "
+"trophies."
+msgstr ""
+
+#. ~ Profession (female Monster Hunter) description
+#: data/json/professions.json
+msgctxt "prof_desc_female"
+msgid ""
+"With the fall of civilization, you took to living off the land and grew into"
+" a competent hunter.  The abominations that thrive in this new world may not"
+" be good eating, but their hides and bones make for quite practical "
+"trophies."
+msgstr ""
+
+#: data/json/professions.json
+msgctxt "profession_male"
+msgid "Monster Slayer"
+msgstr ""
+
+#: data/json/professions.json
+msgctxt "profession_female"
+msgid "Monster Slayer"
+msgstr ""
+
+#. ~ Profession (male Monster Slayer) description
+#: data/json/professions.json
+msgctxt "prof_desc_male"
+msgid ""
+"With the fall of civilization, you took to living off the land and honed "
+"your skills fending off undead and worse.  You wear the fruits of your labor"
+" proudly, bearing weapons and armor made from the bones of great beasts."
+msgstr ""
+
+#. ~ Profession (female Monster Slayer) description
+#: data/json/professions.json
+msgctxt "prof_desc_female"
+msgid ""
+"With the fall of civilization, you took to living off the land and honed "
+"your skills fending off undead and worse.  You wear the fruits of your labor"
+" proudly, bearing weapons and armor made from the bones of great beasts."
+msgstr ""
+
+#: data/json/professions.json
+msgctxt "profession_male"
 msgid "Mall Security"
 msgstr ""
 
@@ -22487,10 +22660,10 @@ msgid "Social skills"
 msgstr ""
 
 #: data/json/skills.json
-msgid "bartering"
+msgid "Bartering"
 msgstr ""
 
-#. ~ Description for {'str': 'bartering'}
+#. ~ Description for {'str': 'Bartering'}
 #: data/json/skills.json
 msgid ""
 "Your skill in bargaining, haggling, and trading with others.  Higher levels "
@@ -22499,10 +22672,10 @@ msgid ""
 msgstr ""
 
 #: data/json/skills.json
-msgid "speaking"
+msgid "Speaking"
 msgstr ""
 
-#. ~ Description for {'str': 'speaking'}
+#. ~ Description for {'str': 'Speaking'}
 #: data/json/skills.json
 msgid ""
 "Your skill in speaking to other people.  Covers ability in boasting, "
@@ -22511,10 +22684,10 @@ msgid ""
 msgstr ""
 
 #: data/json/skills.json
-msgid "computers"
+msgid "Computers"
 msgstr ""
 
-#. ~ Description for {'str': 'computers'}
+#. ~ Description for {'str': 'Computers'}
 #: data/json/skills.json
 msgid ""
 "Your skill in accessing and manipulating computers.  Higher levels can allow"
@@ -22522,10 +22695,10 @@ msgid ""
 msgstr ""
 
 #: data/json/skills.json
-msgid "first aid"
+msgid "First Aid"
 msgstr ""
 
-#. ~ Description for {'str': 'first aid'}
+#. ~ Description for {'str': 'First Aid'}
 #: data/json/skills.json
 msgid ""
 "Your skill in effecting emergency medical treatment.  Higher levels allow "
@@ -22534,10 +22707,10 @@ msgid ""
 msgstr ""
 
 #: data/json/skills.json
-msgid "mechanics"
+msgid "Mechanics"
 msgstr ""
 
-#. ~ Description for {'str': 'mechanics'}
+#. ~ Description for {'str': 'Mechanics'}
 #: data/json/skills.json
 msgid ""
 "Your skill in engineering, maintaining and repairing vehicles and other "
@@ -22546,10 +22719,10 @@ msgid ""
 msgstr ""
 
 #: data/json/skills.json
-msgid "trapping"
+msgid "Trapping"
 msgstr ""
 
-#. ~ Description for {'str': 'trapping'}
+#. ~ Description for {'str': 'Trapping'}
 #: data/json/skills.json
 msgid ""
 "Your skill in creating, setting, finding and disarming traps safely and "
@@ -22557,7 +22730,11 @@ msgid ""
 "triggered."
 msgstr ""
 
-#. ~ Description for {'str': 'driving'}
+#: data/json/skills.json
+msgid "Driving"
+msgstr ""
+
+#. ~ Description for {'str': 'Driving'}
 #: data/json/skills.json
 msgid ""
 "Your skill in operating and steering a vehicle in motion.  A higher level "
@@ -22566,10 +22743,10 @@ msgid ""
 msgstr ""
 
 #: data/json/skills.json
-msgid "swimming"
+msgid "Swimming"
 msgstr ""
 
-#. ~ Description for {'str': 'swimming'}
+#. ~ Description for {'str': 'Swimming'}
 #: data/json/skills.json
 msgid ""
 "Your ability to stay afloat and move around in bodies of water.  This skill "
@@ -22578,10 +22755,10 @@ msgid ""
 msgstr ""
 
 #: data/json/skills.json
-msgid "fabrication"
+msgid "Fabrication"
 msgstr ""
 
-#. ~ Description for {'str': 'fabrication'}
+#. ~ Description for {'str': 'Fabrication'}
 #: data/json/skills.json
 msgid ""
 "Your skill in working with raw materials and shaping them into useful "
@@ -22589,11 +22766,11 @@ msgid ""
 "objects."
 msgstr ""
 
-#: data/json/skills.json src/crafting_gui.cpp
-msgid "cooking"
+#: data/json/skills.json
+msgid "Cooking"
 msgstr ""
 
-#. ~ Description for {'str': 'cooking'}
+#. ~ Description for {'str': 'Cooking'}
 #: data/json/skills.json
 msgid ""
 "Your skill in combining food ingredients to make other, tastier food items."
@@ -22601,11 +22778,11 @@ msgid ""
 "tasks."
 msgstr ""
 
-#: data/json/skills.json src/crafting_gui.cpp
-msgid "tailoring"
+#: data/json/skills.json
+msgid "Tailoring"
 msgstr ""
 
-#. ~ Description for {'str': 'tailoring'}
+#. ~ Description for {'str': 'Tailoring'}
 #: data/json/skills.json
 msgid ""
 "Your skill in the craft and repair of clothing, bags, blankets and other "
@@ -22614,10 +22791,10 @@ msgid ""
 msgstr ""
 
 #: data/json/skills.json
-msgid "survival"
+msgid "Survival"
 msgstr ""
 
-#. ~ Description for {'str': 'survival'}
+#. ~ Description for {'str': 'Survival'}
 #: data/json/skills.json
 msgid ""
 "Your skill in surviving the wilderness, and in crafting various basic "
@@ -22626,10 +22803,10 @@ msgid ""
 msgstr ""
 
 #: data/json/skills.json
-msgid "electronics"
+msgid "Electronics"
 msgstr ""
 
-#. ~ Description for {'str': 'electronics'}
+#. ~ Description for {'str': 'Electronics'}
 #: data/json/skills.json
 msgid ""
 "Your skill in dealing with electrical systems, used in the craft and repair "
@@ -22638,10 +22815,10 @@ msgid ""
 msgstr ""
 
 #: data/json/skills.json
-msgid "archery"
+msgid "Archery"
 msgstr ""
 
-#. ~ Description for {'str': 'archery'}
+#. ~ Description for {'str': 'Archery'}
 #: data/json/skills.json
 msgid ""
 "Your skill in using bow weapons, from hand-carved self bows to complex "
@@ -22650,10 +22827,10 @@ msgid ""
 msgstr ""
 
 #: data/json/skills.json
-msgid "marksmanship"
+msgid "Marksmanship"
 msgstr ""
 
-#. ~ Description for {'str': 'marksmanship'}
+#. ~ Description for {'str': 'Marksmanship'}
 #: data/json/skills.json
 msgid ""
 "Your overall skill in using bows and firearms.  With higher levels, this "
@@ -22662,10 +22839,10 @@ msgid ""
 msgstr ""
 
 #: data/json/skills.json
-msgid "launchers"
+msgid "Launchers"
 msgstr ""
 
-#. ~ Description for {'str': 'launchers'}
+#. ~ Description for {'str': 'Launchers'}
 #: data/json/skills.json
 msgid ""
 "Your skill in using heavy weapons like rocket, grenade or missile launchers."
@@ -22674,10 +22851,10 @@ msgid ""
 msgstr ""
 
 #: data/json/skills.json
-msgid "handguns"
+msgid "Handguns"
 msgstr ""
 
-#. ~ Description for {'str': 'handguns'}
+#. ~ Description for {'str': 'Handguns'}
 #: data/json/skills.json
 msgid ""
 "Handguns have poor accuracy compared to rifles, but are usually quick to "
@@ -22685,11 +22862,12 @@ msgid ""
 "quarters, though unsuited for long range engagement."
 msgstr ""
 
-#: data/json/skills.json
-msgid "rifles"
+#. ~ weapon category name
+#: data/json/skills.json data/json/weapon_categories.json
+msgid "Rifles"
 msgstr ""
 
-#. ~ Description for {'str': 'rifles'}
+#. ~ Description for {'str': 'Rifles'}
 #: data/json/skills.json
 msgid ""
 "Rifles have terrific range and accuracy compared to other firearms, but may "
@@ -22698,11 +22876,12 @@ msgid ""
 " properly."
 msgstr ""
 
-#: data/json/skills.json
-msgid "shotguns"
+#. ~ weapon category name
+#: data/json/skills.json data/json/weapon_categories.json
+msgid "Shotguns"
 msgstr ""
 
-#. ~ Description for {'str': 'shotguns'}
+#. ~ Description for {'str': 'Shotguns'}
 #: data/json/skills.json
 msgid ""
 "Shotguns are easy to shoot and can inflict massive damage, but their "
@@ -22710,11 +22889,12 @@ msgid ""
 "into shotguns to provide greater range, though they are somewhat inaccurate."
 msgstr ""
 
-#: data/json/skills.json
-msgid "submachine guns"
+#. ~ weapon category name
+#: data/json/skills.json data/json/weapon_categories.json
+msgid "Submachine Guns"
 msgstr ""
 
-#. ~ Description for {'str': 'submachine guns'}
+#. ~ Description for {'str': 'Submachine Guns'}
 #: data/json/skills.json
 msgid ""
 "Comprised of an automatic rifle carbine designed to fire a pistol cartridge,"
@@ -22722,18 +22902,22 @@ msgid ""
 "are relatively inaccurate and may be prone to mechanical failures."
 msgstr ""
 
-#. ~ Description for {'str': 'throwing'}
+#: data/json/skills.json
+msgid "Throwing"
+msgstr ""
+
+#. ~ Description for {'str': 'Throwing'}
 #: data/json/skills.json
 msgid ""
 "Your skill in throwing objects over a distance.  Skill increases accuracy, "
 "and at higher levels, the range of a throw."
 msgstr ""
 
-#: data/json/skills.json src/item_factory.cpp
-msgid "melee"
+#: data/json/skills.json
+msgid "Melee"
 msgstr ""
 
-#. ~ Description for {'str': 'melee'}
+#. ~ Description for {'str': 'Melee'}
 #: data/json/skills.json
 msgid ""
 "Your skill and finesse in personal combat, both with and without a weapon.  "
@@ -22742,10 +22926,10 @@ msgid ""
 msgstr ""
 
 #: data/json/skills.json
-msgid "bashing weapons"
+msgid "Bashing Weapons"
 msgstr ""
 
-#. ~ Description for {'str': 'bashing weapons'}
+#. ~ Description for {'str': 'Bashing Weapons'}
 #: data/json/skills.json
 msgid ""
 "Your skill in fighting with blunt weaponry, from rocks and sticks to "
@@ -22754,10 +22938,10 @@ msgid ""
 msgstr ""
 
 #: data/json/skills.json
-msgid "cutting weapons"
+msgid "Cutting Weapons"
 msgstr ""
 
-#. ~ Description for {'str': 'cutting weapons'}
+#. ~ Description for {'str': 'Cutting Weapons'}
 #: data/json/skills.json
 msgid ""
 "Your skill in fighting with weaponry designed to cut, hack and slash an "
@@ -22766,10 +22950,10 @@ msgid ""
 msgstr ""
 
 #: data/json/skills.json
-msgid "dodging"
+msgid "Dodging"
 msgstr ""
 
-#. ~ Description for {'str': 'dodging'}
+#. ~ Description for {'str': 'Dodging'}
 #: data/json/skills.json
 msgid ""
 "Your ability to dodge an oncoming threat, be it an enemy's attack, a "
@@ -22779,10 +22963,10 @@ msgid ""
 msgstr ""
 
 #: data/json/skills.json
-msgid "piercing weapons"
+msgid "Piercing Weapons"
 msgstr ""
 
-#. ~ Description for {'str': 'piercing weapons'}
+#. ~ Description for {'str': 'Piercing Weapons'}
 #: data/json/skills.json
 msgid ""
 "Your skill in fighting with knives, spears and other such stabbing "
@@ -22791,10 +22975,10 @@ msgid ""
 msgstr ""
 
 #: data/json/skills.json
-msgid "unarmed combat"
+msgid "Unarmed Combat"
 msgstr ""
 
-#. ~ Description for {'str': 'unarmed combat'}
+#. ~ Description for {'str': 'Unarmed Combat'}
 #: data/json/skills.json
 msgid ""
 "Your skill in hand-to-hand fighting, with unarmed weapons or empty-handed.  "
@@ -22802,11 +22986,11 @@ msgid ""
 " while also providing a bonus to bare-handed damage."
 msgstr ""
 
-#: data/json/skills.json
-msgid "weapon"
+#: data/json/skills.json src/panels.cpp
+msgid "Weapon"
 msgstr ""
 
-#. ~ Description for {'str': 'weapon'}
+#. ~ Description for {'str': 'Weapon'}
 #. ~ Description for {'str_sp': 'animal'}
 #. ~ Description for {'str_sp': 'nearby fire'}
 #. ~ Description for {'str_sp': 'muscle'}
@@ -25146,6 +25330,10 @@ msgid "Mall (loading area)"
 msgstr ""
 
 #: data/json/start_locations.json
+msgid "Mall (loading area roof)"
+msgstr ""
+
+#: data/json/start_locations.json
 msgid "Mall (food court)"
 msgstr ""
 
@@ -25231,6 +25419,10 @@ msgid "Apartment Building (rooftop)"
 msgstr ""
 
 #: data/json/start_locations.json
+msgid "Apartment Building (house)"
+msgstr ""
+
+#: data/json/start_locations.json
 msgid "Horse Ranch"
 msgstr ""
 
@@ -25287,6 +25479,10 @@ msgstr ""
 
 #: data/json/start_locations.json
 msgid "Bastion Fort"
+msgstr ""
+
+#: data/json/start_locations.json
+msgid "Convention Center Rooftop"
 msgstr ""
 
 #: data/json/techniques.json
@@ -25568,12 +25764,12 @@ msgstr ""
 msgid "<npcname> feints at %s."
 msgstr ""
 
-#: data/json/techniques.json src/character.cpp src/monattack.cpp
+#: data/json/techniques.json src/monattack.cpp
 #, c-format
 msgid "The %s tries to grab you, but you break its grab!"
 msgstr ""
 
-#: data/json/techniques.json src/character.cpp src/monattack.cpp
+#: data/json/techniques.json src/monattack.cpp
 #, c-format
 msgid "The %s tries to grab <npcname>, but they break its grab!"
 msgstr ""
@@ -27879,27 +28075,12 @@ msgstr ""
 
 #. ~ weapon category name
 #: data/json/weapon_categories.json
-msgid "Submachine Guns"
-msgstr ""
-
-#. ~ weapon category name
-#: data/json/weapon_categories.json
-msgid "Rifles"
-msgstr ""
-
-#. ~ weapon category name
-#: data/json/weapon_categories.json
 msgid "Machine Guns"
 msgstr ""
 
 #. ~ weapon category name
 #: data/json/weapon_categories.json
 msgid "Gatling Guns"
-msgstr ""
-
-#. ~ weapon category name
-#: data/json/weapon_categories.json
-msgid "Shotguns"
 msgstr ""
 
 #. ~ weapon category name
@@ -28040,6 +28221,49 @@ msgid ""
 "showing you a top-down view of your position with the surroundings revealed."
 msgstr ""
 
+#: data/json/artifact/premade_artifacts.json
+msgid "chaos dagger"
+msgid_plural "chaos daggers"
+msgstr[0] ""
+msgstr[1] ""
+
+#. ~ Use action msg for chaos dagger.
+#: data/json/artifact/premade_artifacts.json
+msgid ""
+"The chaos dagger starts shifting, the crystals moving about in a "
+"scintillating rainbow."
+msgstr ""
+
+#. ~ Description for chaos dagger
+#: data/json/artifact/premade_artifacts.json
+msgid ""
+"A small but surprisingly heavy knife seemingly made of crystalline bismuth, "
+"iridescent rectangular patterns twisting into a fractal towards the blade's "
+"edge."
+msgstr ""
+
+#: data/json/artifact/premade_artifacts.json
+msgid "chaos dagger (shifting)"
+msgid_plural "chaos daggers (shifting)"
+msgstr[0] ""
+msgstr[1] ""
+
+#. ~ Use action msg for {'str': 'chaos dagger (shifting)', 'str_pl': 'chaos
+#. daggers (shifting)'}.
+#: data/json/artifact/premade_artifacts.json
+msgid "The chaos dagger goes still"
+msgstr ""
+
+#. ~ Description for {'str': 'chaos dagger (shifting)', 'str_pl': 'chaos
+#. daggers (shifting)'}
+#: data/json/artifact/premade_artifacts.json
+msgid ""
+"A small but surprisingly heavy knife seemingly made of crystalline bismuth, "
+"iridescent rectangular patterns twisting into a fractal towards the blade's "
+"edge.  The crystals are shifting as you look at them, rapidly growing, "
+"melding together and reforming."
+msgstr ""
+
 #: data/json/furniture_and_terrain/furniture-appliances.json
 msgid "cooling unit"
 msgstr ""
@@ -28154,6 +28378,7 @@ msgstr ""
 #. ~ Description for abstract minifreezer
 #. ~ Description for abstract air conditioner
 #. ~ Description for abstract space heater
+#. ~ Description for overhead light
 #: data/json/furniture_and_terrain/furniture-appliances.json
 msgid "Abstract furniture.  If you see this, something went wrong."
 msgstr ""
@@ -29331,18 +29556,85 @@ msgid ""
 " to an electrical grid."
 msgstr ""
 
-#: data/json/furniture_and_terrain/furniture-barriers.json
-msgid "road barricade"
+#: data/json/furniture_and_terrain/furniture-appliances.json
+msgid "overhead light"
 msgstr ""
 
-#. ~ Description for road barricade
-#: data/json/furniture_and_terrain/furniture-barriers.json
+#: data/json/furniture_and_terrain/furniture-appliances.json
+#: data/json/furniture_and_terrain/furniture-storage.json
+#: data/json/furniture_and_terrain/furniture-tools.json
+#: data/json/furniture_and_terrain/terrain-doors.json
+#: data/json/furniture_and_terrain/terrain-floors-indoor.json
+#: data/json/furniture_and_terrain/terrain-walls.json
+#: data/json/furniture_and_terrain/terrain-windows.json
+#: data/mods/Magiclysm/furniture.json data/mods/No_Hope/terrain.json
+#: src/ballistics.cpp
+msgid "glass breaking!"
+msgstr ""
+
+#: data/json/furniture_and_terrain/furniture-appliances.json
+msgid "clink!"
+msgstr ""
+
+#: data/json/furniture_and_terrain/furniture-appliances.json
+msgid "ceiling lamp (off)"
+msgstr ""
+
+#. ~ Description for ceiling lamp (off)
+#: data/json/furniture_and_terrain/furniture-appliances.json
+msgid "A working lamp installed on the ceiling, this one is turned off."
+msgstr ""
+
+#: data/json/furniture_and_terrain/furniture-appliances.json
+msgid "Switch on the ceiling lamp."
+msgstr ""
+
+#. ~ Message for furniture 'ceiling lamp (off)'
+#: data/json/furniture_and_terrain/furniture-appliances.json
+msgid "You switched on the ceiling lamp."
+msgstr ""
+
+#: data/json/furniture_and_terrain/furniture-appliances.json
+msgid "ceiling lamp (on)"
+msgstr ""
+
+#. ~ Description for ceiling lamp (on)
+#: data/json/furniture_and_terrain/furniture-appliances.json
+msgid "A working lamp installed on the ceiling, this one is turned on."
+msgstr ""
+
+#: data/json/furniture_and_terrain/furniture-appliances.json
+msgid "Switch off the ceiling lamp."
+msgstr ""
+
+#. ~ Message for furniture 'ceiling lamp (on)'
+#. ~ Message for furniture 'ceiling lamp (no power)'
+#: data/json/furniture_and_terrain/furniture-appliances.json
+msgid "You switched off the ceiling lamp."
+msgstr ""
+
+#: data/json/furniture_and_terrain/furniture-appliances.json
+msgid "ceiling lamp (no power)"
+msgstr ""
+
+#. ~ Description for ceiling lamp (no power)
+#: data/json/furniture_and_terrain/furniture-appliances.json
 msgid ""
-"A road barricade.  For barricading roads.  You could stand next to it to "
-"fire past without it blocking your shots, not that it will slow them down "
-"much."
+"A working lamp installed on the ceiling, this one is turned on but it has no"
+" power."
 msgstr ""
 
+#: data/json/furniture_and_terrain/furniture-appliances.json
+msgid "light switch (off)"
+msgstr ""
+
+#. ~ Description for light switch (off)
+#: data/json/furniture_and_terrain/furniture-appliances.json
+msgid ""
+"A light switch connected to your electrical grid, this one is turned off."
+msgstr ""
+
+#: data/json/furniture_and_terrain/furniture-appliances.json
 #: data/json/furniture_and_terrain/furniture-barriers.json
 #: data/json/furniture_and_terrain/furniture-decorative.json
 #: data/json/furniture_and_terrain/furniture-domestic_plants.json
@@ -29366,6 +29658,63 @@ msgstr ""
 #: data/mods/desert_region/desert_terrain.json src/mapdata.h
 #: src/vehicle_move.cpp
 msgid "smash!"
+msgstr ""
+
+#: data/json/furniture_and_terrain/furniture-appliances.json
+#: data/json/furniture_and_terrain/furniture-fireplaces.json
+#: data/json/furniture_and_terrain/furniture-migo.json
+#: data/json/furniture_and_terrain/furniture-recreation.json
+#: data/json/furniture_and_terrain/furniture-roof.json
+#: data/json/furniture_and_terrain/furniture-storage.json
+#: data/json/furniture_and_terrain/furniture-tools.json
+#: data/json/furniture_and_terrain/terrain-bridges-docks.json
+#: data/json/furniture_and_terrain/terrain-doors.json
+#: data/json/furniture_and_terrain/terrain-fences-gates.json
+#: data/json/furniture_and_terrain/terrain-floors-indoor.json
+#: data/json/furniture_and_terrain/terrain-highways.json
+#: data/json/furniture_and_terrain/terrain-manufactured.json
+#: data/json/furniture_and_terrain/terrain-mechanisms.json
+#: data/json/furniture_and_terrain/terrain-railroads.json
+#: data/json/furniture_and_terrain/terrain-roofs.json
+#: data/json/furniture_and_terrain/terrain-triffid.json
+#: data/json/furniture_and_terrain/terrain-walls.json
+#: data/json/furniture_and_terrain/terrain-windows.json
+#: data/json/furniture_and_terrain/terrain-zlevel-transitions.json
+#: data/mods/CheesyInnaWoodsFixes/mining/furniture_and_terrain/terrain_walls_bn.json
+#: data/mods/Magiclysm/terrain.json data/mods/No_Hope/terrain.json
+msgid "whump!"
+msgstr ""
+
+#. ~ Message for furniture 'light switch (off)'
+#: data/json/furniture_and_terrain/furniture-appliances.json
+msgid "You switched on the lights."
+msgstr ""
+
+#: data/json/furniture_and_terrain/furniture-appliances.json
+msgid "light switch (on)"
+msgstr ""
+
+#. ~ Description for light switch (on)
+#: data/json/furniture_and_terrain/furniture-appliances.json
+msgid ""
+"A light switch connected to your electrical grid, this one is turned on."
+msgstr ""
+
+#. ~ Message for furniture 'light switch (on)'
+#: data/json/furniture_and_terrain/furniture-appliances.json
+msgid "You switched off the lights."
+msgstr ""
+
+#: data/json/furniture_and_terrain/furniture-barriers.json
+msgid "road barricade"
+msgstr ""
+
+#. ~ Description for road barricade
+#: data/json/furniture_and_terrain/furniture-barriers.json
+msgid ""
+"A road barricade.  For barricading roads.  You could stand next to it to "
+"fire past without it blocking your shots, not that it will slow them down "
+"much."
 msgstr ""
 
 #: data/json/furniture_and_terrain/furniture-barriers.json
@@ -29841,30 +30190,6 @@ msgstr ""
 #: data/mods/Magiclysm/furniture.json data/mods/No_Hope/terrain.json
 #: src/map.cpp
 msgid "crash!"
-msgstr ""
-
-#: data/json/furniture_and_terrain/furniture-fireplaces.json
-#: data/json/furniture_and_terrain/furniture-migo.json
-#: data/json/furniture_and_terrain/furniture-recreation.json
-#: data/json/furniture_and_terrain/furniture-roof.json
-#: data/json/furniture_and_terrain/furniture-storage.json
-#: data/json/furniture_and_terrain/furniture-tools.json
-#: data/json/furniture_and_terrain/terrain-bridges-docks.json
-#: data/json/furniture_and_terrain/terrain-doors.json
-#: data/json/furniture_and_terrain/terrain-fences-gates.json
-#: data/json/furniture_and_terrain/terrain-floors-indoor.json
-#: data/json/furniture_and_terrain/terrain-highways.json
-#: data/json/furniture_and_terrain/terrain-manufactured.json
-#: data/json/furniture_and_terrain/terrain-mechanisms.json
-#: data/json/furniture_and_terrain/terrain-railroads.json
-#: data/json/furniture_and_terrain/terrain-roofs.json
-#: data/json/furniture_and_terrain/terrain-triffid.json
-#: data/json/furniture_and_terrain/terrain-walls.json
-#: data/json/furniture_and_terrain/terrain-windows.json
-#: data/json/furniture_and_terrain/terrain-zlevel-transitions.json
-#: data/mods/CheesyInnaWoodsFixes/mining/furniture_and_terrain/terrain_walls_bn.json
-#: data/mods/Magiclysm/terrain.json data/mods/No_Hope/terrain.json
-msgid "whump!"
 msgstr ""
 
 #: data/json/furniture_and_terrain/furniture-fireplaces.json
@@ -30695,6 +31020,18 @@ msgid ""
 "samples, if you have a use for that."
 msgstr ""
 
+#: data/json/furniture_and_terrain/furniture-medical.json
+msgid "surgical laser"
+msgstr ""
+
+#. ~ Description for surgical laser
+#: data/json/furniture_and_terrain/furniture-medical.json
+msgid ""
+"This is a large box with a handheld stylus connected to it with a flexible "
+"tube.  With power and a trained operator, it could cut and cauterize tissue "
+"using focused light.  You can take it apart for electronics."
+msgstr ""
+
 #: data/json/furniture_and_terrain/furniture-migo.json
 msgid "glowing tendril"
 msgstr ""
@@ -31348,6 +31685,12 @@ msgid "Sit down, have a drink.  It can folded for easy transportation."
 msgstr ""
 
 #: data/json/furniture_and_terrain/furniture-seats.json
+#: data/json/furniture_and_terrain/terrain-railroads.json
+#: data/json/furniture_and_terrain/terrain-roofs.json
+msgid "clang."
+msgstr ""
+
+#: data/json/furniture_and_terrain/furniture-seats.json
 msgid "log stool"
 msgstr ""
 
@@ -31377,6 +31720,20 @@ msgstr ""
 msgid ""
 "A bench made of scrap metal.  Not the most comfortable furniture you've ever"
 " seen."
+msgstr ""
+
+#: data/json/furniture_and_terrain/furniture-seats.json
+#: data/json/items/tool/deployable.json
+msgid "folding chair"
+msgid_plural "folding chairs"
+msgstr[0] ""
+msgstr[1] ""
+
+#. ~ Description for folding chair
+#: data/json/furniture_and_terrain/furniture-seats.json
+msgid ""
+"A black foldable plastic chair on a steel frame.  Not particularly "
+"comfortable, but at least you have something to sit on."
 msgstr ""
 
 #: data/json/furniture_and_terrain/furniture-signs.json
@@ -31650,17 +32007,6 @@ msgstr ""
 #. ~ Description for glass front cabinet
 #: data/json/furniture_and_terrain/furniture-storage.json
 msgid "A tall storage cabinet with a clear glass window."
-msgstr ""
-
-#: data/json/furniture_and_terrain/furniture-storage.json
-#: data/json/furniture_and_terrain/furniture-tools.json
-#: data/json/furniture_and_terrain/terrain-doors.json
-#: data/json/furniture_and_terrain/terrain-floors-indoor.json
-#: data/json/furniture_and_terrain/terrain-walls.json
-#: data/json/furniture_and_terrain/terrain-windows.json
-#: data/mods/Magiclysm/furniture.json data/mods/No_Hope/terrain.json
-#: src/ballistics.cpp
-msgid "glass breaking!"
 msgstr ""
 
 #: data/json/furniture_and_terrain/furniture-storage.json
@@ -32537,6 +32883,15 @@ msgstr ""
 msgid "Someone's hoisted a black pirate flag from this makeshift flagpole."
 msgstr ""
 
+#: data/json/furniture_and_terrain/furniture-terrains.json
+msgid "room divider"
+msgstr ""
+
+#. ~ Description for room divider
+#: data/json/furniture_and_terrain/furniture-terrains.json
+msgid "A tall piece of furniture used to divide rooms into separate areas."
+msgstr ""
+
 #: data/json/furniture_and_terrain/furniture-tools.json
 #: data/json/furniture_and_terrain/terrain-mechanisms.json
 msgid "broken console"
@@ -32839,6 +33194,18 @@ msgstr ""
 msgid ""
 "An industrial-grade lathe, for turning chunks of metal and other hard things"
 " into round chunks of metal and other hard things."
+msgstr ""
+
+#: data/json/furniture_and_terrain/furniture-tools.json
+msgid "industrial laser cutter"
+msgstr ""
+
+#. ~ Description for industrial laser cutter
+#: data/json/furniture_and_terrain/furniture-tools.json
+msgid ""
+"A large box of tinted glass, with a robotic arm inside.  Before the "
+"cataclysm, it used to cut and etch sheet metal with a high-powered laser.  "
+"Now, it's better suited for scrap parts."
 msgstr ""
 
 #: data/json/furniture_and_terrain/furniture-tools.json
@@ -35110,8 +35477,7 @@ msgstr ""
 msgid ""
 "This tree is a member of the 'Malus' genus, producing fruit commonly known "
 "as apples.  If you examined the branches more closely, you could probably "
-"find a few mature ones in autumn.  You could also cut it down with the right"
-" tools."
+"find a few mature ones in autumn."
 msgstr ""
 
 #. ~ Description for apple tree
@@ -36485,8 +36851,8 @@ msgstr[1] ""
 msgid ""
 "This imposing apparatus harnesses the power of the atom, configured to "
 "provide nearly limitless backup power from the nuclear fuel installed in it."
-"  It's not doing much good here though.  Perhaps it could be salvaged for "
-"other purposes."
+"  It's not doing much good here though.  It has a complicated security "
+"system that is dangerous and difficult to bypass without the code."
 msgstr ""
 
 #: data/json/furniture_and_terrain/terrain-manufactured.json
@@ -37098,11 +37464,6 @@ msgid ""
 msgstr ""
 
 #: data/json/furniture_and_terrain/terrain-railroads.json
-#: data/json/furniture_and_terrain/terrain-roofs.json
-msgid "clang."
-msgstr ""
-
-#: data/json/furniture_and_terrain/terrain-railroads.json
 msgid "crossbuck"
 msgstr ""
 
@@ -37323,6 +37684,26 @@ msgstr ""
 #. ~ Description for web bridge
 #: data/json/furniture_and_terrain/terrain-roofs.json
 msgid "A hammock like bridge spun from spider silk."
+msgstr ""
+
+#: data/json/furniture_and_terrain/terrain-roofs.json
+msgid "treetop"
+msgstr ""
+
+#. ~ Description for treetop
+#: data/json/furniture_and_terrain/terrain-roofs.json
+msgid "The upper branches of a tree.  There's just enough room to perch here."
+msgstr ""
+
+#: data/json/furniture_and_terrain/terrain-roofs.json
+msgid "dead treetop"
+msgstr ""
+
+#. ~ Description for dead treetop
+#: data/json/furniture_and_terrain/terrain-roofs.json
+msgid ""
+"The bare upper branches of a dead tree.  There's just enough room to perch "
+"here."
 msgstr ""
 
 #: data/json/furniture_and_terrain/terrain-traps.json
@@ -38362,6 +38743,7 @@ msgid "empty window"
 msgstr ""
 
 #. ~ Description for empty window
+#. ~ Description for empty domestic window
 #: data/json/furniture_and_terrain/terrain-windows.json
 msgid ""
 "An empty window frame consisting of two by fours and nails.  You could "
@@ -38370,10 +38752,15 @@ msgid ""
 msgstr ""
 
 #: data/json/furniture_and_terrain/terrain-windows.json
+msgid "empty domestic window"
+msgstr ""
+
+#: data/json/furniture_and_terrain/terrain-windows.json
 msgid "window frame"
 msgstr ""
 
 #. ~ Description for window frame
+#. ~ Description for domestic window frame
 #: data/json/furniture_and_terrain/terrain-windows.json
 msgid ""
 "A wooden window frame that has shattered glass around it.  You'll probably "
@@ -38383,6 +38770,10 @@ msgstr ""
 
 #: data/json/furniture_and_terrain/terrain-windows.json
 msgid "glass crunching!"
+msgstr ""
+
+#: data/json/furniture_and_terrain/terrain-windows.json
+msgid "domestic window frame"
 msgstr ""
 
 #: data/json/furniture_and_terrain/terrain-windows.json
@@ -40852,6 +41243,21 @@ msgid ""
 msgstr ""
 
 #: data/json/items/bionics.json
+msgid "Monofilament Whip CBM"
+msgid_plural "Monofilament Whip CBMs"
+msgstr[0] ""
+msgstr[1] ""
+
+#. ~ Description for {'str': 'Monofilament Whip CBM'}
+#: data/json/items/bionics.json
+msgid ""
+"A razor-sharp thread of advanced material that is installed inside the hand,"
+" capable of being extended at the cost of a small amount of power.  Though "
+"exceptionally sharp, it will prevent the user from holding anything else "
+"while extended."
+msgstr ""
+
+#: data/json/items/bionics.json
 msgid "Shotgun Arm CBM"
 msgid_plural "Shotgun Arm CBMs"
 msgstr[0] ""
@@ -41610,7 +42016,7 @@ msgstr ""
 msgid ""
 "A small hydrogen fuel cell able to generate bionic power at a decent rate of"
 " efficiency.  It's connected to a diffuse network of compressors and compact"
-" canisters able to hold up to 500 ml of hydrogen."
+" canisters able to hold up to 2 liters of hydrogen."
 msgstr ""
 
 #: data/json/items/bionics.json
@@ -44259,6 +44665,12 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: data/json/items/fake.json
+msgid "integrated voltmeter"
+msgid_plural "integrated voltmeters"
+msgstr[0] ""
+msgstr[1] ""
+
+#: data/json/items/fake.json
 msgid "bionic goggles"
 msgid_plural "bionic goggles"
 msgstr[0] ""
@@ -44928,8 +45340,8 @@ msgstr[1] ""
 #. ~ Description for {'str': 'INCIDENT REPORT: IMMERSION-27A'}
 #: data/json/items/generic.json
 msgid ""
-"A white piece of paper, with the logo of XEDRA printed on its upper left "
-"corner.  It seems to be an internal report of some kind."
+"A white piece of paper, with a fancy-looking logo printed on its upper left "
+"corner.  It'd probably be very fascinating reading material."
 msgstr ""
 
 #: data/json/items/generic.json
@@ -45953,6 +46365,33 @@ msgstr[1] ""
 msgid ""
 "A broken C-4 hack.  Much less threatening now that it lies quiet on solid "
 "ground.  Could be gutted for parts."
+msgstr ""
+
+#: data/json/items/generic.json
+msgid "broken dissector"
+msgid_plural "broken dissectors"
+msgstr[0] ""
+msgstr[1] ""
+
+#. ~ Description for {'str': 'broken dissector'}
+#: data/json/items/generic.json
+msgid ""
+"Some kind of automated medical laser cutting system.  It has suffered some "
+"damage and doesn't seem to work any more, but it could be gutted for parts."
+msgstr ""
+
+#: data/json/items/generic.json
+msgid "industrial laser"
+msgid_plural "industrial lasers"
+msgstr[0] ""
+msgstr[1] ""
+
+#. ~ Description for {'str': 'industrial laser'}
+#: data/json/items/generic.json
+msgid ""
+"A high-power laser source, salvaged from some industrial machinery.  Doesn't"
+" do anything on its own, but could probably be useful in electronics "
+"crafting."
 msgstr ""
 
 #: data/json/items/generic.json
@@ -47625,6 +48064,17 @@ msgid ""
 "something to attract bees, it can be used to grow a hive."
 msgstr ""
 
+#: data/json/items/generic.json
+msgid "shark plush"
+msgid_plural "shark plushs"
+msgstr[0] ""
+msgstr[1] ""
+
+#. ~ Description for {'str': 'shark plush'}
+#: data/json/items/generic.json
+msgid "A slightly large shark plushie, perfect for cuddles."
+msgstr ""
+
 #: data/json/items/handloaded_bullets.json
 msgid "blunderbuss slug"
 msgid_plural "blunderbuss slugs"
@@ -47744,7 +48194,9 @@ msgstr[1] ""
 
 #. ~ Description for {'str': 'flyer'}
 #: data/json/items/newspaper.json
-msgid "A scrap of paper."
+msgid ""
+"A scrap of paper.  It's got stuff depicted on it, and a lot of boring words."
+"  The stuff looks neat at least, but they probably don't make it anymore."
 msgstr ""
 
 #: data/json/items/newspaper.json
@@ -47768,7 +48220,9 @@ msgstr[1] ""
 
 #. ~ Description for {'str': 'character sheet'}
 #: data/json/items/newspaper.json
-msgid "A Dungeons & Dragons character sheet."
+msgid ""
+"You're fairly certain this is a character sheet for some sort of game, "
+"either that or some poor kid's math homework."
 msgstr ""
 
 #: data/json/items/newspaper.json
@@ -47781,50 +48235,48 @@ msgstr[1] ""
 #: data/json/items/newspaper.json
 msgid ""
 "A single sheet of newspaper broadsheet.  It is possibly one of the last "
-"issues printed before New England was overwhelmed.  Most of the information "
-"on there is terribly trivial, or out of date, but one thing catches your eye"
-" briefly."
+"issues printed before New England was overwhelmed.  No doubt filled with "
+"trivial and out-of-date information, who even reads these things anymore?"
 msgstr ""
 
 #. ~ Description for {'str': 'newspaper page'}
 #: data/json/items/newspaper.json
 msgid ""
 "A single sheet of newspaper broadsheet.  It seems to date from several years"
-" ago, and you've NO idea how it lasted this long.  Most of the information "
-"on there is terribly trivial, or out of date, but one thing catches your eye"
-" briefly."
+" ago, and you've NO idea how it lasted this long.  No doubt filled with "
+"trivial and out-of-date information, who even reads these things anymore?"
 msgstr ""
 
 #. ~ Description for {'str': 'newspaper page'}
 #: data/json/items/newspaper.json
 msgid ""
 "A single sheet of newspaper broadsheet.  It seems to date from a few years "
-"ago--amazing it has lasted this long.  Most of the information on there is "
-"terribly trivial, or out of date, but one thing catches your eye briefly."
+"ago--amazing it has lasted this long.  No doubt filled with trivial and out-"
+"of-date information, who even reads these things anymore?"
 msgstr ""
 
 #. ~ Description for {'str': 'newspaper page'}
 #: data/json/items/newspaper.json
 msgid ""
 "A single sheet of newspaper broadsheet.  It was printed more than a year "
-"ago.  Most of the information on there is terribly trivial, or out of date, "
-"but one thing catches your eye briefly."
+"ago.  No doubt filled with trivial and out-of-date information, who even "
+"reads these things anymore?"
 msgstr ""
 
 #. ~ Description for {'str': 'newspaper page'}
 #: data/json/items/newspaper.json
 msgid ""
 "A single sheet of newspaper broadsheet.  It was printed in the months "
-"leading up to the Cataclysm.  Most of the information on there is terribly "
-"trivial, or out of date, but one thing catches your eye briefly."
+"leading up to the Cataclysm.  No doubt filled with trivial and out-of-date "
+"information, who even reads these things anymore?"
 msgstr ""
 
 #. ~ Description for {'str': 'newspaper page'}
 #: data/json/items/newspaper.json
 msgid ""
 "A single sheet of newspaper broadsheet.  It was printed in the weeks leading"
-" up to the Cataclysm.  Most of the information on there is terribly trivial,"
-" or out of date, but one thing catches your eye briefly."
+" up to the Cataclysm.  No doubt filled with trivial and out-of-date "
+"information, who even reads these things anymore?"
 msgstr ""
 
 #: data/json/items/newspaper.json
@@ -47836,8 +48288,8 @@ msgstr[1] ""
 #. ~ Description for {'str': 'vault leaflet'}
 #: data/json/items/newspaper.json
 msgid ""
-"A folded glossy handout that appears to be an introduction to living in a "
-"massive underground complex."
+"A folded glossy handout with a cross-section of a massive underground "
+"complex depicted on the first page."
 msgstr ""
 
 #: data/json/items/newspaper.json
@@ -47853,6 +48305,11 @@ msgstr[0] ""
 msgstr[1] ""
 
 #. ~ Description for {'str': 'FEMA evacuation pamphlet'}
+#: data/json/items/newspaper.json
+msgid ""
+"A scrap of paper with a lot of words printed on it.  Something about femurs?"
+msgstr ""
+
 #: data/json/items/newspaper.json
 msgid ""
 "Welcome to your Emergency Survival Shelter.  We hope your stay here will be short and comfortable.  Provided are an emergency blanket, high visibility jacket, gas mask, and food and water rations for one day, as well as an emergency lighter and flashlight.  There are further supplies in the communal cabinets should the facility be over its intended capacity.  These resources are checked and updated by FEMA on a regular basis, but if you find some items missing, please contact a FEMA supervisor at your earliest convenience.\n"
@@ -48895,6 +49352,7 @@ msgstr[1] ""
 #. ~ Use action msg for {'str': 'pair of thermal electric gloves', 'str_pl':
 #. 'pairs of thermal electric gloves'}.
 #. ~ Use action msg for {'str': 'thermal electric balaclava'}.
+#. ~ Use action msg for {'str': 'liquid cooling suit'}.
 #. ~ Use action msg for {'str': 'rebreather mask'}.
 #. ~ Use action msg for {'str': 'XL rebreather mask'}.
 #. ~ Use action msg for {'str': 'pair of light amp goggles', 'str_pl': 'pairs
@@ -48903,9 +49361,12 @@ msgstr[1] ""
 #. of infrared goggles'}.
 #. ~ Use action msg for {'str': 'survivor divemask'}.
 #. ~ Use action msg for {'str': 'thermal electric outfit'}.
+#. ~ Use action msg for {'str': 'liquid cooling outfit'}.
+#. ~ Use action msg for {'str': 'liquid cooling balaclava'}.
 #. ~ Use action msg for {'str': 'cryopod bodyglove'}.
-#: data/json/items/tool_armor.json data/mods/Aftershock/items/tool_armor.json
-#: src/bionics.cpp src/iexamine.cpp src/mutation_ui.cpp
+#: data/json/items/tool_armor.json data/json/obsoletion/items.json
+#: data/mods/Aftershock/items/tool_armor.json src/bionics.cpp src/iexamine.cpp
+#: src/mutation_ui.cpp
 #, c-format
 msgid "You activate your %s."
 msgstr ""
@@ -48916,6 +49377,7 @@ msgstr ""
 #. ~ Use action need_charges_msg for {'str': 'pair of thermal electric
 #. gloves', 'str_pl': 'pairs of thermal electric gloves'}.
 #. ~ Use action need_charges_msg for {'str': 'thermal electric balaclava'}.
+#. ~ Use action need_charges_msg for {'str': 'liquid cooling suit'}.
 #. ~ Use action need_charges_msg for {'str': 'pair of light amp goggles',
 #. 'str_pl': 'pairs of light amp goggles'}.
 #. ~ Use action need_charges_msg for {'str': 'pair of infrared goggles',
@@ -48931,10 +49393,13 @@ msgstr ""
 #. 'str_pl': 'electrified sabers (off)'}.
 #. ~ Use action need_charges_msg for {'str': 'electrified rapier (off)',
 #. 'str_pl': 'electrified rapiers (off)'}.
+#. ~ Use action need_charges_msg for {'str': 'liquid cooling outfit'}.
+#. ~ Use action need_charges_msg for {'str': 'liquid cooling balaclava'}.
 #. ~ Use action need_charges_msg for {'str': 'cryopod bodyglove'}.
 #: data/json/items/tool_armor.json data/json/items/melee/bludgeons.json
 #: data/json/items/melee/swords_and_blades.json
-#: data/mods/Aftershock/items/tool_armor.json src/iuse.cpp
+#: data/json/obsoletion/items.json data/mods/Aftershock/items/tool_armor.json
+#: src/iuse.cpp
 #, c-format
 msgid "The %s's batteries are dead."
 msgstr ""
@@ -48961,6 +49426,8 @@ msgstr[1] ""
 #. 'str_pl': 'pairs of thermal electric gloves (on)'}.
 #. ~ Use action msg for {'str': 'thermal electric balaclava (on)', 'str_pl':
 #. 'thermal electric balaclavas (on)'}.
+#. ~ Use action msg for {'str': 'liquid cooling suit (on)', 'str_pl': 'liquid
+#. cooling suits (on)'}.
 #. ~ Use action msg for {'str': 'rebreather mask (on)', 'str_pl': 'rebreather
 #. masks (on)'}.
 #. ~ Use action msg for {'str': 'XL rebreather mask (on)', 'str_pl': 'XL
@@ -48973,9 +49440,13 @@ msgstr[1] ""
 #. divemasks (on)'}.
 #. ~ Use action msg for {'str': 'thermal electric outfit (on)', 'str_pl':
 #. 'thermal electric outfits (on)'}.
+#. ~ Use action msg for {'str': 'liquid cooling outfit (on)', 'str_pl':
+#. 'liquid cooling outfits (on)'}.
+#. ~ Use action msg for {'str': 'liquid cooling balaclava (on)'}.
 #. ~ Use action msg for {'str': 'cryopod bodyglove (on)', 'str_pl': 'cryopod
 #. bodygloves (on)'}.
-#: data/json/items/tool_armor.json data/mods/Aftershock/items/tool_armor.json
+#: data/json/items/tool_armor.json data/json/obsoletion/items.json
+#: data/mods/Aftershock/items/tool_armor.json
 msgid "Your %s deactivates."
 msgstr ""
 
@@ -49071,6 +49542,35 @@ msgid ""
 "This is a snug cloth mask with internal battery-powered heating elements.  "
 "It is are currently on, and continually draining batteries.  Use it to turn "
 "it off."
+msgstr ""
+
+#: data/json/items/tool_armor.json
+msgid "liquid cooling suit"
+msgid_plural "liquid cooling suits"
+msgstr[0] ""
+msgstr[1] ""
+
+#. ~ Description for {'str': 'liquid cooling suit'}
+#: data/json/items/tool_armor.json
+msgid ""
+"This a bodysuit with a number of heatsinks and heating coils tied to a "
+"liquid coolant system, and a built-in thermometer.  Use it to turn it on, "
+"helping to keep the entire body at an ideal temperature"
+msgstr ""
+
+#: data/json/items/tool_armor.json
+msgid "liquid cooling suit (on)"
+msgid_plural "liquid cooling suits (on)"
+msgstr[0] ""
+msgstr[1] ""
+
+#. ~ Description for {'str': 'liquid cooling suit (on)', 'str_pl': 'liquid
+#. cooling suits (on)'}
+#: data/json/items/tool_armor.json
+msgid ""
+"This a bodysuit with a number of heatsinks and heating coils tied to a "
+"liquid coolant system, and a built-in thermometer.  It is currently working "
+"to keep the entire body at an ideal temperature, use it to turn it off."
 msgstr ""
 
 #: data/json/items/tool_armor.json
@@ -53726,6 +54226,20 @@ msgid "A pair of light leather arm guards, made for archery."
 msgstr ""
 
 #: data/json/items/armor/arms_armor.json
+msgid "pair of bone vambraces"
+msgid_plural "pairs of bone vambraces"
+msgstr[0] ""
+msgstr[1] ""
+
+#. ~ Description for {'str': 'pair of bone vambraces', 'str_pl': 'pairs of
+#. bone vambraces'}
+#: data/json/items/armor/arms_armor.json
+msgid ""
+"Arm protection made from strips of carved bone, laced together as splint "
+"armor.  Tough but stiff, and a bit brittle."
+msgstr ""
+
+#: data/json/items/armor/arms_armor.json
 msgid "carbon fiber arm guards"
 msgid_plural "carbon fiber arm guardss"
 msgstr[0] ""
@@ -54276,9 +54790,9 @@ msgstr ""
 #. ~ Description for {'str': 'survivor belt'}
 #: data/json/items/armor/belts.json
 msgid ""
-"A custom-built leather utility belt covered with straps and pouches with a "
-"sheath to carry a smaller blade.  Durable and carefully crafted to be "
-"comfortable to wear.  Activate to sheathe/draw a weapon."
+"A custom-built leather utility belt covered with straps and pouches to store"
+" up to six tools or blades.  Durable and carefully crafted to be comfortable"
+" to wear.  Activate to sheathe/draw a weapon."
 msgstr ""
 
 #: data/json/items/armor/belts.json
@@ -56853,10 +57367,9 @@ msgstr[1] ""
 #. rubber gloves'}
 #: data/json/items/armor/gloves.json
 msgid ""
-"A pair of rubber gloves, often used while cleaning with caustic materials."
+"A pair of rubber gloves, often used while cleaning with caustic materials.  "
+"Mandatory for working with high voltage to ensure your safety."
 msgstr ""
-"Ένα ζευγάρι γάντια από καουτσούκ, που χρησιμοποιούνται συχνά κατά τον "
-"καθαρισμό με καυστικά υλικά."
 
 #: data/json/items/armor/gloves.json
 msgid "pair of survivor gloves"
@@ -57920,7 +58433,7 @@ msgstr[1] ""
 #: data/json/items/armor/helmets.json
 msgid ""
 "A sturdy protective cowl extending down to the neck, fitted with a "
-"respirator and eye protection.  For dangerous scavenging ventures."
+"respirator, helmet, and eye protection.  For dangerous scavenging ventures."
 msgstr ""
 
 #: data/json/items/armor/helmets.json
@@ -58031,6 +58544,19 @@ msgstr[1] ""
 msgid ""
 "A huge makeshift helmet made from a canning pot.  For the truly desperate "
 "man-bear-pig."
+msgstr ""
+
+#: data/json/items/armor/helmets.json
+msgid "bone helmet"
+msgid_plural "bone helmets"
+msgstr[0] ""
+msgstr[1] ""
+
+#. ~ Description for {'str': 'bone helmet'}
+#: data/json/items/armor/helmets.json
+msgid ""
+"A helmet made from carved bone, laced together into a pattern resembling a "
+"Mycenaean boar's tusk helmet.  Tough but stiff, and a bit brittle."
 msgstr ""
 
 #: data/json/items/armor/helmets.json
@@ -62707,6 +63233,20 @@ msgid ""
 msgstr ""
 
 #: data/json/items/armor/legs_armor.json
+msgid "pair of bone greaves"
+msgid_plural "pairs of bone greaves"
+msgstr[0] ""
+msgstr[1] ""
+
+#. ~ Description for {'str': 'pair of bone greaves', 'str_pl': 'pairs of bone
+#. greaves'}
+#: data/json/items/armor/legs_armor.json
+msgid ""
+"Leg guards made from strips of carved bone, laced together as splint armor."
+"  Tough but stiff, and a bit brittle."
+msgstr ""
+
+#: data/json/items/armor/legs_armor.json
 msgid "carbon fiber leg guards"
 msgid_plural "carbon fiber leg guardss"
 msgstr[0] ""
@@ -63309,8 +63849,8 @@ msgstr[1] ""
 #. ~ Description for {'str': 'dust mask'}
 #: data/json/items/armor/masks.json
 msgid ""
-"A simple piece of cotton that straps over the mouth.  Provides a small "
-"amount of protection from airborne illness and dust."
+"A simple piece of paper or cloth that straps over the mouth.  Provides a "
+"small amount of protection from airborne illness and dust."
 msgstr ""
 
 #: data/json/items/armor/masks.json
@@ -63367,9 +63907,24 @@ msgid_plural "clown noses"
 msgstr[0] ""
 msgstr[1] ""
 
+#. ~ Use action noise_message for {'str': 'clown nose'}.
+#. ~ Use action noise_message for {'str': 'bicycle horn'}.
+#. ~ Weak horn sound
+#: data/json/items/armor/misc.json data/json/items/tool/misc.json
+#: src/vehicle_use.cpp
+msgid "honk."
+msgstr ""
+
+#. ~ Use action use_message for {'str': 'clown nose'}.
+#: data/json/items/armor/misc.json
+msgid "You honk the clown hose."
+msgstr ""
+
 #. ~ Description for {'str': 'clown nose'}
 #: data/json/items/armor/misc.json
-msgid "A red latex nose often seen being worn by clowns."
+msgid ""
+"A red latex nose often seen being worn by clowns.  Squeezing the nose makes "
+"it honk."
 msgstr ""
 
 #: data/json/items/armor/misc.json
@@ -65684,8 +66239,8 @@ msgstr[1] ""
 #. ~ Description for {'str': 'scavenger gear'}
 #: data/json/items/armor/suits_protection.json
 msgid ""
-"A sturdy scavenger's outfit made from refitted pre-Cataclysm protective "
-"gear.  It has a lot of storage space."
+"A sturdy scavenger's outfit made from refitted protective gear and "
+"reinforced with kevlar and heavy plastic.  It has a lot of storage space."
 msgstr ""
 
 #: data/json/items/armor/suits_protection.json
@@ -66450,6 +67005,19 @@ msgid ""
 msgstr ""
 
 #: data/json/items/armor/torso_armor.json
+msgid "bone cuirass"
+msgid_plural "bone cuirasses"
+msgstr[0] ""
+msgstr[1] ""
+
+#. ~ Description for {'str': 'bone cuirass', 'str_pl': 'bone cuirasses'}
+#: data/json/items/armor/torso_armor.json
+msgid ""
+"A cuirass made from large pieces of carved bone, laced together like "
+"lamellar armor.  Tough but stiff, and a bit brittle."
+msgstr ""
+
+#: data/json/items/armor/torso_armor.json
 msgid "carbon fiber chestguard"
 msgid_plural "carbon fiber chestguards"
 msgstr[0] ""
@@ -66698,9 +67266,7 @@ msgstr[1] ""
 
 #. ~ Description for {'str': 'Linux t-shirt'}
 #: data/json/items/armor/torso_clothes.json
-msgid ""
-"A t-shirt with a picture of the Tux mascot on it.  Underneath it says \"You "
-"wouldn't buy a car with the hood welded shut.\""
+msgid "A t-shirt with a Linux logo on it and a pithy slogan of some sort."
 msgstr ""
 
 #: data/json/items/armor/torso_clothes.json
@@ -66889,6 +67455,11 @@ msgstr[1] ""
 #: data/json/items/armor/torso_clothes.json
 msgid "A short-sleeved cotton shirt."
 msgstr "Ένα κοντομάνικο βαμβακερό μπλουζάκι."
+
+#. ~ Description for {'str': 't-shirt'}
+#: data/json/items/armor/torso_clothes.json
+msgid "A short-sleeved cotton shirt.  It's got some text printed on it."
+msgstr ""
 
 #: data/json/items/armor/torso_clothes.json
 msgid ""
@@ -76275,8 +76846,8 @@ msgstr[1] ""
 #: data/json/items/comestibles/sandwich.json
 #: data/json/items/comestibles/wheat.json
 #, c-format
-msgid "rose_hip %s"
-msgid_plural "rose_hip %s"
+msgid "rose hip %s"
+msgid_plural "rose hip %s"
 msgstr[0] ""
 msgstr[1] ""
 
@@ -77743,8 +78314,8 @@ msgstr[1] ""
 
 #. ~ Conditional name for cooked fruit when COMPONENT_ID matches rose_hips
 #: data/json/items/comestibles/fruit_dishes.json
-msgid "cooked rose_hip"
-msgid_plural "cooked rose_hips"
+msgid "cooked rose hip"
+msgid_plural "cooked rose hips"
 msgstr[0] ""
 msgstr[1] ""
 
@@ -77988,8 +78559,8 @@ msgstr[1] ""
 #. ~ Conditional name for {'str': 'fruit slice'} when COMPONENT_ID matches
 #. rose_hips
 #: data/json/items/comestibles/fruit_dishes.json
-msgid "rose_hip slice"
-msgid_plural "rose_hip slice"
+msgid "rose hip slice"
+msgid_plural "rose hip slice"
 msgstr[0] ""
 msgstr[1] ""
 
@@ -78200,8 +78771,8 @@ msgstr[1] ""
 #. ~ Conditional name for {'str_sp': 'canned fruit'} when COMPONENT_ID matches
 #. rose_hips
 #: data/json/items/comestibles/fruit_dishes.json
-msgid "canned rose_hip"
-msgid_plural "canned rose_hips"
+msgid "canned rose hip"
+msgid_plural "canned rose hips"
 msgstr[0] ""
 msgstr[1] ""
 
@@ -80895,6 +81466,92 @@ msgstr[1] ""
 #. curdled blood'}
 #: data/json/items/comestibles/meat_dishes.json
 msgid "A chunk of solid cooked blood."
+msgstr ""
+
+#: data/json/items/comestibles/meat_dishes.json
+msgid "bibimbap"
+msgid_plural "bibimbap"
+msgstr[0] ""
+msgstr[1] ""
+
+#. ~ Conditional name for {'str_sp': 'bibimbap'} when FLAG matches CANNIBALISM
+#. ~ Conditional name for {'str_sp': 'simple bibimbap'} when FLAG matches
+#. CANNIBALISM
+#: data/json/items/comestibles/meat_dishes.json
+#, c-format
+msgid "saram %s"
+msgid_plural "saram %ss"
+msgstr[0] ""
+msgstr[1] ""
+
+#. ~ Conditional name for {'str_sp': 'bibimbap'} when COMPONENT_ID matches
+#. fish
+#. ~ Conditional name for {'str_sp': 'simple bibimbap'} when COMPONENT_ID
+#. matches fish
+#: data/json/items/comestibles/meat_dishes.json
+#, c-format
+msgid "sashimi %s"
+msgid_plural "sashimi %ss"
+msgstr[0] ""
+msgstr[1] ""
+
+#. ~ Description for {'str_sp': 'bibimbap'}
+#: data/json/items/comestibles/meat_dishes.json
+msgid ""
+"A mixed meat and rice dish from Korea, often with eggs and various veggies."
+"  This version has gone for a full-house of ingredients, making it extra "
+"tasty."
+msgstr ""
+
+#: data/json/items/comestibles/meat_dishes.json
+msgid "simple bibimbap"
+msgid_plural "simple bibimbap"
+msgstr[0] ""
+msgstr[1] ""
+
+#. ~ Description for {'str_sp': 'simple bibimbap'}
+#: data/json/items/comestibles/meat_dishes.json
+msgid ""
+"A mixed meat and rice dish from Korea, often with eggs and various veggies."
+msgstr ""
+
+#: data/json/items/comestibles/meat_dishes.json
+msgid "kimchi fried rice"
+msgid_plural "kimchi fried rice"
+msgstr[0] ""
+msgstr[1] ""
+
+#. ~ Description for {'str_sp': 'kimchi fried rice'}
+#: data/json/items/comestibles/meat_dishes.json
+msgid ""
+"Fried rice with the unique flavor of kimchi.  The rich oil and spicy flavor "
+"are well balanced."
+msgstr ""
+
+#: data/json/items/comestibles/meat_dishes.json
+msgid "samhap"
+msgid_plural "samhap"
+msgstr[0] ""
+msgstr[1] ""
+
+#. ~ Description for {'str_sp': 'samhap'}
+#: data/json/items/comestibles/meat_dishes.json
+msgid ""
+"A Korean dish that combines boiled meat, kimchi, and raw fish all at once.  "
+"The flavors blend into delicious harmony."
+msgstr ""
+
+#: data/json/items/comestibles/meat_dishes.json
+msgid "bossam"
+msgid_plural "bossam"
+msgstr[0] ""
+msgstr[1] ""
+
+#. ~ Description for {'str_sp': 'bossam'}
+#: data/json/items/comestibles/meat_dishes.json
+msgid ""
+"A Korean dish of boiled meat served with kimchi.  The tender meat is paired "
+"with a spicy flavor."
 msgstr ""
 
 #: data/json/items/comestibles/med.json
@@ -87291,6 +87948,19 @@ msgstr[1] ""
 msgid "A fragnant yellow powder.  Not edible in this form."
 msgstr ""
 
+#: data/json/items/comestibles/spice.json
+msgid "gochujang"
+msgid_plural "gochujang"
+msgstr[0] ""
+msgstr[1] ""
+
+#. ~ Description for {'str_sp': 'gochujang'}
+#: data/json/items/comestibles/spice.json
+msgid ""
+"A spicy and sweet Korean condiment, quite often used throughout Korean "
+"cooking."
+msgstr ""
+
 #: data/json/items/comestibles/veggy_dishes.json
 msgid "cooked cattail stalk"
 msgid_plural "cooked cattail stalks"
@@ -87940,6 +88610,76 @@ msgstr[1] ""
 msgid "Roasted soybeans, often called soy nuts."
 msgstr ""
 
+#: data/json/items/comestibles/veggy_dishes.json
+msgid "kimchi"
+msgid_plural "kimchi"
+msgstr[0] ""
+msgstr[1] ""
+
+#. ~ Conditional name for {'str_sp': 'kimchi'} when COMPONENT_ID matches
+#. cucumber
+#: data/json/items/comestibles/veggy_dishes.json
+msgid "oi-sobagi"
+msgid_plural "oi-sobagis"
+msgstr[0] ""
+msgstr[1] ""
+
+#. ~ Description for {'str_sp': 'kimchi'}
+#: data/json/items/comestibles/veggy_dishes.json
+msgid ""
+"A spicy pickled veggie made of variable ingredients.  Before the Cataclysm, "
+"it was traditionally stored in a dedicated refrigerator, but it's actually a"
+" preserved food."
+msgstr ""
+
+#: data/json/items/comestibles/veggy_dishes.json
+msgid "unfermented kimchi"
+msgid_plural "unfermented kimchi"
+msgstr[0] ""
+msgstr[1] ""
+
+#. ~ Description for {'str_sp': 'unfermented kimchi'}
+#: data/json/items/comestibles/veggy_dishes.json
+msgid ""
+"A spicy, seasoned vegetable that takes on a more complex flavor when "
+"fermented.  Traditionally, they are fermented in large clay pots."
+msgstr ""
+
+#: data/json/items/comestibles/veggy_dishes.json
+msgid "buchimgae"
+msgid_plural "buchimgaes"
+msgstr[0] ""
+msgstr[1] ""
+
+#. ~ Conditional name for {'str': 'buchimgae'} when COMPONENT_ID matches
+#. kimchi
+#: data/json/items/comestibles/veggy_dishes.json
+#, c-format
+msgid "kimchi %s"
+msgid_plural "kimchi %ss"
+msgstr[0] ""
+msgstr[1] ""
+
+#. ~ Description for {'str': 'buchimgae'}
+#: data/json/items/comestibles/veggy_dishes.json
+msgid ""
+"A Korean vegetable fritter made by coating ingredients in a light egg batter"
+" and pan-frying them into a thin, savory pancake."
+msgstr ""
+
+#: data/json/items/comestibles/veggy_dishes.json
+msgid "tofu kimchi"
+msgid_plural "tofu kimchi"
+msgstr[0] ""
+msgstr[1] ""
+
+#. ~ Description for {'str_sp': 'tofu kimchi'}
+#: data/json/items/comestibles/veggy_dishes.json
+msgid ""
+"Soft, boiled tofu served with spicy, stir-fried kimchi.  The mild tofu "
+"complements the bold flavors of the kimchi for a balanced taste."
+msgstr ""
+
 #: data/json/items/comestibles/wheat.json
 msgid "wheat cereal"
 msgid_plural "wheat cereals"
@@ -88265,8 +89005,8 @@ msgstr[1] ""
 #. ~ Conditional name for {'str': 'fruit pancake'} when COMPONENT_ID matches
 #. rose_hips
 #: data/json/items/comestibles/wheat.json
-msgid "rose_hip pancake"
-msgid_plural "rose_hip pancake"
+msgid "rose hip pancake"
+msgid_plural "rose hip pancake"
 msgstr[0] ""
 msgstr[1] ""
 
@@ -88489,8 +89229,8 @@ msgstr[1] ""
 
 #. ~ Conditional name for fruit waffle when COMPONENT_ID matches rose_hips
 #: data/json/items/comestibles/wheat.json
-msgid "rose_hip waffle"
-msgid_plural "rose_hip waffle"
+msgid "rose hip waffle"
+msgid_plural "rose hip waffle"
 msgstr[0] ""
 msgstr[1] ""
 
@@ -88696,8 +89436,8 @@ msgstr[1] ""
 
 #. ~ Conditional name for fruit pie when COMPONENT_ID matches rose_hips
 #: data/json/items/comestibles/wheat.json
-msgid "rose_hip pie"
-msgid_plural "rose_hip pie"
+msgid "rose hip pie"
+msgid_plural "rose hip pie"
 msgstr[0] ""
 msgstr[1] ""
 
@@ -88853,6 +89593,19 @@ msgstr[1] ""
 #. ~ Description for {'str': "'special' brownie"}
 #: data/json/items/comestibles/wheat.json
 msgid "This is definitely not how grandma used to bake them."
+msgstr ""
+
+#: data/json/items/comestibles/wheat.json
+msgid "kimchimari guksu"
+msgid_plural "kimchimari guksu"
+msgstr[0] ""
+msgstr[1] ""
+
+#. ~ Description for {'str_sp': 'kimchimari guksu'}
+#: data/json/items/comestibles/wheat.json
+msgid ""
+"Noodles served chilled with kimchi.  The cold but spicy flavor brings a "
+"unique refreshment."
 msgstr ""
 
 #: data/json/items/corpses/corpses.json
@@ -91485,8 +92238,9 @@ msgstr ""
 #: data/json/items/gun/762x25.json data/json/items/gun/8x40mm.json
 #: data/json/items/gun/9mm.json data/json/items/gun/9x18.json
 #: data/json/items/gun/bio.json data/json/items/gun/flammable.json
-#: data/json/items/gun/plasma.json data/json/items/gun/shot.json
-#: data/json/items/gun/ups.json data/json/items/ranged/pneumatic.json
+#: data/json/items/gun/metal_rail.json data/json/items/gun/plasma.json
+#: data/json/items/gun/shot.json data/json/items/gun/ups.json
+#: data/json/items/ranged/pneumatic.json
 #: data/mods/Generic_Guns/firearms/pistol.json
 #: data/mods/Generic_Guns/firearms/rifle.json src/item_factory.cpp
 msgid "semi"
@@ -91725,8 +92479,9 @@ msgstr ""
 #: data/json/items/gun/223.json data/json/items/gun/308.json
 #: data/json/items/gun/40.json data/json/items/gun/45.json
 #: data/json/items/gun/4570.json data/json/items/gun/8x40mm.json
-#: data/json/items/gun/9mm.json data/json/items/gun/misc.json
-#: data/json/items/gun/ups.json data/mods/CRT_EXPANSION/items/crt_gun.json
+#: data/json/items/gun/9mm.json data/json/items/gun/metal_rail.json
+#: data/json/items/gun/misc.json data/json/items/gun/ups.json
+#: data/mods/CRT_EXPANSION/items/crt_gun.json
 #: data/mods/Generic_Guns/firearms/pistol.json
 #: data/mods/Generic_Guns/firearms/rifle.json
 msgid "burst"
@@ -94579,7 +95334,8 @@ msgid ""
 "this weapon compared to most contemporary rifles makes it unfeasible to fire"
 " without supporting it properly; not to mention that it consumes UPS charges"
 " at a tremendous rate, making it impractical for use in prolonged "
-"engagements."
+"engagements.  Unlike the handheld variant, this weapon has an internal "
+"feeder designed to make reloading easier."
 msgstr ""
 
 #: data/json/items/gun/metal_rail.json
@@ -95285,6 +96041,21 @@ msgid ""
 "powered with UPS."
 msgstr ""
 
+#: data/json/items/gun/ups.json
+msgid "shoddy autolaser"
+msgid_plural "shoddy autolasers"
+msgstr[0] ""
+msgstr[1] ""
+
+#: data/json/items/gun/ups.json
+msgid ""
+"This is a handmade laser weapon with an equally handmade heat sink, using "
+"evaporative cooling to allow for a higher rate of fire.  It's massively "
+"heavy, but the lack of recoil means it's still somewhat manageable as a "
+"weapon if you can lift it.  It uses UPS power, and you need to fill the "
+"reservoir with water before you can fire it."
+msgstr ""
+
 #: data/json/items/gunmod/accessories.json
 msgid "arrow rest"
 msgid_plural "arrow rests"
@@ -95436,17 +96207,31 @@ msgid ""
 msgstr ""
 
 #: data/json/items/gunmod/barrel.json
-msgid "makeshift firearm accelerator"
-msgid_plural "makeshift firearm accelerators"
+msgid "makeshift rifle accelerator"
+msgid_plural "makeshift rifle accelerators"
 msgstr[0] ""
 msgstr[1] ""
 
 #: data/json/items/gunmod/barrel.json
 msgid ""
-"Advents in power transfer technology has resulted in railguns becoming much "
-"more viable.  Makeshift railgun conversions like this one were a rare but "
+"Advents in power transfer technology has resulted in coilguns becoming much "
+"more viable.  Makeshift coilgun conversions like this one were a rare but "
 "known sight in the riots before the Cataclysm, and it may help you survive "
-"it."
+"it.  This particular attachment is designed for long-barreled guns."
+msgstr ""
+
+#: data/json/items/gunmod/barrel.json
+msgid "makeshift pistol accelerator"
+msgid_plural "makeshift pistol accelerators"
+msgstr[0] ""
+msgstr[1] ""
+
+#: data/json/items/gunmod/barrel.json
+msgid ""
+"Advents in power transfer technology has resulted in coilguns becoming much "
+"more viable.  Makeshift coilgun conversions like this one were a rare but "
+"known sight in the riots before the Cataclysm, and it may help you survive "
+"it.  This particular attachment is designed for short-barreled guns."
 msgstr ""
 
 #: data/json/items/gunmod/bionicmods.json
@@ -98199,11 +98984,10 @@ msgstr[0] ""
 msgstr[1] ""
 
 #. ~ Description for {'str': '.454 5-round speedloader'}
-#. ~ Description for {'str': '.454 6-round speedloader'}
 #: data/json/items/magazine/454.json
 msgid ""
-"This speedloader can hold 5 rounds of .454, .45 Colt or .410 bore and "
-"quickly reload a compatible revolver."
+"This speedloader can hold 5 rounds of .454 or .45 Colt and quickly reload a "
+"compatible revolver."
 msgstr ""
 
 #: data/json/items/magazine/454.json
@@ -98211,6 +98995,13 @@ msgid ".454 6-round speedloader"
 msgid_plural ".454 6-round speedloaders"
 msgstr[0] ""
 msgstr[1] ""
+
+#. ~ Description for {'str': '.454 6-round speedloader'}
+#: data/json/items/magazine/454.json
+msgid ""
+"This speedloader can hold 6 rounds of .454, .45 Colt or .410 bore and "
+"quickly reload a compatible revolver."
+msgstr ""
 
 #: data/json/items/magazine/4570.json
 msgid "Gatling 240-round drum magazine"
@@ -100148,16 +100939,16 @@ msgid ""
 msgstr ""
 
 #: data/json/items/melee/bludgeons.json
-msgid "bone mace"
-msgid_plural "bone maces"
+msgid "bone club"
+msgid_plural "bone clubs"
 msgstr[0] ""
 msgstr[1] ""
 
-#. ~ Description for {'str': 'bone mace'}
+#. ~ Description for {'str': 'bone club'}
 #: data/json/items/melee/bludgeons.json
 msgid ""
-"This mace is carved from a series of sturdy bones, capable of bashing faces "
-"in with swiftness and efficiency."
+"This hefty bludgeon is carved from sturdy bones mounted on a wooden haft, "
+"capable of bashing faces in with swiftness and efficiency."
 msgstr ""
 
 #: data/json/items/melee/fake.json
@@ -100184,6 +100975,19 @@ msgstr[1] ""
 msgid ""
 "A foot-long blade made from high-tech alloy and edged with bonded "
 "nanocrystals."
+msgstr ""
+
+#: data/json/items/melee/fake.json
+msgid "monofilament whip"
+msgid_plural "monofilament whips"
+msgstr[0] ""
+msgstr[1] ""
+
+#. ~ Description for {'str': 'monofilament whip'}
+#: data/json/items/melee/fake.json
+msgid ""
+"A long, sharp thread of high-tech material, with a small counterweight at "
+"the end."
 msgstr ""
 
 #: data/json/items/melee/knives_kitchen.json
@@ -100823,6 +101627,45 @@ msgid ""
 msgstr ""
 
 #: data/json/items/melee/spears_and_polearms.json
+msgid "sharktooth spear"
+msgid_plural "sharktooth spears"
+msgstr[0] ""
+msgstr[1] ""
+
+#. ~ Description for {'str': 'sharktooth spear'}
+#: data/json/items/melee/spears_and_polearms.json
+msgid ""
+"A stout wooden pole with several razor-sharp teeth set into the edges of its"
+" spearhead."
+msgstr ""
+
+#: data/json/items/melee/spears_and_polearms.json
+msgid "stinger spear"
+msgid_plural "stinger spears"
+msgstr[0] ""
+msgstr[1] ""
+
+#. ~ Description for {'str': 'stinger spear'}
+#: data/json/items/melee/spears_and_polearms.json
+msgid ""
+"A stout wooden pole with a sharpened mutant insect stinger for a spearhead, "
+"to add a venomous touch to a classic weapon."
+msgstr ""
+
+#: data/json/items/melee/spears_and_polearms.json
+msgid "triffid spear"
+msgid_plural "triffid spears"
+msgstr[0] ""
+msgstr[1] ""
+
+#. ~ Description for {'str': 'triffid spear'}
+#: data/json/items/melee/spears_and_polearms.json
+msgid ""
+"A stout wooden pole tipped with a stinger from a strange plant monster.  An "
+"alien twist on hunting with poison-tipped weapons made from natural sources."
+msgstr ""
+
+#: data/json/items/melee/spears_and_polearms.json
 msgid "bone glaive"
 msgid_plural "bone glaives"
 msgstr[0] ""
@@ -100831,7 +101674,7 @@ msgstr[1] ""
 #. ~ Description for {'str': 'bone glaive'}
 #: data/json/items/melee/spears_and_polearms.json
 msgid ""
-"This glaive's blade is carved from a single massive bone, and is capable of "
+"This glaive's blade is carved from a large chunk of bone, and is capable of "
 "slicing foes in with swiftness and efficiency."
 msgstr ""
 
@@ -102374,6 +103217,31 @@ msgid ""
 msgstr ""
 
 #: data/json/items/melee/swords_and_blades.json
+msgid "triffid dagger"
+msgid_plural "triffid daggers"
+msgstr[0] ""
+msgstr[1] ""
+
+#. ~ Description for {'str': 'triffid dagger'}
+#: data/json/items/melee/swords_and_blades.json
+msgid ""
+"A dagger made from the stinger of a strange plant monster.  Fitting that the"
+" Cataclysm brings with it a few creative twists on ancient weapons."
+msgstr ""
+
+#: data/json/items/melee/swords_and_blades.json
+msgid "sharktooth dagger"
+msgid_plural "sharktooth daggers"
+msgstr[0] ""
+msgstr[1] ""
+
+#. ~ Description for {'str': 'sharktooth dagger'}
+#: data/json/items/melee/swords_and_blades.json
+msgid ""
+"A dagger made from a wooden handle with razor-sharp teeth lining the edge."
+msgstr ""
+
+#: data/json/items/melee/swords_and_blades.json
 msgid "sharktooth leiomano"
 msgid_plural "sharktooth leiomanos"
 msgstr[0] ""
@@ -102387,16 +103255,16 @@ msgid ""
 msgstr ""
 
 #: data/json/items/melee/swords_and_blades.json
-msgid "bone machete"
-msgid_plural "bone machetes"
+msgid "bone cleaver"
+msgid_plural "bone cleavers"
 msgstr[0] ""
 msgstr[1] ""
 
-#. ~ Description for {'str': 'bone machete'}
+#. ~ Description for {'str': 'bone cleaver'}
 #: data/json/items/melee/swords_and_blades.json
 msgid ""
-"This shortsword is carved from a single massive bone, and is capable of "
-"slicing foes in with swiftness and efficiency."
+"This shortsword is carved from a large chunk of bone set in a wooden haft, "
+"and is capable of slicing foes in with swiftness and efficiency."
 msgstr ""
 
 #: data/json/items/melee/unarmed_weapons.json
@@ -102723,7 +103591,21 @@ msgstr[1] ""
 #: data/json/items/ranged/archery.json
 msgid ""
 "A simple fletched wooden arrow shaft with an arrowhead carved from a mutated"
-" insect stinger.  It paralyzes enemies it hits and stands a somewhat low "
+" insect stinger.  It poisons enemies it hits and stands a somewhat low "
+"chance of remaining intact once fired."
+msgstr ""
+
+#: data/json/items/ranged/archery.json
+msgid "triffid arrow"
+msgid_plural "triffid arrows"
+msgstr[0] ""
+msgstr[1] ""
+
+#. ~ Description for {'str': 'triffid arrow'}
+#: data/json/items/ranged/archery.json
+msgid ""
+"A simple fletched wooden arrow shaft with an arrowhead carved from an alien "
+"plants stinger.  It paralyzes enemies it hits and stands a somewhat low "
 "chance of remaining intact once fired."
 msgstr ""
 
@@ -102804,8 +103686,8 @@ msgstr[1] ""
 #: data/json/items/ranged/archery.json
 msgid ""
 "A fletched carbon fiber arrow shaft with an expanding broadhead tip.  Deals "
-"impressive damage to targets.  Stands a good chance of remaining intact once"
-" fired."
+"impressive damage to targets, but less effective against armor.  Stands a "
+"good chance of remaining intact once fired."
 msgstr ""
 
 #: data/json/items/ranged/archery.json
@@ -103084,7 +103966,21 @@ msgstr[1] ""
 #: data/json/items/ranged/crossbows.json
 msgid ""
 "A simple fletched wooden crossbow bolt with a tip carved from a mutated "
-"insect stinger.  It paralyzes enemies it hits and stands a decent chance of "
+"insect stinger.  It poisons enemies it hits and stands a decent chance of "
+"remaining intact once fired."
+msgstr ""
+
+#: data/json/items/ranged/crossbows.json
+msgid "triffid bolt"
+msgid_plural "triffid bolts"
+msgstr[0] ""
+msgstr[1] ""
+
+#. ~ Description for {'str': 'triffid bolt'}
+#: data/json/items/ranged/crossbows.json
+msgid ""
+"A simple fletched wooden crossbow bolt with a tip carved from an alien "
+"plants stinger.  It paralyzes enemies it hits and stands a decent chance of "
 "remaining intact once fired."
 msgstr ""
 
@@ -103164,8 +104060,8 @@ msgstr[1] ""
 #: data/json/items/ranged/crossbows.json
 msgid ""
 "A fletched carbon fiber crossbow bolt shaft with an expanding broadhead tip."
-"  Deals impressive damage to targets.  Stands a good chance of remaining "
-"intact once fired."
+"  Deals impressive damage to targets, but less effective against armor.  "
+"Stands a good chance of remaining intact once fired."
 msgstr ""
 
 #: data/json/items/ranged/crossbows.json
@@ -105283,6 +106179,38 @@ msgid ""
 "non-potable."
 msgstr ""
 
+#: data/json/items/tool/cooking.json
+msgid "kimchi gimjangdok"
+msgid_plural "kimchi gimjangdoks"
+msgstr[0] ""
+msgstr[1] ""
+
+#. ~ Use action menu_text for {'str': 'kimchi gimjangdok'}.
+#: data/json/items/tool/cooking.json
+msgid "Open dok"
+msgstr ""
+
+#. ~ Use action msg for {'str': 'kimchi gimjangdok'}.
+#: data/json/items/tool/cooking.json
+msgid ""
+"You lift the lid and the smell of tangy, spicy, ripe kimchi makes you "
+"salivate."
+msgstr ""
+
+#. ~ Use action not_ready_msg for {'str': 'kimchi gimjangdok'}.
+#: data/json/items/tool/cooking.json
+msgid "This kimchi is not done fermenting yet."
+msgstr ""
+
+#. ~ Description for {'str': 'kimchi gimjangdok'}
+#: data/json/items/tool/cooking.json
+msgid ""
+"A dok, or clay jar, in which kimchi is stored for the winter.  "
+"Traditionally, this is buried in the ground, but it doesn't matter if you "
+"leave it above ground; just close the lid and wait for it to ferment, and "
+"you'll have delicious kimchi."
+msgstr ""
+
 #. ~ Description for {'str': 'brazier'}
 #: data/json/items/tool/deployable.json
 msgid ""
@@ -105414,6 +106342,11 @@ msgstr ""
 msgid ""
 "A small wind-powered mill that can convert starchy products into flour.  Can"
 " be placed via the construction menu."
+msgstr ""
+
+#. ~ Description for {'str': 'folding chair'}
+#: data/json/items/tool/deployable.json
+msgid "Folded plastic chair on a metal frame, deploy to sit down."
 msgstr ""
 
 #: data/json/items/tool/electronics.json data/mods/Aftershock/items/tools.json
@@ -108945,12 +109878,6 @@ msgid "bicycle horn"
 msgid_plural "bicycle horns"
 msgstr[0] ""
 msgstr[1] ""
-
-#. ~ Use action noise_message for {'str': 'bicycle horn'}.
-#. ~ Weak horn sound
-#: data/json/items/tool/misc.json src/vehicle_use.cpp
-msgid "honk."
-msgstr ""
 
 #. ~ Use action use_message for {'str': 'bicycle horn'}.
 #: data/json/items/tool/misc.json
@@ -116222,6 +117149,38 @@ msgstr ""
 msgid "Summons a small, pissed off centipede."
 msgstr ""
 
+#: data/json/monster_special_attacks/spells.json
+msgid "Spawn Raptors"
+msgstr ""
+
+#. ~ Description for {'str': 'Spawn Raptors'}
+#: data/json/monster_special_attacks/spells.json
+msgid "Summons several zombiespawn raptors."
+msgstr ""
+
+#. ~ Description for {'str': 'Spawn Raptors'}
+#: data/json/monster_special_attacks/spells.json
+msgid "Summons many zombiespawn raptors."
+msgstr ""
+
+#: data/json/monster_special_attacks/spells.json
+msgid "Spawn Shady Raptors"
+msgstr ""
+
+#. ~ Description for {'str': 'Spawn Shady Raptors'}
+#: data/json/monster_special_attacks/spells.json
+msgid "Summons a few shady zombiespawn raptors."
+msgstr ""
+
+#: data/json/monster_special_attacks/spells.json
+msgid "Spawning Zombie Die"
+msgstr ""
+
+#. ~ Description for {'str': 'Spawning Zombie Die'}
+#: data/json/monster_special_attacks/spells.json
+msgid "For zombies that are spawning something and die in the process."
+msgstr ""
+
 #: data/json/monsters/bird.json
 msgid "chicken"
 msgid_plural "chickens"
@@ -121576,6 +122535,134 @@ msgid ""
 "security uniform."
 msgstr ""
 
+#: data/json/monsters/zed-pupating.json
+msgid "pupating zombie crawler"
+msgid_plural "pupating zombie crawlers"
+msgstr[0] ""
+msgstr[1] ""
+
+#. ~ Description for {'str': 'pupating zombie crawler'}
+#: data/json/monsters/zed-pupating.json
+msgid ""
+"This half of a human corpse is wrapped in sticky black fibers that cover "
+"everything neck down.  Beneath the wrapping there is strange rhythmic "
+"movement grotesque to behold."
+msgstr ""
+
+#: data/json/monsters/zed-pupating.json
+msgid "pupating zombie"
+msgid_plural "pupating zombies"
+msgstr[0] ""
+msgstr[1] ""
+
+#. ~ Description for {'str': 'pupating zombie'}
+#: data/json/monsters/zed-pupating.json
+msgid ""
+"This human corpse is wrapped in sticky black fibers that cover everything "
+"neck down.  Beneath the wrapping there is strange rhythmic movement "
+"grotesque to behold."
+msgstr ""
+
+#: data/json/monsters/zed-pupating.json
+msgid "shady pupating zombie"
+msgid_plural "shady pupating zombies"
+msgstr[0] ""
+msgstr[1] ""
+
+#. ~ Description for {'str': 'shady pupating zombie'}
+#: data/json/monsters/zed-pupating.json
+msgid ""
+"An uncanny shadow envelops this creature.  You can make out the outline of "
+"what once may have been a human being, but its edges bulge rhythmically in "
+"places that are not anatomically possible for humans."
+msgstr ""
+
+#: data/json/monsters/zed-winged.json
+msgid "batwing zombie"
+msgid_plural "batwing zombies"
+msgstr[0] ""
+msgstr[1] ""
+
+#. ~ Description for {'str': 'batwing zombie'}
+#: data/json/monsters/zed-winged.json
+msgid ""
+"This zombie's arms have stretched far beyond human limits, the skin "
+"lengthened into a gruesome fleshy membrane.  The mutation does not suit it "
+"well: it moves clumsily, even compared to other zombies."
+msgstr ""
+
+#: data/json/monsters/zed-winged.json
+msgid "garghoul"
+msgid_plural "garghouls"
+msgstr[0] ""
+msgstr[1] ""
+
+#. ~ Description for {'str': 'garghoul'}
+#: data/json/monsters/zed-winged.json
+msgid ""
+"This zombie's arms have stretched far beyond human limits, the skin "
+"lengthened into a gruesome fleshy membrane.  The rest has become emaciated, "
+"thin rope-like muscles ripping through taut flesh.  While it doesn't appear "
+"to be able to truly fly, it uses its mutated arms to make shockingly fast "
+"leaps through the air."
+msgstr ""
+
+#: data/json/monsters/zed-winged.json
+msgid "flesh-raptor"
+msgid_plural "flesh-raptors"
+msgstr[0] ""
+msgstr[1] ""
+
+#. ~ Description for {'str': 'flesh-raptor'}
+#: data/json/monsters/zed-winged.json
+msgid ""
+"This small winged predator darts through the air on three thinly haired "
+"wings that look like stretched human hands.  Where the wings meet juts a "
+"sheer jagged spike.  It looks like nothing you've seen on Earth, and yet "
+"strangely like it was made of human parts."
+msgstr ""
+
+#: data/json/monsters/zed-winged.json
+msgid "shadow raptor"
+msgid_plural "shadow raptors"
+msgstr[0] ""
+msgstr[1] ""
+
+#. ~ Description for {'str': 'shadow raptor'}
+#: data/json/monsters/zed-winged.json
+msgid ""
+"An uncanny shadow envelops this creature.  You can make out the outline of "
+"three flapping wings connected to a jagged pointed object."
+msgstr ""
+
+#: data/json/monsters/zed-winged.json
+msgid "unstable flesh-raptor"
+msgid_plural "unstable flesh-raptor"
+msgstr[0] ""
+msgstr[1] ""
+
+#. ~ Description for {'str_sp': 'unstable flesh-raptor'}
+#: data/json/monsters/zed-winged.json
+msgid ""
+"This small winged predator darts through the air on three thinly haired "
+"wings that look like stretched human hands.  Where the wings meet juts a "
+"jagged spike and a bloated fleshy belly."
+msgstr ""
+
+#: data/json/monsters/zed-winged.json
+msgid "zaptor"
+msgid_plural "zaptors"
+msgstr[0] ""
+msgstr[1] ""
+
+#. ~ Description for {'str': 'zaptor'}
+#: data/json/monsters/zed-winged.json
+msgid ""
+"This small winged predator darts through the air on three thinly haired "
+"wings that look like stretched human hands.  Where the wings meet juts a "
+"jagged spike with a pulsing electrical glow."
+msgstr ""
+
 #: data/json/monsters/zed_acid.json
 msgid "acidic zombie"
 msgid_plural "acidic zombies"
@@ -124176,6 +125263,24 @@ msgstr ""
 msgid "Blinds enemy for a short time."
 msgstr ""
 
+#: data/json/mutations/mutation_spells.json
+msgid "Poison"
+msgstr ""
+
+#. ~ Description for {'str': 'Poison'}
+#: data/json/mutations/mutation_spells.json
+msgid "Poisons the target."
+msgstr ""
+
+#: data/json/mutations/mutation_spells.json
+msgid "Paralyzing Poison"
+msgstr ""
+
+#. ~ Description for {'str': 'Paralyzing Poison'}
+#: data/json/mutations/mutation_spells.json
+msgid "Slows the target."
+msgstr ""
+
 #: data/json/mutations/mutations.json
 msgid "Fleet-Footed"
 msgstr ""
@@ -124249,7 +125354,8 @@ msgstr ""
 #: data/json/mutations/mutations.json
 msgid ""
 "You're skilled at clearing obstacles; terrain like railings or counters are "
-"as easy for you to move on as solid ground."
+"as easy for you to move on as solid ground.  Your experience also allows you"
+" to take reduced damage from falls."
 msgstr ""
 
 #: data/json/mutations/mutations.json
@@ -127042,9 +128148,9 @@ msgstr ""
 #. ~ Description for {'str': 'Insect Wings'}
 #: data/json/mutations/mutations.json
 msgid ""
-"You have a pair of large, translucent wings.  They are too small to lift "
-"you, but are powerful enough to greatly speed your movement, with some "
-"effort and noise."
+"You have a pair of large, translucent wings.  They are too small to provide "
+"lift, but can reduce falling damage and if activated will greatly speed your"
+" movement, with some effort and noise."
 msgstr ""
 
 #: data/json/mutations/mutations.json
@@ -127668,8 +128774,8 @@ msgstr ""
 #: data/json/mutations/mutations.json
 msgid ""
 "You have a pair of large, leathery wings.  You can move them a little, but "
-"they are useless, and in fact put you off balance, reducing your ability to "
-"dodge slightly."
+"they only catch enough air to reduce falling damage a bit, and in fact put "
+"you off balance, reducing your ability to dodge slightly."
 msgstr ""
 
 #: data/json/mutations/mutations.json
@@ -129531,7 +130637,8 @@ msgstr ""
 msgid ""
 "Your muscles, joints, and the movement center of your brain have changed "
 "internally somewhat, allowing you to traverse obstacles with ease.  It also "
-"helps you avoid attacks a bit more easily."
+"helps you avoid attacks a bit more easily, and flex with falls to take less "
+"damage."
 msgstr ""
 
 #: data/json/mutations/mutations.json
@@ -131739,9 +132846,7 @@ msgstr ""
 #: data/json/npcs/TALK_COMMON_OTHER.json
 #: data/json/npcs/TALK_TRUE_FOODPERSON.json
 #: data/json/npcs/cabin_chemist/cabin_chemist.json
-#: data/json/npcs/scrap_trader/scrap_trader.json
-#: data/mods/smart_house_remotes/main.lua data/mods/teleportation_mod/main.lua
-#: src/iuse.cpp
+#: data/json/npcs/scrap_trader/scrap_trader.json src/iuse.cpp
 msgid "Nevermind."
 msgstr ""
 
@@ -156513,20 +157618,6 @@ msgid ""
 msgstr ""
 
 #: data/json/obsoletion/items.json data/mods/No_Hope/Items/armor.json
-msgid "pair of bone arm guards"
-msgid_plural "pairs of bone arm guards"
-msgstr[0] ""
-msgstr[1] ""
-
-#. ~ Description for {'str': 'pair of bone arm guards', 'str_pl': 'pairs of
-#. bone arm guards'}
-#: data/json/obsoletion/items.json data/mods/No_Hope/Items/armor.json
-msgid ""
-"A pair of arm guards made from leather, reinforced with bone.  Light and "
-"strong."
-msgstr ""
-
-#: data/json/obsoletion/items.json data/mods/No_Hope/Items/armor.json
 msgid "bone body armor"
 msgid_plural "bone body armors"
 msgstr[0] ""
@@ -156551,21 +157642,6 @@ msgstr[1] ""
 msgid ""
 "Leather gauntlets with bone armor reinforcement.  Very light and strong."
 msgstr "Δερμάτινα ενισχυμένα γάντια από οστά. Πολύ ελαφριά και ισχυρά."
-
-#: data/json/obsoletion/items.json data/mods/No_Hope/Items/armor.json
-msgid "bone armor helmet"
-msgid_plural "bone armor helmets"
-msgstr[0] ""
-msgstr[1] ""
-
-#. ~ Description for {'str': 'bone armor helmet'}
-#: data/json/obsoletion/items.json data/mods/No_Hope/Items/armor.json
-msgid ""
-"A grotesque, horned helmet carved from bone.  Covers the entire head; very "
-"light and strong."
-msgstr ""
-"Ένα γκροτέσκο, με κέρατο κράνος σκαλισμένο από οστά. Καλύπτει ολόκληρο το "
-"κεφάλι, πολύ ελαφρύ και ισχυρό."
 
 #: data/json/obsoletion/items.json
 msgid "match head bomb"
@@ -160773,6 +161849,67 @@ msgstr[1] ""
 msgid "This is a chunk of yellowish rosin, usable as a flux for soldering."
 msgstr ""
 
+#: data/json/obsoletion/items.json
+msgid "liquid cooling outfit"
+msgid_plural "liquid cooling outfits"
+msgstr[0] ""
+msgstr[1] ""
+
+#. ~ Description for {'str': 'liquid cooling outfit'}
+#: data/json/obsoletion/items.json
+msgid ""
+"This skintight suit covers you from head to toe and is designed to keep you "
+"at an ideal temperature using a number of heatsinks and heating coils tied "
+"to a liquid coolant system.  It also includes some handy features such as a "
+"built-in thermometer.  Use it to turn it on."
+msgstr ""
+
+#: data/json/obsoletion/items.json
+msgid "liquid cooling outfit (on)"
+msgid_plural "liquid cooling outfits (on)"
+msgstr[0] ""
+msgstr[1] ""
+
+#. ~ Description for {'str': 'liquid cooling outfit (on)', 'str_pl': 'liquid
+#. cooling outfits (on)'}
+#: data/json/obsoletion/items.json
+msgid ""
+"This skintight suit covers you from head to toe and is designed to keep you "
+"at an ideal temperature using a number of heatsinks and heating coils tied "
+"to a liquid coolant system.  It also includes some handy features such as a "
+"built-in thermometer.  It is currently on, use it to turn it off."
+msgstr ""
+
+#: data/json/obsoletion/items.json
+msgid "liquid cooling balaclava"
+msgid_plural "liquid cooling balaclavas"
+msgstr[0] ""
+msgstr[1] ""
+
+#. ~ Description for {'str': 'liquid cooling balaclava'}
+#: data/json/obsoletion/items.json
+msgid ""
+"This face mask is designed to keep your face and head at an ideal "
+"temperature using a number of heatsinks and heating coils tied to a liquid "
+"coolant system.  It also includes some handy features such as a built-in "
+"thermometer.  Use it to turn it on."
+msgstr ""
+
+#: data/json/obsoletion/items.json
+msgid "liquid cooling balaclava (on)"
+msgid_plural "liquid cooling balaclava (on)s"
+msgstr[0] ""
+msgstr[1] ""
+
+#. ~ Description for {'str': 'liquid cooling balaclava (on)'}
+#: data/json/obsoletion/items.json
+msgid ""
+"This face mask is designed to keep your face and head at an ideal "
+"temperature using a number of heatsinks and heating coils tied to a liquid "
+"coolant system.  It also includes some handy features such as a built-in "
+"thermometer.  It is currently on, use it to turn it off."
+msgstr ""
+
 #: data/json/obsoletion/missions.json
 msgid "Find a Flu Shot"
 msgstr ""
@@ -163773,6 +164910,10 @@ msgstr ""
 
 #: data/json/overmap/overmap_terrain/overmap_terrain_commercial.json
 msgid "gaming store roof"
+msgstr ""
+
+#: data/json/overmap/overmap_terrain/overmap_terrain_commercial.json
+msgid "convention center"
 msgstr ""
 
 #: data/json/overmap/overmap_terrain/overmap_terrain_evac_center.json
@@ -175722,6 +176863,10 @@ msgid "mounted shoddy laser rifle"
 msgstr ""
 
 #: data/json/vehicleparts/turret.json
+msgid "mounted shoddy autolaser"
+msgstr ""
+
+#: data/json/vehicleparts/turret.json
 msgid "mounted Cerberus laser cannon"
 msgstr ""
 
@@ -181535,7 +182680,8 @@ msgstr ""
 #: data/mods/Aftershock/mutations/mutations.json
 msgid ""
 "You have a pair of large, veiny wings.  They don't appear to be made for "
-"this atmosphere but they grant a powerful buffeting attack."
+"this atmosphere but they grant a powerful buffeting attack, and reduce "
+"falling damage."
 msgstr ""
 
 #: data/mods/Aftershock/mutations/mutations.json
@@ -203922,10 +205068,10 @@ msgid "Cataclysm but with magic spells, BN Edition!"
 msgstr ""
 
 #: data/mods/Magiclysm/modinfo.json
-msgid "spellcraft"
+msgid "Spellcraft"
 msgstr ""
 
-#. ~ Description for spellcraft
+#. ~ Description for {'str': 'Spellcraft'}
 #: data/mods/Magiclysm/modinfo.json
 msgid ""
 "Your skill in the arcane.  Represents magic theory and all that entails.  A "
@@ -205108,6 +206254,24 @@ msgstr ""
 #. ~ Description for Debug Dash
 #: data/mods/Magiclysm/Spells/debug.json
 msgid "You can teleport instantaneously forward."
+msgstr ""
+
+#: data/mods/Magiclysm/Spells/debug.json
+msgid "debug push no aoe"
+msgstr ""
+
+#. ~ Description for debug push no aoe
+#: data/mods/Magiclysm/Spells/debug.json
+msgid "pushes all types of objects with an aoe of 0"
+msgstr ""
+
+#: data/mods/Magiclysm/Spells/debug.json
+msgid "debug push blast"
+msgstr ""
+
+#. ~ Description for debug push blast
+#: data/mods/Magiclysm/Spells/debug.json
+msgid "pushes all types of objects with an aoe of 3 in a blast pattern"
 msgstr ""
 
 #: data/mods/Magiclysm/Spells/dragonbreath.json
@@ -214545,6 +215709,58 @@ msgctxt "memorial_female"
 msgid "Spoke with the trees."
 msgstr ""
 
+#: data/mods/Monster_Girls/dreams.json
+msgid "In a dream, you see a curiously harpy-like reflection of yourself."
+msgstr ""
+
+#: data/mods/Monster_Girls/dreams.json
+msgid "Your dream-reflection seems to have a pair of bear ears on its head."
+msgstr ""
+
+#: data/mods/Monster_Girls/dreams.json
+msgid ""
+"As you dream, your reflection appears to have some cat ears on its head."
+msgstr ""
+
+#: data/mods/Monster_Girls/dreams.json
+msgid "Your dream-self appears to have dog ears on its head."
+msgstr ""
+
+#: data/mods/Monster_Girls/dreams.json
+msgid ""
+"In a dream you catch a glimpse of a strangely cattle-like tail on yourself."
+msgstr ""
+
+#: data/mods/Monster_Girls/dreams.json
+msgid ""
+"You are disturbed when your harpy-like dreams are more lifelike than "
+"reality."
+msgstr ""
+
+#: data/mods/Monster_Girls/dreams.json
+msgid ""
+"Your dream of raiding a giant beehive has you licking your lips in "
+"anticipation."
+msgstr ""
+
+#: data/mods/Monster_Girls/dreams.json
+msgid "You dream of tearing into a fresh steak."
+msgstr ""
+
+#: data/mods/Monster_Girls/dreams.json
+msgid "You terrifyingly dream of being led to a milking machine by a farmer."
+msgstr ""
+
+#: data/mods/Monster_Girls/dreams.json
+msgid "Your dreams of turning into a half-spider frighten you."
+msgstr ""
+
+#: data/mods/Monster_Girls/dreams.json
+msgid ""
+"A rather attractive triffid offers you a bouquet of zombie heads.  How "
+"thoughtful!"
+msgstr ""
+
 #: data/mods/Monster_Girls/modinfo.json
 msgid "Monster Girls Mutations"
 msgstr ""
@@ -215548,6 +216764,35 @@ msgid ""
 "attached to the ceiling above."
 msgstr ""
 
+#: data/mods/No_Hope/Items/armor.json
+msgid "pair of bone arm guards"
+msgid_plural "pairs of bone arm guards"
+msgstr[0] ""
+msgstr[1] ""
+
+#. ~ Description for {'str': 'pair of bone arm guards', 'str_pl': 'pairs of
+#. bone arm guards'}
+#: data/mods/No_Hope/Items/armor.json
+msgid ""
+"A pair of arm guards made from leather, reinforced with bone.  Light and "
+"strong."
+msgstr ""
+
+#: data/mods/No_Hope/Items/armor.json
+msgid "bone armor helmet"
+msgid_plural "bone armor helmets"
+msgstr[0] ""
+msgstr[1] ""
+
+#. ~ Description for {'str': 'bone armor helmet'}
+#: data/mods/No_Hope/Items/armor.json
+msgid ""
+"A grotesque, horned helmet carved from bone.  Covers the entire head; very "
+"light and strong."
+msgstr ""
+"Ένα γκροτέσκο, με κέρατο κράνος σκαλισμένο από οστά. Καλύπτει ολόκληρο το "
+"κεφάλι, πολύ ελαφρύ και ισχυρό."
+
 #: data/mods/No_Hope/Items/generic.json
 msgid "Home Frontier Starter Pack"
 msgid_plural "Home Frontier Starter Packs"
@@ -216508,6 +217753,15 @@ msgstr ""
 #. ~ Description for MSX Fake Snow
 #: data/mods/UDP_BN_FAKE_SNOW/modinfo.json
 msgid "Covers outdoor tiles with fake snow graphics."
+msgstr ""
+
+#: data/mods/UDP_Redux/modinfo.json
+msgid "UDP Redux"
+msgstr ""
+
+#. ~ Description for UDP Redux
+#: data/mods/UDP_Redux/modinfo.json
+msgid "New default tileset for BN. Work in progress, uses UDP as a base."
 msgstr ""
 
 #: data/mods/Zombie_Nightvision/modinfo.json
@@ -218088,51 +219342,6 @@ msgstr ""
 msgid "Control doors and shutters"
 msgstr ""
 
-#: data/mods/smart_house_remotes/main.lua
-msgid "Open curtains"
-msgstr ""
-
-#: data/mods/smart_house_remotes/main.lua
-msgid "Close curtains"
-msgstr ""
-
-#: data/mods/smart_house_remotes/main.lua
-msgid "Raise garage door"
-msgstr ""
-
-#: data/mods/smart_house_remotes/main.lua
-msgid "Lower garage door"
-msgstr ""
-
-#. ~ Message on the remote, stylized as calculator led display.
-#. Shown when there's not enough grid charge.
-#: data/mods/smart_house_remotes/main.lua
-msgid "Low Current At Endpoint"
-msgstr ""
-
-#. ~ Message on the remote, stylized as calculator led display.
-#. Shown when player is too far away from the area.
-#: data/mods/smart_house_remotes/main.lua
-msgid "No Signal"
-msgstr ""
-
-#. ~ Message on the remote, stylized as calculator led display.
-#. Shown when there's nothing to activate.
-#: data/mods/smart_house_remotes/main.lua
-msgid "No Endpoints Available"
-msgstr ""
-
-#: data/mods/smart_house_remotes/main.lua
-msgid "The remote beeps quietly."
-msgstr ""
-
-#. ~ Title of the menu prompting player to select what to activate with the
-#. remote.
-#. Typically it's doors, garage doors or window curtains.
-#: data/mods/smart_house_remotes/main.lua
-msgid "Select endpoint"
-msgstr ""
-
 #: data/mods/smart_house_remotes/modinfo.json
 msgid "Smart House Remotes"
 msgstr ""
@@ -218237,123 +219446,6 @@ msgstr ""
 
 #: data/mods/teleportation_mod/iuse.json
 msgid "Place and activate the teleporter station."
-msgstr ""
-
-#: data/mods/teleportation_mod/main.lua
-msgid "Power too low for charging."
-msgstr ""
-
-#: data/mods/teleportation_mod/main.lua
-msgid "How much power do you want to charge the station with?"
-msgstr ""
-
-#: data/mods/teleportation_mod/main.lua
-msgid "The station was charged."
-msgstr ""
-
-#: data/mods/teleportation_mod/main.lua
-msgid "No grid or no power in grid"
-msgstr ""
-
-#: data/mods/teleportation_mod/main.lua
-msgid "Charge which station?"
-msgstr ""
-
-#: data/mods/teleportation_mod/main.lua
-msgid "No stations found on your tile."
-msgstr ""
-
-#: data/mods/teleportation_mod/main.lua
-msgid "Use which station?"
-msgstr ""
-
-#: data/mods/teleportation_mod/main.lua
-msgid "Select teleportation target"
-msgstr ""
-
-#: data/mods/teleportation_mod/main.lua
-msgid "Change which variable?"
-msgstr ""
-
-#: data/mods/teleportation_mod/main.lua
-msgid "Passive charge per hour"
-msgstr ""
-
-#: data/mods/teleportation_mod/main.lua
-msgid "kJ to charge ratio"
-msgstr ""
-
-#: data/mods/teleportation_mod/main.lua
-msgid "Set passive charge to:"
-msgstr ""
-
-#: data/mods/teleportation_mod/main.lua
-msgid "Default: "
-msgstr ""
-
-#: data/mods/teleportation_mod/main.lua
-msgid "Half: "
-msgstr ""
-
-#: data/mods/teleportation_mod/main.lua
-msgid "Double: "
-msgstr ""
-
-#: data/mods/teleportation_mod/main.lua
-msgid "Set kJ to charge to:"
-msgstr ""
-
-#: data/mods/teleportation_mod/main.lua
-msgid "Appropriate furniture not found. Something went terribly wrong!"
-msgstr ""
-
-#: data/mods/teleportation_mod/main.lua
-msgid "Remove station or anchor?"
-msgstr ""
-
-#: data/mods/teleportation_mod/main.lua
-msgid "Station"
-msgstr ""
-
-#: data/mods/teleportation_mod/main.lua
-msgid "Anchor"
-msgstr ""
-
-#: data/mods/teleportation_mod/main.lua
-msgid "No anchors found on this tile."
-msgstr ""
-
-#: data/mods/teleportation_mod/main.lua
-msgid "No stations found on this tile."
-msgstr ""
-
-#: data/mods/teleportation_mod/main.lua
-msgid "Do what?"
-msgstr ""
-
-#: data/mods/teleportation_mod/main.lua
-msgid "Teleport"
-msgstr ""
-
-#: data/mods/teleportation_mod/main.lua
-msgid "Charge stations"
-msgstr ""
-
-#: data/mods/teleportation_mod/main.lua
-msgid "Check network status"
-msgstr ""
-
-#: data/mods/teleportation_mod/main.lua
-msgid "Remove anchors and stations"
-msgstr ""
-
-#: data/mods/teleportation_mod/main.lua src/action.cpp src/diary_ui.cpp
-#: src/options.cpp
-msgid "Info"
-msgstr ""
-
-#: data/mods/teleportation_mod/main.lua
-msgid "Config"
 msgstr ""
 
 #: data/mods/teleportation_mod/modinfo.json
@@ -218966,6 +220058,10 @@ msgstr ""
 
 #: data/raw/keybindings/keybindings.json
 msgid "Change side armor is worn on"
+msgstr ""
+
+#: data/raw/keybindings/keybindings.json
+msgid "Toggle armor visibility on character sprite"
 msgstr ""
 
 #: data/raw/keybindings/keybindings.json
@@ -219722,6 +220818,10 @@ msgstr ""
 
 #: data/raw/keybindings/keybindings.json
 msgid "View/Activate Bionics"
+msgstr ""
+
+#: data/raw/keybindings/keybindings.json
+msgid "Toggle sprite"
 msgstr ""
 
 #: data/raw/keybindings/keybindings.json
@@ -220736,6 +221836,10 @@ msgstr ""
 
 #: src/action.cpp
 msgid "Craft"
+msgstr ""
+
+#: src/action.cpp src/diary_ui.cpp src/options.cpp
+msgid "Info"
 msgstr ""
 
 #: src/action.cpp
@@ -221962,7 +223066,14 @@ msgstr ""
 
 #: src/activity_handlers.cpp
 #, c-format
-msgid "You gained %i experience from your study session."
+msgid " and %d level"
+msgid_plural " and %d levels"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/activity_handlers.cpp
+#, c-format
+msgid "You gained %i experience%s from your study session."
 msgstr ""
 
 #: src/activity_handlers.cpp src/iuse_actor.cpp
@@ -223005,8 +224116,9 @@ msgstr ""
 #: src/armor_layers.cpp
 #, c-format
 msgid ""
-"Press [<color_yellow>%s</color>] for help.  Press [<color_yellow>%s</color>]"
-" to change keybindings."
+"[<color_yellow>%s</color>] Hide sprite.  [<color_yellow>%s</color>] Change "
+"side.  Press [<color_yellow>%s</color>] for help.  Press "
+"[<color_yellow>%s</color>] to change keybindings."
 msgstr ""
 
 #: src/armor_layers.cpp
@@ -223016,6 +224128,11 @@ msgstr ""
 #: src/armor_layers.cpp
 #, c-format
 msgid "Storage (%s)"
+msgstr ""
+
+#. ~ Hint: Letter to show which piece of armor is Hidden in the layering menu
+#: src/armor_layers.cpp
+msgid "H"
 msgstr ""
 
 #: src/armor_layers.cpp
@@ -227051,22 +228168,6 @@ msgid ""
 msgstr ""
 
 #: src/character.cpp
-msgid "Left Arm"
-msgstr ""
-
-#: src/character.cpp
-msgid "Right Arm"
-msgstr ""
-
-#: src/character.cpp
-msgid "Left Leg"
-msgstr ""
-
-#: src/character.cpp
-msgid "Right Leg"
-msgstr ""
-
-#: src/character.cpp
 msgid "It is broken and must heal fully before it becomes functional again."
 msgstr ""
 
@@ -227511,9 +228612,19 @@ msgstr ""
 msgid "%1$s's acidic blood splashes on %2$s in mid-attack!"
 msgstr ""
 
-#: src/character.cpp src/monattack.cpp
+#: src/character.cpp
 #, c-format
-msgid "The %s tries to grab you as well, but you bat it away!"
+msgid "%s tries to grab you as well, but you bat it away!"
+msgstr ""
+
+#: src/character.cpp
+#, c-format
+msgid "%s tries to grab you, but you break its grab!"
+msgstr ""
+
+#: src/character.cpp
+#, c-format
+msgid "%s tries to grab <npcname>, but they break its grab!"
 msgstr ""
 
 #: src/character.cpp
@@ -230473,7 +231584,15 @@ msgid "<color_cyan>primary skill</color> used to craft"
 msgstr ""
 
 #: src/crafting_gui.cpp
+msgid "tailoring"
+msgstr ""
+
+#: src/crafting_gui.cpp
 msgid "<color_cyan>any skill</color> used to craft"
+msgstr ""
+
+#: src/crafting_gui.cpp
+msgid "cooking"
 msgstr ""
 
 #: src/crafting_gui.cpp
@@ -230638,6 +231757,14 @@ msgstr ""
 
 #: src/creature.cpp
 msgid "You feel poison coursing through your body!"
+msgstr ""
+
+#: src/creature.cpp src/monster.cpp
+msgid "You feel venom flood your body, wracking you with pain…"
+msgstr ""
+
+#: src/creature.cpp src/monster.cpp
+msgid "You're envenomed!"
 msgstr ""
 
 #: src/creature.cpp
@@ -236487,11 +237614,6 @@ msgstr ""
 msgid "There's some buffoon in the way!"
 msgstr ""
 
-#: src/gates.cpp src/vehicle_use.cpp
-#, c-format
-msgid "The %s is in the way!"
-msgstr ""
-
 #. ~ %1$s - vehicle name, %2$s - part name
 #: src/gates.cpp
 #, c-format
@@ -241344,6 +242466,10 @@ msgid "Typical damage per second:"
 msgstr ""
 
 #: src/item.cpp
+msgid "<bold>Melee damage</bold>:"
+msgstr ""
+
+#: src/item.cpp
 msgid "<bold>Techniques when wielded</bold>: "
 msgstr ""
 
@@ -241390,6 +242516,22 @@ msgstr ""
 
 #: src/item.cpp
 msgid "Critical pierce: "
+msgstr ""
+
+#: src/item.cpp
+msgid ": "
+msgstr ""
+
+#: src/item.cpp
+msgid "  Armor-pierce: "
+msgstr ""
+
+#: src/item.cpp
+msgid "/"
+msgstr ""
+
+#: src/item.cpp
+msgid "  Armor multiplier: "
 msgstr ""
 
 #: src/item.cpp
@@ -242132,6 +243274,10 @@ msgstr ""
 
 #: src/item_factory.cpp
 msgid "gunmod"
+msgstr ""
+
+#: src/item_factory.cpp
+msgid "melee"
 msgstr ""
 
 #: src/item_factory.cpp
@@ -246709,6 +247855,11 @@ msgstr ""
 
 #: src/iuse_actor.cpp
 #, c-format
+msgid "%s is in the way."
+msgstr ""
+
+#: src/iuse_actor.cpp
+#, c-format
 msgid "The %s in that direction isn't suitable for placing the %s."
 msgstr ""
 
@@ -249298,6 +250449,12 @@ msgid "%s: <stat>%d</stat>"
 msgstr ""
 
 #: src/martialarts.cpp
+msgid "<bold>Weapon category required: </bold>"
+msgid_plural "<bold>Weapon categories required: </bold>"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/martialarts.cpp
 msgid "<bold>Requires:</bold> "
 msgstr ""
 
@@ -249942,6 +251099,16 @@ msgstr ""
 #: src/melee.cpp
 #, c-format
 msgid "<npcname> burns %s."
+msgstr ""
+
+#: src/melee.cpp
+#, c-format
+msgid "You chemically burn %s."
+msgstr ""
+
+#: src/melee.cpp
+#, c-format
+msgid "<npcname> chemically burns %s."
 msgstr ""
 
 #: src/melee.cpp
@@ -251999,17 +253166,17 @@ msgstr ""
 
 #: src/monattack.cpp
 #, c-format
-msgid "A blow from the %1$s sends %2$s flying!"
+msgid "A blow from %1$s sends %2$s flying!"
 msgstr ""
 
 #: src/monattack.cpp
 #, c-format
-msgid "A blow from the %s sends <npcname> flying!"
+msgid "A blow from %s sends <npcname> flying!"
 msgstr ""
 
 #: src/monattack.cpp
 #, c-format
-msgid "The %1$s fires a shimmering beam towards %2$s!"
+msgid "%1$s fires a shimmering beam towards %2$s!"
 msgstr ""
 
 #: src/monattack.cpp
@@ -252171,7 +253338,7 @@ msgstr ""
 
 #: src/monattack.cpp
 #, c-format
-msgid "The %1$s swipes at %2$s with a barbed tendril!"
+msgid "%1$s swipes at %2$s with a barbed tendril!"
 msgstr ""
 
 #. ~ 1$s is monster name, 2$s bodypart in accusative
@@ -252410,12 +253577,12 @@ msgstr ""
 
 #: src/monattack.cpp
 #, c-format
-msgid "The %1$s's arms fly out and pull and grab %2$s!"
+msgid "%1$s's arms fly out and pull and grab %2$s!"
 msgstr ""
 
 #: src/monattack.cpp
 #, c-format
-msgid "The %1$s reaches out and pulls %2$s!"
+msgid "%1$s reaches out and pulls %2$s!"
 msgstr ""
 
 #: src/monattack.cpp
@@ -252426,6 +253593,11 @@ msgstr ""
 #: src/monattack.cpp
 #, c-format
 msgid "The %s gropes at <npcname>, but they dodge!"
+msgstr ""
+
+#: src/monattack.cpp
+#, c-format
+msgid "The %s tries to grab you as well, but you bat it away!"
 msgstr ""
 
 #: src/monattack.cpp
@@ -252843,7 +254015,7 @@ msgstr ""
 
 #: src/monattack.cpp
 #, c-format
-msgid "The %1$s swings a massive claw at %2$s!"
+msgid "%1$s swings a massive claw at %2$s!"
 msgstr ""
 
 #. ~ 1$s is bodypart name, 2$d is damage value.
@@ -252864,7 +254036,7 @@ msgstr ""
 
 #: src/monattack.cpp
 #, c-format
-msgid "The %1$s lunges for %2$s!"
+msgid "%1$s lunges for %2$s!"
 msgstr ""
 
 #: src/monattack.cpp
@@ -253226,7 +254398,7 @@ msgstr ""
 
 #: src/monattack.cpp
 #, c-format
-msgid "The %1$s mechanically grabs at %2$s!"
+msgid "%1$s mechanically grabs at %2$s!"
 msgstr ""
 
 #: src/monattack.cpp
@@ -253257,12 +254429,12 @@ msgstr ""
 
 #: src/monattack.cpp
 #, c-format
-msgid "The %1$s mechanically lunges at %2$s!"
+msgid "%1$s mechanically lunges at %2$s!"
 msgstr ""
 
 #: src/monattack.cpp
 #, c-format
-msgid "The %1$s impales %2$s!"
+msgid "%1$s impales %2$s!"
 msgstr ""
 
 #: src/monattack.cpp
@@ -253288,7 +254460,7 @@ msgstr ""
 
 #: src/monattack.cpp
 #, c-format
-msgid "The %1$s mechanically reaches for %2$s!"
+msgid "%1$s mechanically reaches for %2$s!"
 msgstr ""
 
 #: src/monattack.cpp
@@ -253576,7 +254748,7 @@ msgstr ""
 
 #: src/mondefense.cpp
 #, c-format
-msgid "Striking the %1$s shocks %2$s!"
+msgid "Striking %1$s shocks %2$s!"
 msgstr ""
 
 #: src/mondefense.cpp
@@ -254113,7 +255285,7 @@ msgstr ""
 
 #: src/monmove.cpp
 #, c-format
-msgid "The %1$s tramples %2$s"
+msgid "%1$s tramples %2$s"
 msgstr ""
 
 #: src/monmove.cpp
@@ -254548,7 +255720,7 @@ msgstr ""
 
 #: src/monster.cpp
 #, c-format
-msgid "The %1$s misses %2$s!"
+msgid "%1$s misses %2$s!"
 msgstr ""
 
 #: src/monster.cpp
@@ -254558,7 +255730,7 @@ msgstr ""
 #. ~ 1$s is attacker name, 2$s is bodypart name in accusative.
 #: src/monster.cpp
 #, c-format
-msgid "The %1$s hits your %2$s."
+msgid "%1$s hits your %2$s."
 msgstr ""
 
 #. ~ %1$s: name of your mount, %2$s: target NPC name, %3$d: damage value
@@ -254572,13 +255744,13 @@ msgstr ""
 #. accusative
 #: src/monster.cpp
 #, c-format
-msgid "The %1$s hits %2$s %3$s."
+msgid "%1$s hits %2$s %3$s."
 msgstr ""
 
 #. ~ %1$s: attacker name, %2$s: target creature name
 #: src/monster.cpp
 #, c-format
-msgid "The %1$s hits %2$s!"
+msgid "%1$s hits %2$s!"
 msgstr ""
 
 #. ~ %s is bodypart name in accusative.
@@ -254591,7 +255763,7 @@ msgstr ""
 #. name
 #: src/monster.cpp
 #, c-format
-msgid "The %1$s hits your %2$s, but your %3$s protects you."
+msgid "%1$s hits your %2$s, but your %3$s protects you."
 msgstr ""
 
 #. ~ $1s is monster name, %2$s is that monster target name,
@@ -254600,28 +255772,20 @@ msgstr ""
 #. ~ 5$s is target armor name.
 #: src/monster.cpp
 #, c-format
-msgid "The %1$s hits %2$s %3$s but is stopped by %4$s %5$s."
+msgid "%1$s hits %2$s %3$s but is stopped by %4$s %5$s."
 msgstr ""
 
 #. ~ $1s is monster name, %2$s is that monster target name,
 #. ~ $3s is target armor name.
 #: src/monster.cpp
 #, c-format
-msgid "The %1$s hits %2$s but is stopped by its %3$s."
+msgid "%1$s hits %2$s but is stopped by its %3$s."
 msgstr ""
 
 #. ~ 1$s is bodypart name in accusative, 2$s is armor name.
 #: src/monster.cpp
 #, c-format
 msgid "Something hits your %1$s, but your %2$s protects you."
-msgstr ""
-
-#: src/monster.cpp
-msgid "You're envenomed!"
-msgstr ""
-
-#: src/monster.cpp
-msgid "You feel venom flood your body, wracking you with pain…"
 msgstr ""
 
 #: src/monster.cpp
@@ -254760,12 +255924,12 @@ msgstr ""
 
 #: src/monster.cpp
 #, c-format
-msgid "The %s flinches, letting you go!"
+msgid "%s flinches, letting you go!"
 msgstr ""
 
 #: src/monster.cpp
 #, c-format
-msgid "The %s flinches, letting <npcname> go!"
+msgid "%s flinches, letting <npcname> go!"
 msgstr ""
 
 #: src/monstergenerator.cpp src/mtype.cpp
@@ -255077,8 +256241,17 @@ msgid "%s to activate mutation, "
 msgstr ""
 
 #: src/mutation_ui.cpp
+msgid "Hiding"
+msgstr ""
+
+#: src/mutation_ui.cpp
 #, c-format
 msgid "%s to reassign invlet, "
+msgstr ""
+
+#: src/mutation_ui.cpp
+#, c-format
+msgid "%s to toggle sprite visibility, "
 msgstr ""
 
 #: src/mutation_ui.cpp
@@ -255096,6 +256269,11 @@ msgstr ""
 
 #: src/mutation_ui.cpp
 msgid "Active:"
+msgstr ""
+
+#. ~ Hint: Letter to show which mutation is Hidden in the mutation menu
+#: src/mutation_ui.cpp
+msgid " H"
 msgstr ""
 
 #. ~ RU means Resource Units
@@ -260877,10 +262055,6 @@ msgid "Lighting"
 msgstr ""
 
 #: src/panels.cpp
-msgid "Weapon"
-msgstr ""
-
-#: src/panels.cpp
 msgid "Weapon_alt"
 msgstr ""
 
@@ -265337,7 +266511,7 @@ msgstr ""
 
 #: src/vehicle_move.cpp
 #, c-format
-msgid "The %s is hurled from %s's by the power of the impact!"
+msgid "%s is hurled from %s's by the power of the impact!"
 msgstr ""
 
 #: src/vehicle_part.cpp

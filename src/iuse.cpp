@@ -908,7 +908,7 @@ int iuse::poison( player *p, item *it, bool, const tripoint & )
         return 0;
     }
     if( !p->has_trait( trait_POISRESIST ) ) {
-        p->add_effect( effect_poison, 1_hours );
+        p->add_effect( effect_poison, 15_minutes );
     }
 
     p->add_effect( effect_foodpoison, 3_hours );
@@ -1068,7 +1068,7 @@ int iuse::blech( player *p, item *it, bool, const tripoint & )
     } else {
         p->add_msg_if_player( m_bad, _( "Blech, that burns your throat!" ) );
         p->mod_pain( rng( 32, 64 ) );
-        p->add_effect( effect_poison, 1_hours );
+        p->add_effect( effect_poison, 15_minutes );
         p->apply_damage( nullptr, bodypart_id( "torso" ), rng( 4, 12 ) );
         p->vomit();
     }
@@ -1235,14 +1235,6 @@ int iuse::purify_smart( player *p, item *it, bool, const tripoint & )
 
     p->remove_mutation( valid[mutation_index] );
     valid.erase( valid.begin() + mutation_index );
-
-    // and one or two more untargeted purifications.
-    if( !valid.empty() ) {
-        p->remove_mutation( random_entry_removed( valid ) );
-    }
-    if( !valid.empty() && one_in( 2 ) ) {
-        p->remove_mutation( random_entry_removed( valid ) );
-    }
 
     p->mod_pain( 3 );
 
@@ -3968,7 +3960,7 @@ int iuse::rpgdie( player *you, item *die, bool, const tripoint & )
     if( roll == num_sides ) {
         add_msg( m_good, _( "Critical!" ) );
     }
-    return roll;
+    return 0;
 }
 
 int iuse::dive_tank( player *p, item *it, bool t, const tripoint & )
@@ -5240,7 +5232,9 @@ int iuse::towel_common( player *p, item *it, bool t )
         // dry off from being wet
     } else if( p->has_morale( MORALE_WET ) ) {
         p->rem_morale( MORALE_WET );
-        p->body_wetness.fill( 0 );
+        for( auto &pr : p->get_body() ) {
+            pr.second.set_wetness( 0 );
+        }
         p->add_msg_if_player( _( "You use the %s to dry off, saturating it with water!" ),
                               name );
 
