@@ -1911,6 +1911,8 @@ Guns can be defined like this:
 "burst": 5,                // Number of shots fired in burst mode
 "clip_size": 100,          // Maximum amount of ammo that can be loaded
 "ups_charges": 0,          // Additionally to the normal ammo (if any), a gun can require some charges from an UPS. This also works on mods. Attaching a mod with ups_charges will add/increase ups drain on the weapon.
+"ammo_to_fire" 1,          // Amount of ammo used per shot, separate from any UPS cost that may be given to the weapon.
+// The legacy item flags `FIRE_20`, `FIRE_50`, and `FIRE_100` are still permitted and will override `ammo_to_fire` if present.
 "reload": 450,             // Amount of time to reload, 100 = 1 second = 1 "turn". Default 100.
 "built_in_mods": ["m203"], // An array of mods that will be integrated in the weapon using the IRREMOVABLE tag.
 "default_mods": ["m203"]   // An array of mods that will be added to a weapon on spawn.
@@ -1982,7 +1984,7 @@ Gun mods can be defined like this:
 "install_time": "30 s",        // Optional time installation takes. Installation is instantaneous if unspecified. An integer will be read as moves or a time string can be used.
 "ammo_modifier": [ "57" ],     // Optional field which if specified modifies parent gun to use these ammo types
 "magazine_adaptor": [ [ "223", [ "stanag30" ] ] ], // Optional field which changes the types of magazines the parent gun accepts
-"burst_modifier": 3,           // Optional field increasing or decreasing base gun burst size
+"mode_modifier": [ [ "AUTO", "auto", 5 ] ]         // Optional field which adds new firing modes to a weapon
 "damage_modifier": -1,         // Optional field increasing or decreasing base gun damage
 "dispersion_modifier": 15,     // Optional field increasing or decreasing base gun dispersion
 "loudness_modifier": 4,        // Optional field increasing or decreasing base guns loudness
@@ -1990,6 +1992,8 @@ Gun mods can be defined like this:
 "recoil_modifier": -100,       // Optional field increasing or decreasing base gun recoil
 "ups_charges_modifier": 200,   // Optional field increasing or decreasing base gun UPS consumption (per shot) by adding given value
 "ups_charges_multiplier": 2.5, // Optional field increasing or decreasing base gun UPS consumption (per shot) by multiplying by given value
+"ammo_to_fire_modifier": 200,   // Optional field increasing or decreasing amount of main ammo consumed per shot by adding given value
+"ammo_to_fire_multiplier": 2.5, // Optional field increasing or decreasing main ammo consumed per shot by multiplying by given value
 "reload_modifier": -10,        // Optional field increasing or decreasing base gun reload time in percent
 "min_str_required_mod": 14,    // Optional field increasing or decreasing minimum strength required to use gun
 ```
@@ -3422,9 +3426,9 @@ The following actions are available as defined in trapfunc.cpp:
   processed as the mapgen update could just as easily remove the trap, change it to something else,
   or do any number of things that would otherwise disrupt the trap cleanup function.
 - `drain` - Deals a tiny amount of damage to the target, ignores armor and immunities.
-- `cast_spell` - Casts the spell specified by the trap's `spell_data`, centered on whatever set it
-  off. Note that the spell used generally requires a `min_aoe` defined to work successfully, and not
-  all spell effects can be expected to work properly with this.
+- `spell` - Casts the spell specified by the trap's `spell_data`, centered on whatever set it off.
+  Note that the spell used generally requires a `min_aoe` defined to work successfully, and not all
+  spell effects can be expected to work properly with this.
 - `snake` - Similar to `shadow` trap effect, summons shadow snakes nearby. Main difference is NPCs
   and monsters are capable of setting it off.
 

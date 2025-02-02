@@ -117,6 +117,11 @@
     "conflicts": [ "PARTIAL_DEAF" ]
   },
   {
+    "id": "DESTROY_ON_DECHARGE",
+    "type": "json_flag",
+    "context": [  ]
+  },
+  {
     "id": "DIAMOND",
     "type": "json_flag",
     "context": [ "GENERIC", "TOOL" ],
@@ -262,10 +267,15 @@
     "info": "You can wear <info>only one</info>."
   },
   {
+    "id": "EXOSUIT",
+    "type": "json_flag",
+    "context": [ "ARMOR", "TOOL_ARMOR" ]
+  },
+  {
     "id": "FANCY",
     "type": "json_flag",
     "context": [ "ARMOR", "TOOL_ARMOR" ],
-    "//": "Wearing this clothing gives a morale bonus if the player has the Stylish trait.",
+    "//": "Wearing this clothing gives a morale bonus if the player doesn't have the Fashion Deficient trait.",
     "info": "This clothing is <info>fancy</info>.",
     "conflicts": [ "SUPER_FANCY" ]
   },
@@ -285,7 +295,7 @@
     "id": "FIREWOOD",
     "type": "json_flag",
     "context": [ "GENERIC" ],
-    "info": "This item can serve as a firewood."
+    "info": "This item can serve as firewood."
   },
   {
     "id": "FIX_FARSIGHT",
@@ -798,7 +808,7 @@
     "id": "SUPER_FANCY",
     "type": "json_flag",
     "context": [ "ARMOR", "TOOL_ARMOR" ],
-    "//": "Gives an additional moral bonus over FANCY if the player has the Stylish trait.",
+    "//": "Gives an additional moral bonus over FANCY if the player doesn't have the Fashion Deficient trait.",
     "info": "This clothing is <info>very fancy</info>.",
     "conflicts": [ "FANCY" ]
   },
@@ -1204,7 +1214,7 @@
     "id": "CANNIBALISM",
     "type": "json_flag",
     "context": [ "COMESTIBLE" ],
-    "craft_inherit": true
+    "//": "Obsoleted"
   },
   {
     "id": "ALLERGEN_EGG",

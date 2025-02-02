@@ -455,7 +455,7 @@ static repetition_folder rep_folder;
 static void output_repetitions( std::ostream &out );
 
 void realDebugmsg( const char *filename, const char *line, const char *funcname,
-                   const std::string &text )
+                   const DL debug_level, const std::string &text )
 {
     assert( filename != nullptr );
     assert( line != nullptr );
@@ -465,7 +465,7 @@ void realDebugmsg( const char *filename, const char *line, const char *funcname,
         captured += text;
     } else {
         if( !rep_folder.test( filename, line, funcname, text ) ) {
-            *detail::realDebugLog( DL::Error, DC::DebugMsg, filename, line, funcname ) << text;
+            *detail::realDebugLog( debug_level, DC::DebugMsg, filename, line, funcname ) << text;
             rep_folder.set( filename, line, funcname, text );
         } else {
             rep_folder.increment_count();
@@ -1774,7 +1774,7 @@ std::string game_info::mods_loaded()
         return "No active world";
     }
 
-    const std::vector<mod_id> &mod_ids = world_generator->active_world->active_mod_order;
+    const std::vector<mod_id> &mod_ids = world_generator->active_world->info->active_mod_order;
     if( mod_ids.empty() ) {
         return "No loaded mods";
     }

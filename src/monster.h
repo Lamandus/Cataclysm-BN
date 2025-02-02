@@ -370,8 +370,10 @@ class monster : public Creature, public location_visitable<monster>
         /** Performs any monster-specific modifications to the arguments before passing to Creature::add_effect(). */
         void add_effect( const efftype_id &eff_id, const time_duration &dur, const bodypart_str_id &bp,
                          int intensity = 0, bool force = false, bool deferred = false ) override;
-        void add_effect( const efftype_id &eff_id, const time_duration &dur, body_part bp = num_bp,
-                         int intensity = 0, bool force = false, bool deferred = false );
+        void add_effect( const efftype_id &eff_id, const time_duration &dur );
+        // Use the bodypart_str_id variant instead
+        void add_effect( const efftype_id &eff_id, const time_duration &dur, body_part bp,
+                         int intensity = 0, bool force = false, bool deferred = false ) = delete;
         /** Returns a std::string containing effects for descriptions */
         std::string get_effect_status() const;
 
@@ -530,6 +532,9 @@ class monster : public Creature, public location_visitable<monster>
         }
 
         short ignoring;
+
+        bool aggro_character = true;
+
         std::optional<time_point> lastseen_turn;
 
         // Stair data.
@@ -599,6 +604,9 @@ class monster : public Creature, public location_visitable<monster>
         void process_trigger( mon_trigger trig, int amount );
         void process_trigger( mon_trigger trig, const std::function<int()> &amount_func );
 
+        void trigger_character_aggro( const char *reason );
+        void trigger_character_aggro_chance( int chance, const char *reason );
+
         location_vector<item> corpse_components; // Hack to make bionic corpses generate CBMs on death
 
     private:
@@ -621,6 +629,7 @@ class monster : public Creature, public location_visitable<monster>
         std::vector<tripoint> path;
         std::bitset<NUM_MEFF> effect_cache;
         std::optional<time_duration> summon_time_limit = std::nullopt;
+
 
         player *find_dragged_foe();
         void nursebot_operate( player *dragged_foe );

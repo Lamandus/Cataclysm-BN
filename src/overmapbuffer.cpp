@@ -44,6 +44,7 @@
 #include "vehicle.h"
 #include "vehicle_part.h"
 #include "profile.h"
+#include "world.h"
 
 class map_extra;
 
@@ -66,15 +67,6 @@ omt_find_params::~omt_find_params() = default;
 
 omt_route_params::~omt_route_params() = default;
 
-std::string overmapbuffer::terrain_filename( const point_abs_om &p )
-{
-    return string_format( "%s/o.%d.%d", g->get_world_base_save_path(), p.x(), p.y() );
-}
-
-std::string overmapbuffer::player_filename( const point_abs_om &p )
-{
-    return string_format( "%s.seen.%d.%d", g->get_player_base_save_path(), p.x(), p.y() );
-}
 
 overmap &overmapbuffer::get( const point_abs_om &p )
 {
@@ -208,6 +200,7 @@ void overmapbuffer::clear()
 {
     overmaps.clear();
     known_non_existing.clear();
+    placed_unique_specials.clear();
     last_requested_overmap = nullptr;
 }
 
@@ -267,7 +260,7 @@ overmap *overmapbuffer::get_existing( const point_abs_om &p )
         // checked in a previous call of this function).
         return nullptr;
     }
-    if( file_exist( terrain_filename( p ) ) ) {
+    if( g->get_active_world() && g->get_active_world()->overmap_exists( p ) ) {
         // File exists, load it normally (the get function
         // indirectly call overmap::open to do so).
         return &get( p );
@@ -945,6 +938,19 @@ bool overmapbuffer::check_overmap_special_type( const overmap_special_id &id,
 {
     const overmap_with_local_coords om_loc = get_om_global( loc );
     return om_loc.om->check_overmap_special_type( id, om_loc.local );
+}
+
+void overmapbuffer::add_unique_special( const overmap_special_id &id )
+{
+    if( contains_unique_special( id ) ) {
+        debugmsg( "Unique overmap special placed more than once: %s", id.str() );
+    }
+    placed_unique_specials.emplace( id );
+}
+
+bool overmapbuffer::contains_unique_special( const overmap_special_id &id ) const
+{
+    return placed_unique_specials.contains( id );
 }
 
 static omt_find_params assign_params(

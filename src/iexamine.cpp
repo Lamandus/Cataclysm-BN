@@ -861,11 +861,11 @@ void iexamine::toggle_lights( player &/*p*/, const tripoint &examp )
     map &here = get_map();
     const auto flag = here.has_flag_furn( "L_OFF", examp ) ? "L_OFF" : "L_ON";
 
+    add_msg( _( here.furn( examp ).obj().message ) );
+
     for( const auto &light_loc : here.find_furnitures_with_flag_in_omt( examp, flag ) ) {
         here.furn_set( light_loc, here.get_furn_transforms_into( light_loc ) );
     };
-
-    add_msg( _( here.furn( examp ).obj().message ) );
 }
 
 /**
@@ -2582,7 +2582,7 @@ void iexamine::kiln_empty( player &p, const tripoint &examp )
         return;
     }
 
-    static const std::set<material_id> kilnable{ material_id( "wood" ), material_id( "bone" ) };
+    static const std::set<material_id> kilnable{ material_id( "wood" ), material_id( "bone" ), material_id( "bone_heavy" ) };
     bool fuel_present = false;
     auto items = here.i_at( examp );
     for( const item * const &i : items ) {

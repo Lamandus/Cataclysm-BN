@@ -60,6 +60,7 @@
 #include "string_utils.h"
 #include "text_snippets.h"
 #include "translations.h"
+#include "world.h"
 
 static const efftype_id effect_pet( "pet" );
 
@@ -5501,6 +5502,11 @@ bool overmap::can_place_special( const overmap_special &special, const tripoint_
         return false;
     }
 
+    if( special.has_flag( "GLOBALLY_UNIQUE" ) &&
+        overmap_buffer.contains_unique_special( special.id ) ) {
+        return false;
+    }
+
     const std::vector<overmap_special_locations> fixed_terrains = special.required_locations();
 
     return std::all_of( fixed_terrains.begin(), fixed_terrains.end(),
@@ -5536,6 +5542,10 @@ std::vector<tripoint_om_omt> overmap::place_special(
     assert( dir != om_direction::type::invalid );
     if( !force ) {
         assert( can_place_special( special, p, dir, must_be_unexplored ) );
+    }
+
+    if( special.has_flag( "GLOBALLY_UNIQUE" ) ) {
+        overmap_buffer.add_unique_special( special.id );
     }
 
     const bool grid = special.has_flag( "ELECTRIC_GRID" );
@@ -5941,10 +5951,16 @@ void overmap::place_specials( overmap_special_batch &enabled_specials )
         const float rate = is_true_center && special.has_flag( "ENDGAME" ) ? 1 :
                            zone_ratio[current];
 
+        const bool unique = iter.special_details->has_flag( "UNIQUE" );
+        const bool globally_unique = iter.special_details->has_flag( "GLOBALLY_UNIQUE" );
+
         int amount_to_place;
-        if( special.has_flag( "UNIQUE" ) ) {
-            int chance = roll_remainder( min * rate );
-            amount_to_place = x_in_y( chance, max ) ? 1 : 0;
+        if( unique || globally_unique ) {
+            const overmap_special_id &id = iter.special_details->id;
+
+            //FINGERS CROSSED EMOGI
+            amount_to_place = x_in_y( min, max ) && ( !globally_unique ||
+                              !overmap_buffer.contains_unique_special( id ) ) ? 1 : 0;
         } else {
             // Number of instances normalized to terrain ratio
             float real_max = std::max( static_cast<float>( min ), max * rate );
@@ -6080,18 +6096,18 @@ void overmap::place_radios()
 
 void overmap::open( overmap_special_batch &enabled_specials )
 {
-    const std::string terfilename = overmapbuffer::terrain_filename( loc );
+    // const std::string terfilename = overmapbuffer::terrain_filename( loc );
 
     const auto ter_reader = [&]( std::istream & fin ) {
-        overmap::unserialize( fin, terfilename );
+        overmap::unserialize( fin, string_format( "overmap terrain %d.%d", loc.x(), loc.y() ) );
     };
 
-    if( read_from_file_optional( terfilename, ter_reader ) ) {
-        const std::string plrfilename = overmapbuffer::player_filename( loc );
+    if( g->get_active_world()->read_overmap( loc, ter_reader ) ) {
+        // const std::string plrfilename = overmapbuffer::player_filename( loc );
         const auto plr_reader = [&]( std::istream & fin ) {
-            overmap::unserialize_view( fin, plrfilename );
+            overmap::unserialize_view( fin, string_format( "overmap visibility %d.%d", loc.x(), loc.y() ) );
         };
-        read_from_file_optional( plrfilename, plr_reader );
+        g->get_active_world()->read_overmap_player_visibility( loc, plr_reader );
     } else { // No map exists!  Prepare neighbors, and generate one.
         std::vector<const overmap *> pointers;
         // Fetch south and north
@@ -6111,11 +6127,11 @@ void overmap::open( overmap_special_batch &enabled_specials )
 // Note: this may throw io errors from std::ofstream
 void overmap::save() const
 {
-    write_to_file( overmapbuffer::player_filename( loc ), [&]( std::ostream & stream ) {
+    g->get_active_world()->write_overmap_player_visibility( loc, [&]( std::ostream & stream ) {
         serialize_view( stream );
     } );
 
-    write_to_file( overmapbuffer::terrain_filename( loc ), [&]( std::ostream & stream ) {
+    g->get_active_world()->write_overmap( loc, [&]( std::ostream & stream ) {
         serialize( stream );
     } );
 }

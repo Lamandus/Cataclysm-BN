@@ -200,7 +200,8 @@ to find which flags work elsewhere.
 - `COLLAR` This piece of clothing has a wide collar that can keep your mouth warm.
 - `DEAF` Makes the player deaf.
 - `ELECTRIC_IMMUNE` This gear completely protects you from electric discharges.
-- `FANCY` Wearing this clothing gives a morale bonus if the player has the `Stylish` trait.
+- `FANCY` Wearing this clothing gives a morale bonus if the player doesn't have the
+  `Fashion Deficient` trait.
 - `FIX_FARSIGHT` This gear corrects farsightedness.
 - `FIX_NEARSIGHT` This gear corrects nearsightedness.
 - `FLOTATION` Prevents the player from drowning in deep water. Also prevents diving underwater.
@@ -249,7 +250,8 @@ to find which flags work elsewhere.
   0.70.
 - `STURDY` This clothing is a lot more resistant to damage than normal.
 - `SUN_GLASSES` Prevents glaring when in sunlight.
-- `SUPER_FANCY` Gives an additional moral bonus over `FANCY` if the player has the `Stylish` trait.
+- `SUPER_FANCY` Gives an additional moral bonus over `FANCY` if the player doesn't have the
+  `Fashion Deficient` trait.
 - `SWIM_GOGGLES` Allows you to see much further under water.
 - `THERMOMETER` This gear is equipped with an accurate thermometer (which is used to measure
   temperature).
@@ -516,6 +518,9 @@ List of known flags, used in both `terrain.json` and `furniture.json`.
    |      O
   ```
 
+- `ADV_DECONSTRUCT` This cannot be deconstructed using normal deconstruction; a specially-defined
+  construction action is necessary. Most of these fall under the "`advanced_object_deconstruction`"
+  group.
 - `BARRICADABLE_DOOR_DAMAGED`
 - `BARRICADABLE_DOOR_REINFORCED_DAMAGED`
 - `BARRICADABLE_DOOR_REINFORCED`
@@ -704,6 +709,7 @@ List of known flags, used in both `terrain.json` and `furniture.json`.
 - `DANGEROUS` ... NPCs will not accept this item. Explosion iuse actor implies this flag. Implies
   "NPC_THROW_NOW".
 - `DETERGENT` ... This item can be used as a detergent in a washing machine.
+- `DESTROY_ON_DECHARGE` ... This item should be destroyed if loses charges.
 - `DURABLE_MELEE` ... Item is made to hit stuff and it does it well, so it's considered to be a lot
   tougher than other weapons made of the same materials.
 - `FAKE_MILL` ... Item is a fake item, to denote a partially milled product by @ref
@@ -772,8 +778,10 @@ List of known flags, used in both `terrain.json` and `furniture.json`.
 - `CROSSBOW` Counts as a crossbow for the purpose of gunmod compatibility. Default behavior is to
   match the skill used by that weapon.
 - `DISABLE_SIGHTS` Prevents use of the base weapon sights
-- `FIRE_100` Uses 100 shots per firing.
+- `FIRE_20` Uses 20 shots per firing.
 - `FIRE_50` Uses 50 shots per firing.
+- `FIRE_100` Uses 100 shots per firing. See also the `ammo_to_fire` property to specify any amount
+  of ammo usage per shot desired. These flags will override `ammo_to_fire` if present.
 - `HEAVY_WEAPON_SUPPORT` Wearing this will let you hip-fire heavy weapons without needing terrain
   support, like Large or Huge mutants can.
 - `FIRE_TWOHAND` Gun can only be fired if player has two free hands.
@@ -935,12 +943,13 @@ Flags used to describe monsters and define their properties and abilities.
 ### Anger, Fear and Placation Triggers
 
 - `FIRE` There's a fire nearby.
-- `FRIEND_ATTACKED` A monster of the same type was attacked.
-- `FRIEND_DIED` A monster of the same type died.
-- `HURT` The monster is hurt.
+- `FRIEND_ATTACKED` A monster of the same type was attacked. Always triggers character aggro.
+- `FRIEND_DIED` A monster of the same type died. Always triggers character aggro.
+- `HURT` The monster is hurt. Always triggers character aggro.
 - `MEAT` Meat or a corpse is nearby.
 - `NULL` Source use only?
-- `PLAYER_CLOSE` The player gets within a few tiles distance.
+- `PLAYER_CLOSE` The player gets within a few tiles distance. Triggers character aggro `<anger>%` of
+  the time.
 - `PLAYER_WEAK` The player is hurt.
 - `SOUND` Heard a sound.
 - `STALK` Increases when following the player.
@@ -1652,6 +1661,8 @@ Those flags are added by the game code to specific items (that specific welder, 
 - `SEAT` A seat where the player can sit or sleep.
 - `SEATBELT` Helps prevent the player from being ejected from the vehicle during an accident. Can
   only be installed on a part with `BELTABLE` flag.
+- `SEAT_REQUIRES_BALANCE` The player may fall off once they run into something determined by a
+  strength roll. TRAIT_DEFT and TRAIT_PROF_SKATER makes it harder to be thrown from vehicle.
 - `SECURITY`
 - `SHARP` Striking a monster with this part does cutting damage instead of bashing damage, and
   prevents stunning the monster.

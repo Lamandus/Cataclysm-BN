@@ -354,6 +354,9 @@ void monster::plan()
         target = &g->u;
         if( dist <= 5 ) {
             anger += angers_hostile_near;
+            if( angers_hostile_near ) {
+                trigger_character_aggro_chance( anger, "proximity" );
+            }
             morale -= fears_hostile_near;
             if( angers_mating_season > 0 ) {
                 bool mating_angry = false;
@@ -369,6 +372,7 @@ void monster::plan()
                 }
                 if( mating_angry ) {
                     anger += angers_mating_season;
+                    trigger_character_aggro_chance( anger, "mating season" );
                 }
             }
         }
@@ -381,6 +385,7 @@ void monster::plan()
                         //proximity to baby; monster gets furious and less likely to flee
                         anger += angers_cub_threatened;
                         morale += angers_cub_threatened / 2;
+                        trigger_character_aggro( "threatening cub" );
                     }
                 }
             }
@@ -444,6 +449,7 @@ void monster::plan()
                 }
                 if( mating_angry ) {
                     anger += angers_mating_season;
+                    trigger_character_aggro_chance( anger, "mating season" );
                 }
             }
         }
@@ -586,6 +592,9 @@ void monster::plan()
             int hp_per = target->hp_percentage();
             if( hp_per <= 70 ) {
                 anger += 10 - ( hp_per / 10 );
+                if( anger <= 40 ) {
+                    trigger_character_aggro_chance( anger, "weakness" );
+                }
             }
         }
     } else if( friendly > 0 && one_in( 3 ) ) {
@@ -1713,13 +1722,13 @@ bool monster::move_to( const tripoint &p, bool force, bool step_on_critter,
     }
 
     if( g->m.has_flag( "UNSTABLE", destination ) && on_ground ) {
-        add_effect( effect_bouldering, 1_turns, num_bp );
+        add_effect( effect_bouldering, 1_turns );
     } else if( has_effect( effect_bouldering ) ) {
         remove_effect( effect_bouldering );
     }
 
     if( g->m.has_flag_ter_or_furn( TFLAG_NO_SIGHT, destination ) && on_ground ) {
-        add_effect( effect_no_sight, 1_turns, num_bp );
+        add_effect( effect_no_sight, 1_turns );
     } else if( has_effect( effect_no_sight ) ) {
         remove_effect( effect_no_sight );
     }
