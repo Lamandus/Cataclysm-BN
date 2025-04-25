@@ -74,7 +74,7 @@
 #include "options.h"
 #include "output.h"
 #include "overmapbuffer.h"
-#include "pathfinding.h"
+#include "legacy_pathfinding.h"
 #include "player.h"
 #include "point_float.h"
 #include "projectile.h"
@@ -125,6 +125,7 @@ static const itype_id itype_press( "press" );
 static const itype_id itype_soldering_iron( "soldering_iron" );
 static const itype_id itype_vac_sealer( "vac_sealer" );
 static const itype_id itype_welder( "welder" );
+static const itype_id itype_butchery( "fake_adv_butchery" );
 
 static const mtype_id mon_zombie( "mon_zombie" );
 
@@ -1851,7 +1852,6 @@ bool map::ter_set( const tripoint &p, const ter_id &new_terrain )
     }
 
     invalidate_max_populated_zlev( p.z );
-
     set_memory_seen_cache_dirty( p );
 
     // TODO: Limit to changes that affect move cost, traps and stairs
@@ -3937,10 +3937,12 @@ void map::shoot( const tripoint &origin, const tripoint &p, projectile &proj, co
 
     if( furn.bash.ranged ) {
         double range = rl_dist( origin, p );
+        const bool point_blank = range <= 1;
         const ranged_bash_info &rfi = *furn.bash.ranged;
-        float destroy_roll = dam * rng_float( 0.9, 1.1 );
+        // Damage obstacles like a crit if we're breaching at point blank range, otherwise randomize like a normal hit.
+        float destroy_roll = point_blank ? dam * 1.5 : dam * rng_float( 0.9, 1.1 );
         if( !hit_items && ( !check( rfi.block_unaimed_chance ) || ( rfi.block_unaimed_chance < 100_pct &&
-                            range <= 1 ) ) ) {
+                            point_blank ) ) ) {
             // Nothing, it's a miss or we're shooting over nearby furniture
         } else if( rfi.reduction_laser && proj.has_effect( ammo_effect_LASER ) ) {
             dam -= std::max( ( rng( rfi.reduction_laser->min,
@@ -3967,10 +3969,12 @@ void map::shoot( const tripoint &origin, const tripoint &p, projectile &proj, co
         }
     } else if( ter.bash.ranged ) {
         double range = rl_dist( origin, p );
+        const bool point_blank = range <= 1;
         const ranged_bash_info &ri = *ter.bash.ranged;
-        float destroy_roll = dam * rng_float( 0.9, 1.1 );
+        // Damage obstacles like a crit if we're breaching at point blank range, otherwise randomize like a normal hit.
+        float destroy_roll = point_blank ? dam * 1.5 : dam * rng_float( 0.9, 1.1 );
         if( !hit_items && ( !check( ri.block_unaimed_chance ) || ( ri.block_unaimed_chance < 100_pct &&
-                            range <= 1 ) ) ) {
+                            point_blank ) ) ) {
             // Nothing, it's a miss or we're shooting over nearby terrain
         } else if( ri.reduction_laser && proj.has_effect( ammo_effect_LASER ) ) {
             dam -= std::max( ( rng( ri.reduction_laser->min,
@@ -5258,6 +5262,7 @@ std::vector<detached_ptr<item>> map::use_charges( const tripoint &origin, const 
         const std::optional<vpart_reference> kpart = vp.part_with_feature( "FAUCET", true );
         const std::optional<vpart_reference> weldpart = vp.part_with_feature( "WELDRIG", true );
         const std::optional<vpart_reference> craftpart = vp.part_with_feature( "CRAFTRIG", true );
+        const std::optional<vpart_reference> butcherpart = vp.part_with_feature( "BUTCHER_EQ", true );
         const std::optional<vpart_reference> forgepart = vp.part_with_feature( "FORGE", true );
         const std::optional<vpart_reference> kilnpart = vp.part_with_feature( "KILN", true );
         const std::optional<vpart_reference> chempart = vp.part_with_feature( "CHEMLAB", true );
@@ -5322,6 +5327,24 @@ std::vector<detached_ptr<item>> map::use_charges( const tripoint &origin, const 
             // TODO: add a sane birthday arg
             detached_ptr<item> tmp = item::spawn( type, calendar::start_of_cataclysm );
             tmp->charges = craftpart->vehicle().drain( ftype, quantity );
+            quantity -= tmp->charges;
+            ret.push_back( std::move( tmp ) );
+
+            if( quantity == 0 ) {
+                return ret;
+            }
+        }
+
+        if( butcherpart ) {// we have a butchery station, now to see what to drain
+            itype_id ftype = itype_id::NULL_ID();
+
+            if( type == itype_butchery ) {
+                ftype = itype_battery;
+            }
+
+            // TODO: add a sane birthday arg
+            detached_ptr<item> tmp = item::spawn( type, calendar::start_of_cataclysm );
+            tmp->charges = forgepart->vehicle().drain( ftype, quantity );
             quantity -= tmp->charges;
             ret.push_back( std::move( tmp ) );
 

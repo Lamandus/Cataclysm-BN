@@ -48,6 +48,7 @@
 #include "string_formatter.h"
 #include "string_id.h"
 #include "translations.h"
+#include "type_id.h"
 #include "ui.h"
 #include "units.h"
 
@@ -265,6 +266,8 @@ void spell_type::load( const JsonObject &jo, const std::string & )
     const auto trigger_reader = enum_flags_reader<valid_target> { "valid_targets" };
     mandatory( jo, was_loaded, "valid_targets", valid_targets, trigger_reader );
 
+    optional( jo, was_loaded, "blocker_mutations", blocker_mutations, auto_flags_reader<trait_id> {} );
+
     if( jo.has_array( "extra_effects" ) ) {
         for( JsonObject fake_spell_obj : jo.get_array( "extra_effects" ) ) {
             fake_spell temp;
@@ -294,6 +297,11 @@ void spell_type::load( const JsonObject &jo, const std::string & )
     optional( jo, was_loaded, "damage_increment", damage_increment, 0.0f );
     optional( jo, was_loaded, "max_damage", max_damage, 0 );
 
+    // minimum is defaulted to -1 for default detection reasons
+    optional( jo, was_loaded, "min_accuracy", min_accuracy, -1 );
+    optional( jo, was_loaded, "accuracy_increment", accuracy_increment, 0.0f );
+    optional( jo, was_loaded, "max_accuracy", max_accuracy, 100 );
+
     optional( jo, was_loaded, "min_range", min_range, 0 );
     optional( jo, was_loaded, "range_increment", range_increment, 0.0f );
     optional( jo, was_loaded, "max_range", max_range, 0 );
@@ -317,6 +325,8 @@ void spell_type::load( const JsonObject &jo, const std::string & )
     optional( jo, was_loaded, "base_energy_cost", base_energy_cost, 0 );
     optional( jo, was_loaded, "final_energy_cost", final_energy_cost, base_energy_cost );
     optional( jo, was_loaded, "energy_increment", energy_increment, 0.0f );
+    optional( jo, was_loaded, "arm_encumbrance_threshold", arm_encumbrance_threshold, 20 );
+    optional( jo, was_loaded, "leg_encumbrance_threshold", leg_encumbrance_threshold, 20 );
 
     std::string temp_string;
     optional( jo, was_loaded, "spell_class", temp_string, "NONE" );
@@ -543,6 +553,22 @@ std::string spell::aoe_string() const
     }
 }
 
+int spell::accuracy() const
+{
+    // default detection for special case
+    if( type->min_accuracy == -1 ) {
+        return -1;
+    }
+
+    const int leveled_accuracy = type->min_accuracy + std::round( get_level() *
+                                 type->accuracy_increment );
+    if( type-> max_accuracy >= type->min_accuracy ) {
+        return std::min( leveled_accuracy, type->max_accuracy );
+    } else {
+        return std::max( leveled_accuracy, type->max_accuracy );
+    }
+}
+
 int spell::range() const
 {
     const int leveled_range = type->min_range + std::round( get_level() * type->range_increment );
@@ -733,15 +759,15 @@ int spell::casting_time( const Character &guy ) const
         casting_time = type->base_casting_time;
     }
     if( !has_flag( spell_flag::NO_LEGS ) ) {
-        // the first 20 points of encumbrance combined is ignored
+        // The first base leg encumbrance combined points of encumbrance are ignored
         const int legs_encumb = std::max( 0,
-                                          guy.encumb( body_part_leg_l ) + guy.encumb( body_part_leg_r ) - 20 );
+                                          guy.encumb( body_part_leg_l ) + guy.encumb( body_part_leg_r ) - type->leg_encumbrance_threshold );
         casting_time += legs_encumb * 3;
     }
     if( has_flag( spell_flag::SOMATIC ) ) {
-        // the first 20 points of encumbrance combined is ignored
+        // the first base arm encumbrance combined points of encumbrance are ignored.
         const int arms_encumb = std::max( 0,
-                                          guy.encumb( body_part_arm_l ) + guy.encumb( body_part_arm_r ) - 20 );
+                                          guy.encumb( body_part_arm_l ) + guy.encumb( body_part_arm_r ) - type->arm_encumbrance_threshold );
         casting_time += arms_encumb * 2;
     }
     if( guy.is_armed() && !has_flag( spell_flag::NO_HANDS ) &&
@@ -795,9 +821,9 @@ float spell::spell_fail( const Character &guy ) const
     float fail_chance = std::pow( ( effective_skill - 30.0f ) / 30.0f, 2 );
     if( has_flag( spell_flag::SOMATIC ) &&
         !guy.has_trait_flag( trait_flag_SUBTLE_SPELL ) ) {
-        // the first 20 points of encumbrance combined is ignored
+        // the first arm_encumbrance_threshold points of encumbrance combined is ignored
         const int arms_encumb = std::max( 0,
-                                          guy.encumb( body_part_arm_l ) + guy.encumb( body_part_arm_r ) - 20 );
+                                          guy.encumb( body_part_arm_l ) + guy.encumb( body_part_arm_r ) - type->arm_encumbrance_threshold );
         // each encumbrance point beyond the "gray" color counts as half an additional fail %
         fail_chance += arms_encumb / 200.0f;
     }
@@ -1078,6 +1104,11 @@ int spell::get_level() const
 int spell::get_max_level() const
 {
     return type->max_level;
+}
+
+std::set<trait_id> spell::get_blocker_muts() const
+{
+    return type->blocker_mutations;
 }
 
 // helper function to calculate xp needed to be at a certain level
@@ -1627,12 +1658,14 @@ static bool casting_time_encumbered( const spell &sp, const Character &guy )
 {
     int encumb = 0;
     if( !sp.has_flag( spell_flag::NO_LEGS ) ) {
-        // the first 20 points of encumbrance combined is ignored
-        encumb += std::max( 0, guy.encumb( body_part_leg_l ) + guy.encumb( body_part_leg_r ) - 20 );
+        // the first leg_encumbrance_threshold points of encumbrance combined is ignored
+        encumb += std::max( 0, guy.encumb( body_part_leg_l ) + guy.encumb( body_part_leg_r ) -
+                            sp.id()->leg_encumbrance_threshold );
     }
     if( sp.has_flag( spell_flag::SOMATIC ) ) {
-        // the first 20 points of encumbrance combined is ignored
-        encumb += std::max( 0, guy.encumb( body_part_arm_l ) + guy.encumb( body_part_arm_r ) - 20 );
+        // the first arm_encumbrance_threshold points of encumbrance combined is ignored
+        encumb += std::max( 0, guy.encumb( body_part_arm_l ) + guy.encumb( body_part_arm_r ) -
+                            sp.id()->arm_encumbrance_threshold );
     }
     return encumb > 0;
 }
@@ -1673,6 +1706,20 @@ static std::string enumerate_spell_data( const spell &sp )
     return enumerate_as_string( spell_data );
 }
 
+static std::string enumerate_traits( const std::set<trait_id> st )
+{
+    std::vector<std::string> str_vector;
+    if( st.size() ) {
+        for( trait_id trait : st ) {
+            str_vector.push_back( trait->name() );
+        }
+    } else {
+        str_vector.push_back( "None" );
+    }
+    return enumerate_as_string( str_vector );
+}
+
+
 void spellcasting_callback::draw_spell_info( const spell &sp, const uilist *menu )
 {
     const int h_offset = menu->w_width - menu->pad_right + 1;
@@ -1701,6 +1748,9 @@ void spellcasting_callback::draw_spell_info( const spell &sp, const uilist *menu
     if( line <= win_height / 3 ) {
         line++;
     }
+
+    line += fold_and_print( w_menu, point( h_col1, line++ ), info_width, gray, string_format( "%s: %s",
+                            _( "Blocker mutations" ), enumerate_traits( sp.get_blocker_muts() ) ) );
 
     print_colored_text( w_menu, point( h_col1, line ), gray, gray,
                         string_format( "%s: %d %s", _( "Spell Level" ), sp.get_level(),

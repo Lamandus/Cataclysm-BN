@@ -269,8 +269,7 @@
     "difficulty": 2,
     "time": "8 m",
     "autolearn": true,
-    "qualities": [ { "id": "HAMMER", "level": 3 } ],
-    "tools": [ [ [ "boltcutters", -1 ], [ "toolset", -1 ] ] ],
+    "qualities": [ { "id": "HAMMER", "level": 3 }, { "id": "CUT_M", "level": 1 } ],
     "components": [ [ [ "wire", 2 ] ] ]
   },
   {
@@ -660,9 +659,9 @@
     "time": "1 h 30 m",
     "autolearn": true,
     "using": [ [ "forging_standard", 10 ], [ "steel_standard", 5 ] ],
-    "qualities": [ { "id": "HAMMER", "level": 2 }, { "id": "SAW_W", "level": 2 } ],
+    "qualities": [ { "id": "HAMMER", "level": 2 }, { "id": "SAW_W", "level": 2 }, { "id": "SANDING", "level": 1 } ],
     "tools": [ [ [ "crucible", -1 ], [ "crucible_clay", -1 ] ] ],
-    "components": [ [ [ "2x4", 24 ] ], [ [ "nail_glue", 40, "LIST" ] ] ]
+    "components": [ [ [ "2x4", 24 ] ], [ [ "varnish", 10, "LIST" ] ], [ [ "nail_glue", 40, "LIST" ] ] ]
   },
   {
     "type": "recipe",
@@ -1047,12 +1046,9 @@
     "difficulty": 2,
     "time": "5 m",
     "autolearn": [ [ "fabrication", 4 ] ],
+    "qualities": [ { "id": "PULL_FINE", "level": 2 }, { "id": "CUT_M", "level": 1 } ],
     "book_learn": [ [ "textbook_armwest", 1 ], [ "textbook_fabrication", 1 ], [ "recipe_melee", 1 ] ],
-    "tools": [
-      [ [ "pliers", -1 ], [ "multitool", -1 ], [ "toolset", -1 ] ],
-      [ [ "cutting_wire_standard", 1, "LIST" ] ],
-      [ [ "cu_pipe", -1 ], [ "cudgel", -1 ] ]
-    ],
+    "tools": [ [ [ "cu_pipe", -1 ], [ "cudgel", -1 ] ] ],
     "components": [ [ [ "wire", 1 ] ] ]
   },
   {
@@ -1066,8 +1062,12 @@
     "time": "30 m",
     "autolearn": [ [ "fabrication", 4 ] ],
     "book_learn": [ [ "textbook_armwest", 2 ], [ "textbook_fabrication", 2 ], [ "recipe_melee", 2 ] ],
-    "qualities": [ { "id": "HAMMER", "level": 2 }, { "id": "ANVIL", "level": 1 }, { "id": "DRILL", "level": 2 } ],
-    "tools": [ [ [ "pliers", -1 ], [ "multitool", -1 ], [ "toolset", -1 ] ] ],
+    "qualities": [
+      { "id": "HAMMER", "level": 2 },
+      { "id": "ANVIL", "level": 1 },
+      { "id": "DRILL", "level": 2 },
+      { "id": "PULL_FINE", "level": 2 }
+    ],
     "components": [ [ [ "chain_link", 900 ] ] ]
   },
   {
@@ -1168,6 +1168,20 @@
     "components": [ [ [ "material_aluminium_ingot", 1 ] ], [ [ "copper_scrap_equivalent", 40, "LIST" ] ] ]
   },
   {
+    "result": "cartridgebrass",
+    "type": "recipe",
+    "category": "CC_OTHER",
+    "subcategory": "CSC_OTHER_MATERIALS",
+    "skill_used": "fabrication",
+    "difficulty": 1,
+    "time": "30 m",
+    "book_learn": [ [ "recipe_bullets", 2 ], [ "mag_rifle", 3 ] ],
+    "tools": [ [ [ "crucible", -1 ], [ "crucible_clay", -1 ] ] ],
+    "charges": 100,
+    "using": [ [ "blacksmithing_intermediate", 1 ] ],
+    "components": [ [ [ "zinc_metal", 400 ] ], [ [ "copper", 35 ] ] ]
+  },
+  {
     "type": "recipe",
     "result": "tempered_glass_sheet",
     "category": "CC_OTHER",
@@ -1244,11 +1258,32 @@
     "skill_used": "fabrication",
     "difficulty": 4,
     "time": "12 m",
+    "batch_time_factors": [ 90, 4 ],
     "reversible": true,
     "//": "sawing it down doesn't teach anything useful",
     "autolearn": true,
-    "using": [ [ "welding_standard", 5 ] ],
-    "components": [ [ [ "steel_lump", 4 ] ] ]
+    "using": [ [ "blacksmithing_standard", 4 ], [ "steel_standard", 1 ] ],
+    "tools": [ [ [ "crucible", -1 ], [ "crucible_clay", -1 ] ] ]
+  },
+  {
+    "type": "recipe",
+    "result": "hard_steel_armor",
+    "category": "CC_OTHER",
+    "subcategory": "CSC_OTHER_MATERIALS",
+    "skill_used": "fabrication",
+    "difficulty": 6,
+    "time": "20 m",
+    "batch_time_factors": [ 90, 4 ],
+    "autolearn": true,
+    "using": [ [ "forging_standard", 6 ] ],
+    "tools": [ [ [ "crucible", -1 ], [ "crucible_clay", -1 ] ] ],
+    "//": "Additional coal and flux to increase carbon content, oil for quenching.",
+    "components": [
+      [ [ "steel_armor", 1 ] ],
+      [ [ "coal_lump", 2 ], [ "charcoal", 8 ] ],
+      [ [ "material_limestone", 1 ], [ "material_quicklime", 1 ], [ "chem_carbide", 20 ] ],
+      [ [ "lamp_oil", 100 ], [ "motor_oil", 100 ], [ "cooking_oil", 20 ], [ "cooking_oil2", 20 ] ]
+    ]
   },
   {
     "type": "recipe",
@@ -1553,9 +1588,9 @@
     "byproducts": [ [ "scrap", 3 ] ],
     "subcategory": "CSC_OTHER_MATERIALS",
     "skill_used": "fabrication",
+    "qualities": [ { "id": "CUT_M", "level": 1 } ],
     "autolearn": true,
     "time": "30 m",
-    "tools": [ [ [ "boltcutters", -1 ], [ "pliers", -1 ], [ "toolset", -1 ], [ "multitool", -1 ] ] ],
     "components": [ [ [ "wire_barbed", 1 ] ] ]
   },
   {

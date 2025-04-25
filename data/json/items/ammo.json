@@ -155,7 +155,7 @@
   {
     "type": "AMMO",
     "id": "duct_tape",
-    "category": "tools_workshop",
+    "category": "other",
     "price": "20 USD",
     "price_postapoc": "250 cent",
     "name": { "str": "duct tape" },
@@ -277,7 +277,7 @@
     "dispersion": 14,
     "loudness": 0,
     "to_hit": -1,
-    "qualities": [ [ "HAMMER", 1 ] ],
+    "qualities": [ [ "HAMMER", 1 ], [ "SANDING", 1 ] ],
     "dont_recover_one_in": 80,
     "effects": [ "NEVER_MISFIRES", "NON_FOULING" ]
   },
@@ -892,7 +892,7 @@
   {
     "id": "fish_bait",
     "type": "AMMO",
-    "category": "tools_farming",
+    "category": "other",
     "name": { "str": "fish bait" },
     "description": "A bait used in traps to lure fish.",
     "weight": "1 g",

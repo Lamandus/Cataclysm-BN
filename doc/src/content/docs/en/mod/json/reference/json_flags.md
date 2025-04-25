@@ -631,6 +631,10 @@ List of known flags, used in both `terrain.json` and `furniture.json`.
   smashed instead of destroying the tile beneath it.
 - `WALL` This terrain is an upright obstacle. Used for fungal conversion, and also implies
   `CONNECT_TO_WALL`.
+- `WELDABLE_DOOR` The "weld shut metal door" construction will convert this terrain into `t_door_metal_welded`.
+- `WELDABLE_BARS` As above, but converts to `t_door_metal_welded_bars` instead. If you want it to convert
+  into specific terrain instead, add a separate construction entry to the `weld_shut_metal_door` construction
+  group that uses `pre_terrain` instead of `pre_flags`.
 - `WINDOW` This terrain is a window, though it may be closed, broken, or covered up. Used by teh
   tiles code to align furniture sprites away from the window.
 
@@ -761,6 +765,7 @@ List of known flags, used in both `terrain.json` and `furniture.json`.
   firestarter.
 - `TRADER_AVOID` ... NPCs will not start with this item. Use this for active items (e.g. flashlight
   (on)), dangerous items (e.g. active bomb), fake item or unusual items (e.g. unique quest item).
+- `UNBREAKABLE` ... Armor with this flag will never take damage when taking hits for the wearer.
 - `UNBREAKABLE_MELEE` ... Does never get damaged when used as melee weapon.
 - `UNRECOVERABLE` ... Cannot be recovered from a disassembly.
 
@@ -806,6 +811,9 @@ List of known flags, used in both `terrain.json` and `furniture.json`.
   instead of being a strict limit like it normally would be.
 - `STR_RELOAD` Reload speed is affected by strength.
 - `UNDERWATER_GUN` Gun is optimized for usage underwater, does perform badly outside of water.
+- `USE_PARENT_GUN` For gunmods with `gun_data` meant to represent extra magazines on a gun, e.g. KSG.
+  Will make fouling apply to the gun it's installed on instead of itself, check for suppressors installed
+  on the parent item, and apply brass catcher behavior if present on parent item.
 - `WATERPROOF_GUN` Gun does not rust and can be used underwater.
 
 ### Firing modes
@@ -964,30 +972,42 @@ Flags used to describe monsters and define their properties and abilities.
 
 Multiple death functions can be used. Not all combinations make sense.
 
-- `ACID` Acid instead of a body. not the same as the ACID_BLOOD flag. In most cases you want both.
+- `ACID` Acid instead of a body. Not the same as the ACID_BLOOD flag. In most cases you want both.
 - `AMIGARA` Removes hypnosis if the last one.
 - `BLOBSPLIT` Creates more blobs.
+- `BOOMER_GLOW` Explodes in glowing vomit.
 - `BOOMER` Explodes in vomit.
+- `BRAINBLOB` Spawns 2 blobs.
+- `BROKEN_AMMO` Gives a message about destroying ammo and then calls "BROKEN".
 - `BROKEN` Spawns a broken robot item, its id calculated like this: the prefix "mon_" is removed
-  from the monster id, than the prefix "broken_" is added. Example: mon_eyebot -> broken_eyebot
+  from the monster id, then the prefix "broken_" is added. Example: mon_eyebot -> broken_eyebot.
+- `CONFLAGRATION` Explode in a huge fireball.
+- `DARKMAN` Sight returns to normal.
+- `DETONATE` Self destructs.
 - `DISAPPEAR` Hallucination disappears.
 - `DISINTEGRATE` Falls apart.
 - `EXPLODE` Damaging explosion.
 - `FIREBALL` 10 percent chance to explode in a fireball.
-- `FLAME_EXPLOSION` guaranteed to explode and starts fires.
+- `FOCUSEDBEAM` Blinding ray.
+- `FUNGALBURST` Explode with a cloud of fungal haze.
 - `FUNGUS` Explodes in spores.
 - `GAMEOVER` Game over man! Game over! Defense mode.
+- `GAS` Explodes in toxic gas.
 - `GUILT` Moral penalty. There is also a flag with a similar effect.
+- `JABBERWOCKY` Snicker-snack!
+- `JACKSON` Reverts dancers.
 - `KILL_BREATHERS` All breathers die.
 - `KILL_VINES` Kill all nearby vines.
 - `MELT` Normal death, but melts.
 - `NORMAL` Drop a body, leave gibs.
+- `PREG_ROACH` Spawn some cockroach nymphs.
 - `RATKING` Cure verminitis.
 - `SMOKEBURST` Explode like a huge smoke bomb.
+- `SPLATTER` Explodes in gibs and chunks.
 - `THING` Turn into a full thing.
 - `TRIFFID_HEART` Destroys all roots.
 - `VINE_CUT` Kill adjacent vine if it's cut.
-- `WORM` Spawns 2 half-worms
+- `WORM` Spawns 2 half-worms.
 
 ### Flags
 
@@ -1106,9 +1126,11 @@ Multiple death functions can be used. Not all combinations make sense.
 
 ### Monster Defense and Attacks
 
-- `ACIDSPLASH` Splash acid on the attacker
-- `NONE` No special attack-back
-- `ZAPBACK` Shock attacker on hit
+- `ACIDSPLASH` Splash acid on the attacker.
+- `NONE` No special attack-back.
+- `RETURN_FIRE` Blind fire on unseen attacker.
+- `REVENGE_AGGRO` Make allies aggro on target.
+- `ZAPBACK` Shock attacker on hit.
 
 ### Sizes
 
