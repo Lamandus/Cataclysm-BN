@@ -24,18 +24,18 @@
 # Firestorm_01 <firestorm01x2@gmail.com>, 2024
 # 4nonch <abudancer@protonmail.ch>, 2024
 # RER 2000, 2025
-# Coolthulhu <Coolthulhu@gmail.com>, 2025
 # Владимир Шалом, 2025
 # LunaeLum, 2025
 # Pururun kun, 2025
 # Vorpal Void <vorpal.void@gmail.com>, 2025
+# Coolthulhu <Coolthulhu@gmail.com>, 2025
 # Ivan Saikyo, 2025
 # Vadim Chetkov, 2025
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: cataclysm-bn\n"
-"POT-Creation-Date: 2025-04-25 01:25+0000\n"
+"POT-Creation-Date: 2025-04-29 01:47+0000\n"
 "Last-Translator: Vadim Chetkov, 2025\n"
 "Language-Team: Russian (Russia) (https://app.transifex.com/bn-team/teams/113585/ru_RU/)\n"
 "MIME-Version: 1.0\n"
@@ -10932,6 +10932,246 @@ msgstr "Вы ослаблены из-за жажды."
 msgid "Empowered"
 msgstr "Усиление"
 
+#: data/json/effects.json
+msgid "Dazed (emote)"
+msgstr "Ошеломленный (эмоция)"
+
+#. ~ Description of effect 'Dazed (emote)'.
+#: data/json/effects.json
+msgid "You're pretending to look dazed."
+msgstr "Ты притворяешься ошеломленным."
+
+#. ~ Apply message for effect(s) 'Dazed (emote)'.
+#. ~ Apply message for effect(s) 'High (emote)'.
+#. ~ Apply message for effect(s) 'Drunk (emote)'.
+#. ~ Apply message for effect(s) 'Evil Aura (emote)'.
+#. ~ Apply message for effect(s) 'In Love (emote)'.
+#. ~ Apply message for effect(s) 'Nausea (emote)'.
+#. ~ Apply message for effect(s) 'Shrieking (emote)'.
+#. ~ Apply message for effect(s) 'Winded (emote)'.
+#. ~ Apply message for effect(s) 'Tired (emote)'.
+#. ~ Apply message for effect(s) 'Bleeding (emote)'.
+#. ~ Apply message for effect(s) 'Laying Down (emote)'.
+#. ~ Apply message for effect(s) 'Poison (emote)'.
+#. ~ Apply message for effect(s) 'Bouldering (emote)'.
+#. ~ Apply message for effect(s) 'Hot (emote)'.
+#. ~ Apply message for effect(s) 'Cold (emote)'.
+#. ~ Apply message for effect(s) 'Glowing Aura (emote)'.
+#. ~ Apply message for effect(s) 'Blue Aura (emote)'.
+#. ~ Apply message for effect(s) 'Beauty (emote)'.
+#. ~ Apply message for effect(s) 'Teargas (emote)'.
+#. ~ Apply message for effect(s) 'Musical (emote)'.
+#. ~ Apply message for effect(s) 'Tweaking (emote)'.
+#: data/json/effects.json
+msgid "You start emoting."
+msgstr "Вы начинаете проявлять эмоции."
+
+#. ~ Remove message for effect(s) 'Dazed (emote)'.
+#. ~ Remove message for effect(s) 'High (emote)'.
+#. ~ Remove message for effect(s) 'Drunk (emote)'.
+#. ~ Remove message for effect(s) 'Evil Aura (emote)'.
+#. ~ Remove message for effect(s) 'In Love (emote)'.
+#. ~ Remove message for effect(s) 'Nausea (emote)'.
+#. ~ Remove message for effect(s) 'Shrieking (emote)'.
+#. ~ Remove message for effect(s) 'Winded (emote)'.
+#. ~ Remove message for effect(s) 'Tired (emote)'.
+#. ~ Remove message for effect(s) 'Bleeding (emote)'.
+#. ~ Remove message for effect(s) 'Laying Down (emote)'.
+#. ~ Remove message for effect(s) 'Poison (emote)'.
+#. ~ Remove message for effect(s) 'Bouldering (emote)'.
+#. ~ Remove message for effect(s) 'Hot (emote)'.
+#. ~ Remove message for effect(s) 'Cold (emote)'.
+#. ~ Remove message for effect(s) 'Glowing Aura (emote)'.
+#. ~ Remove message for effect(s) 'Blue Aura (emote)'.
+#. ~ Remove message for effect(s) 'Beauty (emote)'.
+#. ~ Remove message for effect(s) 'Teargas (emote)'.
+#. ~ Remove message for effect(s) 'Musical (emote)'.
+#. ~ Remove message for effect(s) 'Tweaking (emote)'.
+#: data/json/effects.json
+msgid "You stop emoting."
+msgstr "Вы прекращаете проявлять эмоции."
+
+#: data/json/effects.json
+msgid "High (emote)"
+msgstr "Высокая (эмоция)"
+
+#. ~ Description of effect 'High (emote)'.
+#: data/json/effects.json
+msgid "You're pretending to look high."
+msgstr "Ты притворяешься, что выглядишь обалденно."
+
+#: data/json/effects.json
+msgid "Drunk (emote)"
+msgstr "Пьяный (эмоция)"
+
+#. ~ Description of effect 'Drunk (emote)'.
+#: data/json/effects.json
+msgid "You're pretending to look drunk."
+msgstr "Ты притворяешься пьяным."
+
+#: data/json/effects.json
+msgid "Evil Aura (emote)"
+msgstr "Злая аура (эмоция)"
+
+#. ~ Description of effect 'Evil Aura (emote)'.
+#: data/json/effects.json
+msgid "You're pretending to look evil."
+msgstr "Ты притворяешься злым."
+
+#: data/json/effects.json
+msgid "In Love (emote)"
+msgstr "Влюблен (эмоция)"
+
+#. ~ Description of effect 'In Love (emote)'.
+#: data/json/effects.json
+msgid "You're pretending to look in love."
+msgstr "Ты притворяешься влюбленным."
+
+#: data/json/effects.json
+msgid "Nausea (emote)"
+msgstr "Тошнота (эмоция)"
+
+#. ~ Description of effect 'Nausea (emote)'.
+#: data/json/effects.json
+msgid "You're pretending to look nauseous."
+msgstr "Ты притворяешься, что тебя тошнит."
+
+#: data/json/effects.json
+msgid "Shrieking (emote)"
+msgstr "Вскрик (эмоция)"
+
+#. ~ Description of effect 'Shrieking (emote)'.
+#: data/json/effects.json
+msgid "You're pretending to look terrified or angry."
+msgstr "Вы притворяетесь испуганным или рассерженным."
+
+#: data/json/effects.json
+msgid "Winded (emote)"
+msgstr "Запыхавшийся (эмоция)"
+
+#. ~ Description of effect 'Winded (emote)'.
+#: data/json/effects.json
+msgid "You're pretending to look like you're winded."
+msgstr "Ты притворяешься, будто запыхался."
+
+#: data/json/effects.json
+msgid "Tired (emote)"
+msgstr "Устал (эмоция)"
+
+#. ~ Description of effect 'Tired (emote)'.
+#: data/json/effects.json
+msgid "You're pretending to look like you're tired."
+msgstr "Ты притворяешься, что устал."
+
+#: data/json/effects.json
+msgid "Bleeding (emote)"
+msgstr "Кровотечение (эмоция)"
+
+#. ~ Description of effect 'Bleeding (emote)'.
+#: data/json/effects.json
+msgid "You're pretending you're bleeding."
+msgstr "Ты притворяешься, что истекаешь кровью."
+
+#: data/json/effects.json
+msgid "Laying Down (emote)"
+msgstr "Ложиться (эмоция)"
+
+#. ~ Description of effect 'Laying Down (emote)'.
+#: data/json/effects.json
+msgid "You're laying down on the ground."
+msgstr "Вы лежите на земле."
+
+#: data/json/effects.json
+msgid "Poison (emote)"
+msgstr "Яд (эмоция)"
+
+#. ~ Description of effect 'Poison (emote)'.
+#: data/json/effects.json
+msgid "You're pretending to look like you've been poisoned."
+msgstr "Вы притворяетесь, будто вас отравили."
+
+#: data/json/effects.json
+msgid "Bouldering (emote)"
+msgstr "Боулдеринг (эмоция)"
+
+#. ~ Description of effect 'Bouldering (emote)'.
+#: data/json/effects.json
+msgid "You're pretending to look like you can't find your footing."
+msgstr "Ты притворяешься, будто не можешь найти опору."
+
+#: data/json/effects.json
+msgid "Hot (emote)"
+msgstr "Горячо (эмоция)"
+
+#. ~ Description of effect 'Hot (emote)'.
+#: data/json/effects.json
+msgid "You're pretending you're hot."
+msgstr "Ты притворяешься, что тебе жарко."
+
+#: data/json/effects.json
+msgid "Cold (emote)"
+msgstr "Холодно (эмоция)"
+
+#. ~ Description of effect 'Cold (emote)'.
+#: data/json/effects.json
+msgid "You're pretending you're cold."
+msgstr "Ты притворяешься, что тебе холодно."
+
+#: data/json/effects.json
+msgid "Glowing Aura (emote)"
+msgstr "Светящаяся аура (эмоция)"
+
+#. ~ Description of effect 'Glowing Aura (emote)'.
+#: data/json/effects.json
+msgid "You're radiating a glowing aura."
+msgstr "Вы излучаете сияющую ауру."
+
+#: data/json/effects.json
+msgid "Blue Aura (emote)"
+msgstr "Синяя Аура (эмоция)"
+
+#. ~ Description of effect 'Blue Aura (emote)'.
+#: data/json/effects.json
+msgid "You're radiating a blue aura."
+msgstr "Вы излучаете синюю ауру."
+
+#: data/json/effects.json
+msgid "Beauty (emote)"
+msgstr "Красота (эмоция)"
+
+#. ~ Description of effect 'Beauty (emote)'.
+#: data/json/effects.json
+msgid "You're pretending to look like you're beautiful."
+msgstr "Ты притворяешься, что выглядишь красивой."
+
+#: data/json/effects.json
+msgid "Teargas (emote)"
+msgstr "Слезоточивый газ (эмоция)"
+
+#. ~ Description of effect 'Teargas (emote)'.
+#: data/json/effects.json
+msgid "You're pretending to look like you've been teargassed."
+msgstr "Вы притворяетесь, будто вас травили слезоточивым газом."
+
+#: data/json/effects.json
+msgid "Musical (emote)"
+msgstr "Музыкальный (эмоция)"
+
+#. ~ Description of effect 'Musical (emote)'.
+#: data/json/effects.json
+msgid "You're surrounded by musical notes. (At least, in your imagination.)"
+msgstr ""
+"Вас окружают музыкальные ноты. (По крайней мере, в вашем воображении.)"
+
+#: data/json/effects.json
+msgid "Tweaking (emote)"
+msgstr "Взвинчен (эмоция)"
+
+#. ~ Description of effect 'Tweaking (emote)'.
+#: data/json/effects.json
+msgid "You're pretending to look like you're tweaking."
+msgstr "\"Ты притворяешься, будто выглядишь так, словно ты на взводе\""
+
 #. ~ Description for {'str': 'Uncanny Dodge'}
 #: data/json/enchantments.json
 msgid "You're currently under the effects of the Uncanny Dodge CBM."
@@ -13304,7 +13544,7 @@ msgstr "БИОНИКА"
 
 #: data/json/item_category.json
 msgid "VEHICLE PARTS"
-msgstr "ДЕТАЛИ МАШИН"
+msgstr "ДЕТАЛИ ТРАНСПОРТА"
 
 #. ~ Crafting recipes subcategory of 'WEAPON' category
 #. ~ Crafting recipes subcategory of 'AMMO' category
@@ -14814,7 +15054,7 @@ msgstr "Вы слегка приподнимаете ногу и встаете 
 #: data/json/martialarts.json
 #, c-format
 msgid "%s assumes a crane-like stance."
-msgstr "%s встает в стойку цапли."
+msgstr "%s встаёт в стойку цапли."
 
 #: data/json/martialarts.json
 msgid "Crane's Precision"
@@ -15003,7 +15243,7 @@ msgstr "Вы встаете в фехтовальную стойку."
 #: data/json/martialarts.json
 #, c-format
 msgid "%s moves into a fencing stance."
-msgstr "%s встает в фехтовальную стойку."
+msgstr "%s встаёт в фехтовальную стойку."
 
 #: data/json/martialarts.json
 msgid "Fencing Stance"
@@ -15399,7 +15639,7 @@ msgstr "Вы встаете в рыцарскую стойку."
 #: data/json/martialarts.json
 #, c-format
 msgid "%s takes on a knightly stance."
-msgstr "%s встает в рыцарскую стойку."
+msgstr "%s встаёт в рыцарскую стойку."
 
 #: data/json/martialarts.json
 msgid "Swordsman's Stance"
@@ -15834,7 +16074,7 @@ msgstr "Вы готовитесь к защите от всего, что мож
 #: data/json/martialarts.json
 #, c-format
 msgid "%s assumes a wide, defensive stance."
-msgstr "%s встает в широкую оборонительную стойку."
+msgstr "%s встаёт в широкую оборонительную стойку."
 
 #: data/json/martialarts.json
 msgid "Sōjutsu Stance"
@@ -15956,7 +16196,7 @@ msgstr "Вы встаете в мягкую стойку и готовитесь
 #: data/json/martialarts.json
 #, c-format
 msgid "%s settles into a gentle stance."
-msgstr "%s встает в мягкую стойку."
+msgstr "%s встаёт в мягкую стойку."
 
 #: data/json/martialarts.json
 msgid "Tai Chi Stance"
@@ -16367,7 +16607,7 @@ msgstr "Вы готовитесь к атаке под любым углом."
 #: data/json/martialarts_fictional.json
 #, c-format
 msgid "%s assumes a lizard-like stance."
-msgstr "%s встает в стойку ящерицы."
+msgstr "%s встаёт в стойку ящерицы."
 
 #: data/json/martialarts_fictional.json
 msgid "Lizard's Venom"
@@ -31871,6 +32111,22 @@ msgstr "фильтрация"
 msgid "sanding"
 msgstr "шлифовка"
 
+#: data/json/tool_qualities.json
+msgid "high voltage insulation"
+msgstr "высоковольтная изоляция"
+
+#: data/json/tool_qualities.json
+msgid "voltage measurement"
+msgstr "измерение напряжения"
+
+#: data/json/tool_qualities.json
+msgid "fine pulling"
+msgstr "отлично тянущее"
+
+#: data/json/tool_qualities.json
+msgid "metal cutting"
+msgstr "резка металла"
+
 #: data/json/traps.json data/json/items/generic.json src/advanced_inv.cpp
 #: src/magic.cpp src/map_extras.cpp src/recipe.cpp
 msgid "none"
@@ -46659,6 +46915,62 @@ msgstr ""
 "Жидкость, состоящая из пропиленгликоля, растительного глицерина, "
 "ароматизаторов и никотина."
 
+#: data/json/items/ammo.json
+msgid "crude cannabis extract"
+msgid_plural "crude cannabis extracts"
+msgstr[0] "экстракт сырой конопли"
+msgstr[1] "экстракт сырой конопли"
+msgstr[2] "экстракт сырой конопли"
+msgstr[3] "экстракт сырой конопли"
+
+#. ~ Description for {'str': 'crude cannabis extract'}
+#: data/json/items/ammo.json
+msgid ""
+"An unrefined cannabis extract.  This slurry consists of butane, terpenes, "
+"and THC and is commonly referred to as BHO or butane hash oil.  This hasn't "
+"been properly purged yet, and can't be safely consumed."
+msgstr ""
+"Нерафинированный экстракт конопли. Эта суспензия состоит из бутана, терпенов"
+" и ТГК, и обычно называется BHO или бутановым гашишным маслом. Он еще не был"
+" должным образом очищен, и его нельзя безопасно употребить."
+
+#: data/json/items/ammo.json
+msgid "thc distillate"
+msgid_plural "thc distillates"
+msgstr[0] "дистиллят тгк"
+msgstr[1] "дистиллят тгк"
+msgstr[2] "дистиллят тгк"
+msgstr[3] "дистиллят тгк"
+
+#. ~ Description for {'str': 'thc distillate'}
+#: data/json/items/ammo.json
+msgid ""
+"A thick golden-amber colored liquid distillate containing cannabis terpenes "
+"and 90-99% THCA.  Perfect for vaping with a dab pen."
+msgstr ""
+"Густой жидкий дистиллят золотисто-янтарного цвета, содержащий терпены "
+"каннабиса и 90-99% ТГКК. Идеально подходит для парения с помощью ручки-дэба."
+
+#: data/json/items/ammo.json
+msgid "thc wax"
+msgid_plural "thc waxs"
+msgstr[0] "воск тгк"
+msgstr[1] "воск тгк"
+msgstr[2] "воск тгк"
+msgstr[3] "воск тгк"
+
+#. ~ Description for {'str': 'thc wax'}
+#: data/json/items/ammo.json
+msgid ""
+"An opaque, semi-solid cannabis concentrate, with wax-like consistency.  Its "
+"texture can vary from creamy (budder) to crumbly (honeycomb), making it "
+"suitable for dabbing.  This extract can generally reach 60-90% THCA."
+msgstr ""
+"Непрозрачный, полутвердый концентрат каннабиса, с консистенцией, похожей на "
+"воск. Его текстура может варьироваться от кремообразной (баддер) до "
+"рассыпчатой ​​(соты), что делает его пригодным для нанесения. Этот экстракт "
+"обычно может достигать 60-90% ТГКК."
+
 #: data/json/items/ammo.json data/json/items/ammo_types.json
 msgid "fish bait"
 msgid_plural "fish baits"
@@ -55796,6 +56108,7 @@ msgstr[2] "сигар"
 msgstr[3] "сигара"
 
 #. ~ Use action menu_text for {'str': 'cigar'}.
+#. ~ Use action menu_text for {'str': 'blunt'}.
 #. ~ Use action menu_text for {'str': 'cigarette'}.
 #. ~ Use action menu_text for {'str': 'joint'}.
 #. ~ Use action menu_text for {'str': "spooky jack o'lantern", 'str_pl': "jack
@@ -55831,6 +56144,24 @@ msgid "The smoke billowing from this cigar has a sweet, musty odor."
 msgstr ""
 "Развевающийся дым от этой сигареты имеет сладкий заплесневелый аромат."
 
+#: data/json/items/generic.json data/json/items/comestibles/med.json
+msgid "blunt"
+msgid_plural "blunts"
+msgstr[0] "Блант"
+msgstr[1] "Блант"
+msgstr[2] "Блант"
+msgstr[3] "Блант"
+
+#. ~ Use action msg for {'str': 'blunt'}.
+#: data/json/items/generic.json
+msgid "You extinguish the blunt."
+msgstr "Ты гасишь блант."
+
+#. ~ Description for {'str': 'blunt'}
+#: data/json/items/generic.json
+msgid "The smoke billowing from this blunt has a sweet, fruity odor."
+msgstr "Дым, поднимающийся от этого бланта, имеет сладкий, фруктовый запах."
+
 #: data/json/items/generic.json
 msgid "cigar butt"
 msgid_plural "cigar butts"
@@ -55843,6 +56174,19 @@ msgstr[3] "окурок сигары"
 #: data/json/items/generic.json
 msgid "A true gentleman always finishes his cigars."
 msgstr "Настоящий джентльмен всегда докуривает свои сигары."
+
+#: data/json/items/generic.json
+msgid "blunt roach"
+msgid_plural "blunt roaches"
+msgstr[0] "остатки бланта"
+msgstr[1] "остатки бланта"
+msgstr[2] "остатки бланта"
+msgstr[3] "остатки бланта"
+
+#. ~ Description for {'str': 'blunt roach', 'str_pl': 'blunt roaches'}
+#: data/json/items/generic.json
+msgid "A true gangster always finishes their blunts."
+msgstr "Настоящий гангстер всегда докуривает свои бланты."
 
 #: data/json/items/generic.json data/json/items/comestibles/med.json
 msgid "cigarette"
@@ -59223,8 +59567,7 @@ msgid ""
 msgstr ""
 "Специально спроектированный, усиленный кожей противогаз, защищающий лицо и "
 "глаза. Обеспечивает прекрасную защиту от дыма, слезоточивого газа и "
-"шрапнели. Он должен быть подготовлен перед использованием. Он должен быть "
-"подготовлен перед использованием."
+"шрапнели. Он должен быть подготовлен перед использованием."
 
 #: data/json/items/tool_armor.json
 msgid "winter survivor mask"
@@ -81377,6 +81720,59 @@ msgstr ""
 " пальцы покрыты грубыми татуировками."
 
 #: data/json/items/armor/torso_clothes.json
+msgid "drug rug"
+msgid_plural "drug rugs"
+msgstr[0] "наркокуртка"
+msgstr[1] "наркокуртка"
+msgstr[2] "наркокуртка"
+msgstr[3] "наркокуртка"
+
+#. ~ Description for {'str': 'drug rug'}
+#: data/json/items/armor/torso_clothes.json
+msgid ""
+"A hooded pullover made of a coarse, woven fabric.  Popular among festival-"
+"goers and chill backpackers.  Smells faintly of patchouli."
+msgstr ""
+"Пуловер с капюшоном из грубой ткани. Популярен среди любителей фестивалей и "
+"любителей экстремальных видов спорта. Слабо пахнет пачули."
+
+#: data/json/items/armor/torso_clothes.json
+msgid ""
+"A cozy hoodie patterned with thick earth-toned stripes—burnt umber, forest "
+"green, and sand.  The texture is rough but comforting."
+msgstr ""
+"Уютная толстовка с капюшоном, украшенная толстыми полосками землистого "
+"оттенка — жженая умбра, лесная зелень и песок. Текстура грубая, но "
+"комфортная."
+
+#: data/json/items/armor/torso_clothes.json
+msgid ""
+"A hoodie woven with psychedelic sunset colors—deep orange, radiant purple, "
+"and hints of electric pink.  It radiates good vibes."
+msgstr ""
+"Толстовка с капюшоном, сотканная из психоделических закатных цветов — "
+"насыщенного оранжевого, сияющего фиолетового и оттенками электрического "
+"розового. Она излучает позитивный вайб."
+
+#: data/json/items/armor/torso_clothes.json
+msgid ""
+"A green, yellow, and red striped drug rug hoodie.  Slightly faded, like it's"
+" seen a few beach fires and late-night jam sessions."
+msgstr ""
+
+#: data/json/items/armor/torso_clothes.json
+msgid ""
+"A hoodie decorated with vaguely Aztec patterns in black and gray.  You feel "
+"wiser just wearing it, or maybe that’s the edibles."
+msgstr ""
+
+#: data/json/items/armor/torso_clothes.json
+msgid ""
+"Tan and teal stripes dance across the weave of this soft, oversized hoodie."
+"  Looks perfect for stargazing in the desert."
+msgstr ""
+
+#: data/json/items/armor/torso_clothes.json
 msgid "leather vest"
 msgid_plural "leather vests"
 msgstr[0] "кожаный жилет"
@@ -84618,25 +85014,6 @@ msgstr ""
 "последних технологиях в сфере трёхмерной печати. Если вам нужно знать. как "
 "лучше всего провести какую-нибудь машинную обработку, ищите ответ где-то "
 "среди этих страниц."
-
-#: data/json/items/book/fabrication.json
-msgid "The Essential Oil Enthusiasts Handbook"
-msgid_plural "copies of The Essential Oil Enthusiasts Handbook"
-msgstr[0] "«Справочник по эфирным маслам»"
-msgstr[1] "книги «Справочник по эфирным маслам»"
-msgstr[2] "книг «Справочник по эфирным маслам»"
-msgstr[3] "книги «Справочник по эфирным маслам»"
-
-#. ~ Description for {'str': 'The Essential Oil Enthusiasts Handbook',
-#. 'str_pl': 'copies of The Essential Oil Enthusiasts Handbook'}
-#: data/json/items/book/fabrication.json
-msgid ""
-"A heavy hardback book explaining the process of essential oil making, with "
-"schematics for the equipment to do it.  Good luck, and don't blow yourself "
-"up!"
-msgstr ""
-"Тяжёлая книга в твердом переплете, описывающая процессы получения эфирных "
-"масел со схемами оборудования. Удачи, и не взорви себя!"
 
 #: data/json/items/book/fabrication.json
 msgid "Concrete Constructions"
@@ -96636,6 +97013,19 @@ msgid "A handful of colorful fruit-flavored chewy candy."
 msgstr "Горстка разноцветных конфет с начинкой из фруктовой жвачки."
 
 #: data/json/items/comestibles/junkfood.json
+msgid "'special' chewy candy"
+msgid_plural "'special' chewy candys"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+
+#. ~ Use action activation_message for {'str': "'special' chewy candy"}.
+#: data/json/items/comestibles/junkfood.json
+msgid "You start scarfing down the candy.  They taste a little funny though…"
+msgstr ""
+
+#: data/json/items/comestibles/junkfood.json
 msgid "powder candy sticks"
 msgid_plural "powder candy sticks"
 msgstr[0] "трубочка с конфетным порошком"
@@ -99762,323 +100152,6 @@ msgstr ""
 "беспокойства, судорог и приступов паники."
 
 #: data/json/items/comestibles/med.json
-msgid "high quality shatter"
-msgid_plural "high quality shatter"
-msgstr[0] "кристаллик концентрата ТГК"
-msgstr[1] "кристаллика концентрата ТГК"
-msgstr[2] "кристалликов концентрата ТГК"
-msgstr[3] "кристаллики концентрата ТГК"
-
-#. ~ Use action activation_message for {'str_sp': 'high quality shatter'}.
-#: data/json/items/comestibles/med.json
-msgid "You take a dab. Wow that's got some killer terpenes!"
-msgstr "Вы делаете затяжку. Ого, неслабо в голову даёт!"
-
-#. ~ Description for {'str_sp': 'high quality shatter'}
-#: data/json/items/comestibles/med.json
-msgid ""
-"Concentrated cannabis extract, commonly known as dabs.  This particular "
-"style of concentrate in is a thin sheet and shatters like glass at room "
-"temperature.  Argueably its one of the better styles of concentrate compared"
-" to wax, crumble, or distilate.  Normal cannabis contains around 20%THC, "
-"this shatter should be around 55%THC."
-msgstr ""
-"Концентрированная вытяжка из конопли. Представлена в форме тонких пластин, "
-"похожих на битое стекло при разбивании. Порой считается лучшим способом "
-"употребления в сравнении с использованием воска, крошеного воска или "
-"дистиллята. Содержание действующих веществ обычно достигает 20%, но здесь "
-"оно доходит до 55%."
-
-#: data/json/items/comestibles/med.json
-msgid "high quality wax"
-msgid_plural "high quality wax"
-msgstr[0] "качественный воск ТГК"
-msgstr[1] "качественный воск ТГК"
-msgstr[2] "качественный воск ТГК"
-msgstr[3] "качественный воск ТГК"
-
-#. ~ Use action activation_message for {'str_sp': 'high quality wax'}.
-#: data/json/items/comestibles/med.json
-msgid "You take a dab of some wax.  *cough cough* good stuff!"
-msgstr "Вы делаете затяжку. *кашель* Хорошо пошло!"
-
-#. ~ Description for {'str_sp': 'high quality wax'}
-#: data/json/items/comestibles/med.json
-msgid ""
-"Concentrated cannabis extract, commonly known as dabs.  This particular "
-"style of concentrate has the look and consistency of a yellow waxy substance"
-" at room temperature.  Normal cannabis contains around 20%THC, this wax "
-"should be around 45%THC."
-msgstr ""
-"Концентрированная вытяжка из конопли. Представлена в форме желтоватого "
-"воска. Содержание действующих веществ обычно достигает 20%, но здесь оно "
-"доходит до 45%."
-
-#: data/json/items/comestibles/med.json
-msgid "high quality crude oil"
-msgid_plural "high quality crude oil"
-msgstr[0] "качественное неочищенное масло ТГК"
-msgstr[1] "качественное неочищенное масло ТГК"
-msgstr[2] "качественное неочищенное масло ТГК"
-msgstr[3] "качественное неочищенное масло ТГК"
-
-#. ~ Use action activation_message for {'str_sp': 'high quality crude oil'}.
-#: data/json/items/comestibles/med.json
-msgid "You smoke some bad dabs.  Not a good idea."
-msgstr "Вы делаете затяжку неочищенного масла. Плохая идея."
-
-#. ~ Description for {'str_sp': 'high quality crude oil'}
-#: data/json/items/comestibles/med.json
-msgid ""
-"This is high quality concentrated oil derived from cannabis.  It still has "
-"some residual solvents in it so it needs to be purged in a vacuum oven, "
-"whipped over a heated surface, or distilled before it is safe to consume."
-msgstr ""
-"Высококачественное концентрированное масло, полученное из конопли. В нём всё"
-" ещё есть некоторые остаточные растворители, поэтому его необходимо продуть "
-"в вакуумной печи, взбить при нагревании или дистиллировать, прежде чем оно "
-"станет безопасным для потребления."
-
-#: data/json/items/comestibles/med.json
-msgid "low quality crude oil"
-msgid_plural "low quality crude oil"
-msgstr[0] "низкокачественное неочищенное масло ТГК"
-msgstr[1] "низкокачественное неочищенное масло ТГК"
-msgstr[2] "низкокачественное неочищенное масло ТГК"
-msgstr[3] "низкокачественное неочищенное масло ТГК"
-
-#. ~ Use action activation_message for {'str_sp': 'low quality crude oil'}.
-#. ~ Use action activation_message for {'str_sp': 'filtered low quality crude
-#. oil'}.
-#. ~ Use action activation_message for {'str_sp': 'filtered high quality crude
-#. oil'}.
-#: data/json/items/comestibles/med.json
-msgid "You smoke some really bad dabs.  Not a good idea."
-msgstr "Вы делаете затяжку некачественного неочищенного масла. Плохая идея."
-
-#. ~ Description for {'str_sp': 'low quality crude oil'}
-#: data/json/items/comestibles/med.json
-msgid ""
-"This is low quality concentrated oil derived from cannabis.  It still has "
-"some residual solvents in it so it needs to be purged in a vacuum oven, "
-"whipped over a heated surface, or distilled before it is safe to consume."
-msgstr ""
-"Низкокачественное концентрированное масло, полученное из конопли. В нём всё "
-"ещё есть некоторые остаточные растворители, поэтому его необходимо продуть в"
-" вакуумной печи, взбить на нагретой поверхности или дистиллировать, прежде "
-"чем оно станет безопасным для потребления."
-
-#: data/json/items/comestibles/med.json
-msgid "(ethanol) low quality crude oil"
-msgid_plural "(ethanol) low quality crude oil"
-msgstr[0] "низкокачественное неочищенное масло ТГК (этанол)"
-msgstr[1] "низкокачественное неочищенное масло ТГК (этанол)"
-msgstr[2] "низкокачественное неочищенное масло ТГК (этанол)"
-msgstr[3] "низкокачественное неочищенное масло ТГК (этанол)"
-
-#. ~ Description for {'str_sp': '(ethanol) low quality crude oil'}
-#: data/json/items/comestibles/med.json
-msgid ""
-"This is low quality concentrated oil derived from cannabis thats been "
-"diluted in ethanol and heated over a hotplate.  The next step would be to "
-"filter it through a buchner flask."
-msgstr ""
-"Низкокачественное концентрированное масло, полученное из конопли. Оно было "
-"разбавлено этанолом и прогрето. Следующим шагом будет фильтрация через колбу"
-" Бунзена."
-
-#: data/json/items/comestibles/med.json
-msgid "(ethanol) high quality crude oil"
-msgid_plural "(ethanol) high quality crude oil"
-msgstr[0] "качественное неочищенное масло ТГК (этанол)"
-msgstr[1] "качественное неочищенное масло ТГК (этанол)"
-msgstr[2] "качественное неочищенное масло ТГК (этанол)"
-msgstr[3] "качественное неочищенное масло ТГК (этанол)"
-
-#. ~ Description for {'str_sp': '(ethanol) high quality crude oil'}
-#: data/json/items/comestibles/med.json
-msgid ""
-"This is high quality concentrated oil derived from cannabis thats been "
-"diluted in ethanol and heated over a hotplate.  The next step would be to "
-"filter it through a buchner flask."
-msgstr ""
-"Качественное концентрированное масло, полученное из конопли. Оно было "
-"разбавлено этанолом и прогрето. Следующим шагом будет фильтрация через колбу"
-" Бунзена."
-
-#: data/json/items/comestibles/med.json
-msgid "(ethanol) filtered low quality crude oil"
-msgid_plural "(ethanol) filtered low quality crude oil"
-msgstr[0] "низкокачественное фильтрованное масло ТГК (этанол)"
-msgstr[1] "низкокачественное фильтрованное масло ТГК (этанол)"
-msgstr[2] "низкокачественное фильтрованное масло ТГК (этанол)"
-msgstr[3] "низкокачественное фильтрованное масло ТГК (этанол)"
-
-#. ~ Description for {'str_sp': '(ethanol) filtered low quality crude oil'}
-#: data/json/items/comestibles/med.json
-msgid ""
-"This is low quality concentrated oil derived from cannabis thats been "
-"diluted in ethanol, heated over a hotplate, and filtered through a buchner "
-"flask.  The next step would be to run it through a rotovap."
-msgstr ""
-"Низкокачественное концентрированное масло, полученное из конопли. Оно было "
-"разбавлено этанолом, прогрето и профильтровано через колбу Бунзена. "
-"Следующим шагом будет прогонка через роторный испаритель."
-
-#: data/json/items/comestibles/med.json
-msgid "(ethanol) filtered high quality crude oil"
-msgid_plural "(ethanol) filtered high quality crude oil"
-msgstr[0] "качественное фильтрованное масло ТГК (этанол)"
-msgstr[1] "качественное фильтрованное масло ТГК (этанол)"
-msgstr[2] "качественное фильтрованное масло ТГК (этанол)"
-msgstr[3] "качественное фильтрованное масло ТГК (этанол)"
-
-#. ~ Description for {'str_sp': '(ethanol) filtered high quality crude oil'}
-#: data/json/items/comestibles/med.json
-msgid ""
-"This is high quality concentrated oil derived from cannabis thats been "
-"diluted in ethanol, heated over a hotplate, and filtered through a buchner "
-"flask.  The next step would be to run it through a rotovap."
-msgstr ""
-"Качественное концентрированное масло, полученное из конопли. Оно было "
-"разбавлено этанолом, прогрето и профильтровано через колбу Бунзена. "
-"Следующим шагом будет прогонка через роторный испаритель."
-
-#: data/json/items/comestibles/med.json
-msgid "filtered low quality crude oil"
-msgid_plural "filtered low quality crude oil"
-msgstr[0] "низкокачественное фильтрованное масло ТГК"
-msgstr[1] "низкокачественное фильтрованное масло ТГК"
-msgstr[2] "низкокачественное фильтрованное масло ТГК"
-msgstr[3] "низкокачественное фильтрованное масло ТГК"
-
-#. ~ Description for {'str_sp': 'filtered low quality crude oil'}
-#: data/json/items/comestibles/med.json
-msgid ""
-"This is low quality concentrated oil derived from cannabis thats been "
-"diluted in ethanol, heated over a hotplate, filtered through a buchner "
-"flask, and all the ethanol recovered using a rotary evaporator.  It is ready"
-" for the distillation."
-msgstr ""
-"Низкокачественное концентрированное масло, полученное из конопли. Оно было "
-"разбавлено этанолом, прогрето, профильтровано через колбу Бунзена и "
-"пропущено через роторный испаритель. Его можно дистиллировать."
-
-#: data/json/items/comestibles/med.json
-msgid "filtered high quality crude oil"
-msgid_plural "filtered high quality crude oil"
-msgstr[0] "качественное фильтрованное масло ТГК"
-msgstr[1] "качественное фильтрованное масло ТГК"
-msgstr[2] "качественное фильтрованное масло ТГК"
-msgstr[3] "качественное фильтрованное масло ТГК"
-
-#. ~ Description for {'str_sp': 'filtered high quality crude oil'}
-#: data/json/items/comestibles/med.json
-msgid ""
-"This is high quality concentrated oil derived from cannabis thats been "
-"diluted in ethanol, heated over a hotplate, filtered through a buchner "
-"flask, and all the ethanol recovered using a rotary evaporator.  It is ready"
-" for the distillation."
-msgstr ""
-"Качественное концентрированное масло, полученное из конопли. Оно было "
-"разбавлено этанолом, прогрето, профильтровано через колбу Бунзена и "
-"пропущено через роторный испаритель. Его можно дистиллировать."
-
-#: data/json/items/comestibles/med.json
-msgid "high quality distillate (heads)"
-msgid_plural "high quality distillate (heads)"
-msgstr[0] "качественный дистиллят ТГК (головы)"
-msgstr[1] "качественный дистиллят ТГК (головы)"
-msgstr[2] "качественный дистиллят ТГК (головы)"
-msgstr[3] "качественный дистиллят ТГК (головы)"
-
-#. ~ Description for {'str_sp': 'high quality distillate (heads)'}
-#: data/json/items/comestibles/med.json
-msgid ""
-"Concentrated cannabis extract.  This is the 'heads' portion from a distilled"
-" batch of crude oil.  It still needs to be ran through a lab grade still one"
-" more time before its a finished product."
-msgstr ""
-"Концентрированный экстракт конопли. Это «головы», полученные дистилляцией "
-"масла. Их нужно пропустить через лабораторный дистиллятор ещё раз, чтобы "
-"получить конечный продукт."
-
-#: data/json/items/comestibles/med.json
-msgid "high quality distillate (tails)"
-msgid_plural "high quality distillate (tails)"
-msgstr[0] "качественный дистиллят ТГК (хвосты)"
-msgstr[1] "качественный дистиллят ТГК (хвосты)"
-msgstr[2] "качественный дистиллят ТГК (хвосты)"
-msgstr[3] "качественный дистиллят ТГК (хвосты)"
-
-#. ~ Description for {'str_sp': 'high quality distillate (tails)'}
-#: data/json/items/comestibles/med.json
-msgid ""
-"Concentrated cannabis extract.  This material is the 'tails' portion from a "
-"distilled batch of crude oil.  It needs to be ran through a lab grade still "
-"another time."
-msgstr ""
-"Концентрированный экстракт конопли. Это «хвосты», полученные дистилляцией "
-"масла. Их нужно пропустить через лабораторный дистиллятор ещё раз."
-
-#: data/json/items/comestibles/med.json
-msgid "high quality distillate"
-msgid_plural "high quality distillate"
-msgstr[0] "качественный дистиллят ТГК"
-msgstr[1] "качественный дистиллят ТГК"
-msgstr[2] "качественный дистиллят ТГК"
-msgstr[3] "качественный дистиллят ТГК"
-
-#. ~ Use action activation_message for {'str_sp': 'high quality distillate'}.
-#: data/json/items/comestibles/med.json
-msgid "You take a dab of some distillate.  Sooooo smooth..."
-msgstr "Вы затягиваетесь дистиллятом. Ох как гладенькооо…"
-
-#. ~ Description for {'str_sp': 'high quality distillate'}
-#: data/json/items/comestibles/med.json
-msgid ""
-"Concentrated cannabis extract.  This style of extract goes through the most "
-"processing, eliminating most if not all harmful ingredients.  Normal "
-"cannabis contains around 20%THC, this distillate should be around 88%THC.  "
-"Can be smoked in a bowl, used in a dab pen, or used to make distillate "
-"cartridges."
-msgstr ""
-"Концентрированный экстракт каннабиса. Этот способ очистки экстракта "
-"подразумевает серьезную обработку, устраняя большинство, если не все вредные"
-" ингредиенты. Обычный каннабис содержит около 20% ТГК, этот дистиллят должен"
-" содержать около 88% ТГК. Можно курить через трубку, использовать "
-"электронную сигарету или делать картриджи с дистиллятом."
-
-#: data/json/items/comestibles/med.json
-msgid "high quality distillate cartridge"
-msgid_plural "high quality distillate cartridges"
-msgstr[0] "картридж с дистиллятом ТГК"
-msgstr[1] "картриджа с дистиллятом ТГК"
-msgstr[2] "картриджей с дистиллятом ТГК"
-msgstr[3] "картриджи с дистиллятом ТГК"
-
-#. ~ Use action activation_message for {'str': 'high quality distillate
-#. cartridge'}.
-#: data/json/items/comestibles/med.json
-msgid "You hit your dab pen.  Sooooo smooth..."
-msgstr "Вы делаете затяжку из электронной сигареты. Ох как гладенькооо…"
-
-#. ~ Description for {'str': 'high quality distillate cartridge'}
-#: data/json/items/comestibles/med.json
-msgid ""
-"A small cartridge containing concentrated cannabis extract thats used with "
-"dab pens.  This style of extract goes through the most processing, "
-"eliminating most if not all harmful ingredients.  Normal cannabis contains "
-"around 20%THC, this distillate should be around 70%THC after reintroducing "
-"terpenes for flavoring."
-msgstr ""
-"Маленький картридж, содержащий концентрированный экстракт каннабиса. Этот "
-"способ очистки экстракта подразумевает серьезную обработку, устраняя "
-"большинство, если не все вредные ингредиенты. Обычный каннабис содержит "
-"около 20% ТГК, этот дистиллят должен содержать около 70% ТГК после "
-"добавления терпенов для улучшения вкуса."
-
-#: data/json/items/comestibles/med.json
 msgid "saline eye drop"
 msgid_plural "saline eye drops"
 msgstr[0] "глазные капли"
@@ -100220,6 +100293,18 @@ msgid ""
 msgstr ""
 "Марихуана, каннабис, травка. Называй как хочешь, оно скручено бумагой и "
 "готово для курения."
+
+#. ~ Use action activation_message for blunt.
+#: data/json/items/comestibles/med.json
+msgid "You light up the blunt."
+msgstr ""
+
+#. ~ Description for blunt
+#: data/json/items/comestibles/med.json
+msgid ""
+"Marijuana, cannabis, pot.  Whatever you want to call it, it's rolled up in a"
+" large tobacco leaf and ready for smokin'."
+msgstr ""
 
 #: data/json/items/comestibles/med.json
 msgid "pink tab"
@@ -100456,10 +100541,10 @@ msgstr ""
 #: data/json/items/comestibles/med.json
 msgid "sizzurp lean"
 msgid_plural "sizzurp lean"
-msgstr[0] "сизурп лин"
-msgstr[1] "сизурп линов"
-msgstr[2] "сизурп линов"
-msgstr[3] "сизурп линов"
+msgstr[0] "лин"
+msgstr[1] "лин"
+msgstr[2] "лин"
+msgstr[3] "лин"
 
 #. ~ Use action activation_message for {'str_sp': 'sizzurp lean'}.
 #: data/json/items/comestibles/med.json
@@ -119958,13 +120043,10 @@ msgstr[3] "сошки"
 #: data/json/items/gunmod/underbarrel.json
 msgid ""
 "Bipods are commonly used on rifles and machine guns to provide a forward "
-"rest and reduce motion.  Although they greatly improve handling of recoil "
-"they are usable only on certain surfaces and are slow to equip."
+"rest and reduce motion.  Although they noticably improve handling and "
+"precision they are slow to equip and usable only on certain mountable "
+"surfaces such as window frames and mounds of dirt."
 msgstr ""
-"Сошки обычно используются на винтовках и пулемётах, чтобы улучшить контроль "
-"над отдачей. Несмотря на то, что они значительно улучшают контроль отдачи, "
-"они могут использоваться только на определённых поверхностях и медленно "
-"разворачиваются."
 
 #: data/json/items/gunmod/underbarrel.json
 msgid "modified bipod"
@@ -119977,15 +120059,11 @@ msgstr[3] "модифицированные сошки"
 #: data/json/items/gunmod/underbarrel.json
 msgid ""
 "Bipods are commonly used on rifles and machine guns to provide a forward "
-"rest and reduce motion.  Although they greatly improve handling of recoil "
-"they are usable only on certain surfaces and are slow to equip.  This one "
-"was modified and customized to mount on pretty much any weapon, if you so "
-"want."
+"rest and reduce motion.  Although they noticably improve handling and "
+"precision they are slow to equip and usable only on certain mountable "
+"surfaces such as window frames and mounds of dirt.  This one was modified "
+"and customized to mount on pretty much any weapon, if you so want."
 msgstr ""
-"Сошки обычно используются на винтовках и пулемётах для стабилизации оружия. "
-"Несмотря на значительное улучшение контроля отдачи, разворачиваются медленно"
-" и годятся только для определённых поверхностей. Модифицированы для "
-"установки практически на любое оружие."
 
 #: data/json/items/gunmod/underbarrel.json
 msgid "combination gun shotgun"
@@ -136158,7 +136236,7 @@ msgstr[3] "коровий колокольчик"
 msgid "A brass cow bell.  You feel like you need more of it."
 msgstr "Латунный коровий колокольчик. Вам кажется, что нужно найти ещё таких."
 
-#: data/json/items/tool/misc.json
+#: data/json/items/tool/misc.json data/json/items/tool/smoking.json
 msgid "dab pen"
 msgid_plural "dab pens"
 msgstr[0] "электронная сигарета-какрандаш"
@@ -136174,7 +136252,7 @@ msgstr "Вы включаете электронную сигарету."
 #. ~ Use action need_charges_msg for {'str': 'dab pen'}.
 #. ~ Use action need_charges_msg for {'str': 'dab pen (on)', 'str_pl': 'dab
 #. pens (on)'}.
-#: data/json/items/tool/misc.json
+#: data/json/items/tool/misc.json data/json/obsoletion/items.json
 msgid "The dab pen's batteries need more charge."
 msgstr "Батарейкам сигареты не хватает заряда."
 
@@ -136185,28 +136263,6 @@ msgid ""
 msgstr ""
 "Тонкая электронная сигарета на батарейках, используемая для курения "
 "дистиллированной конопли в картриджах."
-
-#: data/json/items/tool/misc.json
-msgid "dab pen (on)"
-msgid_plural "dab pens (on)"
-msgstr[0] "электронная сигарета-карандаш (вкл.)"
-msgstr[1] "электронные сигареты-карандаши (вкл.)"
-msgstr[2] "электронных сигарет-карандашей (вкл.)"
-msgstr[3] "электронные сигареты-карандаши (вкл.)"
-
-#. ~ Use action msg for {'str': 'dab pen (on)', 'str_pl': 'dab pens (on)'}.
-#: data/json/items/tool/misc.json
-msgid "You turn off the dab pen."
-msgstr "Вы выключаете электронную сигарету."
-
-#. ~ Description for {'str': 'dab pen (on)', 'str_pl': 'dab pens (on)'}
-#: data/json/items/tool/misc.json
-msgid ""
-"This dab pen, for vaporizing cannabis, is turned on.  Now all you need is a "
-"distillate cartridge and you're ready to rock and roll."
-msgstr ""
-"Эта электронная сигарета для испарения каннабиса включена. Теперь нужно "
-"только вставить картридж с дистиллятом, и вы готовы веселиться."
 
 #: data/json/items/tool/misc.json
 msgid "Cube of Shame"
@@ -136521,19 +136577,6 @@ msgstr ""
 "Хирургический пинцет, провода и усовершенствованный смартфон в маленькой "
 "пластмассовой коробочке. Предназначен для похищения мыслей какого-то "
 "бедолаги. Инструмент жуткого высокотехнологичного песочного человека."
-
-#: data/json/items/tool/misc.json
-msgid "plastic gasket"
-msgid_plural "plastic gaskets"
-msgstr[0] "пластиковый сальник"
-msgstr[1] "пластиковых сальника"
-msgstr[2] "пластиковых сальников"
-msgstr[3] "пластиковые сальники"
-
-#. ~ Description for {'str': 'plastic gasket'}
-#: data/json/items/tool/misc.json
-msgid " A single-use plastic gasket."
-msgstr " Одноразовый пластиковый сальник."
 
 #: data/json/items/tool/misc.json
 msgid "permanent marker"
@@ -137529,11 +137572,9 @@ msgstr[3] "канистры бутана"
 #. ~ Description for {'str': 'butane tank', 'str_pl': 'tanks of butane'}
 #: data/json/items/tool/science.json
 msgid ""
-"This is a tank of compressed butane.  It can be used to extract essential "
-"oils from organic material."
+"This is a tank of liquid compressed butane.  It can be used to extract "
+"essential oils from organic material."
 msgstr ""
-"Канистра сжатого бутана. Можно использовать для выделения эфирных масел из "
-"органики."
 
 #: data/json/items/tool/science.json
 msgid "hydrogen tank"
@@ -138242,6 +138283,21 @@ msgstr ""
 "курения разных расслабляющих веществ."
 
 #: data/json/items/tool/smoking.json
+msgid "glass bong"
+msgid_plural "glass bongs"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+
+#. ~ Description for {'str': 'glass bong'}
+#: data/json/items/tool/smoking.json
+msgid ""
+"This is a hand-blown glass beaker bong.  Easy to clean, hard to tip over, "
+"and functional even after society collapses."
+msgstr ""
+
+#: data/json/items/tool/smoking.json
 msgid "tobacco pipe"
 msgid_plural "tobacco pipes"
 msgstr[0] "курительная трубка"
@@ -138257,6 +138313,59 @@ msgid ""
 msgstr ""
 "Деревянная курительная трубка ручной работы. Предназначена для употребления "
 "табака дымовой сушки."
+
+#. ~ Use action activation_message for {'str': 'dab pen'}.
+#: data/json/items/tool/smoking.json
+msgid "You hit your dab pen. Sooooo smooth..."
+msgstr ""
+
+#. ~ Description for {'str': 'dab pen'}
+#: data/json/items/tool/smoking.json
+msgid ""
+"This is a dab pen for vaporizing cannabis.  Now all you need is thc "
+"distillate and you're ready to rock and roll."
+msgstr ""
+
+#: data/json/items/tool/smoking.json
+msgid "disposable dab pen"
+msgid_plural "disposable dab pens"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+
+#. ~ Use action activation_message for {'str': 'disposable dab pen'}.
+#: data/json/items/tool/smoking.json
+msgid "You hit your disposable dab pen. Sooooo smooth..."
+msgstr ""
+
+#. ~ Description for {'str': 'disposable dab pen'}
+#: data/json/items/tool/smoking.json
+msgid ""
+"This is a disposable dab pen for vaporizing cannabis.  This one is already "
+"filled with distillate for your convenience, but can't be recharged."
+msgstr ""
+
+#: data/json/items/tool/smoking.json
+msgid "nectar collector"
+msgid_plural "nectar collectors"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+
+#. ~ Use action activation_message for {'str': 'nectar collector'}.
+#: data/json/items/tool/smoking.json
+msgid "You heat the nectar collector and hit it. Sooooo smooth..."
+msgstr ""
+
+#. ~ Description for {'str': 'nectar collector'}
+#: data/json/items/tool/smoking.json
+msgid ""
+"This is a metal and wooden nectar collector.  The top cover can be attached "
+"and detached magnetically.  The wood has engravings depicting bees, honey, "
+"and flowers."
+msgstr ""
 
 #: data/json/items/tool/stationary.json
 msgid "stapler"
@@ -138533,7 +138642,7 @@ msgid_plural "mops"
 msgstr[0] "швабра"
 msgstr[1] "швабры"
 msgstr[2] "швабр"
-msgstr[3] "швабра"
+msgstr[3] "швабры"
 
 #. ~ Description for {'str': 'mop'}
 #: data/json/items/tool/toiletries.json
@@ -138548,8 +138657,8 @@ msgstr ""
 msgid "collapsible mop"
 msgid_plural "collapsible mops"
 msgstr[0] "складная швабра"
-msgstr[1] "складных швабр"
-msgstr[2] "складные швабры"
+msgstr[1] "складных швабры"
+msgstr[2] "складных швабр"
 msgstr[3] "складные швабры"
 
 #. ~ Description for {'str': 'collapsible mop'}
@@ -139345,14 +139454,16 @@ msgid ""
 "A lightweight one-handed combat hatchet made using basic copper.  Slightly "
 "better than stone, though not as historically accurate."
 msgstr ""
+"Легкий одноручный боевой топорик, сделанный из обычной меди. Немного лучше "
+"камня, хотя и не такой исторически точный."
 
 #: data/json/items/tool/woodworking.json
 msgid "sandpaper"
 msgid_plural "sandpapers"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "наждачная бумага"
+msgstr[1] "наждачная бумага"
+msgstr[2] "наждачная бумага"
+msgstr[3] "наждачная бумага"
 
 #. ~ Description for {'str': 'sandpaper'}
 #: data/json/items/tool/woodworking.json
@@ -139361,6 +139472,10 @@ msgid ""
 "historically glass or sand, modernly aluminum oxide or silicon carbide.  It "
 "is commonly used to smooth, roughen, or strip a wooden surface."
 msgstr ""
+"Лист ткани или бумаги с наклеенным на одну сторону абразивным материалом, в "
+"прошлом - стеклом или песком, в настоящее время - оксидом алюминия или "
+"карбидом кремния. Обычно используется для шлифовки, придания шероховатости "
+"или зачистки деревянной поверхности."
 
 #: data/json/items/tool/workshop.json
 msgid "pallet of wet adobe bricks"
@@ -139413,22 +139528,24 @@ msgstr ""
 #: data/json/items/tool/workshop.json
 msgid "pallet of wet ceramic"
 msgid_plural "pallets of wet ceramic"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "поддон мокрой керамики"
+msgstr[1] "поддон мокрой керамики"
+msgstr[2] "поддон мокрой керамики"
+msgstr[3] "поддон мокрой керамики"
 
 #. ~ Use action msg for {'str': 'pallet of wet ceramic', 'str_pl': 'pallets of
 #. wet ceramic'}.
 #: data/json/items/tool/workshop.json
 msgid "You test the ceramic, and it's the right consistency to use."
 msgstr ""
+"Вы проверяете керамику и убеждаетесь, что ее консистенция подходит для "
+"использования."
 
 #. ~ Use action not_ready_msg for {'str': 'pallet of wet ceramic', 'str_pl':
 #. 'pallets of wet ceramic'}.
 #: data/json/items/tool/workshop.json
 msgid "The ceramic is still too damp to be used."
-msgstr ""
+msgstr "Керамика еще слишком влажная, чтобы ее можно было использовать."
 
 #. ~ Description for {'str': 'pallet of wet ceramic', 'str_pl': 'pallets of
 #. wet ceramic'}
@@ -139437,14 +139554,16 @@ msgid ""
 "A pallet full of crushed wet ceramic, which needs to dry slowly to be "
 "usable."
 msgstr ""
+"Поддон, заполненный измельченной влажной керамикой, которую необходимо "
+"медленно высушить, чтобы ее можно было использовать."
 
 #: data/json/items/tool/workshop.json
 msgid "pallet of ceramic clay"
 msgid_plural "pallets of ceramic clay"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "поддон с керамической глиной"
+msgstr[1] "поддон с керамической глиной"
+msgstr[2] "поддон с керамической глиной"
+msgstr[3] "поддон с керамической глиной"
 
 #. ~ Description for {'str': 'pallet of ceramic clay', 'str_pl': 'pallets of
 #. ceramic clay'}
@@ -139453,6 +139572,8 @@ msgid ""
 "A pallet of ceramic clay which is now ready to be made into pottery.  "
 "Disassemble it to retrieve your sheet, frame and crafting supplies."
 msgstr ""
+"Поддон с керамической глиной, которая теперь готова к лепке. Разберите его, "
+"чтобы достать лист, раму и материалы для рукоделия."
 
 #: data/json/items/tool/workshop.json
 msgid "acetylene-gas machine"
@@ -139635,6 +139756,10 @@ msgid ""
 "surfaces.  It runs on a rechargeable cell, optionally compatible with UPS.  "
 "Use it to blast a hole in adjacent solid terrain."
 msgstr ""
+"Это строительный инструмент для бурения через твердую породу или другие "
+"поверхности. Он работает на перезаряжаемом элементе, опционально совместимом"
+" с ИБП. Используйте его, чтобы проделать дыру в прилегающей твердой "
+"местности."
 
 #: data/json/items/tool/workshop.json
 msgid "hacksaw"
@@ -139857,6 +139982,11 @@ msgid ""
 "batteries, it can tackle any armory work when coupled with a hand press.  It"
 " requires 25 charges of battery power per use."
 msgstr ""
+"Это полный набор инструментов, предназначенный для ремонта поврежденного "
+"огнестрельного оружия, разборки боеприпасов и изготовления модификаций "
+"огнестрельного оружия. Работает от стандартных батареек, может справиться с "
+"любой оружейной работой в паре с ручным прессом. Для одного использования "
+"требуется 25 зарядов батареи."
 
 #: data/json/items/tool/workshop.json
 msgid "makeshift hammer"
@@ -139935,10 +140065,10 @@ msgstr ""
 #: data/json/items/tool/workshop.json data/mods/MagicalNights/items/tools.json
 msgid "makeshift repair kit"
 msgid_plural "makeshift repair kits"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "самодельный ремонтный комплект"
+msgstr[1] "самодельный ремонтный комплект"
+msgstr[2] "самодельный ремонтный комплект"
+msgstr[3] "самодельный ремонтный комплект"
 
 #. ~ Description for {'str': 'makeshift repair kit'}
 #: data/json/items/tool/workshop.json
@@ -139948,6 +140078,11 @@ msgid ""
 "soft material for cleaning surfaces.  It can be used to repair certain items"
 " if supplied with pitch, though it isn't ideal for complex work."
 msgstr ""
+"Это портативный набор инструментов, состоящий из примитивного ножа для "
+"вырезания сменных деталей, тесло для более тяжелой резки дерева и куска "
+"мягкого материала для очистки поверхностей. Его можно использовать для "
+"ремонта определенных предметов, если он снабжен смолой, хотя он не идеален "
+"для сложных работ."
 
 #: data/json/items/tool/workshop.json
 msgid "plastic mold"
@@ -140747,15 +140882,15 @@ msgstr[3] "паруса"
 #. ~ Description for {'str': 'sail'}
 #: data/json/items/vehicle/boat.json
 msgid "A small sail and makeshift rigging for a raft."
-msgstr ""
+msgstr "Небольшой парус и самодельный такелаж для плота."
 
 #: data/json/items/vehicle/boat.json data/json/vehicleparts/vehicle_parts.json
 msgid "large sail"
 msgid_plural "large sails"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "большой парус"
+msgstr[1] "большой парус"
+msgstr[2] "большой парус"
+msgstr[3] "большой парус"
 
 #. ~ Description for {'str': 'large sail'}
 #: data/json/items/vehicle/boat.json
@@ -140763,6 +140898,8 @@ msgid ""
 "A wooden mast with sails fit for a yacht or sloop, and about as much rigging"
 " as a single sailor can handle."
 msgstr ""
+"Деревянная мачта с парусами, подходящая для яхты или шлюпа, и примерно "
+"столько снастей, сколько может выдержать один матрос."
 
 #: data/json/items/vehicle/boat.json data/json/vehicleparts/vehicle_parts.json
 msgid "inflatable section"
@@ -140960,10 +141097,10 @@ msgstr ""
 #: data/json/items/vehicle/cargo.json
 msgid "carbon cargo carrier"
 msgid_plural "carbon cargo carriers"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "карбоновый автобокс"
+msgstr[1] "карбоновый автобокс"
+msgstr[2] "карбоновый автобокс"
+msgstr[3] "карбоновый автобокс"
 
 #. ~ Description for {'str': 'carbon cargo carrier'}
 #: data/json/items/vehicle/cargo.json
@@ -140971,6 +141108,8 @@ msgid ""
 "A sturdy, yet lightweight carbon structure outfitted with tie-downs and "
 "attachment points for carrying cargo."
 msgstr ""
+"Прочная, но легкая карбоновая конструкция, оснащенная стяжками и точками "
+"крепления для перевозки груза."
 
 #: data/json/items/vehicle/cargo.json data/json/vehicleparts/cargo.json
 msgid "floor trunk"
@@ -141935,16 +142074,19 @@ msgstr ""
 #: data/json/items/vehicle/frames.json data/json/vehicleparts/frames.json
 msgid "plastic frame"
 msgid_plural "plastic frames"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "пластиковая рама"
+msgstr[1] "пластиковая рама"
+msgstr[2] "пластиковая рама"
+msgstr[3] "пластиковая рама"
 
 #. ~ Description for {'str': 'plastic frame'}
 #: data/json/items/vehicle/frames.json
 msgid ""
-"A large frame made of plastic.  Useful for cheap and lightweight vehicles."
+"A large  foldable frame made of plastic.  Useful for cheap and lightweight "
+"vehicles."
 msgstr ""
+"Большая складная рама из пластика. Подходит для недорогих и легких "
+"транспортных средств."
 
 #: data/json/items/vehicle/frames.json data/json/vehicleparts/frames.json
 msgid "carbon fiber frame"
@@ -141957,8 +142099,11 @@ msgstr[3] "рамы из углеродного волокна"
 #. ~ Description for {'str': 'carbon fiber frame'}
 #: data/json/items/vehicle/frames.json
 msgid ""
-"A large frame made of plastic.  Useful for lightweight yet sturdy vehicles."
+"A large foldable frame made from sheets of carbon fiber.  Useful for "
+"lightweight yet sturdy vehicles."
 msgstr ""
+"Большая складная рама из листов углеродного волокна. Подходит для легких, но"
+" прочных транспортных средств."
 
 #: data/json/items/vehicle/frames.json data/json/vehicleparts/frames.json
 msgid "skateboard deck"
@@ -141972,6 +142117,8 @@ msgstr[3] "деки скейтборда"
 #: data/json/items/vehicle/frames.json
 msgid "A small skateboard frame made of thin layers of wood glued together."
 msgstr ""
+"Небольшая рама скейтборда, изготовленная из тонких слоев древесины, "
+"склеенных между собой."
 
 #: data/json/items/vehicle/fuel_storage.json data/json/vehicleparts/tanks.json
 msgid "fuel bunker"
@@ -142267,6 +142414,9 @@ msgid ""
 "its advanced design means it won't suffer power loss if multiple are "
 "installed on a vehicle."
 msgstr ""
+"Самый мощный электродвигатель на рынке. Полезен для крафта, а его передовая "
+"конструкция означает, что он не будет страдать от потери мощности, если на "
+"транспортном средстве установлено несколько таких двигателей."
 
 #: data/json/items/vehicle/motors.json data/json/vehicleparts/motor.json
 msgid "large electric motor"
@@ -142936,6 +143086,8 @@ msgid ""
 "Combining a fixed-up dissector, workbench and advanced electronics, this is "
 "a marvel capable of butchering, dissecting and cutting like nothing else!"
 msgstr ""
+"Сочетая в себе стационарный диссектор, верстак и передовую электронику, это "
+"чудо способно разделывать, рассекать и резать, как ничто другое!"
 
 #: data/json/items/vehicle/turrets.json
 #: data/json/vehicleparts/vehicle_parts.json
@@ -143357,30 +143509,30 @@ msgstr "Набор колёсиков, как на магазинной теле
 #: data/json/items/vehicle/wheel.json
 msgid "set of skateboard wheels"
 msgid_plural "sets of skateboard wheels"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "набор колес для скейтборда"
+msgstr[1] "набор колес для скейтборда"
+msgstr[2] "набор колес для скейтборда"
+msgstr[3] "набор колес для скейтборда"
 
 #. ~ Description for {'str': 'set of skateboard wheels', 'str_pl': 'sets of
 #. skateboard wheels'}
 #: data/json/items/vehicle/wheel.json
 msgid "A set of skateboard wheels."
-msgstr ""
+msgstr "Комплект колес для скейтборда."
 
 #: data/json/items/vehicle/wheel.json
 msgid "pair of skateboard trucks"
 msgid_plural "pairs of skateboard trucks"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "пара скейтбордных тележек"
+msgstr[1] "пара скейтбордных тележек"
+msgstr[2] "пара скейтбордных тележек"
+msgstr[3] "пара скейтбордных тележек"
 
 #. ~ Description for {'str': 'pair of skateboard trucks', 'str_pl': 'pairs of
 #. skateboard trucks'}
 #: data/json/items/vehicle/wheel.json
 msgid "A pair metal skateboard trucks, for attaching wheels to."
-msgstr ""
+msgstr "Пара металлических тележек для скейтбордов, для крепления колес."
 
 #: data/json/items/vehicle/wheel.json
 msgid "set of wheels"
@@ -143602,23 +143754,24 @@ msgstr ""
 #: data/json/items/vehicle/wheel.json data/json/vehicleparts/wheel.json
 msgid "light wooden wheel mount"
 msgid_plural "light wooden wheel mounts"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "легкое деревянное крепление для колеса"
+msgstr[1] "легкое деревянное крепление для колеса"
+msgstr[2] "легкое деревянное крепление для колеса"
+msgstr[3] "легкое деревянное крепление для колеса"
 
 #. ~ Description for {'str': 'light wooden wheel mount'}
 #: data/json/items/vehicle/wheel.json data/json/vehicleparts/wheel.json
 msgid "A piece of wood with holes suitable for a bike or motorbike wheel."
 msgstr ""
+"Кусок дерева с отверстиями, подходящими для колеса велосипеда или мотоцикла."
 
 #: data/json/items/vehicle/wheel.json data/json/vehicleparts/wheel.json
 msgid "sled runners"
 msgid_plural "sled runners"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "полозья саней"
+msgstr[1] "полозья саней"
+msgstr[2] "полозья саней"
+msgstr[3] "полозья саней"
 
 #. ~ Description for {'str_sp': 'sled runners'}
 #: data/json/items/vehicle/wheel.json
@@ -143626,6 +143779,8 @@ msgid ""
 "Simple wooden runners for a hand-pulled sled.  They make it easier to drag a"
 " cart across rough terrain, but that's about all they do."
 msgstr ""
+"Простые деревянные полозья для ручных саней. Они облегчают тягу тележки по "
+"неровной местности, но это все, что они делают."
 
 #. ~ Sign
 #: data/json/mapgen/Bastion_Fort.json data/json/mapgen/s_gas.json
@@ -144483,6 +144638,13 @@ msgstr "Смотрите под ноги!"
 msgid "Use park at your own risk."
 msgstr "Пользуйтесь парком на свой страх и риск."
 
+#. ~ Sign
+#: data/json/mapgen/park_vending.json
+msgid "Please be respectful of the machines! Automated security in use."
+msgstr ""
+"Пожалуйста, будьте уважительны к машинам! Автоматизированная охрана "
+"используется."
+
 #. ~ Computer name
 #: data/json/mapgen/police_station.json
 msgid "PolCom OS v1.47 - Supply Room Access"
@@ -145286,44 +145448,44 @@ msgstr "Высиживаемые личинки дерматикса покид�
 
 #: data/json/monster_special_attacks/spells.json
 msgid "Summon Centipede"
-msgstr ""
+msgstr "Вызов сороконожки"
 
 #. ~ Description for Summon Centipede
 #: data/json/monster_special_attacks/spells.json
 msgid "Summons a small, pissed off centipede."
-msgstr ""
+msgstr "Призывает маленькую разъяренную сороконожку."
 
 #: data/json/monster_special_attacks/spells.json
 msgid "Spawn Raptors"
-msgstr ""
+msgstr "Спавн Рапторов"
 
 #. ~ Description for {'str': 'Spawn Raptors'}
 #: data/json/monster_special_attacks/spells.json
 msgid "Summons several zombiespawn raptors."
-msgstr ""
+msgstr "Призывает нескольких зомби-пешек-рапторов."
 
 #. ~ Description for {'str': 'Spawn Raptors'}
 #: data/json/monster_special_attacks/spells.json
 msgid "Summons many zombiespawn raptors."
-msgstr ""
+msgstr "Призывает много зомби-пешек-рапторов."
 
 #: data/json/monster_special_attacks/spells.json
 msgid "Spawn Shady Raptors"
-msgstr ""
+msgstr "Спавн Теневых Рапторов"
 
 #. ~ Description for {'str': 'Spawn Shady Raptors'}
 #: data/json/monster_special_attacks/spells.json
 msgid "Summons a few shady zombiespawn raptors."
-msgstr ""
+msgstr "Призывает несколько теневых зомби-рапторов."
 
 #: data/json/monster_special_attacks/spells.json
 msgid "Spawning Zombie Die"
-msgstr ""
+msgstr "Спавнит Мёртвых Зомби "
 
 #. ~ Description for {'str': 'Spawning Zombie Die'}
 #: data/json/monster_special_attacks/spells.json
 msgid "For zombies that are spawning something and die in the process."
-msgstr ""
+msgstr "Для зомби, которые что-то порождают и умирают в процессе."
 
 #: data/json/monsters/bird.json
 msgid "chicken"
@@ -145983,7 +146145,7 @@ msgstr ""
 
 #: data/json/monsters/feral_humans.json
 msgid "The feral security guard fires their pistol!"
-msgstr ""
+msgstr "Дикий охранник стреляет из пистолета!"
 
 #. ~ Description for {'str': 'feral security guard'}
 #: data/json/monsters/feral_humans.json
@@ -147542,6 +147704,9 @@ msgid ""
 "quickly in the underbrush.  Probably won't think you're suitable prey, but "
 "beware its venom."
 msgstr ""
+"Ярко окрашенная сороконожка-мутант размером с небольшую собаку быстро "
+"скользит по подлеску. Возможно, не посчитает вас подходящей добычей, но "
+"остерегайтесь ее яда."
 
 #: data/json/monsters/insect_spider.json
 msgid "giant centipede"
@@ -147587,15 +147752,15 @@ msgstr ""
 #. ~ Attack message of monster "{'str': 'centipede matriarch'}"'s spell "None"
 #: data/json/monsters/insect_spider.json
 msgid "A small centipede is shaken off in the struggle!"
-msgstr ""
+msgstr "Маленькая сороконожка стряхивается в борьбе!"
 
 #: data/json/monsters/insect_spider.json
 msgid "armored centipede"
 msgid_plural "armored centipedes"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "бронированная сороконожка"
+msgstr[1] "бронированная сороконожка"
+msgstr[2] "бронированная сороконожка"
+msgstr[3] "бронированная сороконожка"
 
 #. ~ Description for {'str': 'armored centipede'}
 #: data/json/monsters/insect_spider.json
@@ -147606,6 +147771,12 @@ msgid ""
 "prey at least as well-armored as itself.  You really don't want to try if "
 "you'd fare better."
 msgstr ""
+"Огромная мутировавшая многоножка, покрытая сцепленными хитиновыми пластинами"
+" металлического серого цвета, больше напоминающая неуправляемый вагон "
+"поезда, чем любое живое животное. Ее мандибулы заканчиваются зазубренными "
+"точками, по-видимому, специализированными для охоты на добычу, по крайней "
+"мере, столь же хорошо бронированную, как и она сама. Вы действительно не "
+"хотите пытаться, если хотите добиться большего."
 
 #: data/json/monsters/insect_spider.json
 msgid "firefly"
@@ -147642,6 +147813,9 @@ msgid ""
 "long and feeding on small fishes, has grown to the size of a catfish.  Its "
 "folded lower jaw displays sharp mandibles resembling barbed spears."
 msgstr ""
+"Хищная водная личинка стрекозы, обычно длиной всего в сантиметр и питающаяся"
+" мелкой рыбой, выросла до размеров сома. Ее сложенная нижняя челюсть "
+"демонстрирует острые мандибулы, напоминающие зазубренные копья."
 
 #: data/json/monsters/insect_spider.json
 msgid "giant dragonfly"
@@ -147885,6 +148059,10 @@ msgid ""
 "smelling fluid in return for the scraps of viscera fed to it by the workers "
 "below."
 msgstr ""
+"Белая личинка размером с большую кошку, без особенностей, за исключением "
+"рудиментарного ротового аппарата. Она висит вверх ногами в своей ячейке и "
+"отрыгивает сладко пахнущую жидкость в обмен на остатки внутренностей, "
+"которые ей скармливают рабочие внизу."
 
 #: data/json/monsters/insect_spider.json
 msgid "wasp pupa"
@@ -148021,6 +148199,10 @@ msgid ""
 "it still poses a threat to interlopers, should their children have failed at"
 " subduing them."
 msgstr ""
+"Королева желтожакетов, выросшая до размеров лошади, возвышающаяся над своими"
+" дочерьми. Даже с их животом, раздутым от яиц, и крыльями, которые они долго"
+" не использовали, она все еще представляет угрозу для незваных гостей, если "
+"её дети не смогли покорить их."
 
 #: data/json/monsters/insect_spider.json
 msgid "dermatik"
@@ -148081,10 +148263,10 @@ msgstr ""
 #: data/json/monsters/insect_spider.json
 msgid "motionless deer"
 msgid_plural "motionless deers"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "неподвижный олень"
+msgstr[1] "неподвижный олень"
+msgstr[2] "неподвижный олень"
+msgstr[3] "неподвижный олень"
 
 #. ~ Description for {'str': 'motionless deer'}
 #: data/json/monsters/insect_spider.json
@@ -148093,6 +148275,9 @@ msgid ""
 "terrified eyes darting around the muddy chamber when it fails to stand and "
 "flee."
 msgstr ""
+"Парализованный, истощенный олень. Он дергается, заметив ваше присутствие, "
+"испуганные глаза мечутся по грязной камере, когда он не может встать и "
+"убежать."
 
 #. ~ Attack message of monster "{'str': 'motionless deer'}"'s spell "None"
 #: data/json/monsters/insect_spider.json
@@ -148104,10 +148289,10 @@ msgstr ""
 #: data/json/monsters/insect_spider.json
 msgid "helpless dog"
 msgid_plural "helpless dogs"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "беспомощная собака"
+msgstr[1] "беспомощная собака"
+msgstr[2] "беспомощная собака"
+msgstr[3] "беспомощная собака"
 
 #. ~ Description for {'str': 'helpless dog'}
 #: data/json/monsters/insect_spider.json
@@ -148116,14 +148301,17 @@ msgid ""
 " it lets out a faint whimper, and you see the smallest hint of a twitch in "
 "its tail."
 msgstr ""
+"Едва живая собака, задыхающаяся в луже слизи и крови. Когда вы "
+"приближаетесь, она издает слабый скулеж, и вы видите едва заметный намек на "
+"подергивание ее хвоста."
 
 #: data/json/monsters/insect_spider.json
 msgid "twitching spider"
 msgid_plural "twitching spiders"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "дергающийся паук"
+msgstr[1] "дергающийся паук"
+msgstr[2] "дергающийся паук"
+msgstr[3] "дергающийся паук"
 
 #. ~ Description for {'str': 'twitching spider'}
 #: data/json/monsters/insect_spider.json
@@ -148132,6 +148320,9 @@ msgid ""
 "translucent slime, mixed with its ichor seeps from its joints, and its "
 "chitin is marked by numerous exit wounds."
 msgstr ""
+"Гигантский мутировавший паук лежит на спине, его ноги дергаются без "
+"остановки. Из его суставов сочится полупрозрачная слизь, смешанная с его "
+"сукровицей, а его хитин отмечен многочисленными выходными отверстиями."
 
 #: data/json/monsters/insect_spider.json
 msgid "giant ant"
@@ -148578,10 +148769,10 @@ msgstr "Длинношерстый котёнок, больше похожий �
 #: data/json/monsters/mammal.json
 msgid "Maine Coon cat"
 msgid_plural "Maine Coon cats"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "Мейн-кун"
+msgstr[1] "Мейн-кун"
+msgstr[2] "Мейн-кун"
+msgstr[3] "Мейн-кун"
 
 #. ~ Description for Maine Coon cat
 #: data/json/monsters/mammal.json
@@ -148595,10 +148786,10 @@ msgstr ""
 #: data/json/monsters/mammal.json
 msgid "Maine Coon kitten"
 msgid_plural "Maine Coon kittens"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "котенок мейн-кун"
+msgstr[1] "котенок мейн-кун"
+msgstr[2] "котенок мейн-кун"
+msgstr[3] "котенок мейн-кун"
 
 #. ~ Description for Maine Coon kitten
 #: data/json/monsters/mammal.json
@@ -148784,6 +148975,8 @@ msgid ""
 "Marked with the characteristic 'M' on its forehead and decorated with "
 "swirling stripes, the tabby's markings provide excellent camouflage."
 msgstr ""
+"Характерная отметина в виде буквы «М» на лбу и закрученные полоски "
+"обеспечивают полосатому коту прекрасную маскировку."
 
 #: data/json/monsters/mammal.json
 msgid "tabby kitten"
@@ -148876,29 +149069,31 @@ msgstr ""
 #: data/json/monsters/mammal.json
 msgid "black kitten"
 msgid_plural "black kittens"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "черный котенок"
+msgstr[1] "черный котенок"
+msgstr[2] "черный котенок"
+msgstr[3] "черный котенок"
 
 #. ~ Description for {'str': 'black kitten'}
 #: data/json/monsters/mammal.json
 msgid "An adorable, little furry ball of darkness with pronounced green eyes."
 msgstr ""
+"Очаровательный маленький пушистый комочек тьмы с ярко-зелеными глазами."
 
 #: data/json/monsters/mammal.json
 msgid "black cat"
 msgid_plural "black cats"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "черный кот"
+msgstr[1] "черный кот"
+msgstr[2] "черный кот"
+msgstr[3] "черный кот"
 
 #. ~ Description for {'str': 'black cat'}
 #: data/json/monsters/mammal.json
 msgid ""
 "A black ball of fur with prominent green eyes staring right into your soul."
 msgstr ""
+"Черный комок меха с выпуклыми зелеными глазами, смотрящими прямо вам в душу."
 
 #: data/json/monsters/mammal.json
 msgid "chipmunk"
@@ -149521,10 +149716,10 @@ msgstr ""
 #: data/json/monsters/mammal.json
 msgid "foal"
 msgid_plural "foals"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "жеребенок"
+msgstr[1] "жеребенок"
+msgstr[2] "жеребенок"
+msgstr[3] "жеребенок"
 
 #. ~ Description for {'str': 'foal'}
 #: data/json/monsters/mammal.json
@@ -149533,6 +149728,9 @@ msgid ""
 "looking muscles.  This one is still a juvenile; it'll take a while before it"
 " can be ridden."
 msgstr ""
+"Копытное травоядное млекопитающее с гривой волос, размашистым хвостом и "
+"мощными на вид мускулами. Этот еще детеныши; пройдет некоторое время, прежде"
+" чем на нем можно будет ездить."
 
 #: data/json/monsters/mammal.json
 msgid "horse"
@@ -150264,10 +150462,10 @@ msgstr ""
 #: data/json/monsters/mutant_animal.json
 msgid "iridescent cat"
 msgid_plural "iridescent cats"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "переливающийся кот"
+msgstr[1] "переливающийся кот"
+msgstr[2] "переливающийся кот"
+msgstr[3] "переливающийся кот"
 
 #. ~ Description for {'str': 'iridescent cat'}
 #: data/json/monsters/mutant_animal.json
@@ -150275,14 +150473,17 @@ msgid ""
 "As it moves, this cat's colors shift unnaturally in the light.  You can't "
 "make out the breed, but its fur pattern seems to change with every step."
 msgstr ""
+"Когда он движется, цвета этого кота неестественно меняются на свету. Вы не "
+"можете определить породу, но рисунок его шерсти, кажется, меняется с каждым "
+"шагом."
 
 #: data/json/monsters/mutant_animal.json
 msgid "iridescent kitten"
 msgid_plural "iridescent kittens"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "переливающийся котенок"
+msgstr[1] "переливающийся котенок"
+msgstr[2] "переливающийся котенок"
+msgstr[3] "переливающийся котенок"
 
 #. ~ Description for {'str': 'iridescent kitten'}
 #: data/json/monsters/mutant_animal.json
@@ -150290,14 +150491,16 @@ msgid ""
 "In the light, this adorably tiny bundle of unkempt fluff is an ever-changing"
 " flurry of brilliant colors."
 msgstr ""
+"На свету этот очаровательно маленький комочек неопрятного пушка представляет"
+" собой постоянно меняющуюся россыпь ярких красок."
 
 #: data/json/monsters/mutant_animal.json
 msgid "void kitten"
 msgid_plural "void kittens"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "пустотный котенок"
+msgstr[1] "пустотный котенок"
+msgstr[2] "пустотный котенок"
+msgstr[3] "пустотный котенок"
 
 #. ~ Description for {'str': 'void kitten'}
 #: data/json/monsters/mutant_animal.json
@@ -150305,14 +150508,16 @@ msgid ""
 "This black ball of fur seems to absorb the light from its surroundings while"
 " looking criminally cute."
 msgstr ""
+"Этот черный комок меха, кажется, поглощает свет из окружающей среды, при "
+"этом выглядя преступно мило."
 
 #: data/json/monsters/mutant_animal.json
 msgid "void cat"
 msgid_plural "void cats"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "пустотный кот"
+msgstr[1] "пустотный кот"
+msgstr[2] "пустотный кот"
+msgstr[3] "пустотный кот"
 
 #. ~ Description for {'str': 'void cat'}
 #: data/json/monsters/mutant_animal.json
@@ -150320,6 +150525,9 @@ msgid ""
 "Seeing how unnaturally dark this black cat's fur is, you are certain this is"
 " no ordinary cat.  Its fur seems to absorb light from the surroundings."
 msgstr ""
+"Видя, насколько неестественно темный мех у этого черного кота, вы уверены, "
+"что это не обычный кот. Его мех, кажется, поглощает свет из окружающей "
+"среды."
 
 #: data/json/monsters/mutant_animal.json
 msgid "scaled bear"
@@ -150336,14 +150544,17 @@ msgid ""
 "problems turning around, but its sinuous movement is no slower than that of "
 "normal bears."
 msgstr ""
+"Этот медведь покрыт крупной черной чешуей. Кажется, у него есть небольшие "
+"проблемы с поворотом, но его извилистые движения не медленнее, чем у обычных"
+" медведей."
 
 #: data/json/monsters/mutant_animal.json
 msgid "Cerbearus"
 msgid_plural "Cerbearuss"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "Цербер"
+msgstr[1] "Цербер"
+msgstr[2] "Цербер"
+msgstr[3] "Цербер"
 
 #. ~ Description for {'str': 'Cerbearus'}
 #: data/json/monsters/mutant_animal.json
@@ -150351,14 +150562,16 @@ msgid ""
 "Sometime between the Cataclysm and now, this black bear has gained two extra"
 " heads.  This doesn't seem to have improved its disposition."
 msgstr ""
+"Где-то между Катаклизмом и сейчас этот черный медведь получил две "
+"дополнительные головы. Это, похоже, не улучшило его нрав."
 
 #: data/json/monsters/mutant_animal.json
 msgid "dambreaker"
 msgid_plural "dambreakers"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "Дамбрикер"
+msgstr[1] "Дамбрикер"
+msgstr[2] "Дамбрикер"
+msgstr[3] "Дамбрикер"
 
 #. ~ Description for {'str': 'dambreaker'}
 #: data/json/monsters/mutant_animal.json
@@ -150366,14 +150579,16 @@ msgid ""
 "This mutated beaver's size is almost double what it should be, and its back "
 "is covered with tough-looking bristles."
 msgstr ""
+"Размер этого мутировавшего бобра почти вдвое больше, чем должен быть, а его "
+"спина покрыта жесткой на вид щетиной."
 
 #: data/json/monsters/mutant_animal.json
 msgid "feaver"
 msgid_plural "feavers"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "Фиавер"
+msgstr[1] "Фиавер"
+msgstr[2] "Фиавер"
+msgstr[3] "Фиавер"
 
 #. ~ Description for {'str': 'feaver'}
 #: data/json/monsters/mutant_animal.json
@@ -150382,6 +150597,9 @@ msgid ""
 "particularly eyecatching pattern.  It must have been very lucky not to have "
 "been caught by a predator before now."
 msgstr ""
+"Тело этого мутанта-бобра покрыто яркими перьями с особенно привлекательным "
+"узором. Ему, должно быть, очень повезло, что его до сих пор не поймал "
+"хищник."
 
 #: data/json/monsters/mutant_animal.json
 msgid "grinning coyote"
@@ -150398,14 +150616,17 @@ msgid ""
 "an ordinary Northeastern coyote.  Closer inspection of its mouth reveals row"
 " after row of serrated, shark-like teeth."
 msgstr ""
+"Если бы не деформированная морда и видимые зубы, это выглядело бы как "
+"обычный северо-восточный койот. При более близком рассмотрении его рта можно"
+" увидеть ряд за рядом зазубренных, похожих на акульи, зубов."
 
 #: data/json/monsters/mutant_animal.json
 msgid "slavering coyote"
 msgid_plural "slavering coyotes"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "бродячий койот"
+msgstr[1] "бродячих койота"
+msgstr[2] "бродячих койотов"
+msgstr[3] "бродячие койоты"
 
 #. ~ Description for {'str': 'slavering coyote'}
 #: data/json/monsters/mutant_animal.json
@@ -150413,14 +150634,16 @@ msgid ""
 "Unnatural bulges line the neck of this obviously-mutated coyote; green-"
 "tinted foam flecks from its lips, and there's a crazed look in its eyes."
 msgstr ""
+"На шее этого явно мутировавшего койота появились неестественные выпуклости, "
+"с губ стекает пена зеленого цвета, а в глазах безумный взгляд."
 
 #: data/json/monsters/mutant_animal.json
 msgid "dire wolf"
 msgid_plural "dire wolfs"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "ужасный волк"
+msgstr[1] "ужасный волк"
+msgstr[2] "ужасный волк"
+msgstr[3] "ужасный волк"
 
 #. ~ Description for {'str': 'dire wolf'}
 #: data/json/monsters/mutant_animal.json
@@ -150429,14 +150652,17 @@ msgid ""
 "teeth give steak knives a run for their money, and it definitely doesn't "
 "look friendly."
 msgstr ""
+"Этот волк вырос до ужасающих размеров, соперничая с небольшим автомобилем. "
+"Его зубы могут составить конкуренцию ножам для стейков, и он определенно не "
+"выглядит дружелюбным."
 
 #: data/json/monsters/mutant_animal.json
 msgid "spideer"
 msgid_plural "spideers"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "Пауколень"
+msgstr[1] "Пауколень"
+msgstr[2] "Пауколень"
+msgstr[3] "Пауколень"
 
 #. ~ Description for {'str': 'spideer'}
 #: data/json/monsters/mutant_animal.json
@@ -150444,14 +150670,17 @@ msgid ""
 "This once-ordinary deer has grown a disturbingly agile array of extra limbs,"
 " plus three extra eyes.  Its antlers wriggle subtly in the wind."
 msgstr ""
+"Этот некогда обычный олень отрастил пугающе подвижный набор дополнительных "
+"конечностей, плюс три дополнительных глаза. Его рога едва заметно извиваются"
+" на ветру."
 
 #: data/json/monsters/mutant_animal.json
 msgid "spideer fawn"
 msgid_plural "spideer fawns"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "Паколень оленёнок"
+msgstr[1] "Паколень оленёнок"
+msgstr[2] "Паколень оленёнок"
+msgstr[3] "Паколень оленёнок"
 
 #. ~ Description for {'str': 'spideer fawn'}
 #: data/json/monsters/mutant_animal.json
@@ -150459,14 +150688,16 @@ msgid ""
 "This obviously mutated adolescent deer moves unsteadily on its eight legs, "
 "nervously scanning the area with all five eyes."
 msgstr ""
+"Этот явно мутировавший молодой олень неуверенно передвигается на своих "
+"восьми ногах, нервно осматривая местность всеми пятью глазами."
 
 #: data/json/monsters/mutant_animal.json
 msgid "mongrel"
 msgid_plural "mongrels"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "дворняга"
+msgstr[1] "дворняги"
+msgstr[2] "дворняг"
+msgstr[3] "дворняги"
 
 #. ~ Description for {'str': 'mongrel'}
 #: data/json/monsters/mutant_animal.json
@@ -150475,6 +150706,9 @@ msgid ""
 "wiry hair is patchy, revealing scales underneath, but it still happily wags "
 "its tails anyways."
 msgstr ""
+"Эта собака неопознанной породы выглядит так, будто уже пережила свои лучшие "
+"дни. Её жесткая шерсть растрепана, под ней видны оспины, но она все равно "
+"радостно виляет хвостом."
 
 #: data/json/monsters/mutant_human.json
 msgid "C.H.U.D."
@@ -151798,10 +152032,10 @@ msgstr ""
 #: data/json/monsters/turrets.json
 msgid "anti-materiel milspec turret"
 msgid_plural "anti-materiel milspec turrets"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "противотанковая турель военного образца"
+msgstr[1] "противотанковая турель военного образца"
+msgstr[2] "противотанковая турель военного образца"
+msgstr[3] "противотанковая турель военного образца"
 
 #. ~ Description for {'str': 'anti-materiel milspec turret'}
 #: data/json/monsters/turrets.json
@@ -151812,6 +152046,11 @@ msgid ""
 "recognition system and M2HB makes a deadly combination for anything short of"
 " an armored vehicle."
 msgstr ""
+"General Atomics TX-10 Heavy, автоматизированная турель военного образца, "
+"оснащенная пулеметом M2HB. Разработанная для легких транспортных средств или"
+" врагов за укрытием, она использует мощный и вездесущий .50 BMG. Ее "
+"усовершенствованная система распознавания целей и M2HB создают смертельную "
+"комбинацию для всего, кроме бронированной машины."
 
 #: data/json/monsters/utility_bot.json
 #: data/mods/Modular_Turrets/monster_override.json
@@ -152375,10 +152614,10 @@ msgstr "Этот зомби выглядит массивно и одет в о�
 #: data/json/monsters/zed-pupating.json
 msgid "pupating zombie crawler"
 msgid_plural "pupating zombie crawlers"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "окуклившийся зомби-ползун"
+msgstr[1] "окуклившийся зомби-ползун"
+msgstr[2] "окуклившийся зомби-ползун"
+msgstr[3] "окуклившийся зомби-ползун"
 
 #. ~ Description for {'str': 'pupating zombie crawler'}
 #: data/json/monsters/zed-pupating.json
@@ -152387,14 +152626,17 @@ msgid ""
 "everything neck down.  Beneath the wrapping there is strange rhythmic "
 "movement grotesque to behold."
 msgstr ""
+"Эта половина человеческого трупа обернута липкими черными волокнами, которые"
+" покрывают все от шеи до низа. Под оберткой есть странное ритмичное "
+"движение, гротескное для созерцания."
 
 #: data/json/monsters/zed-pupating.json
 msgid "pupating zombie"
 msgid_plural "pupating zombies"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "окуклившийся зомби"
+msgstr[1] "окуклившийся зомби"
+msgstr[2] "окуклившийся зомби"
+msgstr[3] "окуклившийся зомби"
 
 #. ~ Description for {'str': 'pupating zombie'}
 #: data/json/monsters/zed-pupating.json
@@ -152403,14 +152645,17 @@ msgid ""
 "neck down.  Beneath the wrapping there is strange rhythmic movement "
 "grotesque to behold."
 msgstr ""
+"Этот человеческий труп обернут в липкие черные волокна, которые покрывают "
+"все от шеи до низа. Под оберткой есть странное ритмичное движение, "
+"гротескное для созерцания."
 
 #: data/json/monsters/zed-pupating.json
 msgid "shady pupating zombie"
 msgid_plural "shady pupating zombies"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "теневой окуклившийся зомби"
+msgstr[1] "теневой окуклившийся зомби"
+msgstr[2] "теневой окуклившийся зомби"
+msgstr[3] "теневой окуклившийся зомби"
 
 #. ~ Description for {'str': 'shady pupating zombie'}
 #: data/json/monsters/zed-pupating.json
@@ -152419,14 +152664,17 @@ msgid ""
 "what once may have been a human being, but its edges bulge rhythmically in "
 "places that are not anatomically possible for humans."
 msgstr ""
+"Жуткая тень окутывает это существо. Вы можете различить очертания того, что "
+"когда-то могло быть человеком, но его края ритмично выпирают в местах, "
+"которые анатомически невозможны для людей."
 
 #: data/json/monsters/zed-winged.json
 msgid "batwing zombie"
 msgid_plural "batwing zombies"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "Ночничный зомби"
+msgstr[1] "Ночничный зомби"
+msgstr[2] "Ночничный зомби"
+msgstr[3] "Ночничный зомби"
 
 #. ~ Description for {'str': 'batwing zombie'}
 #: data/json/monsters/zed-winged.json
@@ -152435,14 +152683,17 @@ msgid ""
 "lengthened into a gruesome fleshy membrane.  The mutation does not suit it "
 "well: it moves clumsily, even compared to other zombies."
 msgstr ""
+"Руки этого зомби вытянулись далеко за пределы человеческих возможностей, "
+"кожа удлинилась в отвратительную мясистую мембрану. Мутация ему не подходит:"
+" он двигается неуклюже, даже по сравнению с другими зомби."
 
 #: data/json/monsters/zed-winged.json
 msgid "garghoul"
 msgid_plural "garghouls"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "гаргуль"
+msgstr[1] "гаргуль"
+msgstr[2] "гаргуль"
+msgstr[3] "гаргуль"
 
 #. ~ Description for {'str': 'garghoul'}
 #: data/json/monsters/zed-winged.json
@@ -152453,14 +152704,19 @@ msgid ""
 "to be able to truly fly, it uses its mutated arms to make shockingly fast "
 "leaps through the air."
 msgstr ""
+"Руки этого зомби вытянулись далеко за пределы человеческих возможностей, "
+"кожа удлинилась в отвратительную мясистую мембрану. Остальное стало "
+"истощенным, тонкими, похожими на веревки мышцами, разрывающими тугую плоть. "
+"Хотя он, похоже, не может по-настоящему летать, он использует свои "
+"мутировавшие руки, чтобы совершать шокирующе быстрые прыжки в воздухе."
 
 #: data/json/monsters/zed-winged.json
 msgid "flesh-raptor"
 msgid_plural "flesh-raptors"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "мясной-раптор"
+msgstr[1] "мясной-раптор"
+msgstr[2] "мясной-раптор"
+msgstr[3] "мясной-раптор"
 
 #. ~ Description for {'str': 'flesh-raptor'}
 #: data/json/monsters/zed-winged.json
@@ -152470,14 +152726,19 @@ msgid ""
 "sheer jagged spike.  It looks like nothing you've seen on Earth, and yet "
 "strangely like it was made of human parts."
 msgstr ""
+"Этот маленький крылатый хищник носится по воздуху на трех тонкошерстных "
+"крыльях, похожих на вытянутые человеческие руки. Там, где крылья сходятся, "
+"торчит огромный зазубренный шип. Он не похож ни на что, что вы видели на "
+"Земле, и в то же время кажется странным, что он сделан из человеческих "
+"частей."
 
 #: data/json/monsters/zed-winged.json
 msgid "shadow raptor"
 msgid_plural "shadow raptors"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "теневой раптор"
+msgstr[1] "теневой раптор"
+msgstr[2] "теневой раптор"
+msgstr[3] "теневой раптор"
 
 #. ~ Description for {'str': 'shadow raptor'}
 #: data/json/monsters/zed-winged.json
@@ -152485,14 +152746,16 @@ msgid ""
 "An uncanny shadow envelops this creature.  You can make out the outline of "
 "three flapping wings connected to a jagged pointed object."
 msgstr ""
+"Жуткая тень окутывает это существо. Вы можете различить очертания трех "
+"хлопающих крыльев, соединенных с зазубренным острым предметом."
 
 #: data/json/monsters/zed-winged.json
 msgid "unstable flesh-raptor"
 msgid_plural "unstable flesh-raptor"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "нестабильный мясной-раптор "
+msgstr[1] "нестабильный мясной-раптор "
+msgstr[2] "нестабильный мясной-раптор "
+msgstr[3] "нестабильный мясной-раптор "
 
 #. ~ Description for {'str_sp': 'unstable flesh-raptor'}
 #: data/json/monsters/zed-winged.json
@@ -152501,14 +152764,17 @@ msgid ""
 "wings that look like stretched human hands.  Where the wings meet juts a "
 "jagged spike and a bloated fleshy belly."
 msgstr ""
+"Этот маленький крылатый хищник мчится по воздуху на трех крыльях с тонкими "
+"волосками, которые выглядят как вытянутые человеческие руки. Там, где "
+"встречаются крылья, торчит зазубренный шип и раздутое мясистое брюхо."
 
 #: data/json/monsters/zed-winged.json
 msgid "zaptor"
 msgid_plural "zaptors"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "заптор"
+msgstr[1] "заптор"
+msgstr[2] "заптор"
+msgstr[3] "заптор"
 
 #. ~ Description for {'str': 'zaptor'}
 #: data/json/monsters/zed-winged.json
@@ -152517,6 +152783,9 @@ msgid ""
 "wings that look like stretched human hands.  Where the wings meet juts a "
 "jagged spike with a pulsing electrical glow."
 msgstr ""
+"Этот маленький крылатый хищник мчится по воздуху на трех крыльях с тонкими "
+"волосками, которые выглядят как вытянутые человеческие руки. Там, где крылья"
+" встречаются, торчит зазубренный шип с пульсирующим электрическим свечением."
 
 #: data/json/monsters/zed_acid.json
 msgid "acidic zombie"
@@ -155605,16 +155874,16 @@ msgstr "Яд"
 #. ~ Description for {'str': 'Poison'}
 #: data/json/mutations/mutation_spells.json
 msgid "Poisons the target."
-msgstr ""
+msgstr "Отравляет цель."
 
 #: data/json/mutations/mutation_spells.json
 msgid "Paralyzing Poison"
-msgstr ""
+msgstr "Парализующий яд"
 
 #. ~ Description for {'str': 'Paralyzing Poison'}
 #: data/json/mutations/mutation_spells.json
 msgid "Slows the target."
-msgstr ""
+msgstr "Замедляет цель."
 
 #: data/json/mutations/mutations.json
 msgid "Fleet-Footed"
@@ -157063,7 +157332,7 @@ msgstr "Улучшенное ночное зрение"
 #. ~ Description for {'str': 'High Night Vision'}
 #: data/json/mutations/mutations.json
 msgid "You can see incredibly well in the dark!"
-msgstr ""
+msgstr "Вы невероятно хорошо видите в темноте!"
 
 #: data/json/mutations/mutations.json
 msgid "Full Night Vision"
@@ -157075,6 +157344,8 @@ msgid ""
 "You can see in pitch blackness as if you were wearing night-vision goggles, "
 "and read in darkness as one can in dim lighting."
 msgstr ""
+"Вы можете видеть в кромешной тьме, как будто на вас надеты очки ночного "
+"видения, и читать в темноте так же, как при тусклом освещении."
 
 #: data/json/mutations/mutations.json
 msgid "Cephalopod Eyes"
@@ -157314,6 +157585,9 @@ msgid ""
 "We have begun adapting local physiology to Mycus physical structure, greatly"
 " reducing wet effects and granting this vessel 1 cut and 2 bash armor."
 msgstr ""
+"Мы начали адаптировать местную физиологию к физической структуре Микуса, "
+"значительно уменьшив эффекты влаги и предоставив этому сосуду 1 рубящую и 2 "
+"ударную броню."
 
 #: data/json/mutations/mutations.json
 msgid "Mycus Fireproofing"
@@ -157327,6 +157601,10 @@ msgid ""
 "moderate amount, but provides 2 cut 3 bash 1 bullet armor across our body, "
 "nullifies wet effects, and provides complete protection from fire."
 msgstr ""
+"Мы соединили плотные амфиболовые волокна основных башен Микуса с упругой, "
+"адаптивной плотью местной физиологии. Это снижает нашу скорость на умеренную"
+" величину, но обеспечивает броню 2 пореза, 3 удара, 1 пули по всему телу, "
+"сводит на нет эффекты намокания и обеспечивает полную защиту от огня."
 
 #: data/json/mutations/mutations.json
 msgid "Mycogenesis"
@@ -157342,6 +157620,13 @@ msgid ""
 "spreads spores around us as we sleep and revitalizes our body much more "
 "quickly than regular sleep."
 msgstr ""
+"Локальная физиология полностью интегрирована с физиологией силикатных "
+"волокон Микуса. В дополнение к преимуществам, полученным в результате "
+"предыдущих разработок, а также к броне с защитой от 3 порезов, 5 ударов и 2 "
+"пуль, мы можем объединиться с волокнами Микуса под нами — сон на поверх "
+"грибковых зон помещает нас в состояние покоя, которое распространяет споры "
+"вокруг нас, пока мы спим, и восстанавливает наше тело гораздо быстрее, чем "
+"обычный сон."
 
 #: data/json/mutations/mutations.json
 msgid "Scales"
@@ -157353,6 +157638,9 @@ msgid ""
 "A set of flexible green scales has grown to cover your body, acting as 3 "
 "points of natural armor across your body.  Somewhat reduces wet effects."
 msgstr ""
+"Набор гибких зеленых чешуек вырос, чтобы покрыть ваше тело, действуя как 3 "
+"очка естественной брони по всему телу. Несколько уменьшает эффекты от "
+"намокания."
 
 #: data/json/mutations/mutations.json
 msgid "Thick Scales"
@@ -157366,6 +157654,10 @@ msgid ""
 "flexibility, resulting in a -2 penalty to Dexterity.  Greatly reduces wet "
 "effects."
 msgstr ""
+"Набор тяжелых зеленых чешуек вырос, чтобы покрыть ваше тело, выступая в "
+"качестве 10 очков естественной брони. Хотя его трудно пробить, он также "
+"ограничивает вашу гибкость, что приводит к штрафу -2 к Ловкости. Значительно"
+" снижает эффекты намокания."
 
 #: data/json/mutations/mutations.json
 msgid "Sleek Scales"
@@ -157378,6 +157670,9 @@ msgid ""
 " act as 2 points of weak natural armor, improve your ability to swim, and "
 "make you difficult to grab.  Mostly reduces wet effects."
 msgstr ""
+"Набор очень гибких и скользких чешуек вырос, чтобы покрыть ваше тело. Они "
+"действуют как 2 очка слабой естественной брони, улучшают ваши способности "
+"плавать и затрудняют захват. В основном уменьшают эффекты намокания."
 
 #: data/json/mutations/mutations.json
 msgid "Light Bones"
@@ -157405,6 +157700,9 @@ msgid ""
 " of armor against bash attacks and minor protection from cold.  They also "
 "provide a natural waterproofing."
 msgstr ""
+"Радужные перья выросли и покрывают все ваше тело, обеспечивая 3 очка брони "
+"против ударных атак и небольшую защиту от холода. Они также обеспечивают "
+"естественную водонепроницаемость."
 
 #: data/json/mutations/mutations.json
 msgid "Down"
@@ -157442,6 +157740,8 @@ msgid ""
 "Thick black fur has grown to cover your entire body, providing 3 points of "
 "armor against bashing attacks, and considerable protection from cold."
 msgstr ""
+"Густой черный мех покрывает все ваше тело, обеспечивая 3 очка защиты от "
+"ударов и значительную защиту от холода."
 
 #: data/json/mutations/mutations.json
 #: data/mods/Aftershock/mutations/obsolete.json
@@ -157467,6 +157767,8 @@ msgid ""
 "Dense gray fur has grown to cover your entire body, providing a 3 points of "
 "armor against bashing attacks, and considerable protection from cold."
 msgstr ""
+"Густой серый мех покрывает все ваше тело, обеспечивая 3 очка брони от ударов"
+" и значительную защиту от холода."
 
 #: data/json/mutations/mutations.json
 msgid "Sleek Fur"
@@ -157498,6 +157800,8 @@ msgid ""
 "Your skin has mutated into an amalgamation of fur and scales, providing 2 "
 "points of armor across your entire body."
 msgstr ""
+"Ваша кожа превратилась в смесь меха и чешуи, обеспечивающую 2 очка брони по "
+"всему телу."
 
 #: data/json/mutations/mutations.json
 msgid "Thickened Patchwork Skin"
@@ -157509,6 +157813,8 @@ msgid ""
 "Your skin has mutated into an amalgamation of thickened fur and scales, "
 "providing 5 points of armor across your entire body."
 msgstr ""
+"Ваша кожа превратилась в смесь густого меха и чешуи, обеспечивая 5 очков "
+"брони по всему телу."
 
 #: data/json/mutations/mutations.json
 msgid "Chitinous Skin"
@@ -157521,6 +157827,8 @@ msgid ""
 "provides 5 points of protection from physical attacks.  Slightly reduces wet"
 " effects."
 msgstr ""
+"Ваш эпидермис превратился в тонкий, гибкий слой хитина. Он обеспечивает 5 "
+"очков защиты от физических атак. Немного снижает воздействие влаги."
 
 #: data/json/mutations/mutations.json
 msgid "Chitinous Armor"
@@ -157533,6 +157841,9 @@ msgid ""
 " 8 points of armor across your entire body, but reduces your Dexterity by 1."
 "  Somewhat reduces wet effects."
 msgstr ""
+"Вы вырастили хитиновый экзоскелет, очень похожий на тот, что у насекомого. "
+"Он обеспечивает 8 очков брони по всему телу, но снижает вашу Ловкость на 1. "
+"Несколько снижает эффекты намокания."
 
 #: data/json/mutations/mutations.json
 msgid "Chitinous Plate"
@@ -157546,6 +157857,10 @@ msgid ""
 "and encumbers all body parts but your eyes and mouth.  Greatly reduces wet "
 "effects."
 msgstr ""
+"Вы вырастили хитиновый экзоскелет из толстых, жестких пластин. Он "
+"обеспечивает 12 очков брони по всему телу, но снижает вашу Ловкость на 1 и "
+"обременяет все части тела, кроме глаз и рта. Значительно снижает эффекты "
+"намокания."
 
 #: data/json/mutations/mutations.json
 msgid "Hairy Chitin"
@@ -157558,6 +157873,8 @@ msgid ""
 "warmer than not having hair, and provides 5 points of armor across your "
 "body."
 msgstr ""
+"У вас выросло что-то вроде волос, растущих из хитина. Это немного теплее, "
+"чем отсутствие волос, и обеспечивает 5 очков брони по всему телу."
 
 #: data/json/mutations/mutations.json
 msgid "Furred Chitin"
@@ -157569,6 +157886,9 @@ msgid ""
 "Your chitin hair has thickened and spread across your body.  It provides 7 "
 "physical armor across your body, plus another 10 bash armor."
 msgstr ""
+"Ваши хитиновые волосы утолщаются и распространяются по всему телу. Они "
+"обеспечивают 7 очков физической брони по всему телу, плюс еще 10 очков "
+"ударной брони."
 
 #: data/json/mutations/mutations.json
 msgid "Furred Plate"
@@ -157581,6 +157901,9 @@ msgid ""
 "15 bash armor, imposing a further -1 to Dexterity, and boasts a fine coat of"
 " hairs that put feline whiskers to shame."
 msgstr ""
+"Ваш экзоскелет значительно укрепился, обеспечивая 10 физической брони и 15 "
+"ударной брони, что дополнительно снижает ловкость на 1 , а также может "
+"похвастаться тонким волосяным покровом, который затмит даже кошачьи усы."
 
 #: data/json/mutations/mutations.json
 msgid "Urticating Hairs"
@@ -157649,6 +157972,10 @@ msgid ""
 "helps you retain moisture, resulting in less thirst.  Greatly decreases wet "
 "penalties."
 msgstr ""
+"Ваша кожа светло-зеленая и имеет слегка древесный оттенок. Это дает 2 очка "
+"защиты от порезов и колющих ударов и 1 очко баллистической защиты, а также "
+"помогает вам удерживать влагу, что приводит к уменьшению жажды. Значительно "
+"снижает штрафы за намокание."
 
 #: data/json/mutations/mutations.json
 msgid "Bark"
@@ -157661,6 +157988,9 @@ msgid ""
 "points of cutting and piercing damage, 4 points of ballistic armor, and one "
 "point of protection from fire.  Greatly reduces wet effects."
 msgstr ""
+"Ваша кожа покрыта легкой корой, как у дерева. Это обеспечивает 5 очков "
+"режущего и колющего урона, 4 очка баллистической брони и одно очко защиты от"
+" огня. Значительно снижает воздействие влаги."
 
 #: data/json/mutations/mutations.json
 msgid "Thorns"
@@ -158249,6 +158579,9 @@ msgid ""
 "more damage and provides 10 points of natural armor to your feet; however, "
 "you cannot wear shoes of any kind.  Reduces wet effects."
 msgstr ""
+"Ваши ноги срослись в копыта. Это позволяет ударам ногами наносить гораздо "
+"больше урона и дает вашим ногам 10 единиц естественной брони; однако вы не "
+"можете носить обувь любого типа. Уменьшает воздействие влаги."
 
 #: data/json/mutations/mutations.json
 msgid "You kick %s with your hooves"
@@ -159467,6 +159800,9 @@ msgid ""
 " more vulnerable to bashing damage by -3 points of armor.  You'll show them "
 "the REAL meaning of 'gray goo'!"
 msgstr ""
+"Ваш мозг развился за пределы человеческого воображения, хотя ваше тело стало"
+" более уязвимым к ударному урону на -3 очка брони. Вы покажете им НАСТОЯЩИЙ "
+"смысл слова «серая слизь»!"
 
 #: data/json/mutations/mutations.json
 msgid "Perceptive"
@@ -160422,6 +160758,8 @@ msgid ""
 "Your body's slime output has become sticky and gel-like.  Provides 2 points "
 "of acid protection.  Greatly increases wet benefits."
 msgstr ""
+"Выделение слизи вашим телом стало липким и гелеобразным. Обеспечивает 2 очка"
+" защиты от кислоты. Значительно увеличивает преимущества от мокроты."
 
 #: data/json/mutations/mutations.json
 msgid "Amorphous Body"
@@ -160435,6 +160773,10 @@ msgid ""
 "leg-equivalents flow comfortably - if a little slower than your old meat-"
 "legs."
 msgstr ""
+"Ваша плоть имеет приятную гелеобразную консистенцию, обеспечивая 4 очка "
+"защиты от ударов по всему телу. Кажется, что функции вашего тела меняются, и"
+" ваши эквиваленты ног текут комфортно, хотя и немного медленнее, чем ваши "
+"старые мясные ноги."
 
 #: data/json/mutations/mutations.json
 msgid "Omnicellular"
@@ -160793,6 +161135,9 @@ msgid ""
 "waterproof your arms and provide 1 point of bashing armor, but really get in"
 " the way.  They're simply too small to help you in the air."
 msgstr ""
+"Ваши руки выросли из ярких перьев. Они эффективно защищают ваши руки от воды"
+" и обеспечивают 1 очко ударной брони, но на самом деле мешают. Они просто "
+"слишком малы, чтобы помочь вам в воздухе."
 
 #: data/json/mutations/mutations.json
 msgid "Insect Limbs"
@@ -160922,6 +161267,10 @@ msgid ""
 "5 bullet armor.  You find you can use the empty space as 16 storage space, "
 "but cannot wear anything on your torso.  Somewhat reduces wet effects."
 msgstr ""
+"Вы вырастили толстый панцирь на своем туловище, обеспечивающий 6 ударных, 14"
+" режущих и 5 брони от пуль. Вы обнаружите, что можете использовать пустое "
+"пространство как 16 мест для хранения вещей, но не можете ничего носить на "
+"своем туловище. Несколько снижает эффекты намокания."
 
 #: data/json/mutations/mutations.json
 msgid "Roomy Shell"
@@ -160935,6 +161284,10 @@ msgid ""
 "pull your head and limbs into your shell, trading mobility and vision for "
 "warmth and shelter."
 msgstr ""
+"Ваша защитная оболочка стала достаточно большой, чтобы вместить — при "
+"необходимости — все ваше тело, обеспечивая 9 ударных, 17 режущих и 5 пулевых"
+" брони. Активируйте, чтобы втянуть голову и конечности в оболочку, "
+"пожертвовав подвижностью и зрением ради тепла и защиты."
 
 #: data/json/mutations/mutations.json
 msgid "Leg Tentacles"
@@ -161222,6 +161575,9 @@ msgid ""
 " most of your body and maintaining heat and allowing you to better tolerate "
 "cold temperatures."
 msgstr ""
+"Ваш мех укроет вас зимой, обеспечивая 1 очко защиты от ударов по большей "
+"части вашего тела, сохраняя тепло и позволяя вам лучше переносить холодные "
+"температуры."
 
 #: data/json/mutations/mutations.json
 msgid "Rabbit Feet"
@@ -161235,6 +161591,10 @@ msgid ""
 "Emphasis on little.  It also offers some warmth, and the lucky part is but "
 "superstition.  The downside is you are unable to wear shoes."
 msgstr ""
+"Ваши ноги превратились в сильные и большие кроличьи лапы. Это делает ваши "
+"удары немного более мощными и дает вашим ногам 1 ударную броню. Акцент на "
+"малом. Это также обеспечивает некоторое тепло, и удачная часть — это всего "
+"лишь суеверие. Недостаток в том, что вы не можете носить обувь."
 
 #: data/json/mutations/mutations.json
 msgid "You kick %s with your large feet"
@@ -161359,6 +161719,11 @@ msgid ""
 "provides 3 cut and 1 bash armor.  It also allows you to sleep with your eyes"
 " open!  Activate to cause the approach of hostile creatures to wake you up."
 msgstr ""
+"Как и у настоящей рыбы, у ваших глаз нет век, вместо этого они покрыты "
+"полупрозрачной защитной мембраной, которая блокирует раздражители и воду, а "
+"также обеспечивает броню от 3 порезов и 1 удара. Это также позволяет вам "
+"спать с открытыми глазами! Активируйте, чтобы разбудить вас приближением "
+"враждебных существ."
 
 #: data/json/mutations/mutations.json
 msgid "Aqueous Repose"
@@ -162618,6 +162983,11 @@ msgid ""
 "converse normally via a radio, but obviously we can't trade items and I "
 "can't train you."
 msgstr ""
+"Если и у тебя, и у меня есть рация, ты можешь использовать интерфейс фракции"
+" ('#' по умолчанию), чтобы связаться со мной. Я отвечу, если я не слишком "
+"далеко и если сигнал ничего не блокирует. Мы можем говорить по рации как "
+"обычно, но конечно, не сможем обменяться предметами, и я не смогу тебя "
+"тренировать."
 
 #: data/json/npcs/TALK_ALLY_TUTORIAL.json
 msgid ""
@@ -162746,6 +163116,9 @@ msgid ""
 "  Now depending on where I am and where I'm going, it may take me a while to get there.  I'll dodge any dangers on the way, don't worry about that, but if you're way the heck away from me and tell me to come, it may be a while until I get to you.\n"
 "  I'll move faster if I'm horseback."
 msgstr ""
+"Если ты вызовешь меня по рации, ты можешь приказать мне прийти к тебе. Я отправлюсь в путь, и стану на страже, когда доберусь. \n"
+"  Это может занять какое-то время в зависимости от того, где я и куда я иду. Я буду избегать любых опасностей по пути, не беспокойся, но если ты у чёрта на рогах и зовёшь меня, придётся изрядно подождать, пока я не приду.\n"
+"  Верхом я доберусь быстрее."
 
 #: data/json/npcs/TALK_ALLY_TUTORIAL.json
 msgid "You can ride a horse?"
@@ -168549,6 +168922,9 @@ msgid ""
 "<color_red>hospital</color> and locate a centrifuge to analyze the blood "
 "with."
 msgstr ""
+"Используйте <color_light_blue>набор для взятия крови </color>, чтобы  "
+"извлечь кровь из зомби. После этого принесите образец крови в "
+"<color_red>госпиталь</color> и воспользуйтесь центрифугой для его анализа."
 
 #: data/json/npcs/missiondef.json
 #: data/json/npcs/refugee_center/surface_staff/NPC_old_guard_doctor.json
@@ -169458,6 +169834,11 @@ msgid ""
 "harvesting cattail stalks or other plants.  <color_light_blue>Bring back the"
 " provided bag</color> as well."
 msgstr ""
+"Соберите на болоте <color_light_blue>20 стеблей рогоза</color> и принесите "
+"их обратно, чтобы <color_light_red>научиться готовить желе из "
+"рогоза</color>.  Поднимите ваш <color_light_blue>навык выживания хотя бы до "
+"уровня 1</color> сбором стеблей рогоза или других растений. Также "
+"<color_light_blue>верните выданную сумку</color>."
 
 #: data/json/npcs/missiondef.json
 msgid ""
@@ -169477,6 +169858,10 @@ msgid ""
 "collect 20 cattail stalks, and bring them back here.  In exchange, I'll show"
 " you how to harvest the jelly."
 msgstr ""
+"Ты в курсе, что из рогоза можно получить желе, пригодное как антисептик и "
+"анестетик? Что-то подобное нынче здорово пригодится. Возьми этот мешок, "
+"ступай на ближайшее болото, собери 20 стеблей рогоза и принеси их мне. В "
+"обмен я научу тебя делать желе."
 
 #: data/json/npcs/missiondef.json
 msgid ""
@@ -170725,7 +171110,7 @@ msgstr "Такая усталость…"
 
 #: data/json/npcs/talk_tags.json
 msgid "I'm <very> tired."
-msgstr "Я <very> уставши."
+msgstr "Я <very> уставший."
 
 #: data/json/npcs/talk_tags.json
 msgid "I'm <swear> tired."
@@ -177494,39 +177879,39 @@ msgstr ""
 
 #: data/json/npcs/cabin_chemist/cabin_chemist.json
 msgid "[10$]  I'll buy some bandages."
-msgstr ""
+msgstr "[10$] Я куплю несколько бинтов."
 
 #: data/json/npcs/cabin_chemist/cabin_chemist.json
 msgid "[40$]  I'll buy some aspirin."
-msgstr ""
+msgstr "[40$] Я куплю аспирин."
 
 #: data/json/npcs/cabin_chemist/cabin_chemist.json
 msgid "[50$]  I'll buy some sprayable fungicide."
-msgstr ""
+msgstr "[50$] Я куплю распыляемый фунгицид."
 
 #: data/json/npcs/cabin_chemist/cabin_chemist.json
 msgid "[50$]  I'll buy some powder fungicide."
-msgstr ""
+msgstr "[50$] Я куплю порошковый фунгицид."
 
 #: data/json/npcs/cabin_chemist/cabin_chemist.json
 msgid "[50$]  I'll buy some disinfectant."
-msgstr ""
+msgstr "[50$] Я куплю дезинфицирующее средство."
 
 #: data/json/npcs/cabin_chemist/cabin_chemist.json
 msgid "[120$]  I'll buy some antibiotics."
-msgstr ""
+msgstr "[120$] Я куплю антибиотики."
 
 #: data/json/npcs/cabin_chemist/cabin_chemist.json
 msgid "[140$]  I'll buy some antifungal drugs."
-msgstr ""
+msgstr "[140$] Я куплю противогрибковые препараты."
 
 #: data/json/npcs/cabin_chemist/cabin_chemist.json
 msgid "[200$]  I'll buy some black gunpowder."
-msgstr ""
+msgstr "[200$] Я куплю немного черного пороха."
 
 #: data/json/npcs/cabin_chemist/cabin_chemist.json
 msgid "[300$]  I'll buy some napalm."
-msgstr ""
+msgstr "[300$] Я куплю напалм."
 
 #: data/json/npcs/cabin_chemist/cabin_chemist.json
 msgid "Is there anything else you need?"
@@ -177539,16 +177924,16 @@ msgstr "Не, на этом всё."
 
 #: data/json/npcs/cabin_chemist/chemist_missions.json
 msgid "Find A Basic Analysis Kit"
-msgstr ""
+msgstr "Найдите набор для базового лабораторного анализа"
 
 #. ~ Description for mission 'Find A Basic Analysis Kit'
 #: data/json/npcs/cabin_chemist/chemist_missions.json
 msgid "Obtain a basic laboratory analysis kit for the chemist."
-msgstr ""
+msgstr "Найти набор для базового лабораторного анализа для химика."
 
 #: data/json/npcs/cabin_chemist/chemist_missions.json
 msgid "I need a basic laboratory analysis kit."
-msgstr ""
+msgstr "Мне нужен набор для базового лабораторного анализа."
 
 #: data/json/npcs/cabin_chemist/chemist_missions.json
 msgid ""
@@ -177558,21 +177943,26 @@ msgid ""
 "analysis kit just to get started, I'd be grateful.  That's the first step "
 "towards making everything I brought with me useful."
 msgstr ""
+"Я осмотрел запасы в этом доме, и оказалось, что мне нужно несколько единиц "
+"оборудования. Во-первых, мне нужен надёжный способ проводить измерения и "
+"проверять результаты. Если бы ты мог достать мне набор для базового "
+"лабораторного анализа, для начала, я был бы тебе благодарен. Это первый шаг "
+"к тому, чтобы всё, что я привёз с собой, стало полезным."
 
 #: data/json/npcs/cabin_chemist/chemist_missions.json
 #: data/json/npcs/lumberyard/lumbermill_missions.json
 #: data/json/npcs/scrap_trader/scrap_trader_missions.json
 msgid "I'll be here when you get back.  Good luck!"
-msgstr ""
+msgstr "Буду здесь, ждать твоего возвращения. Удачи!"
 
 #: data/json/npcs/cabin_chemist/chemist_missions.json
 #: data/json/npcs/lumberyard/lumbermill_missions.json
 msgid "Well, someone's got to do it."
-msgstr ""
+msgstr "Ну, кто-то же должен это сделать."
 
 #: data/json/npcs/cabin_chemist/chemist_missions.json
 msgid "One of those old labs might have one."
-msgstr ""
+msgstr "В одной из старых лабораторий может быть такой."
 
 #: data/json/npcs/cabin_chemist/chemist_missions.json
 msgid "Do you have it?"
@@ -177584,11 +177974,11 @@ msgstr "Спасибо! Не могу дождаться возможности 
 
 #: data/json/npcs/cabin_chemist/chemist_missions.json
 msgid "Thanks for trying… I guess."
-msgstr ""
+msgstr "Спасибо за попытку… Наверное."
 
 #: data/json/npcs/cabin_chemist/chemist_missions.json
 msgid "That's unfortunate.  I guess I'll have to find it myself."
-msgstr ""
+msgstr "Досада какая. Похоже, мне придется искать его самому."
 
 #: data/json/npcs/cabin_chemist/chemist_missions.json
 msgid "Find Some Hydrochloric Acid"
@@ -177715,7 +178105,7 @@ msgstr "И как мне это должно помочь?"
 
 #: data/json/npcs/cabin_chemist/chemist_missions.json
 msgid "That's unfortunate.  I guess I'll have to find other customers."
-msgstr ""
+msgstr "Досада какая. Думаю, мне придется найти других покупателей."
 
 #: data/json/npcs/camper/TALK_NPC_camper.json
 msgid "<greet>."
@@ -183357,6 +183747,13 @@ msgid ""
 "<the_cataclysm> I got the notice that the bank was going to foreclose on my "
 "crappy little trailer."
 msgstr ""
+"Что ж, я работал кровельщиком, но десять лет назад неудачно упал и повредил "
+"спину. Попытался заниматься другой плотницкой работой, но как-то просто не "
+"вязалось, а спина все ещё болела. Моя жена содержала нас обоих плюс мне "
+"попадалась халтурка, но у неё случился инсульт, и она оставила меня одного, "
+"последние годы я медленно проедал свои сбережения, хватаясь за любую "
+"паршивую работу. За пару дней до того, как настал <the_cataclysm>, я получил"
+" уведомление, что банк собирается изъять мой старый маленький трейлер."
 
 #: data/json/npcs/refugee_center/beggars/BEGGAR_4_Brandon_Garder.json
 msgid "You have any kids?"
@@ -184797,6 +185194,11 @@ msgid ""
 " it could be readily salvaged as a sourdough culture, but maybe an "
 "experienced sourdough baker could manage it."
 msgstr ""
+"Старая щербатая стеклянная банка со светящейся в темноте наклейкой Сокола "
+"Тысячелетия на боку и этикеткой «Звёздная Закваска. Принадлежит Дане. Не "
+"трогать под страхом смерти». Она какое-то время стояла без присмотра, и "
+"непохоже, чтоб сразу годилась для закваски теста, но опытный пекарь сумеет с"
+" ней разобраться."
 
 #: data/json/npcs/refugee_center/surface_refugees/NPC_Dana_Nunez.json
 msgid "Dana's sourdough bread"
@@ -186200,6 +186602,12 @@ msgid ""
 "can't stand this ongoing political bullshit they've got going on. John is a "
 "walking stereotype, but he's a great poker buddy.  I admit I kinda like him."
 msgstr ""
+"Ванесса… Я из кожи вон лезу, я правда стараюсь, но мы просто как кошка с "
+"собакой. Когда-нибудь одна из нас попытается вышибить другой мозги "
+"монтировкой, и слава богу, что я кучу времени возилась с монтировками. Йен и"
+" Ризея — прекрасные люди, и мне они правда нравятся, но я не выношу той "
+"политической херни, что они творят. Джон — ходячий стереотип, но с ним круто"
+" играть в покер. Признаю, мне он нравится."
 
 #: data/json/npcs/refugee_center/surface_refugees/NPC_Jenny_Forcette.json
 msgid ""
@@ -186210,6 +186618,11 @@ msgid ""
 "it. John is a walking stereotype, I imagine there must be more depth to him,"
 " but I haven't seen it yet."
 msgstr ""
+"Ванесса… Что ж, наверное, она милая. То есть она меня бесит, но нам "
+"приходится быть вместе, так что я стараюсь быть помягче. Йен и Ризея спорят,"
+" кто тут будет главным, но я просто с головой ухожу в сборку чего-нибудь и "
+"держусь подальше от этой политики. Толку от неё никакого. Джон — ходячий "
+"стереотип, полагаю, в его душе что-то есть, но я туда пока не добралась."
 
 #: data/json/npcs/refugee_center/surface_refugees/NPC_Jenny_Forcette.json
 msgid "Find an electric motor"
@@ -189065,6 +189478,11 @@ msgid ""
 "might be easier to just go straight through their office if you want more "
 "work."
 msgstr ""
+"Одной проблемой меньше. Я рад, что ты на нашей стороне. Вот 250 Торг, и "
+"торговец купит у тебя все стеклянные банки, что найдёшь — правда, по "
+"сбавленной цене, иначе мы не потянем. На самом деле торговец заявил, что у "
+"него для тебя есть ещё такая работа, и будет проще связываться насчёт работы"
+" с ним напрямую."
 
 #: data/json/npcs/refugee_center/surface_staff/NPC_free_merchant_shopkeep.json
 msgid "Unknown Recipient"
@@ -192734,6 +193152,8 @@ msgid ""
 "able to treat the most vulnerable before they spread anything to the rest of"
 " us."
 msgstr ""
+"Болезнь быстро распространяется из-за плохого питания, и я мало что могу поделать с этим. Когда не хватает еды, люди пытаются выжить во что бы это им встало. Мне нужно начать пополнение рациона заставы витаминами, чтобы избежать возможных смертей, в основе которых лежит скудное питание.\n"
+"Я знаю, что это много, но не могли вы принести мне 100 таблеток витаминов, благодаря которым можно было укрепить иммунитет наиболее уязвимых, пока они не начали разносить болезни среди остальных."
 
 #: data/json/npcs/tacoma_ranch/NPC_ranch_nurse.json
 msgid "Do you have the vitamins?"
@@ -197035,6 +197455,345 @@ msgid "You turn off the vacuum pump."
 msgstr "Вы включаете вакуумный насос."
 
 #: data/json/obsoletion/items.json
+msgid "high quality shatter"
+msgid_plural "high quality shatter"
+msgstr[0] "кристаллик концентрата ТГК"
+msgstr[1] "кристаллика концентрата ТГК"
+msgstr[2] "кристалликов концентрата ТГК"
+msgstr[3] "кристаллики концентрата ТГК"
+
+#. ~ Use action activation_message for {'str_sp': 'high quality shatter'}.
+#: data/json/obsoletion/items.json
+msgid "You take a dab. Wow that's got some killer terpenes!"
+msgstr "Вы делаете затяжку. Ого, неслабо в голову даёт!"
+
+#. ~ Description for {'str_sp': 'high quality shatter'}
+#: data/json/obsoletion/items.json
+msgid ""
+"Concentrated cannabis extract, commonly known as dabs.  This particular "
+"style of concentrate in is a thin sheet and shatters like glass at room "
+"temperature.  Argueably its one of the better styles of concentrate compared"
+" to wax, crumble, or distilate.  Normal cannabis contains around 20%THC, "
+"this shatter should be around 55%THC."
+msgstr ""
+"Концентрированная вытяжка из конопли. Представлена в форме тонких пластин, "
+"похожих на битое стекло при разбивании. Порой считается лучшим способом "
+"употребления в сравнении с использованием воска, крошеного воска или "
+"дистиллята. Содержание действующих веществ обычно достигает 20%, но здесь "
+"оно доходит до 55%."
+
+#: data/json/obsoletion/items.json
+msgid "high quality wax"
+msgid_plural "high quality wax"
+msgstr[0] "качественный воск ТГК"
+msgstr[1] "качественный воск ТГК"
+msgstr[2] "качественный воск ТГК"
+msgstr[3] "качественный воск ТГК"
+
+#. ~ Use action activation_message for {'str_sp': 'high quality wax'}.
+#: data/json/obsoletion/items.json
+msgid "You take a dab of some wax.  *cough cough* good stuff!"
+msgstr "Вы делаете затяжку. *кашель* Хорошо пошло!"
+
+#. ~ Description for {'str_sp': 'high quality wax'}
+#: data/json/obsoletion/items.json
+msgid ""
+"Concentrated cannabis extract, commonly known as dabs.  This particular "
+"style of concentrate has the look and consistency of a yellow waxy substance"
+" at room temperature.  Normal cannabis contains around 20%THC, this wax "
+"should be around 45%THC."
+msgstr ""
+"Концентрированная вытяжка из конопли. Представлена в форме желтоватого "
+"воска. Содержание действующих веществ обычно достигает 20%, но здесь оно "
+"доходит до 45%."
+
+#: data/json/obsoletion/items.json
+msgid "high quality crude oil"
+msgid_plural "high quality crude oil"
+msgstr[0] "качественное неочищенное масло ТГК"
+msgstr[1] "качественное неочищенное масло ТГК"
+msgstr[2] "качественное неочищенное масло ТГК"
+msgstr[3] "качественное неочищенное масло ТГК"
+
+#. ~ Use action activation_message for {'str_sp': 'high quality crude oil'}.
+#: data/json/obsoletion/items.json
+msgid "You smoke some bad dabs.  Not a good idea."
+msgstr "Вы делаете затяжку неочищенного масла. Плохая идея."
+
+#. ~ Description for {'str_sp': 'high quality crude oil'}
+#: data/json/obsoletion/items.json
+msgid ""
+"This is high quality concentrated oil derived from cannabis.  It still has "
+"some residual solvents in it so it needs to be purged in a vacuum oven, "
+"whipped over a heated surface, or distilled before it is safe to consume."
+msgstr ""
+"Высококачественное концентрированное масло, полученное из конопли. В нём всё"
+" ещё есть некоторые остаточные растворители, поэтому его необходимо продуть "
+"в вакуумной печи, взбить при нагревании или дистиллировать, прежде чем оно "
+"станет безопасным для потребления."
+
+#: data/json/obsoletion/items.json
+msgid "low quality crude oil"
+msgid_plural "low quality crude oil"
+msgstr[0] "низкокачественное неочищенное масло ТГК"
+msgstr[1] "низкокачественное неочищенное масло ТГК"
+msgstr[2] "низкокачественное неочищенное масло ТГК"
+msgstr[3] "низкокачественное неочищенное масло ТГК"
+
+#. ~ Use action activation_message for {'str_sp': 'low quality crude oil'}.
+#. ~ Use action activation_message for {'str_sp': 'filtered low quality crude
+#. oil'}.
+#. ~ Use action activation_message for {'str_sp': 'filtered high quality crude
+#. oil'}.
+#: data/json/obsoletion/items.json
+msgid "You smoke some really bad dabs.  Not a good idea."
+msgstr "Вы делаете затяжку некачественного неочищенного масла. Плохая идея."
+
+#. ~ Description for {'str_sp': 'low quality crude oil'}
+#: data/json/obsoletion/items.json
+msgid ""
+"This is low quality concentrated oil derived from cannabis.  It still has "
+"some residual solvents in it so it needs to be purged in a vacuum oven, "
+"whipped over a heated surface, or distilled before it is safe to consume."
+msgstr ""
+"Низкокачественное концентрированное масло, полученное из конопли. В нём всё "
+"ещё есть некоторые остаточные растворители, поэтому его необходимо продуть в"
+" вакуумной печи, взбить на нагретой поверхности или дистиллировать, прежде "
+"чем оно станет безопасным для потребления."
+
+#: data/json/obsoletion/items.json
+msgid "(ethanol) low quality crude oil"
+msgid_plural "(ethanol) low quality crude oil"
+msgstr[0] "низкокачественное неочищенное масло ТГК (этанол)"
+msgstr[1] "низкокачественное неочищенное масло ТГК (этанол)"
+msgstr[2] "низкокачественное неочищенное масло ТГК (этанол)"
+msgstr[3] "низкокачественное неочищенное масло ТГК (этанол)"
+
+#. ~ Description for {'str_sp': '(ethanol) low quality crude oil'}
+#: data/json/obsoletion/items.json
+msgid ""
+"This is low quality concentrated oil derived from cannabis thats been "
+"diluted in ethanol and heated over a hotplate.  The next step would be to "
+"filter it through a buchner flask."
+msgstr ""
+"Низкокачественное концентрированное масло, полученное из конопли. Оно было "
+"разбавлено этанолом и прогрето. Следующим шагом будет фильтрация через колбу"
+" Бунзена."
+
+#: data/json/obsoletion/items.json
+msgid "(ethanol) high quality crude oil"
+msgid_plural "(ethanol) high quality crude oil"
+msgstr[0] "качественное неочищенное масло ТГК (этанол)"
+msgstr[1] "качественное неочищенное масло ТГК (этанол)"
+msgstr[2] "качественное неочищенное масло ТГК (этанол)"
+msgstr[3] "качественное неочищенное масло ТГК (этанол)"
+
+#. ~ Description for {'str_sp': '(ethanol) high quality crude oil'}
+#: data/json/obsoletion/items.json
+msgid ""
+"This is high quality concentrated oil derived from cannabis thats been "
+"diluted in ethanol and heated over a hotplate.  The next step would be to "
+"filter it through a buchner flask."
+msgstr ""
+"Качественное концентрированное масло, полученное из конопли. Оно было "
+"разбавлено этанолом и прогрето. Следующим шагом будет фильтрация через колбу"
+" Бунзена."
+
+#: data/json/obsoletion/items.json
+msgid "(ethanol) filtered low quality crude oil"
+msgid_plural "(ethanol) filtered low quality crude oil"
+msgstr[0] "низкокачественное фильтрованное масло ТГК (этанол)"
+msgstr[1] "низкокачественное фильтрованное масло ТГК (этанол)"
+msgstr[2] "низкокачественное фильтрованное масло ТГК (этанол)"
+msgstr[3] "низкокачественное фильтрованное масло ТГК (этанол)"
+
+#. ~ Description for {'str_sp': '(ethanol) filtered low quality crude oil'}
+#: data/json/obsoletion/items.json
+msgid ""
+"This is low quality concentrated oil derived from cannabis thats been "
+"diluted in ethanol, heated over a hotplate, and filtered through a buchner "
+"flask.  The next step would be to run it through a rotovap."
+msgstr ""
+"Низкокачественное концентрированное масло, полученное из конопли. Оно было "
+"разбавлено этанолом, прогрето и профильтровано через колбу Бунзена. "
+"Следующим шагом будет прогонка через роторный испаритель."
+
+#: data/json/obsoletion/items.json
+msgid "(ethanol) filtered high quality crude oil"
+msgid_plural "(ethanol) filtered high quality crude oil"
+msgstr[0] "качественное фильтрованное масло ТГК (этанол)"
+msgstr[1] "качественное фильтрованное масло ТГК (этанол)"
+msgstr[2] "качественное фильтрованное масло ТГК (этанол)"
+msgstr[3] "качественное фильтрованное масло ТГК (этанол)"
+
+#. ~ Description for {'str_sp': '(ethanol) filtered high quality crude oil'}
+#: data/json/obsoletion/items.json
+msgid ""
+"This is high quality concentrated oil derived from cannabis thats been "
+"diluted in ethanol, heated over a hotplate, and filtered through a buchner "
+"flask.  The next step would be to run it through a rotovap."
+msgstr ""
+"Качественное концентрированное масло, полученное из конопли. Оно было "
+"разбавлено этанолом, прогрето и профильтровано через колбу Бунзена. "
+"Следующим шагом будет прогонка через роторный испаритель."
+
+#: data/json/obsoletion/items.json
+msgid "filtered low quality crude oil"
+msgid_plural "filtered low quality crude oil"
+msgstr[0] "низкокачественное фильтрованное масло ТГК"
+msgstr[1] "низкокачественное фильтрованное масло ТГК"
+msgstr[2] "низкокачественное фильтрованное масло ТГК"
+msgstr[3] "низкокачественное фильтрованное масло ТГК"
+
+#. ~ Description for {'str_sp': 'filtered low quality crude oil'}
+#: data/json/obsoletion/items.json
+msgid ""
+"This is low quality concentrated oil derived from cannabis thats been "
+"diluted in ethanol, heated over a hotplate, filtered through a buchner "
+"flask, and all the ethanol recovered using a rotary evaporator.  It is ready"
+" for the distillation."
+msgstr ""
+"Низкокачественное концентрированное масло, полученное из конопли. Оно было "
+"разбавлено этанолом, прогрето, профильтровано через колбу Бунзена и "
+"пропущено через роторный испаритель. Его можно дистиллировать."
+
+#: data/json/obsoletion/items.json
+msgid "dab pen (on)"
+msgid_plural "dab pens (on)"
+msgstr[0] "электронная сигарета-карандаш (вкл.)"
+msgstr[1] "электронные сигареты-карандаши (вкл.)"
+msgstr[2] "электронных сигарет-карандашей (вкл.)"
+msgstr[3] "электронные сигареты-карандаши (вкл.)"
+
+#. ~ Use action msg for {'str': 'dab pen (on)', 'str_pl': 'dab pens (on)'}.
+#: data/json/obsoletion/items.json
+msgid "You turn off the dab pen."
+msgstr "Вы выключаете электронную сигарету."
+
+#. ~ Description for {'str': 'dab pen (on)', 'str_pl': 'dab pens (on)'}
+#: data/json/obsoletion/items.json
+msgid ""
+"This dab pen, for vaporizing cannabis, is turned on.  Now all you need is a "
+"distillate cartridge and you're ready to rock and roll."
+msgstr ""
+"Эта электронная сигарета для испарения каннабиса включена. Теперь нужно "
+"только вставить картридж с дистиллятом, и вы готовы веселиться."
+
+#: data/json/obsoletion/items.json
+msgid "filtered high quality crude oil"
+msgid_plural "filtered high quality crude oil"
+msgstr[0] "качественное фильтрованное масло ТГК"
+msgstr[1] "качественное фильтрованное масло ТГК"
+msgstr[2] "качественное фильтрованное масло ТГК"
+msgstr[3] "качественное фильтрованное масло ТГК"
+
+#. ~ Description for {'str_sp': 'filtered high quality crude oil'}
+#: data/json/obsoletion/items.json
+msgid ""
+"This is high quality concentrated oil derived from cannabis thats been "
+"diluted in ethanol, heated over a hotplate, filtered through a buchner "
+"flask, and all the ethanol recovered using a rotary evaporator.  It is ready"
+" for the distillation."
+msgstr ""
+"Качественное концентрированное масло, полученное из конопли. Оно было "
+"разбавлено этанолом, прогрето, профильтровано через колбу Бунзена и "
+"пропущено через роторный испаритель. Его можно дистиллировать."
+
+#: data/json/obsoletion/items.json
+msgid "high quality distillate (heads)"
+msgid_plural "high quality distillate (heads)"
+msgstr[0] "качественный дистиллят ТГК (головы)"
+msgstr[1] "качественный дистиллят ТГК (головы)"
+msgstr[2] "качественный дистиллят ТГК (головы)"
+msgstr[3] "качественный дистиллят ТГК (головы)"
+
+#. ~ Description for {'str_sp': 'high quality distillate (heads)'}
+#: data/json/obsoletion/items.json
+msgid ""
+"Concentrated cannabis extract.  This is the 'heads' portion from a distilled"
+" batch of crude oil.  It still needs to be ran through a lab grade still one"
+" more time before its a finished product."
+msgstr ""
+"Концентрированный экстракт конопли. Это «головы», полученные дистилляцией "
+"масла. Их нужно пропустить через лабораторный дистиллятор ещё раз, чтобы "
+"получить конечный продукт."
+
+#: data/json/obsoletion/items.json
+msgid "high quality distillate (tails)"
+msgid_plural "high quality distillate (tails)"
+msgstr[0] "качественный дистиллят ТГК (хвосты)"
+msgstr[1] "качественный дистиллят ТГК (хвосты)"
+msgstr[2] "качественный дистиллят ТГК (хвосты)"
+msgstr[3] "качественный дистиллят ТГК (хвосты)"
+
+#. ~ Description for {'str_sp': 'high quality distillate (tails)'}
+#: data/json/obsoletion/items.json
+msgid ""
+"Concentrated cannabis extract.  This material is the 'tails' portion from a "
+"distilled batch of crude oil.  It needs to be ran through a lab grade still "
+"another time."
+msgstr ""
+"Концентрированный экстракт конопли. Это «хвосты», полученные дистилляцией "
+"масла. Их нужно пропустить через лабораторный дистиллятор ещё раз."
+
+#: data/json/obsoletion/items.json
+msgid "high quality distillate"
+msgid_plural "high quality distillate"
+msgstr[0] "качественный дистиллят ТГК"
+msgstr[1] "качественный дистиллят ТГК"
+msgstr[2] "качественный дистиллят ТГК"
+msgstr[3] "качественный дистиллят ТГК"
+
+#. ~ Use action activation_message for {'str_sp': 'high quality distillate'}.
+#: data/json/obsoletion/items.json
+msgid "You take a dab of some distillate.  Sooooo smooth..."
+msgstr "Вы затягиваетесь дистиллятом. Ох как гладенькооо…"
+
+#. ~ Description for {'str_sp': 'high quality distillate'}
+#: data/json/obsoletion/items.json
+msgid ""
+"Concentrated cannabis extract.  This style of extract goes through the most "
+"processing, eliminating most if not all harmful ingredients.  Normal "
+"cannabis contains around 20%THC, this distillate should be around 88%THC.  "
+"Can be smoked in a bowl, used in a dab pen, or used to make distillate "
+"cartridges."
+msgstr ""
+"Концентрированный экстракт каннабиса. Этот способ очистки экстракта "
+"подразумевает серьезную обработку, устраняя большинство, если не все вредные"
+" ингредиенты. Обычный каннабис содержит около 20% ТГК, этот дистиллят должен"
+" содержать около 88% ТГК. Можно курить через трубку, использовать "
+"электронную сигарету или делать картриджи с дистиллятом."
+
+#: data/json/obsoletion/items.json
+msgid "high quality distillate cartridge"
+msgid_plural "high quality distillate cartridges"
+msgstr[0] "картридж с дистиллятом ТГК"
+msgstr[1] "картриджа с дистиллятом ТГК"
+msgstr[2] "картриджей с дистиллятом ТГК"
+msgstr[3] "картриджи с дистиллятом ТГК"
+
+#. ~ Use action activation_message for {'str': 'high quality distillate
+#. cartridge'}.
+#: data/json/obsoletion/items.json
+msgid "You hit your dab pen.  Sooooo smooth..."
+msgstr "Вы делаете затяжку из электронной сигареты. Ох как гладенькооо…"
+
+#. ~ Description for {'str': 'high quality distillate cartridge'}
+#: data/json/obsoletion/items.json
+msgid ""
+"A small cartridge containing concentrated cannabis extract thats used with "
+"dab pens.  This style of extract goes through the most processing, "
+"eliminating most if not all harmful ingredients.  Normal cannabis contains "
+"around 20%THC, this distillate should be around 70%THC after reintroducing "
+"terpenes for flavoring."
+msgstr ""
+"Маленький картридж, содержащий концентрированный экстракт каннабиса. Этот "
+"способ очистки экстракта подразумевает серьезную обработку, устраняя "
+"большинство, если не все вредные ингредиенты. Обычный каннабис содержит "
+"около 20% ТГК, этот дистиллят должен содержать около 70% ТГК после "
+"добавления терпенов для улучшения вкуса."
+
+#: data/json/obsoletion/items.json
 msgid "small closed loop extractor"
 msgid_plural "small closed loop extractors"
 msgstr[0] "малый экстрактор с замкнутым контуром"
@@ -197628,6 +198387,38 @@ msgid ""
 "coolant system.  It also includes some handy features such as a built-in "
 "thermometer.  It is currently on, use it to turn it off."
 msgstr ""
+
+#: data/json/obsoletion/items.json
+msgid "plastic gasket"
+msgid_plural "plastic gaskets"
+msgstr[0] "пластиковый сальник"
+msgstr[1] "пластиковых сальника"
+msgstr[2] "пластиковых сальников"
+msgstr[3] "пластиковые сальники"
+
+#. ~ Description for {'str': 'plastic gasket'}
+#: data/json/obsoletion/items.json
+msgid " A single-use plastic gasket."
+msgstr " Одноразовый пластиковый сальник."
+
+#: data/json/obsoletion/items.json
+msgid "The Essential Oil Enthusiasts Handbook"
+msgid_plural "copies of The Essential Oil Enthusiasts Handbook"
+msgstr[0] "«Справочник по эфирным маслам»"
+msgstr[1] "книги «Справочник по эфирным маслам»"
+msgstr[2] "книг «Справочник по эфирным маслам»"
+msgstr[3] "книги «Справочник по эфирным маслам»"
+
+#. ~ Description for {'str': 'The Essential Oil Enthusiasts Handbook',
+#. 'str_pl': 'copies of The Essential Oil Enthusiasts Handbook'}
+#: data/json/obsoletion/items.json
+msgid ""
+"A heavy hardback book explaining the process of essential oil making, with "
+"schematics for the equipment to do it.  Good luck, and don't blow yourself "
+"up!"
+msgstr ""
+"Тяжёлая книга в твердом переплете, описывающая процессы получения эфирных "
+"масел со схемами оборудования. Удачи, и не взорви себя!"
 
 #: data/json/obsoletion/missions.json
 msgid "Find a Flu Shot"
@@ -200850,8 +201641,8 @@ msgid "tire shop roof"
 msgstr "крыша шиномонтажа"
 
 #: data/json/overmap/overmap_terrain/overmap_terrain_commercial.json
-msgid "Head Shop"
-msgstr "хэдшоп"
+msgid "head shop"
+msgstr ""
 
 #: data/json/overmap/overmap_terrain/overmap_terrain_commercial.json
 msgid "head shop roof"
@@ -201837,6 +202628,14 @@ msgstr "рыбный пруд"
 #: data/mods/alt_map_key/overmap_terrain.json
 msgid "skate park"
 msgstr "скейт-парк"
+
+#: data/json/overmap/overmap_terrain/overmap_terrain_recreational.json
+msgid "vending park"
+msgstr ""
+
+#: data/json/overmap/overmap_terrain/overmap_terrain_recreational.json
+msgid "vending park roof"
+msgstr ""
 
 #: data/json/overmap/overmap_terrain/overmap_terrain_recreational.json
 #: data/mods/alt_map_key/overmap_terrain.json
@@ -203735,6 +204534,9 @@ msgid ""
 "perishing in a siege against the Hell's Raiders that lasted for a grueling, "
 "protracted month."
 msgstr ""
+"     Узнав о вашей смерти, вскоре сошел с ума, поверив, что он - "
+"предреченный спаситель, который приведет грешников в рай. В итоге погиб во "
+"время осады адских рейдеров, которая длилась изнурительный, затяжной месяц."
 
 #: data/json/snippets/epilogue_npc.json
 msgid ""
@@ -203745,6 +204547,12 @@ msgid ""
 "long as they could, but the dream of civilization could not flourish.  He "
 "died a heartbroken man."
 msgstr ""
+"     У него была мечта, о которой он никому не рассказывал. Это был великий "
+"идеал, фантазия из давно ушедшей эпохи. Он стремился стать вождем, который "
+"оградит человечество от бед нового мира. Он собрал выживших и построил "
+"поселение с тем небольшим количеством людей, которое у него было. Они "
+"продержались столько, сколько смогли, но мечта о цивилизации не смогла "
+"расцвести. Он умер с разбитым сердцем."
 
 #: data/json/snippets/epilogue_npc.json
 msgid ""
@@ -203756,6 +204564,13 @@ msgid ""
 "brighter dawn.  Before long, his realm encompassed vast swaths of land.  He "
 "honored you as one of the founders of his kingdom."
 msgstr ""
+"     У него была мечта, о которой он никому не рассказывал. Это был великий "
+"идеал, фантазия из давно ушедшей эпохи. Он стремился стать вождем, который "
+"оградит человечество от бед нового мира. Он собрал выживших и построил "
+"поселение с тем небольшим количеством людей, которое у него было. Благодаря "
+"своему непоколебимому духу и исключительным талантам он сумел поднять свой "
+"народ к светлому рассвету. Вскоре его владения охватывали огромные "
+"территории. Он почитал вас как одного из основателей своего королевства."
 
 #: data/json/snippets/epilogue_npc.json
 msgid ""
@@ -203764,6 +204579,10 @@ msgid ""
 "formed a minor village that would end up becoming a safe haven for mutants."
 "  In their humble hovel, he would later be acclaimed as a saint."
 msgstr ""
+"     После вашей кончины он прожил беспокойную жизнь. Не доверяя никому, "
+"кроме себя, он жестоко боролся с концом света. Благодаря огромным усилиям он"
+" основал небольшую деревню, которая в итоге стала убежищем для мутантов. В "
+"их скромной лачуге его позже провозгласят святым."
 
 #: data/json/snippets/epilogue_npc.json
 msgid ""
@@ -203773,6 +204592,11 @@ msgid ""
 "bells again and again.  He belched out holy harangues at the heathens below "
 "and laughed maniacally as the undead eventually tore through his body."
 msgstr ""
+"     Он становился всё более фанатичным по мере того, как весь мир вокруг "
+"него разлагался. В своё время он увидел в себе нечто большее, чем человек. "
+"Прибыв в заброшенный собор, он взобрался на вершину его шпиля и снова и "
+"снова звонил в колокола. Он изрыгал священные проповеди язычникам внизу и "
+"безудержно хохотал, когда нежить в конце концов разорвала его тело."
 
 #: data/json/snippets/epilogue_npc.json
 msgid ""
@@ -204407,6 +205231,9 @@ msgid ""
 "perishing in a siege against the Hell's Raiders that lasted for a grueling, "
 "protracted month."
 msgstr ""
+"     Узнав о вашей смерти, вскоре сошла с ума, поверив, что она - "
+"предреченный спаситель, который приведет грешников в рай. В итоге погибла во"
+" время осады адских рейдеров, которая длилась изнурительный, затяжной месяц."
 
 #: data/json/snippets/epilogue_npc.json
 msgid ""
@@ -204417,6 +205244,12 @@ msgid ""
 "held out for as long as they could, but the dream of civilization could not "
 "flourish.  She died a heartbroken woman."
 msgstr ""
+"     У неё была мечта, о которой она никому не рассказывала. Это был великий"
+" идеал, фантазия из давно ушедшей эпохи. Она стремилась стать вождем, "
+"который оградит человечество от бед нового мира. Она собрала выживших и "
+"построила поселение с тем небольшим количеством людей, которое у неё было. "
+"Они продержались столько, сколько смогли, но мечта о цивилизации не смогла "
+"расцвести. Она умерла с разбитым сердцем."
 
 #: data/json/snippets/epilogue_npc.json
 msgid ""
@@ -204428,6 +205261,14 @@ msgid ""
 "people into a brighter dawn.  Before long, her realm encompassed vast swaths"
 " of land.  She honored you as one of the founders of her kingdom."
 msgstr ""
+"     У неё была мечта, о которой она никому не рассказывала. Это был великий"
+" идеал, фантазия из давно ушедшей эпохи. Она стремилась стать вождем, "
+"который оградит человечество от бед нового мира. Она собрала выживших и "
+"построила поселение с тем небольшим количеством людей, которое у неё было. "
+"Благодаря своему непоколебимому духу и исключительным талантам она сумела "
+"поднять свой народ к светлому рассвету. Вскоре её владения охватывали "
+"огромные территории. Она почитала вас как одного из основателей своего "
+"королевства."
 
 #: data/json/snippets/epilogue_npc.json
 msgid ""
@@ -204436,6 +205277,10 @@ msgid ""
 " formed a minor village that would end up becoming a safe haven for mutants."
 "  In their humble hovel, she would later be acclaimed as a saintess."
 msgstr ""
+"     После вашей кончины она прожила беспокойную жизнь. Не доверяя никому, "
+"кроме себя, она жестоко боролась с концом света. Благодаря огромным усилиям "
+"она основала небольшую деревню, которая в итоге стала убежищем для мутантов."
+" В их скромной лачуге её позже провозгласят святой."
 
 #: data/json/snippets/epilogue_npc.json
 msgid ""
@@ -204445,6 +205290,11 @@ msgid ""
 " bells again and again.  She belched out holy harangues at the heathens "
 "below and laughed maniacally as the undead eventually tore through her body."
 msgstr ""
+"     Она становилась всё более фанатичной по мере того, как весь мир вокруг "
+"неё разлагался. В своё время она увидела в себе нечто большее, чем человек. "
+"Прибыв в заброшенный собор, она взобралась на вершину его шпиля и снова и "
+"снова звонила в колокола. Она изрыгала священные проповеди язычникам внизу и"
+" безудержно хохотала, когда нежить в конце концов разорвала её тело."
 
 #: data/json/snippets/fliers.json
 msgid ""
@@ -212340,7 +213190,8 @@ msgid ""
 "The card is printed with 2 boxes.  In the first box you see a tally of 5 "
 "tick marks.  The second box has a total of 9."
 msgstr ""
-"На карточке две графы. В первой подсчёт из 5 галочек. Во второй 9 галочек."
+"На карточке напечатаны 2 поля. В первом поле вы видите 5 галочек. Во втором "
+"поле - 9."
 
 #: data/json/snippets/snippets.json
 msgid ""
@@ -212348,8 +213199,8 @@ msgid ""
 "tick marks.  The second box has line trailing off to the edge and a bloody "
 "fingerprint."
 msgstr ""
-"На карточке две графы. В первой подсчёт из 3 галочек. Во второй "
-"выскальзывающая за край линия и кровавый отпечаток пальца."
+"На карточке напечатаны 2 поля. В первом поле вы видите 3 галочки. Во втором "
+"поле - линия, уходящая к краю, и кровавый отпечаток пальца."
 
 #: data/json/snippets/snippets.json
 msgid ""
@@ -212485,87 +213336,87 @@ msgstr "Всего лишь ещё одна смерть, ещё одно уби
 
 #: data/json/snippets/snippets.json
 msgid "Tastes like strawberry watermelon."
-msgstr ""
+msgstr "На вкус как клубничный арбуз."
 
 #: data/json/snippets/snippets.json
 msgid "Tastes like sour blue raspberry."
-msgstr ""
+msgstr "На вкус как кислая синяя малина."
 
 #: data/json/snippets/snippets.json
 msgid "Tastes like pink bubblegum."
-msgstr ""
+msgstr "На вкус как розовая бубль-гум."
 
 #: data/json/snippets/snippets.json
 msgid "Tastes like tropical punch."
-msgstr ""
+msgstr "На вкус как тропический пунш."
 
 #: data/json/snippets/snippets.json
 msgid "Tastes like mango peach."
-msgstr ""
+msgstr "На вкус как персик с манго."
 
 #: data/json/snippets/snippets.json
 msgid "Tastes like classic peppermint."
-msgstr ""
+msgstr "На вкус как классическая перечная мята."
 
 #: data/json/snippets/snippets.json
 msgid "Tastes like spearmint — clean and cool."
-msgstr ""
+msgstr "На вкус как мята - свежесть и прохлада."
 
 #: data/json/snippets/snippets.json
 msgid "Tastes like cinnamon - kind of spicy."
-msgstr ""
+msgstr "На вкус как корица - немного пряный."
 
 #: data/json/snippets/snippets.json
 msgid "Tastes like crisp green apple."
-msgstr ""
+msgstr "На вкус как хрустящее зеленое яблоко."
 
 #: data/json/snippets/snippets.json
 msgid "Tastes like wild cherry."
-msgstr ""
+msgstr "На вкус как дикая вишня."
 
 #: data/json/snippets/snippets.json
 msgid "Tastes like sweet strawberry."
-msgstr ""
+msgstr "На вкус как сладкая клубника."
 
 #: data/json/snippets/snippets.json
 msgid "Tastes like banana."
-msgstr ""
+msgstr "На вкус как банан."
 
 #: data/json/snippets/snippets.json
 msgid "Tastes like watermelon — strong at first, then fades."
-msgstr ""
+msgstr "На вкус как арбуз - сначала сильный, потом слабеет."
 
 #: data/json/snippets/snippets.json
 msgid "Tastes like smooth vanilla mint."
-msgstr ""
+msgstr "На вкус как мягкая ванильная мята."
 
 #: data/json/snippets/snippets.json
 msgid "Tastes like light citrus — mostly orange."
-msgstr ""
+msgstr "На вкус как слабый цитрус - в основном апельсиновый."
 
 #: data/json/snippets/snippets.json
 msgid "Tastes like hibiscus.  Tart, floral, with a tangy kick."
-msgstr ""
+msgstr "На вкус как гибискус. Терпкий, цветочный, с нотками пикантности."
 
 #: data/json/snippets/snippets.json
 msgid "Tastes like piña colada.  Sweet and creamy, but artificial."
-msgstr ""
+msgstr "На вкус как пина-колада. Сладкий и сливочный, но искусственный."
 
 #: data/json/snippets/snippets.json
 msgid "Tastes like salted lime margarita."
-msgstr ""
+msgstr "На вкус как соленая лаймовая маргарита."
 
 #: data/json/snippets/snippets.json
 msgid "Tastes like mango habanero.  It’s sweet with a spicy kick."
-msgstr ""
+msgstr "На вкус как манго хабанеро. Сладкий с острым привкусом."
 
 #: data/json/snippets/snippets.json
 msgid "Tastes like grape, artificial but familiar."
-msgstr ""
+msgstr "На вкус как виноград, искусственный, но знакомый."
 
 #: data/json/snippets/snippets.json
 msgid "Tastes like mild wintergreen, soft and cooling."
-msgstr ""
+msgstr "На вкус как мягкая зимняя грушанка, мягкая и охлаждающая."
 
 #: data/json/snippets/snippets.json
 msgid "You feel the rush of the kill."
@@ -218120,7 +218971,7 @@ msgstr "тачка"
 
 #: data/json/vehicles/carts.json
 msgid "Wheelchair"
-msgstr ""
+msgstr "Кресло-каталка"
 
 #: data/json/vehicles/carts.json
 msgid "hospital bed"
@@ -249291,7 +250142,7 @@ msgstr ""
 #: data/mods/MMA/martialarts.json
 #, c-format
 msgid "%s becomes very still for a moment."
-msgstr ""
+msgstr "%s на мгновение становится неподвижным."
 
 #: data/mods/MMA/martialarts.json
 msgid "Stance of Alacrity"
@@ -249434,7 +250285,7 @@ msgstr ""
 #: data/mods/MMA/martialarts.json
 #, c-format
 msgid "%s takes a bold and fearless stance."
-msgstr ""
+msgstr "%s встаёт в дерзкую и бесстрашную стойку."
 
 #: data/mods/MMA/martialarts.json
 msgid "Panzer Kunst"
@@ -249519,11 +250370,11 @@ msgstr ""
 #: data/mods/MMA/martialarts.json
 #, c-format
 msgid "%s is about to challenge someone to a battle."
-msgstr ""
+msgstr "%s собирается вызвать кого-то на бой."
 
 #: data/mods/MMA/martialarts.json
 msgid "Setting Sun"
-msgstr ""
+msgstr "Заходящее Солнце"
 
 #. ~ Description for martial art '{'str': 'Setting Sun'}'
 #: data/mods/MMA/martialarts.json
@@ -249533,11 +250384,15 @@ msgid ""
 "attack, a Setting Sun warrior sends a charging enemy tumbling in a new "
 "direction."
 msgstr ""
+"Дисциплина Заходящее Солнце учит посвящаемых обращать силу противника против"
+" него самого. Быстро сменив позицию и тщательно выверяя атаку, воин "
+"Заходящего Солнца отправляет наступающего противника кувырком в новом "
+"направлении."
 
 #. ~ Initiate message for martial art '{'str': 'Setting Sun'}'
 #: data/mods/MMA/martialarts.json
 msgid "You shift your weight and prepare to defend yourself."
-msgstr ""
+msgstr "Вы смещаете свой вес и готовитесь защищаться."
 
 #. ~ Initiate message for martial art '{'str': 'Setting Sun'}'
 #: data/mods/MMA/martialarts.json
@@ -249707,7 +250562,7 @@ msgstr ""
 
 #: data/mods/MMA/martialarts.json
 msgid "Tiger Claw"
-msgstr ""
+msgstr "Коготь Тигра"
 
 #. ~ Description for martial art '{'str': 'Tiger Claw'}'
 #: data/mods/MMA/martialarts.json
@@ -249717,17 +250572,21 @@ msgid ""
 "with a furry similar to that of a barbarian, and rely on overwhelming, "
 "vicious assaults to defeat their enemies."
 msgstr ""
+"Дисциплина Коготь Тигра вбирает в себя дикую ярость, таящуюся в сердце "
+"посвященных. В бою такие воины рычат, как дикие звери, нападают с яростью, "
+"похожей на варварскую, и полагаются на ошеломляющие, жестокие атаки, чтобы "
+"победить своих врагов."
 
 #. ~ Initiate message for martial art '{'str': 'Tiger Claw'}'
 #: data/mods/MMA/martialarts.json
 msgid "You emit a low growl as you prepare for battle."
-msgstr ""
+msgstr "Вы издаете низкий рык, готовясь к бою."
 
 #. ~ Initiate message for martial art '{'str': 'Tiger Claw'}'
 #: data/mods/MMA/martialarts.json
 #, c-format
 msgid "%s hunkers down like a wild animal."
-msgstr ""
+msgstr "%s затаился, как дикий зверь."
 
 #: data/mods/MMA/martialarts.json
 msgid "Improved Critical"
@@ -270186,6 +271045,10 @@ msgid "Toggle Map Defaulting to Level 0"
 msgstr "Вкл/выкл отображение 0 уровня по умолчанию"
 
 #: data/raw/keybindings/keybindings.json
+msgid "Toggle Custom Waypoint"
+msgstr ""
+
+#: data/raw/keybindings/keybindings.json
 msgid "Rotate"
 msgstr "Поворот"
 
@@ -274198,7 +275061,7 @@ msgstr "К"
 
 #: src/armor_layers.cpp
 msgid "Total Protection:"
-msgstr ""
+msgstr "Общая защита:"
 
 #: src/armor_layers.cpp src/item.cpp
 msgid "Bash: "
@@ -274210,7 +275073,7 @@ msgstr "Режущий: "
 
 #: src/armor_layers.cpp
 msgid "Stab: "
-msgstr ""
+msgstr "Колющий: "
 
 #: src/armor_layers.cpp src/item.cpp
 msgid "Ballistic: "
@@ -294557,11 +295420,6 @@ msgstr "«щёлк»."
 msgid "You remove the radio modification from your %s!"
 msgstr "Вы вынимаете радио-модификацию из %s!"
 
-#: src/iuse.cpp src/iuse_actor.cpp
-#, c-format
-msgid "You're already smoking a %s!"
-msgstr "Вы уже и так курите %s!"
-
 #: src/iuse.cpp
 msgid "Are you sure you want to drink… this?"
 msgstr "Вы уверены, что хотите выпить… Это?"
@@ -297997,10 +298855,16 @@ msgstr "Мне нужен %1$s, чтобы употребить %2$s!"
 
 #: src/iuse_actor.cpp
 #, c-format
-msgid "Ugh, too much %s… you feel nasty."
-msgstr ""
+msgid "You're already smoking a %s!"
+msgstr "Вы уже и так курите %s!"
 
-#: src/iuse_actor.cpp src/options.cpp src/overmap_ui.cpp src/vehicle_use.cpp
+#: src/iuse_actor.cpp
+#, c-format
+msgid "Ugh, too much %s… you feel nasty."
+msgstr "Ох, слишком много %s… Чувствуете себя ужасно."
+
+#: src/iuse_actor.cpp src/npctalk.cpp src/options.cpp src/overmap_ui.cpp
+#: src/vehicle_use.cpp
 #, c-format
 msgid "%s"
 msgstr "%s"
@@ -298136,11 +299000,11 @@ msgstr "На этой %s нет ничего нового."
 
 #: src/iuse_actor.cpp
 msgid "Closest"
-msgstr ""
+msgstr "Ближайший"
 
 #: src/iuse_actor.cpp
 msgid "Random"
-msgstr ""
+msgstr "Случайный"
 
 #: src/iuse_actor.cpp
 #, c-format
@@ -300545,7 +301409,7 @@ msgstr ""
 
 #: src/magic.cpp
 msgid "ERROR: Invalid damage type string.  Defaulting to bash"
-msgstr ""
+msgstr "ОШИБКА: неверная строка типа урона. Используется bash"
 
 #: src/magic.cpp
 #, c-format
@@ -305264,12 +306128,12 @@ msgstr "«Бросай оружие! Быстро!»"
 #: src/monattack.cpp
 #, c-format
 msgid "The %s tries to shock you, but you dodge."
-msgstr ""
+msgstr "%s пытается ударить вас током, но вы уворачиваетесь."
 
 #: src/monattack.cpp
 #, c-format
 msgid "The %s tries to shock <npcname>, but they dodge."
-msgstr ""
+msgstr "%s пытается ударить током <npcname>, но тот уворачивается."
 
 #: src/monattack.cpp
 #, c-format
@@ -305960,7 +306824,7 @@ msgstr "но не может пробить броню <npcname>!"
 #: src/monattack.cpp
 #, c-format
 msgid "%1$s mechanically reaches for %2$s!"
-msgstr ""
+msgstr "%1$s механически тянется к %2$s!"
 
 #: src/monattack.cpp
 #, c-format
@@ -306254,7 +307118,7 @@ msgstr "Люблю запах горящего зэда по утрам."
 #: src/mondefense.cpp
 #, c-format
 msgid "Striking %1$s shocks %2$s!"
-msgstr ""
+msgstr "Атаковав %1$s, %2$s получает электрический разряд!"
 
 #: src/mondefense.cpp
 #, c-format
@@ -306806,7 +307670,7 @@ msgstr "погружается"
 #: src/monmove.cpp
 #, c-format
 msgid "%1$s tramples %2$s"
-msgstr ""
+msgstr "%1$s топчет %2$s"
 
 #: src/monmove.cpp
 #, c-format
@@ -309300,6 +310164,10 @@ msgid "Let's go back to your usual behaviors"
 msgstr "Давай вернёмся к твоему привычному поведению"
 
 #: src/npctalk.cpp
+msgid "You will keep emoting."
+msgstr ""
+
+#: src/npctalk.cpp
 msgid "You can't speak without your face!"
 msgstr "Вы не можете говорить без лица!"
 
@@ -309323,6 +310191,14 @@ msgstr "Крикнуть"
 #: src/npctalk.cpp
 msgid "Yell a sentence"
 msgstr "Прокричать предложение"
+
+#: src/npctalk.cpp
+msgid "Monologue"
+msgstr ""
+
+#: src/npctalk.cpp
+msgid "Emote"
+msgstr ""
 
 #: src/npctalk.cpp
 msgid "Whistle at your animals pulling vehicles to follow you."
@@ -309405,12 +310281,26 @@ msgid "Talk to whom?"
 msgstr "С кем поговорить?"
 
 #: src/npctalk.cpp
+msgid "Emote what status effect?"
+msgstr ""
+
+#: src/npctalk.cpp
+msgid "Clear"
+msgstr "Ясно"
+
+#: src/npctalk.cpp
 msgid "loudly."
 msgstr "громко."
 
 #: src/npctalk.cpp
 msgid "Enter a sentence to yell"
 msgstr "Введите предложение, чтобы прокричать"
+
+#: src/npctalk.cpp
+msgid ""
+"What do you want to monologue?  (This has no in-game effect! Use +, -, or ? "
+"at the start to add context.)"
+msgstr ""
 
 #: src/npctalk.cpp
 msgid "Who should guard here?"
@@ -311117,11 +312007,11 @@ msgstr "Режим 3: наклон влево/вправо"
 
 #: src/options.cpp
 msgid "Vehicle plating changes part color"
-msgstr "Детали машин меняют цвет"
+msgstr "Детали транспорта меняют цвет"
 
 #: src/options.cpp
 msgid "If true, vehicle parts will change color if they are armor plated"
-msgstr "Если «да», детали машин будут менять цвет, если покрыты бронёй."
+msgstr "Если «да», детали транспорта будут менять цвет, если покрыты бронёй."
 
 #: src/options.cpp
 msgid "Auto-shift the view while driving"
@@ -313940,7 +314830,7 @@ msgstr "Локация   : "
 
 #: src/panels.cpp
 msgid "X,Y,Z: "
-msgstr ""
+msgstr "X,Y,Z: "
 
 #: src/panels.cpp
 msgid "Sky  : Underground"
@@ -314365,10 +315255,6 @@ msgstr "пользовательские настройки клавиш"
 #: src/path_display.cpp
 msgid "last world"
 msgstr "последнее слово"
-
-#: src/path_display.cpp
-msgid "Lua doc output"
-msgstr "вывод документа Lua"
 
 #: src/path_display.cpp
 msgid "safe mode"

@@ -26,15 +26,15 @@
 # Jaesung Han (Re_Star), 2024
 # DelFe, 2024
 # JJ J <congstrot@gmail.com>, 2024
-# Coolthulhu <Coolthulhu@gmail.com>, 2024
-# 김동현, 2025
 # Fruitybite, 2025
+# 김동현, 2025
+# Coolthulhu <Coolthulhu@gmail.com>, 2025
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: cataclysm-bn\n"
-"POT-Creation-Date: 2025-04-25 01:25+0000\n"
-"Last-Translator: Fruitybite, 2025\n"
+"POT-Creation-Date: 2025-04-29 01:47+0000\n"
+"Last-Translator: Coolthulhu <Coolthulhu@gmail.com>, 2025\n"
 "Language-Team: Korean (https://app.transifex.com/bn-team/teams/113585/ko/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -10053,6 +10053,245 @@ msgstr "목이 말라 힘이 없습니다."
 #: data/json/effects.json
 msgid "Empowered"
 msgstr "강화됨"
+
+#: data/json/effects.json
+msgid "Dazed (emote)"
+msgstr ""
+
+#. ~ Description of effect 'Dazed (emote)'.
+#: data/json/effects.json
+msgid "You're pretending to look dazed."
+msgstr ""
+
+#. ~ Apply message for effect(s) 'Dazed (emote)'.
+#. ~ Apply message for effect(s) 'High (emote)'.
+#. ~ Apply message for effect(s) 'Drunk (emote)'.
+#. ~ Apply message for effect(s) 'Evil Aura (emote)'.
+#. ~ Apply message for effect(s) 'In Love (emote)'.
+#. ~ Apply message for effect(s) 'Nausea (emote)'.
+#. ~ Apply message for effect(s) 'Shrieking (emote)'.
+#. ~ Apply message for effect(s) 'Winded (emote)'.
+#. ~ Apply message for effect(s) 'Tired (emote)'.
+#. ~ Apply message for effect(s) 'Bleeding (emote)'.
+#. ~ Apply message for effect(s) 'Laying Down (emote)'.
+#. ~ Apply message for effect(s) 'Poison (emote)'.
+#. ~ Apply message for effect(s) 'Bouldering (emote)'.
+#. ~ Apply message for effect(s) 'Hot (emote)'.
+#. ~ Apply message for effect(s) 'Cold (emote)'.
+#. ~ Apply message for effect(s) 'Glowing Aura (emote)'.
+#. ~ Apply message for effect(s) 'Blue Aura (emote)'.
+#. ~ Apply message for effect(s) 'Beauty (emote)'.
+#. ~ Apply message for effect(s) 'Teargas (emote)'.
+#. ~ Apply message for effect(s) 'Musical (emote)'.
+#. ~ Apply message for effect(s) 'Tweaking (emote)'.
+#: data/json/effects.json
+msgid "You start emoting."
+msgstr ""
+
+#. ~ Remove message for effect(s) 'Dazed (emote)'.
+#. ~ Remove message for effect(s) 'High (emote)'.
+#. ~ Remove message for effect(s) 'Drunk (emote)'.
+#. ~ Remove message for effect(s) 'Evil Aura (emote)'.
+#. ~ Remove message for effect(s) 'In Love (emote)'.
+#. ~ Remove message for effect(s) 'Nausea (emote)'.
+#. ~ Remove message for effect(s) 'Shrieking (emote)'.
+#. ~ Remove message for effect(s) 'Winded (emote)'.
+#. ~ Remove message for effect(s) 'Tired (emote)'.
+#. ~ Remove message for effect(s) 'Bleeding (emote)'.
+#. ~ Remove message for effect(s) 'Laying Down (emote)'.
+#. ~ Remove message for effect(s) 'Poison (emote)'.
+#. ~ Remove message for effect(s) 'Bouldering (emote)'.
+#. ~ Remove message for effect(s) 'Hot (emote)'.
+#. ~ Remove message for effect(s) 'Cold (emote)'.
+#. ~ Remove message for effect(s) 'Glowing Aura (emote)'.
+#. ~ Remove message for effect(s) 'Blue Aura (emote)'.
+#. ~ Remove message for effect(s) 'Beauty (emote)'.
+#. ~ Remove message for effect(s) 'Teargas (emote)'.
+#. ~ Remove message for effect(s) 'Musical (emote)'.
+#. ~ Remove message for effect(s) 'Tweaking (emote)'.
+#: data/json/effects.json
+msgid "You stop emoting."
+msgstr ""
+
+#: data/json/effects.json
+msgid "High (emote)"
+msgstr ""
+
+#. ~ Description of effect 'High (emote)'.
+#: data/json/effects.json
+msgid "You're pretending to look high."
+msgstr ""
+
+#: data/json/effects.json
+msgid "Drunk (emote)"
+msgstr ""
+
+#. ~ Description of effect 'Drunk (emote)'.
+#: data/json/effects.json
+msgid "You're pretending to look drunk."
+msgstr ""
+
+#: data/json/effects.json
+msgid "Evil Aura (emote)"
+msgstr ""
+
+#. ~ Description of effect 'Evil Aura (emote)'.
+#: data/json/effects.json
+msgid "You're pretending to look evil."
+msgstr ""
+
+#: data/json/effects.json
+msgid "In Love (emote)"
+msgstr ""
+
+#. ~ Description of effect 'In Love (emote)'.
+#: data/json/effects.json
+msgid "You're pretending to look in love."
+msgstr ""
+
+#: data/json/effects.json
+msgid "Nausea (emote)"
+msgstr ""
+
+#. ~ Description of effect 'Nausea (emote)'.
+#: data/json/effects.json
+msgid "You're pretending to look nauseous."
+msgstr ""
+
+#: data/json/effects.json
+msgid "Shrieking (emote)"
+msgstr ""
+
+#. ~ Description of effect 'Shrieking (emote)'.
+#: data/json/effects.json
+msgid "You're pretending to look terrified or angry."
+msgstr ""
+
+#: data/json/effects.json
+msgid "Winded (emote)"
+msgstr ""
+
+#. ~ Description of effect 'Winded (emote)'.
+#: data/json/effects.json
+msgid "You're pretending to look like you're winded."
+msgstr ""
+
+#: data/json/effects.json
+msgid "Tired (emote)"
+msgstr ""
+
+#. ~ Description of effect 'Tired (emote)'.
+#: data/json/effects.json
+msgid "You're pretending to look like you're tired."
+msgstr ""
+
+#: data/json/effects.json
+msgid "Bleeding (emote)"
+msgstr ""
+
+#. ~ Description of effect 'Bleeding (emote)'.
+#: data/json/effects.json
+msgid "You're pretending you're bleeding."
+msgstr ""
+
+#: data/json/effects.json
+msgid "Laying Down (emote)"
+msgstr ""
+
+#. ~ Description of effect 'Laying Down (emote)'.
+#: data/json/effects.json
+msgid "You're laying down on the ground."
+msgstr ""
+
+#: data/json/effects.json
+msgid "Poison (emote)"
+msgstr ""
+
+#. ~ Description of effect 'Poison (emote)'.
+#: data/json/effects.json
+msgid "You're pretending to look like you've been poisoned."
+msgstr ""
+
+#: data/json/effects.json
+msgid "Bouldering (emote)"
+msgstr ""
+
+#. ~ Description of effect 'Bouldering (emote)'.
+#: data/json/effects.json
+msgid "You're pretending to look like you can't find your footing."
+msgstr ""
+
+#: data/json/effects.json
+msgid "Hot (emote)"
+msgstr ""
+
+#. ~ Description of effect 'Hot (emote)'.
+#: data/json/effects.json
+msgid "You're pretending you're hot."
+msgstr ""
+
+#: data/json/effects.json
+msgid "Cold (emote)"
+msgstr ""
+
+#. ~ Description of effect 'Cold (emote)'.
+#: data/json/effects.json
+msgid "You're pretending you're cold."
+msgstr ""
+
+#: data/json/effects.json
+msgid "Glowing Aura (emote)"
+msgstr ""
+
+#. ~ Description of effect 'Glowing Aura (emote)'.
+#: data/json/effects.json
+msgid "You're radiating a glowing aura."
+msgstr ""
+
+#: data/json/effects.json
+msgid "Blue Aura (emote)"
+msgstr ""
+
+#. ~ Description of effect 'Blue Aura (emote)'.
+#: data/json/effects.json
+msgid "You're radiating a blue aura."
+msgstr ""
+
+#: data/json/effects.json
+msgid "Beauty (emote)"
+msgstr ""
+
+#. ~ Description of effect 'Beauty (emote)'.
+#: data/json/effects.json
+msgid "You're pretending to look like you're beautiful."
+msgstr ""
+
+#: data/json/effects.json
+msgid "Teargas (emote)"
+msgstr ""
+
+#. ~ Description of effect 'Teargas (emote)'.
+#: data/json/effects.json
+msgid "You're pretending to look like you've been teargassed."
+msgstr ""
+
+#: data/json/effects.json
+msgid "Musical (emote)"
+msgstr ""
+
+#. ~ Description of effect 'Musical (emote)'.
+#: data/json/effects.json
+msgid "You're surrounded by musical notes. (At least, in your imagination.)"
+msgstr ""
+
+#: data/json/effects.json
+msgid "Tweaking (emote)"
+msgstr ""
+
+#. ~ Description of effect 'Tweaking (emote)'.
+#: data/json/effects.json
+msgid "You're pretending to look like you're tweaking."
+msgstr ""
 
 #. ~ Description for {'str': 'Uncanny Dodge'}
 #: data/json/enchantments.json
@@ -29942,6 +30181,22 @@ msgstr "여과"
 msgid "sanding"
 msgstr "사포질"
 
+#: data/json/tool_qualities.json
+msgid "high voltage insulation"
+msgstr ""
+
+#: data/json/tool_qualities.json
+msgid "voltage measurement"
+msgstr ""
+
+#: data/json/tool_qualities.json
+msgid "fine pulling"
+msgstr ""
+
+#: data/json/tool_qualities.json
+msgid "metal cutting"
+msgstr ""
+
 #: data/json/traps.json data/json/items/generic.json src/advanced_inv.cpp
 #: src/magic.cpp src/map_extras.cpp src/recipe.cpp
 msgid "none"
@@ -43063,6 +43318,44 @@ msgid ""
 " and nicotine."
 msgstr "프로필렌 글리콜, 식물성 글리세린, 합성착향료, 니코틴으로 구성된 액체."
 
+#: data/json/items/ammo.json
+msgid "crude cannabis extract"
+msgid_plural "crude cannabis extracts"
+msgstr[0] ""
+
+#. ~ Description for {'str': 'crude cannabis extract'}
+#: data/json/items/ammo.json
+msgid ""
+"An unrefined cannabis extract.  This slurry consists of butane, terpenes, "
+"and THC and is commonly referred to as BHO or butane hash oil.  This hasn't "
+"been properly purged yet, and can't be safely consumed."
+msgstr ""
+
+#: data/json/items/ammo.json
+msgid "thc distillate"
+msgid_plural "thc distillates"
+msgstr[0] ""
+
+#. ~ Description for {'str': 'thc distillate'}
+#: data/json/items/ammo.json
+msgid ""
+"A thick golden-amber colored liquid distillate containing cannabis terpenes "
+"and 90-99% THCA.  Perfect for vaping with a dab pen."
+msgstr ""
+
+#: data/json/items/ammo.json
+msgid "thc wax"
+msgid_plural "thc waxs"
+msgstr[0] ""
+
+#. ~ Description for {'str': 'thc wax'}
+#: data/json/items/ammo.json
+msgid ""
+"An opaque, semi-solid cannabis concentrate, with wax-like consistency.  Its "
+"texture can vary from creamy (budder) to crumbly (honeycomb), making it "
+"suitable for dabbing.  This extract can generally reach 60-90% THCA."
+msgstr ""
+
 #: data/json/items/ammo.json data/json/items/ammo_types.json
 msgid "fish bait"
 msgid_plural "fish baits"
@@ -49918,6 +50211,7 @@ msgid_plural "cigars"
 msgstr[0] "시가"
 
 #. ~ Use action menu_text for {'str': 'cigar'}.
+#. ~ Use action menu_text for {'str': 'blunt'}.
 #. ~ Use action menu_text for {'str': 'cigarette'}.
 #. ~ Use action menu_text for {'str': 'joint'}.
 #. ~ Use action menu_text for {'str': "spooky jack o'lantern", 'str_pl': "jack
@@ -49952,6 +50246,21 @@ msgstr "시가를 껐습니다."
 msgid "The smoke billowing from this cigar has a sweet, musty odor."
 msgstr "이 시가에서 피어오르는 연기에서 달콤하고 메케한 냄새가 납니다."
 
+#: data/json/items/generic.json data/json/items/comestibles/med.json
+msgid "blunt"
+msgid_plural "blunts"
+msgstr[0] ""
+
+#. ~ Use action msg for {'str': 'blunt'}.
+#: data/json/items/generic.json
+msgid "You extinguish the blunt."
+msgstr ""
+
+#. ~ Description for {'str': 'blunt'}
+#: data/json/items/generic.json
+msgid "The smoke billowing from this blunt has a sweet, fruity odor."
+msgstr ""
+
 #: data/json/items/generic.json
 msgid "cigar butt"
 msgid_plural "cigar butts"
@@ -49961,6 +50270,16 @@ msgstr[0] "시가 꽁초"
 #: data/json/items/generic.json
 msgid "A true gentleman always finishes his cigars."
 msgstr "진짜 신사는 언제나 시가를 즐기지."
+
+#: data/json/items/generic.json
+msgid "blunt roach"
+msgid_plural "blunt roaches"
+msgstr[0] ""
+
+#. ~ Description for {'str': 'blunt roach', 'str_pl': 'blunt roaches'}
+#: data/json/items/generic.json
+msgid "A true gangster always finishes their blunts."
+msgstr ""
 
 #: data/json/items/generic.json data/json/items/comestibles/med.json
 msgid "cigarette"
@@ -69064,6 +69383,48 @@ msgstr ""
 "앞면에 AK-47이 그려진 반팔 면 셔츠입니다. 핸드가드를 주먹이 꽉 움켜쥐고 있고, 그 손가락은 거친 문신으로 덮여있습니다."
 
 #: data/json/items/armor/torso_clothes.json
+msgid "drug rug"
+msgid_plural "drug rugs"
+msgstr[0] ""
+
+#. ~ Description for {'str': 'drug rug'}
+#: data/json/items/armor/torso_clothes.json
+msgid ""
+"A hooded pullover made of a coarse, woven fabric.  Popular among festival-"
+"goers and chill backpackers.  Smells faintly of patchouli."
+msgstr ""
+
+#: data/json/items/armor/torso_clothes.json
+msgid ""
+"A cozy hoodie patterned with thick earth-toned stripes—burnt umber, forest "
+"green, and sand.  The texture is rough but comforting."
+msgstr ""
+
+#: data/json/items/armor/torso_clothes.json
+msgid ""
+"A hoodie woven with psychedelic sunset colors—deep orange, radiant purple, "
+"and hints of electric pink.  It radiates good vibes."
+msgstr ""
+
+#: data/json/items/armor/torso_clothes.json
+msgid ""
+"A green, yellow, and red striped drug rug hoodie.  Slightly faded, like it's"
+" seen a few beach fires and late-night jam sessions."
+msgstr ""
+
+#: data/json/items/armor/torso_clothes.json
+msgid ""
+"A hoodie decorated with vaguely Aztec patterns in black and gray.  You feel "
+"wiser just wearing it, or maybe that’s the edibles."
+msgstr ""
+
+#: data/json/items/armor/torso_clothes.json
+msgid ""
+"Tan and teal stripes dance across the weave of this soft, oversized hoodie."
+"  Looks perfect for stargazing in the desert."
+msgstr ""
+
+#: data/json/items/armor/torso_clothes.json
 msgid "leather vest"
 msgid_plural "leather vests"
 msgstr[0] "가죽 조끼"
@@ -71523,21 +71884,6 @@ msgstr ""
 "재질, 측량학, 공구 제작, 장비, 나사깎기 같은 것들을 모두 다루는 고전 참고서입니다. 이 책은 보다 최신 판본으로, 3차원 인쇄에 "
 "대한 최신 기법에 대한 광범위한 데이터를 포함합니다. 기계가공을 어떻게 해야 잘 할 수 있을지 궁금하다면, 이 책 안에 해답이 있을 "
 "것입니다."
-
-#: data/json/items/book/fabrication.json
-msgid "The Essential Oil Enthusiasts Handbook"
-msgid_plural "copies of The Essential Oil Enthusiasts Handbook"
-msgstr[0] "정유 매니아 안내서"
-
-#. ~ Description for {'str': 'The Essential Oil Enthusiasts Handbook',
-#. 'str_pl': 'copies of The Essential Oil Enthusiasts Handbook'}
-#: data/json/items/book/fabrication.json
-msgid ""
-"A heavy hardback book explaining the process of essential oil making, with "
-"schematics for the equipment to do it.  Good luck, and don't blow yourself "
-"up!"
-msgstr ""
-"두툼한 제본서로, 필수적인 정유과정 및 이에 필요한 장비의 도식을 포함하고 있습니다. 행운을 빌어요, 당신 자신을 날려버리지는 마세요!"
 
 #: data/json/items/book/fabrication.json
 msgid "Concrete Constructions"
@@ -80718,6 +81064,16 @@ msgid "A handful of colorful fruit-flavored chewy candy."
 msgstr "다양한 색깔의 과일맛 씹어먹는 사탕."
 
 #: data/json/items/comestibles/junkfood.json
+msgid "'special' chewy candy"
+msgid_plural "'special' chewy candys"
+msgstr[0] ""
+
+#. ~ Use action activation_message for {'str': "'special' chewy candy"}.
+#: data/json/items/comestibles/junkfood.json
+msgid "You start scarfing down the candy.  They taste a little funny though…"
+msgstr ""
+
+#: data/json/items/comestibles/junkfood.json
 msgid "powder candy sticks"
 msgid_plural "powder candy sticks"
 msgstr[0] "분말 사탕"
@@ -81519,7 +81875,7 @@ msgstr[0] "인육 크래클린"
 #, c-format
 msgid "cursed %s"
 msgid_plural "cursed %s"
-msgstr[0] "저주받은 %s"
+msgstr[0] "크레이지 %s"
 
 #. ~ Description for {'str_sp': 'cracklins'}
 #: data/json/items/comestibles/meat_dishes.json
@@ -81671,7 +82027,7 @@ msgstr[0] "슬라이스햄"
 #, c-format
 msgid "loathsome %s"
 msgid_plural "loathsome %s"
-msgstr[0] "징그러운 %s"
+msgstr[0] "사악한 %s"
 
 #. ~ Description for lunch meat
 #: data/json/items/comestibles/meat_dishes.json
@@ -81778,7 +82134,7 @@ msgstr[0] "맨부어스트 그레이비"
 #, c-format
 msgid "ghastly %s"
 msgid_plural "ghastly %s"
-msgstr[0] "으스스한 %s"
+msgstr[0] "소름돋는 %s"
 
 #. ~ Description for {'str': 'sausage gravy', 'str_pl': 'sausage gravies'}
 #: data/json/items/comestibles/meat_dishes.json
@@ -82035,7 +82391,7 @@ msgstr[0] "폐급 파이"
 #, c-format
 msgid "malignant %s"
 msgid_plural "malignant %s"
-msgstr[0] "극악무도한 %s"
+msgstr[0] "망측한 %s"
 
 #. ~ Description for meat pie
 #: data/json/items/comestibles/meat_dishes.json
@@ -82058,7 +82414,7 @@ msgstr[0] "피칠갑 피자"
 #, c-format
 msgid "miserable %s"
 msgid_plural "miserable %s"
-msgstr[0] "기분 나쁜 %s"
+msgstr[0] "무시무시한 %s"
 
 #. ~ Description for meat pizza
 #: data/json/items/comestibles/meat_dishes.json
@@ -82150,7 +82506,7 @@ msgstr[0] "썅놈 스파게티"
 #, c-format
 msgid "gnarly %s"
 msgid_plural "gnarly %s"
-msgstr[0] "으르렁거리는 %s"
+msgstr[0] "날아다니는 %s 괴물"
 
 #. ~ Description for {'str_sp': 'spaghetti bolognese'}
 #: data/json/items/comestibles/meat_dishes.json
@@ -82211,7 +82567,7 @@ msgstr[0] "철면피 %s"
 #, c-format
 msgid "chilling %s"
 msgid_plural "chilling %s"
-msgstr[0] "섬뜩한 %s"
+msgstr[0] "추악한 %s"
 
 #. ~ Description for cheeseburger
 #: data/json/items/comestibles/meat_dishes.json
@@ -82236,7 +82592,7 @@ msgstr[0] "밥 버거"
 #, c-format
 msgid "horrible %s"
 msgid_plural "horrible %s"
-msgstr[0] "끔찍한 %s"
+msgstr[0] "흉측한 %s"
 
 #. ~ Description for hamburger
 #: data/json/items/comestibles/meat_dishes.json
@@ -82259,7 +82615,7 @@ msgstr[0] "맨드위치"
 #, c-format
 msgid "suspicious %s"
 msgid_plural "suspicious %s"
-msgstr[0] "의심스러운 %s"
+msgstr[0] "수상한 %s"
 
 #. ~ Description for sloppy joe
 #: data/json/items/comestibles/meat_dishes.json
@@ -82285,7 +82641,7 @@ msgstr[0] "티오 %s"
 #, c-format
 msgid "terrifying %s"
 msgid_plural "terrifying %s"
-msgstr[0] "토나오는 %s"
+msgstr[0] "타락한 %s"
 
 #. ~ Description for taco
 #: data/json/items/comestibles/meat_dishes.json
@@ -82304,7 +82660,7 @@ msgstr[0] "절인 고기"
 #: data/json/items/comestibles/meat_dishes.json
 msgid "pickled punk"
 msgid_plural "pickled punks"
-msgstr[0] "절인 고아"
+msgstr[0] "절인 좆병신"
 
 #. ~ Description for pickled meat
 #: data/json/items/comestibles/meat_dishes.json
@@ -82396,7 +82752,7 @@ msgstr[0] "고기 데마끼"
 #, c-format
 msgid "troubling %s"
 msgid_plural "troubling %s"
-msgstr[0] "공포스러운 %s"
+msgstr[0] "뒤틀린 %s"
 
 #. ~ Description for {'str_sp': 'meat temaki'}
 #: data/json/items/comestibles/meat_dishes.json
@@ -82437,7 +82793,7 @@ msgstr[0] "펠메니"
 #, c-format
 msgid "perilous %s"
 msgid_plural "perilous %s"
-msgstr[0] "모독적인 %s"
+msgstr[0] "포악한 %s"
 
 #. ~ Description for pelmeni
 #: data/json/items/comestibles/meat_dishes.json
@@ -82571,7 +82927,7 @@ msgstr[0] "케밥"
 #: data/json/items/comestibles/meat_dishes.json
 msgid "donner kebab"
 msgid_plural "donner kebabs"
-msgstr[0] "장기기증 케밥"
+msgstr[0] "살맛 나는 케밥"
 
 #. ~ Conditional name for {'str_sp': 'kebab'} when COMPONENT_ID matches mutant
 #. ~ Conditional name for {'str_sp': 'meat kebab'} when COMPONENT_ID matches
@@ -82580,7 +82936,7 @@ msgstr[0] "장기기증 케밥"
 #, c-format
 msgid "killer %s"
 msgid_plural "killer %s"
-msgstr[0] "살인마 %s"
+msgstr[0] "킬러 %s"
 
 #. ~ Description for {'str_sp': 'kebab'}
 #: data/json/items/comestibles/meat_dishes.json
@@ -83033,257 +83389,6 @@ msgid ""
 msgstr "강력한 벤조디아제펨계 약물. 근육 경련, 불안감, 발작, 공포 발작의 치료에 쓰입니다."
 
 #: data/json/items/comestibles/med.json
-msgid "high quality shatter"
-msgid_plural "high quality shatter"
-msgstr[0] "고품질 '섀터'"
-
-#. ~ Use action activation_message for {'str_sp': 'high quality shatter'}.
-#: data/json/items/comestibles/med.json
-msgid "You take a dab. Wow that's got some killer terpenes!"
-msgstr "기화기로 피운 연기를 흡입합니다. 이야 테르핀 죽여주네요!"
-
-#. ~ Description for {'str_sp': 'high quality shatter'}
-#: data/json/items/comestibles/med.json
-msgid ""
-"Concentrated cannabis extract, commonly known as dabs.  This particular "
-"style of concentrate in is a thin sheet and shatters like glass at room "
-"temperature.  Argueably its one of the better styles of concentrate compared"
-" to wax, crumble, or distilate.  Normal cannabis contains around 20%THC, "
-"this shatter should be around 55%THC."
-msgstr ""
-"대마 농축 추출물로, 보통 '댑' 이라고 불리지만, 여러분에게는 '떨' 이 익숙할 것입니다. 실온에서 얇은 쪽지 같은 형태이고, 유리처럼"
-" 쉽게 부스러집니다. 왁스, 크럼블, 분화물 같은 다른 추출물 형태와 비교할 때 더 괜찮은 쪽에 속한다고들 합니다. 일반적인 대마는 "
-"20% THC 유효성분을 함유하지만, 이건 유효성분이 약 55%에 해당합니다."
-
-#: data/json/items/comestibles/med.json
-msgid "high quality wax"
-msgid_plural "high quality wax"
-msgstr[0] "고품질 '왁스'"
-
-#. ~ Use action activation_message for {'str_sp': 'high quality wax'}.
-#: data/json/items/comestibles/med.json
-msgid "You take a dab of some wax.  *cough cough* good stuff!"
-msgstr "왁스를 조금 들이킵니다. *켁켁* 좋네요!"
-
-#. ~ Description for {'str_sp': 'high quality wax'}
-#: data/json/items/comestibles/med.json
-msgid ""
-"Concentrated cannabis extract, commonly known as dabs.  This particular "
-"style of concentrate has the look and consistency of a yellow waxy substance"
-" at room temperature.  Normal cannabis contains around 20%THC, this wax "
-"should be around 45%THC."
-msgstr ""
-"대마 농축 추출물로, 보통 '댑' 이라고 불리지만, 여러분에게는 '떨' 이 익숙할 것입니다. 실온에서 노란 양초 같은 형태와 농도를 "
-"유지합니다. 일반적인 대마는 20% THC 유효성분을 함유하지만, 이건 유효성분이 약 45%에 해당합니다."
-
-#: data/json/items/comestibles/med.json
-msgid "high quality crude oil"
-msgid_plural "high quality crude oil"
-msgstr[0] "고품질 '조잡한 기름'"
-
-#. ~ Use action activation_message for {'str_sp': 'high quality crude oil'}.
-#: data/json/items/comestibles/med.json
-msgid "You smoke some bad dabs.  Not a good idea."
-msgstr "질 나쁜 떨을 피웁니다. 좋은 생각이 아니에요."
-
-#. ~ Description for {'str_sp': 'high quality crude oil'}
-#: data/json/items/comestibles/med.json
-msgid ""
-"This is high quality concentrated oil derived from cannabis.  It still has "
-"some residual solvents in it so it needs to be purged in a vacuum oven, "
-"whipped over a heated surface, or distilled before it is safe to consume."
-msgstr ""
-"이것은 대마에서 농축 추출한 고급 오일입니다. 여전히 잔여 용액이 남아있어 진공 오븐 처리하거나, 뜨거운 표면으로 두드리거나, 증류해야 "
-"안전하게 흡수할 수 있습니다."
-
-#: data/json/items/comestibles/med.json
-msgid "low quality crude oil"
-msgid_plural "low quality crude oil"
-msgstr[0] "저품질 '조잡한 석유'"
-
-#. ~ Use action activation_message for {'str_sp': 'low quality crude oil'}.
-#. ~ Use action activation_message for {'str_sp': 'filtered low quality crude
-#. oil'}.
-#. ~ Use action activation_message for {'str_sp': 'filtered high quality crude
-#. oil'}.
-#: data/json/items/comestibles/med.json
-msgid "You smoke some really bad dabs.  Not a good idea."
-msgstr "정말 질 나쁜 떨을 피웁니다. 좋은 생각이 아니에요."
-
-#. ~ Description for {'str_sp': 'low quality crude oil'}
-#: data/json/items/comestibles/med.json
-msgid ""
-"This is low quality concentrated oil derived from cannabis.  It still has "
-"some residual solvents in it so it needs to be purged in a vacuum oven, "
-"whipped over a heated surface, or distilled before it is safe to consume."
-msgstr ""
-"이것은 대마에서 농축 추출한 저급 오일입니다. 여전히 잔여 용액이 남아있어 진공 오븐 처리하거나, 뜨거운 표면으로 두드리거나, 증류해야 "
-"안전하게 흡수할 수 있습니다."
-
-#: data/json/items/comestibles/med.json
-msgid "(ethanol) low quality crude oil"
-msgid_plural "(ethanol) low quality crude oil"
-msgstr[0] "(에탄올) '저품질 석유'"
-
-#. ~ Description for {'str_sp': '(ethanol) low quality crude oil'}
-#: data/json/items/comestibles/med.json
-msgid ""
-"This is low quality concentrated oil derived from cannabis thats been "
-"diluted in ethanol and heated over a hotplate.  The next step would be to "
-"filter it through a buchner flask."
-msgstr ""
-"이것은 대마에서 농축 추출해 에탄올에 희석시킨 뒤 핫플레이트로 데운 저급 오일입니다. 이제 뷔흐너 플라스크로 한번 걸러야 합니다."
-
-#: data/json/items/comestibles/med.json
-msgid "(ethanol) high quality crude oil"
-msgid_plural "(ethanol) high quality crude oil"
-msgstr[0] "(에탄올) '고품질 석유'"
-
-#. ~ Description for {'str_sp': '(ethanol) high quality crude oil'}
-#: data/json/items/comestibles/med.json
-msgid ""
-"This is high quality concentrated oil derived from cannabis thats been "
-"diluted in ethanol and heated over a hotplate.  The next step would be to "
-"filter it through a buchner flask."
-msgstr ""
-"이것은 대마에서 농축 추출해 에탄올에 희석시킨 뒤 핫플레이트로 데운 고급 오일입니다. 이제 뷔흐너 플라스크로 한번 걸러야 합니다."
-
-#: data/json/items/comestibles/med.json
-msgid "(ethanol) filtered low quality crude oil"
-msgid_plural "(ethanol) filtered low quality crude oil"
-msgstr[0] "(에탄올) 걸러낸  '저품질 석유'"
-
-#. ~ Description for {'str_sp': '(ethanol) filtered low quality crude oil'}
-#: data/json/items/comestibles/med.json
-msgid ""
-"This is low quality concentrated oil derived from cannabis thats been "
-"diluted in ethanol, heated over a hotplate, and filtered through a buchner "
-"flask.  The next step would be to run it through a rotovap."
-msgstr ""
-"이것은 대마에서 농축 추출해 에탄올에 희석시킨 뒤 핫플레이트로 데우고 뷔흐너 플라스크로 거른 저급 오일입니다. 이제 회증기(회전증발기)에"
-" 한번 돌려야 합니다."
-
-#: data/json/items/comestibles/med.json
-msgid "(ethanol) filtered high quality crude oil"
-msgid_plural "(ethanol) filtered high quality crude oil"
-msgstr[0] "(에탄올) 걸러낸 '고품질 석유'"
-
-#. ~ Description for {'str_sp': '(ethanol) filtered high quality crude oil'}
-#: data/json/items/comestibles/med.json
-msgid ""
-"This is high quality concentrated oil derived from cannabis thats been "
-"diluted in ethanol, heated over a hotplate, and filtered through a buchner "
-"flask.  The next step would be to run it through a rotovap."
-msgstr ""
-"이것은 대마에서 농축 추출해 에탄올에 희석시킨 뒤 핫플레이트로 데우고 뷔흐너 플라스크로 거른고급 오일입니다. 이제 회증기(회전증발기)에 "
-"한번 돌려야 합니다."
-
-#: data/json/items/comestibles/med.json
-msgid "filtered low quality crude oil"
-msgid_plural "filtered low quality crude oil"
-msgstr[0] "여과된 저품질 석유"
-
-#. ~ Description for {'str_sp': 'filtered low quality crude oil'}
-#: data/json/items/comestibles/med.json
-msgid ""
-"This is low quality concentrated oil derived from cannabis thats been "
-"diluted in ethanol, heated over a hotplate, filtered through a buchner "
-"flask, and all the ethanol recovered using a rotary evaporator.  It is ready"
-" for the distillation."
-msgstr ""
-"이것은 대마에서 농축 추출해 에탄올에 희석시킨 뒤 핫플레이트로 데우고 뷔흐너 플라스크로 거른 후에 에탄올을 회증기로 빼낸 저급 "
-"오일입니다. 증류할 준비가 끝났습니다."
-
-#: data/json/items/comestibles/med.json
-msgid "filtered high quality crude oil"
-msgid_plural "filtered high quality crude oil"
-msgstr[0] "여과된 고품질 석유"
-
-#. ~ Description for {'str_sp': 'filtered high quality crude oil'}
-#: data/json/items/comestibles/med.json
-msgid ""
-"This is high quality concentrated oil derived from cannabis thats been "
-"diluted in ethanol, heated over a hotplate, filtered through a buchner "
-"flask, and all the ethanol recovered using a rotary evaporator.  It is ready"
-" for the distillation."
-msgstr ""
-"이것은 대마에서 농축 추출해 에탄올에 희석시킨 뒤 핫플레이트로 데우고 뷔흐너 플라스크로 거른 후에 에탄올을 회증기로 빼낸 고급 "
-"오일입니다. 증류할 준비가 끝났습니다."
-
-#: data/json/items/comestibles/med.json
-msgid "high quality distillate (heads)"
-msgid_plural "high quality distillate (heads)"
-msgstr[0] "고급 증류물 (첫 부분)"
-
-#. ~ Description for {'str_sp': 'high quality distillate (heads)'}
-#: data/json/items/comestibles/med.json
-msgid ""
-"Concentrated cannabis extract.  This is the 'heads' portion from a distilled"
-" batch of crude oil.  It still needs to be ran through a lab grade still one"
-" more time before its a finished product."
-msgstr "대마 농축 추출물. 이것은 증류된 석유의 '첫' 부분입니다. 완벽한 상품이 되기 전에 한 번 더 실험대를 거쳐야 합니다."
-
-#: data/json/items/comestibles/med.json
-msgid "high quality distillate (tails)"
-msgid_plural "high quality distillate (tails)"
-msgstr[0] "고급 증류물 (끝 부분)"
-
-#. ~ Description for {'str_sp': 'high quality distillate (tails)'}
-#: data/json/items/comestibles/med.json
-msgid ""
-"Concentrated cannabis extract.  This material is the 'tails' portion from a "
-"distilled batch of crude oil.  It needs to be ran through a lab grade still "
-"another time."
-msgstr "대마 농축 추출물. 증류된 석유의 '끝' 부분입니다. 완벽한 상품이 되기 전에 한 번 더 실험대를 거쳐야 합니다."
-
-#: data/json/items/comestibles/med.json
-msgid "high quality distillate"
-msgid_plural "high quality distillate"
-msgstr[0] "고급 증류물"
-
-#. ~ Use action activation_message for {'str_sp': 'high quality distillate'}.
-#: data/json/items/comestibles/med.json
-msgid "You take a dab of some distillate.  Sooooo smooth..."
-msgstr "증류물을 한 스쿱 집어 들이킵니다. 아아아아부드러워..."
-
-#. ~ Description for {'str_sp': 'high quality distillate'}
-#: data/json/items/comestibles/med.json
-msgid ""
-"Concentrated cannabis extract.  This style of extract goes through the most "
-"processing, eliminating most if not all harmful ingredients.  Normal "
-"cannabis contains around 20%THC, this distillate should be around 88%THC.  "
-"Can be smoked in a bowl, used in a dab pen, or used to make distillate "
-"cartridges."
-msgstr ""
-"대마 농축 추출물입니다. 이 추출물은 가공 과정을 거치며 완전히는 아니지만 해로운 대부분의 성분을 제거했습니다. 일반적인 대마는 20% "
-"THC 유효성분을 함유하지만, 이건 유효성분이 약 88%에 해당합니다. 그릇에 담아 피우거나, 마리화나용 전자담배나 증류액 카트리지를 "
-"만드는데 쓸 수 있습니다."
-
-#: data/json/items/comestibles/med.json
-msgid "high quality distillate cartridge"
-msgid_plural "high quality distillate cartridges"
-msgstr[0] "고급 증류액 카트리지"
-
-#. ~ Use action activation_message for {'str': 'high quality distillate
-#. cartridge'}.
-#: data/json/items/comestibles/med.json
-msgid "You hit your dab pen.  Sooooo smooth..."
-msgstr "전자담배를 당깁니다. 아아아아부드러워..."
-
-#. ~ Description for {'str': 'high quality distillate cartridge'}
-#: data/json/items/comestibles/med.json
-msgid ""
-"A small cartridge containing concentrated cannabis extract thats used with "
-"dab pens.  This style of extract goes through the most processing, "
-"eliminating most if not all harmful ingredients.  Normal cannabis contains "
-"around 20%THC, this distillate should be around 70%THC after reintroducing "
-"terpenes for flavoring."
-msgstr ""
-"전자담배로 피울 수 있게 대마 농축 추출물을 담아놓은 조그만 카트리지. 이 추출물은 가공 과정을 거치며 완전히는 아니지만 해로운 대부분의"
-" 성분을 제거했습니다. 일반적인 대마는 20% THC 유효성분을 함유하지만, 이건 향을 내기 위한 테르핀을 넣으며 유효성분이 약 70%로"
-" 줄었습니다."
-
-#: data/json/items/comestibles/med.json
 msgid "saline eye drop"
 msgid_plural "saline eye drops"
 msgstr[0] "식염수 안약"
@@ -83393,6 +83498,18 @@ msgid ""
 "Marijuana, cannabis, pot.  Whatever you want to call it, it's rolled up in a"
 " piece of paper and ready for smokin'."
 msgstr "마리화나, 대마, 떨. 어떻게 부르든간에, 종이에 돌돌 말려있어 곧바로 피울 수 있습니다."
+
+#. ~ Use action activation_message for blunt.
+#: data/json/items/comestibles/med.json
+msgid "You light up the blunt."
+msgstr ""
+
+#. ~ Description for blunt
+#: data/json/items/comestibles/med.json
+msgid ""
+"Marijuana, cannabis, pot.  Whatever you want to call it, it's rolled up in a"
+" large tobacco leaf and ready for smokin'."
+msgstr ""
 
 #: data/json/items/comestibles/med.json
 msgid "pink tab"
@@ -86414,7 +86531,7 @@ msgstr[0] "소일렌트 그린 음료"
 #, c-format
 msgid "perturbing %s"
 msgid_plural "perturbing %s"
-msgstr[0] "괴이한 %s"
+msgstr[0] "파탄난 %s"
 
 #. ~ Description for protein drink
 #: data/json/items/comestibles/protein.json
@@ -88696,7 +88813,7 @@ msgstr[0] "고기 카레"
 #: data/json/items/comestibles/soup.json
 msgid "creature curry"
 msgid_plural "creature curries"
-msgstr[0] "변이고기 카레"
+msgstr[0] "카타클리즘 카레"
 
 #. ~ Description for {'str': 'curry with meat', 'str_pl': 'curries with meat'}
 #: data/json/items/comestibles/soup.json
@@ -98185,11 +98302,10 @@ msgstr[0] "양각대"
 #: data/json/items/gunmod/underbarrel.json
 msgid ""
 "Bipods are commonly used on rifles and machine guns to provide a forward "
-"rest and reduce motion.  Although they greatly improve handling of recoil "
-"they are usable only on certain surfaces and are slow to equip."
+"rest and reduce motion.  Although they noticably improve handling and "
+"precision they are slow to equip and usable only on certain mountable "
+"surfaces such as window frames and mounds of dirt."
 msgstr ""
-"양각대는 소총과 기관총에 장착하여 전방 지지대 역할을 하며, 진동을 감소시킵니다. 반동 제어 성능이 크게 향상되지만, 튼튼한 표면에만 "
-"놓을 수 있고 총기를 손에 드는데 시간이 오래 걸리게 됩니다."
 
 #: data/json/items/gunmod/underbarrel.json
 msgid "modified bipod"
@@ -98199,13 +98315,11 @@ msgstr[0] "개량된 양각대"
 #: data/json/items/gunmod/underbarrel.json
 msgid ""
 "Bipods are commonly used on rifles and machine guns to provide a forward "
-"rest and reduce motion.  Although they greatly improve handling of recoil "
-"they are usable only on certain surfaces and are slow to equip.  This one "
-"was modified and customized to mount on pretty much any weapon, if you so "
-"want."
+"rest and reduce motion.  Although they noticably improve handling and "
+"precision they are slow to equip and usable only on certain mountable "
+"surfaces such as window frames and mounds of dirt.  This one was modified "
+"and customized to mount on pretty much any weapon, if you so want."
 msgstr ""
-"양각대는 소총과 기관총에 장착하여 전방 지지대 역할을 하며, 진동을 감소시킵니다. 반동 제어 성능이 크게 향상되지만, 튼튼한 표면에만 "
-"놓을 수 있고 총기를 손에 드는데 시간이 오래 걸리게 됩니다. 원한다면 어느 무기에든 장착할 수 있도록 개조되었습니다."
 
 #: data/json/items/gunmod/underbarrel.json
 msgid "combination gun shotgun"
@@ -110367,7 +110481,7 @@ msgstr[0] "카우벨"
 msgid "A brass cow bell.  You feel like you need more of it."
 msgstr "황동 카우벨입니다. 더 있으면 좋겠네요."
 
-#: data/json/items/tool/misc.json
+#: data/json/items/tool/misc.json data/json/items/tool/smoking.json
 msgid "dab pen"
 msgid_plural "dab pens"
 msgstr[0] "마리화나 전자담배"
@@ -110380,7 +110494,7 @@ msgstr "전자담배를 작동시킵니다."
 #. ~ Use action need_charges_msg for {'str': 'dab pen'}.
 #. ~ Use action need_charges_msg for {'str': 'dab pen (on)', 'str_pl': 'dab
 #. pens (on)'}.
-#: data/json/items/tool/misc.json
+#: data/json/items/tool/misc.json data/json/obsoletion/items.json
 msgid "The dab pen's batteries need more charge."
 msgstr "전자담배 배터리 잔량이 부족합니다."
 
@@ -110389,23 +110503,6 @@ msgstr "전자담배 배터리 잔량이 부족합니다."
 msgid ""
 "A battery operated dab pen used for smoking cannabis distillate cartridges."
 msgstr "배터리로 돌아가는 전자담배로, 대마 추출물 카트리지를 넣어 피우는데 씁니다."
-
-#: data/json/items/tool/misc.json
-msgid "dab pen (on)"
-msgid_plural "dab pens (on)"
-msgstr[0] "마리화나 전자담배 (켜짐)"
-
-#. ~ Use action msg for {'str': 'dab pen (on)', 'str_pl': 'dab pens (on)'}.
-#: data/json/items/tool/misc.json
-msgid "You turn off the dab pen."
-msgstr "전자담배를 끕니다."
-
-#. ~ Description for {'str': 'dab pen (on)', 'str_pl': 'dab pens (on)'}
-#: data/json/items/tool/misc.json
-msgid ""
-"This dab pen, for vaporizing cannabis, is turned on.  Now all you need is a "
-"distillate cartridge and you're ready to rock and roll."
-msgstr "마리화나를 기화시키는 전자담배이고, 작동 중입니다. 이제 추출물 카트리지만 있으면 로큰롤 준비로 완벽합니다."
 
 #: data/json/items/tool/misc.json
 msgid "Cube of Shame"
@@ -110654,16 +110751,6 @@ msgid ""
 msgstr ""
 "외과용 겸자, 케이블, 개조된 스마트폰이 작은 플라스틱 파우치 안에 들어있습니다. 어느 가엾은 이의 정신을 훔치기 위한 용도로, 으스스한"
 " 최첨단 샌드맨에게 필요한 도구입니다."
-
-#: data/json/items/tool/misc.json
-msgid "plastic gasket"
-msgid_plural "plastic gaskets"
-msgstr[0] "플라스틱 가스켓"
-
-#. ~ Description for {'str': 'plastic gasket'}
-#: data/json/items/tool/misc.json
-msgid " A single-use plastic gasket."
-msgstr "일회용 플라스틱 마개."
 
 #: data/json/items/tool/misc.json
 msgid "permanent marker"
@@ -111417,9 +111504,9 @@ msgstr[0] "부탄 탱크"
 #. ~ Description for {'str': 'butane tank', 'str_pl': 'tanks of butane'}
 #: data/json/items/tool/science.json
 msgid ""
-"This is a tank of compressed butane.  It can be used to extract essential "
-"oils from organic material."
-msgstr "압축된 부탄의 탱크입니다. 이것은 천연 재료에서 정유을 추출하는 데 사용될 수 있습니다."
+"This is a tank of liquid compressed butane.  It can be used to extract "
+"essential oils from organic material."
+msgstr ""
 
 #: data/json/items/tool/science.json
 msgid "hydrogen tank"
@@ -111944,6 +112031,18 @@ msgid ""
 msgstr "수제 유리 파이프. 이런 종류의 유리 파이프는 주로 뭔가 태워서 흡입할 때 사용됩니다."
 
 #: data/json/items/tool/smoking.json
+msgid "glass bong"
+msgid_plural "glass bongs"
+msgstr[0] ""
+
+#. ~ Description for {'str': 'glass bong'}
+#: data/json/items/tool/smoking.json
+msgid ""
+"This is a hand-blown glass beaker bong.  Easy to clean, hard to tip over, "
+"and functional even after society collapses."
+msgstr ""
+
+#: data/json/items/tool/smoking.json
 msgid "tobacco pipe"
 msgid_plural "tobacco pipes"
 msgstr[0] "담배 파이프"
@@ -111954,6 +112053,53 @@ msgid ""
 "This is a hand-carved wooden smoking pipe.  It's designed to facilitate "
 "consumption of fire cured tobacco leaves."
 msgstr "수제 나무 파이프. 담뱃잎을 태워서 흡입하는데 사용됩니다."
+
+#. ~ Use action activation_message for {'str': 'dab pen'}.
+#: data/json/items/tool/smoking.json
+msgid "You hit your dab pen. Sooooo smooth..."
+msgstr ""
+
+#. ~ Description for {'str': 'dab pen'}
+#: data/json/items/tool/smoking.json
+msgid ""
+"This is a dab pen for vaporizing cannabis.  Now all you need is thc "
+"distillate and you're ready to rock and roll."
+msgstr ""
+
+#: data/json/items/tool/smoking.json
+msgid "disposable dab pen"
+msgid_plural "disposable dab pens"
+msgstr[0] ""
+
+#. ~ Use action activation_message for {'str': 'disposable dab pen'}.
+#: data/json/items/tool/smoking.json
+msgid "You hit your disposable dab pen. Sooooo smooth..."
+msgstr ""
+
+#. ~ Description for {'str': 'disposable dab pen'}
+#: data/json/items/tool/smoking.json
+msgid ""
+"This is a disposable dab pen for vaporizing cannabis.  This one is already "
+"filled with distillate for your convenience, but can't be recharged."
+msgstr ""
+
+#: data/json/items/tool/smoking.json
+msgid "nectar collector"
+msgid_plural "nectar collectors"
+msgstr[0] ""
+
+#. ~ Use action activation_message for {'str': 'nectar collector'}.
+#: data/json/items/tool/smoking.json
+msgid "You heat the nectar collector and hit it. Sooooo smooth..."
+msgstr ""
+
+#. ~ Description for {'str': 'nectar collector'}
+#: data/json/items/tool/smoking.json
+msgid ""
+"This is a metal and wooden nectar collector.  The top cover can be attached "
+"and detached magnetically.  The wood has engravings depicting bees, honey, "
+"and flowers."
+msgstr ""
 
 #: data/json/items/tool/stationary.json
 msgid "stapler"
@@ -114737,8 +114883,9 @@ msgstr[0] "플라스틱 프레임"
 #. ~ Description for {'str': 'plastic frame'}
 #: data/json/items/vehicle/frames.json
 msgid ""
-"A large frame made of plastic.  Useful for cheap and lightweight vehicles."
-msgstr "플라스틱 재질의 대형 프레임입니다. 저렴하고 가벼운 차량을 만드는데 쓰입니다."
+"A large  foldable frame made of plastic.  Useful for cheap and lightweight "
+"vehicles."
+msgstr ""
 
 #: data/json/items/vehicle/frames.json data/json/vehicleparts/frames.json
 msgid "carbon fiber frame"
@@ -114748,8 +114895,9 @@ msgstr[0] "탄소섬유 프레임"
 #. ~ Description for {'str': 'carbon fiber frame'}
 #: data/json/items/vehicle/frames.json
 msgid ""
-"A large frame made of plastic.  Useful for lightweight yet sturdy vehicles."
-msgstr "플라스틱 재질의 대형 프레임입니다. 가벼우면서도 튼튼한 차량을 만드는데 쓰입니다."
+"A large foldable frame made from sheets of carbon fiber.  Useful for "
+"lightweight yet sturdy vehicles."
+msgstr ""
 
 #: data/json/items/vehicle/frames.json data/json/vehicleparts/frames.json
 msgid "skateboard deck"
@@ -116846,6 +116994,11 @@ msgstr "발 아래를 조심해!"
 #: data/json/mapgen/park.json data/mods/No_Hope/Mapgen/park.json
 msgid "Use park at your own risk."
 msgstr "공원을 이용에 주의 하세요."
+
+#. ~ Sign
+#: data/json/mapgen/park_vending.json
+msgid "Please be respectful of the machines! Automated security in use."
+msgstr ""
 
 #. ~ Computer name
 #: data/json/mapgen/police_station.json
@@ -121481,7 +121634,7 @@ msgstr ""
 #: data/json/monsters/mutant_animal.json
 msgid "Cerbearus"
 msgid_plural "Cerbearuss"
-msgstr[0] "케르곰로스"
+msgstr[0] "케르베어로스"
 
 #. ~ Description for {'str': 'Cerbearus'}
 #: data/json/monsters/mutant_animal.json
@@ -163107,6 +163260,274 @@ msgid "You turn off the vacuum pump."
 msgstr "진공 펌프를 껐다"
 
 #: data/json/obsoletion/items.json
+msgid "high quality shatter"
+msgid_plural "high quality shatter"
+msgstr[0] "고품질 '섀터'"
+
+#. ~ Use action activation_message for {'str_sp': 'high quality shatter'}.
+#: data/json/obsoletion/items.json
+msgid "You take a dab. Wow that's got some killer terpenes!"
+msgstr "기화기로 피운 연기를 흡입합니다. 이야 테르핀 죽여주네요!"
+
+#. ~ Description for {'str_sp': 'high quality shatter'}
+#: data/json/obsoletion/items.json
+msgid ""
+"Concentrated cannabis extract, commonly known as dabs.  This particular "
+"style of concentrate in is a thin sheet and shatters like glass at room "
+"temperature.  Argueably its one of the better styles of concentrate compared"
+" to wax, crumble, or distilate.  Normal cannabis contains around 20%THC, "
+"this shatter should be around 55%THC."
+msgstr ""
+"대마 농축 추출물로, 보통 '댑' 이라고 불리지만, 여러분에게는 '떨' 이 익숙할 것입니다. 실온에서 얇은 쪽지 같은 형태이고, 유리처럼"
+" 쉽게 부스러집니다. 왁스, 크럼블, 분화물 같은 다른 추출물 형태와 비교할 때 더 괜찮은 쪽에 속한다고들 합니다. 일반적인 대마는 "
+"20% THC 유효성분을 함유하지만, 이건 유효성분이 약 55%에 해당합니다."
+
+#: data/json/obsoletion/items.json
+msgid "high quality wax"
+msgid_plural "high quality wax"
+msgstr[0] "고품질 '왁스'"
+
+#. ~ Use action activation_message for {'str_sp': 'high quality wax'}.
+#: data/json/obsoletion/items.json
+msgid "You take a dab of some wax.  *cough cough* good stuff!"
+msgstr "왁스를 조금 들이킵니다. *켁켁* 좋네요!"
+
+#. ~ Description for {'str_sp': 'high quality wax'}
+#: data/json/obsoletion/items.json
+msgid ""
+"Concentrated cannabis extract, commonly known as dabs.  This particular "
+"style of concentrate has the look and consistency of a yellow waxy substance"
+" at room temperature.  Normal cannabis contains around 20%THC, this wax "
+"should be around 45%THC."
+msgstr ""
+"대마 농축 추출물로, 보통 '댑' 이라고 불리지만, 여러분에게는 '떨' 이 익숙할 것입니다. 실온에서 노란 양초 같은 형태와 농도를 "
+"유지합니다. 일반적인 대마는 20% THC 유효성분을 함유하지만, 이건 유효성분이 약 45%에 해당합니다."
+
+#: data/json/obsoletion/items.json
+msgid "high quality crude oil"
+msgid_plural "high quality crude oil"
+msgstr[0] "고품질 '조잡한 기름'"
+
+#. ~ Use action activation_message for {'str_sp': 'high quality crude oil'}.
+#: data/json/obsoletion/items.json
+msgid "You smoke some bad dabs.  Not a good idea."
+msgstr "질 나쁜 떨을 피웁니다. 좋은 생각이 아니에요."
+
+#. ~ Description for {'str_sp': 'high quality crude oil'}
+#: data/json/obsoletion/items.json
+msgid ""
+"This is high quality concentrated oil derived from cannabis.  It still has "
+"some residual solvents in it so it needs to be purged in a vacuum oven, "
+"whipped over a heated surface, or distilled before it is safe to consume."
+msgstr ""
+"이것은 대마에서 농축 추출한 고급 오일입니다. 여전히 잔여 용액이 남아있어 진공 오븐 처리하거나, 뜨거운 표면으로 두드리거나, 증류해야 "
+"안전하게 흡수할 수 있습니다."
+
+#: data/json/obsoletion/items.json
+msgid "low quality crude oil"
+msgid_plural "low quality crude oil"
+msgstr[0] "저품질 '조잡한 석유'"
+
+#. ~ Use action activation_message for {'str_sp': 'low quality crude oil'}.
+#. ~ Use action activation_message for {'str_sp': 'filtered low quality crude
+#. oil'}.
+#. ~ Use action activation_message for {'str_sp': 'filtered high quality crude
+#. oil'}.
+#: data/json/obsoletion/items.json
+msgid "You smoke some really bad dabs.  Not a good idea."
+msgstr "정말 질 나쁜 떨을 피웁니다. 좋은 생각이 아니에요."
+
+#. ~ Description for {'str_sp': 'low quality crude oil'}
+#: data/json/obsoletion/items.json
+msgid ""
+"This is low quality concentrated oil derived from cannabis.  It still has "
+"some residual solvents in it so it needs to be purged in a vacuum oven, "
+"whipped over a heated surface, or distilled before it is safe to consume."
+msgstr ""
+"이것은 대마에서 농축 추출한 저급 오일입니다. 여전히 잔여 용액이 남아있어 진공 오븐 처리하거나, 뜨거운 표면으로 두드리거나, 증류해야 "
+"안전하게 흡수할 수 있습니다."
+
+#: data/json/obsoletion/items.json
+msgid "(ethanol) low quality crude oil"
+msgid_plural "(ethanol) low quality crude oil"
+msgstr[0] "(에탄올) '저품질 석유'"
+
+#. ~ Description for {'str_sp': '(ethanol) low quality crude oil'}
+#: data/json/obsoletion/items.json
+msgid ""
+"This is low quality concentrated oil derived from cannabis thats been "
+"diluted in ethanol and heated over a hotplate.  The next step would be to "
+"filter it through a buchner flask."
+msgstr ""
+"이것은 대마에서 농축 추출해 에탄올에 희석시킨 뒤 핫플레이트로 데운 저급 오일입니다. 이제 뷔흐너 플라스크로 한번 걸러야 합니다."
+
+#: data/json/obsoletion/items.json
+msgid "(ethanol) high quality crude oil"
+msgid_plural "(ethanol) high quality crude oil"
+msgstr[0] "(에탄올) '고품질 석유'"
+
+#. ~ Description for {'str_sp': '(ethanol) high quality crude oil'}
+#: data/json/obsoletion/items.json
+msgid ""
+"This is high quality concentrated oil derived from cannabis thats been "
+"diluted in ethanol and heated over a hotplate.  The next step would be to "
+"filter it through a buchner flask."
+msgstr ""
+"이것은 대마에서 농축 추출해 에탄올에 희석시킨 뒤 핫플레이트로 데운 고급 오일입니다. 이제 뷔흐너 플라스크로 한번 걸러야 합니다."
+
+#: data/json/obsoletion/items.json
+msgid "(ethanol) filtered low quality crude oil"
+msgid_plural "(ethanol) filtered low quality crude oil"
+msgstr[0] "(에탄올) 걸러낸  '저품질 석유'"
+
+#. ~ Description for {'str_sp': '(ethanol) filtered low quality crude oil'}
+#: data/json/obsoletion/items.json
+msgid ""
+"This is low quality concentrated oil derived from cannabis thats been "
+"diluted in ethanol, heated over a hotplate, and filtered through a buchner "
+"flask.  The next step would be to run it through a rotovap."
+msgstr ""
+"이것은 대마에서 농축 추출해 에탄올에 희석시킨 뒤 핫플레이트로 데우고 뷔흐너 플라스크로 거른 저급 오일입니다. 이제 회증기(회전증발기)에"
+" 한번 돌려야 합니다."
+
+#: data/json/obsoletion/items.json
+msgid "(ethanol) filtered high quality crude oil"
+msgid_plural "(ethanol) filtered high quality crude oil"
+msgstr[0] "(에탄올) 걸러낸 '고품질 석유'"
+
+#. ~ Description for {'str_sp': '(ethanol) filtered high quality crude oil'}
+#: data/json/obsoletion/items.json
+msgid ""
+"This is high quality concentrated oil derived from cannabis thats been "
+"diluted in ethanol, heated over a hotplate, and filtered through a buchner "
+"flask.  The next step would be to run it through a rotovap."
+msgstr ""
+"이것은 대마에서 농축 추출해 에탄올에 희석시킨 뒤 핫플레이트로 데우고 뷔흐너 플라스크로 거른고급 오일입니다. 이제 회증기(회전증발기)에 "
+"한번 돌려야 합니다."
+
+#: data/json/obsoletion/items.json
+msgid "filtered low quality crude oil"
+msgid_plural "filtered low quality crude oil"
+msgstr[0] "여과된 저품질 석유"
+
+#. ~ Description for {'str_sp': 'filtered low quality crude oil'}
+#: data/json/obsoletion/items.json
+msgid ""
+"This is low quality concentrated oil derived from cannabis thats been "
+"diluted in ethanol, heated over a hotplate, filtered through a buchner "
+"flask, and all the ethanol recovered using a rotary evaporator.  It is ready"
+" for the distillation."
+msgstr ""
+"이것은 대마에서 농축 추출해 에탄올에 희석시킨 뒤 핫플레이트로 데우고 뷔흐너 플라스크로 거른 후에 에탄올을 회증기로 빼낸 저급 "
+"오일입니다. 증류할 준비가 끝났습니다."
+
+#: data/json/obsoletion/items.json
+msgid "dab pen (on)"
+msgid_plural "dab pens (on)"
+msgstr[0] "마리화나 전자담배 (켜짐)"
+
+#. ~ Use action msg for {'str': 'dab pen (on)', 'str_pl': 'dab pens (on)'}.
+#: data/json/obsoletion/items.json
+msgid "You turn off the dab pen."
+msgstr "전자담배를 끕니다."
+
+#. ~ Description for {'str': 'dab pen (on)', 'str_pl': 'dab pens (on)'}
+#: data/json/obsoletion/items.json
+msgid ""
+"This dab pen, for vaporizing cannabis, is turned on.  Now all you need is a "
+"distillate cartridge and you're ready to rock and roll."
+msgstr "마리화나를 기화시키는 전자담배이고, 작동 중입니다. 이제 추출물 카트리지만 있으면 로큰롤 준비로 완벽합니다."
+
+#: data/json/obsoletion/items.json
+msgid "filtered high quality crude oil"
+msgid_plural "filtered high quality crude oil"
+msgstr[0] "여과된 고품질 석유"
+
+#. ~ Description for {'str_sp': 'filtered high quality crude oil'}
+#: data/json/obsoletion/items.json
+msgid ""
+"This is high quality concentrated oil derived from cannabis thats been "
+"diluted in ethanol, heated over a hotplate, filtered through a buchner "
+"flask, and all the ethanol recovered using a rotary evaporator.  It is ready"
+" for the distillation."
+msgstr ""
+"이것은 대마에서 농축 추출해 에탄올에 희석시킨 뒤 핫플레이트로 데우고 뷔흐너 플라스크로 거른 후에 에탄올을 회증기로 빼낸 고급 "
+"오일입니다. 증류할 준비가 끝났습니다."
+
+#: data/json/obsoletion/items.json
+msgid "high quality distillate (heads)"
+msgid_plural "high quality distillate (heads)"
+msgstr[0] "고급 증류물 (첫 부분)"
+
+#. ~ Description for {'str_sp': 'high quality distillate (heads)'}
+#: data/json/obsoletion/items.json
+msgid ""
+"Concentrated cannabis extract.  This is the 'heads' portion from a distilled"
+" batch of crude oil.  It still needs to be ran through a lab grade still one"
+" more time before its a finished product."
+msgstr "대마 농축 추출물. 이것은 증류된 석유의 '첫' 부분입니다. 완벽한 상품이 되기 전에 한 번 더 실험대를 거쳐야 합니다."
+
+#: data/json/obsoletion/items.json
+msgid "high quality distillate (tails)"
+msgid_plural "high quality distillate (tails)"
+msgstr[0] "고급 증류물 (끝 부분)"
+
+#. ~ Description for {'str_sp': 'high quality distillate (tails)'}
+#: data/json/obsoletion/items.json
+msgid ""
+"Concentrated cannabis extract.  This material is the 'tails' portion from a "
+"distilled batch of crude oil.  It needs to be ran through a lab grade still "
+"another time."
+msgstr "대마 농축 추출물. 증류된 석유의 '끝' 부분입니다. 완벽한 상품이 되기 전에 한 번 더 실험대를 거쳐야 합니다."
+
+#: data/json/obsoletion/items.json
+msgid "high quality distillate"
+msgid_plural "high quality distillate"
+msgstr[0] "고급 증류물"
+
+#. ~ Use action activation_message for {'str_sp': 'high quality distillate'}.
+#: data/json/obsoletion/items.json
+msgid "You take a dab of some distillate.  Sooooo smooth..."
+msgstr "증류물을 한 스쿱 집어 들이킵니다. 아아아아부드러워..."
+
+#. ~ Description for {'str_sp': 'high quality distillate'}
+#: data/json/obsoletion/items.json
+msgid ""
+"Concentrated cannabis extract.  This style of extract goes through the most "
+"processing, eliminating most if not all harmful ingredients.  Normal "
+"cannabis contains around 20%THC, this distillate should be around 88%THC.  "
+"Can be smoked in a bowl, used in a dab pen, or used to make distillate "
+"cartridges."
+msgstr ""
+"대마 농축 추출물입니다. 이 추출물은 가공 과정을 거치며 완전히는 아니지만 해로운 대부분의 성분을 제거했습니다. 일반적인 대마는 20% "
+"THC 유효성분을 함유하지만, 이건 유효성분이 약 88%에 해당합니다. 그릇에 담아 피우거나, 마리화나용 전자담배나 증류액 카트리지를 "
+"만드는데 쓸 수 있습니다."
+
+#: data/json/obsoletion/items.json
+msgid "high quality distillate cartridge"
+msgid_plural "high quality distillate cartridges"
+msgstr[0] "고급 증류액 카트리지"
+
+#. ~ Use action activation_message for {'str': 'high quality distillate
+#. cartridge'}.
+#: data/json/obsoletion/items.json
+msgid "You hit your dab pen.  Sooooo smooth..."
+msgstr "전자담배를 당깁니다. 아아아아부드러워..."
+
+#. ~ Description for {'str': 'high quality distillate cartridge'}
+#: data/json/obsoletion/items.json
+msgid ""
+"A small cartridge containing concentrated cannabis extract thats used with "
+"dab pens.  This style of extract goes through the most processing, "
+"eliminating most if not all harmful ingredients.  Normal cannabis contains "
+"around 20%THC, this distillate should be around 70%THC after reintroducing "
+"terpenes for flavoring."
+msgstr ""
+"전자담배로 피울 수 있게 대마 농축 추출물을 담아놓은 조그만 카트리지. 이 추출물은 가공 과정을 거치며 완전히는 아니지만 해로운 대부분의"
+" 성분을 제거했습니다. 일반적인 대마는 20% THC 유효성분을 함유하지만, 이건 향을 내기 위한 테르핀을 넣으며 유효성분이 약 70%로"
+" 줄었습니다."
+
+#: data/json/obsoletion/items.json
 msgid "small closed loop extractor"
 msgid_plural "small closed loop extractors"
 msgstr[0] "작은 폐쇄 루프 추출기"
@@ -163568,6 +163989,31 @@ msgid ""
 msgstr ""
 "얼굴과 머리를 감싸 밀착되어, 액체 냉각 시스템과 연결된 여러 방열판 및 방열 코일로 사용자의 체온을 이상적인 수준으로 유지시켜주는 안면"
 " 마스크입니다. 내장 온도계 등의 편리한 기능도 몇가지 포함되어 있습니다. 현재 작동 중이며, 사용하면 전원을 켭니다."
+
+#: data/json/obsoletion/items.json
+msgid "plastic gasket"
+msgid_plural "plastic gaskets"
+msgstr[0] "플라스틱 가스켓"
+
+#. ~ Description for {'str': 'plastic gasket'}
+#: data/json/obsoletion/items.json
+msgid " A single-use plastic gasket."
+msgstr "일회용 플라스틱 마개."
+
+#: data/json/obsoletion/items.json
+msgid "The Essential Oil Enthusiasts Handbook"
+msgid_plural "copies of The Essential Oil Enthusiasts Handbook"
+msgstr[0] "정유 매니아 안내서"
+
+#. ~ Description for {'str': 'The Essential Oil Enthusiasts Handbook',
+#. 'str_pl': 'copies of The Essential Oil Enthusiasts Handbook'}
+#: data/json/obsoletion/items.json
+msgid ""
+"A heavy hardback book explaining the process of essential oil making, with "
+"schematics for the equipment to do it.  Good luck, and don't blow yourself "
+"up!"
+msgstr ""
+"두툼한 제본서로, 필수적인 정유과정 및 이에 필요한 장비의 도식을 포함하고 있습니다. 행운을 빌어요, 당신 자신을 날려버리지는 마세요!"
 
 #: data/json/obsoletion/missions.json
 msgid "Find a Flu Shot"
@@ -166532,8 +166978,8 @@ msgid "tire shop roof"
 msgstr "타이어 가게 지붕"
 
 #: data/json/overmap/overmap_terrain/overmap_terrain_commercial.json
-msgid "Head Shop"
-msgstr "담배 가게"
+msgid "head shop"
+msgstr ""
 
 #: data/json/overmap/overmap_terrain/overmap_terrain_commercial.json
 msgid "head shop roof"
@@ -167519,6 +167965,14 @@ msgstr "낚시 연못"
 #: data/mods/alt_map_key/overmap_terrain.json
 msgid "skate park"
 msgstr "스케이트장"
+
+#: data/json/overmap/overmap_terrain/overmap_terrain_recreational.json
+msgid "vending park"
+msgstr ""
+
+#: data/json/overmap/overmap_terrain/overmap_terrain_recreational.json
+msgid "vending park roof"
+msgstr ""
 
 #: data/json/overmap/overmap_terrain/overmap_terrain_recreational.json
 #: data/mods/alt_map_key/overmap_terrain.json
@@ -224123,6 +224577,10 @@ msgid "Toggle Map Defaulting to Level 0"
 msgstr ""
 
 #: data/raw/keybindings/keybindings.json
+msgid "Toggle Custom Waypoint"
+msgstr ""
+
+#: data/raw/keybindings/keybindings.json
 msgid "Rotate"
 msgstr "회전"
 
@@ -247609,11 +248067,6 @@ msgstr "딸깍."
 msgid "You remove the radio modification from your %s!"
 msgstr "%s에서 라디오 부품을 제거합니다!"
 
-#: src/iuse.cpp src/iuse_actor.cpp
-#, c-format
-msgid "You're already smoking a %s!"
-msgstr "이미 %s(을)를 피우고 있습니다!"
-
 #: src/iuse.cpp
 msgid "Are you sure you want to drink… this?"
 msgstr "이걸 마신다니… 진짜로요?"
@@ -250937,10 +251390,16 @@ msgstr "%2$s(을)를 사용하려면 %1$s(이)가 필요해!"
 
 #: src/iuse_actor.cpp
 #, c-format
+msgid "You're already smoking a %s!"
+msgstr "이미 %s(을)를 피우고 있습니다!"
+
+#: src/iuse_actor.cpp
+#, c-format
 msgid "Ugh, too much %s… you feel nasty."
 msgstr ""
 
-#: src/iuse_actor.cpp src/options.cpp src/overmap_ui.cpp src/vehicle_use.cpp
+#: src/iuse_actor.cpp src/npctalk.cpp src/options.cpp src/overmap_ui.cpp
+#: src/vehicle_use.cpp
 #, c-format
 msgid "%s"
 msgstr "%s"
@@ -261943,6 +262402,10 @@ msgid "Let's go back to your usual behaviors"
 msgstr "평소 하던 행동방식으로 돌아가"
 
 #: src/npctalk.cpp
+msgid "You will keep emoting."
+msgstr ""
+
+#: src/npctalk.cpp
 msgid "You can't speak without your face!"
 msgstr "얼굴이 없어 대화할 수 없습니다!"
 
@@ -261966,6 +262429,14 @@ msgstr "외치기"
 #: src/npctalk.cpp
 msgid "Yell a sentence"
 msgstr "고함 질러 말하기"
+
+#: src/npctalk.cpp
+msgid "Monologue"
+msgstr ""
+
+#: src/npctalk.cpp
+msgid "Emote"
+msgstr ""
 
 #: src/npctalk.cpp
 msgid "Whistle at your animals pulling vehicles to follow you."
@@ -262042,12 +262513,26 @@ msgid "Talk to whom?"
 msgstr "누구에게 말을 겁니까?"
 
 #: src/npctalk.cpp
+msgid "Emote what status effect?"
+msgstr ""
+
+#: src/npctalk.cpp
+msgid "Clear"
+msgstr "맑음"
+
+#: src/npctalk.cpp
 msgid "loudly."
 msgstr "크게 소리지릅니다."
 
 #: src/npctalk.cpp
 msgid "Enter a sentence to yell"
 msgstr "고함 지를 문장 입력"
+
+#: src/npctalk.cpp
+msgid ""
+"What do you want to monologue?  (This has no in-game effect! Use +, -, or ? "
+"at the start to add context.)"
+msgstr ""
 
 #: src/npctalk.cpp
 msgid "Who should guard here?"
@@ -266712,10 +267197,6 @@ msgstr "사용자 단축키"
 #: src/path_display.cpp
 msgid "last world"
 msgstr "마지막 월드"
-
-#: src/path_display.cpp
-msgid "Lua doc output"
-msgstr "루아 문서 출력"
 
 #: src/path_display.cpp
 msgid "safe mode"

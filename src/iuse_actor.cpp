@@ -414,7 +414,6 @@ void unpack_actor::load( const JsonObject &obj )
 {
     obj.read( "group", unpack_group );
     obj.read( "items_fit", items_fit );
-    assign( obj, "filthy_volume_threshold", filthy_vol_threshold );
 }
 
 int unpack_actor::use( player &p, item &it, bool, const tripoint & ) const
@@ -439,9 +438,6 @@ int unpack_actor::use( player &p, item &it, bool, const tripoint & ) const
             last_armor = &*content;
         }
 
-        if( content->get_storage() >= filthy_vol_threshold && it.has_flag( flag_FILTHY ) ) {
-            content->set_flag( flag_FILTHY );
-        }
 
         here.add_item_or_charges( p.pos(), std::move( content ) );
     }
@@ -978,7 +974,6 @@ int consume_drug_iuse::use( player &p, item &it, bool, const tripoint & ) const
     }
 
     if( snippet_category != "" ) {
-        snippet_id snip_id = snippet_id::NULL_ID();
         std::string snippet_string = "";
         snippet_string = SNIPPET.random_from_category( snippet_category ).value_or(
                              translation() ).translated();
@@ -1931,7 +1926,6 @@ bool salvage_actor::try_to_cut_up( player &p, item &it ) const
 // cut gets cut
 int salvage_actor::cut_up( player &p, item &it, item &cut ) const
 {
-    const bool filthy = cut.is_filthy();
     // This is the value that tracks progress, as we cut pieces off, we reduce this number.
     units::mass remaining_weight = cut.weight();
     // Chance of us losing a material component to entropy.
@@ -2022,9 +2016,6 @@ int salvage_actor::cut_up( player &p, item &it, item &cut ) const
             p.moves -= moves_per_part;
             add_msg( m_good, vgettext( "Salvaged %1$i %2$s.", "Salvaged %1$i %2$s.", amount ),
                      amount, result.display_name( amount ) );
-            if( filthy ) {
-                result.set_flag( flag_FILTHY );
-            }
             if( cut_type == item_location_type::character ) {
                 while( amount-- ) {
                     p.i_add_or_drop( item::spawn( result ) );
@@ -3418,14 +3409,6 @@ bool repair_item_actor::handle_components( player &pl, const item &fix,
                                             std::ceil( fix.volume() / 250_ml * cost_scaling ) :
                                             roll_remainder( fix.volume() / 250_ml * cost_scaling ) );
 
-    std::function<bool( const item & )> filter;
-    if( fix.is_filthy() ) {
-        filter = []( const item & component ) {
-            return component.allow_crafting_component();
-        };
-    } else {
-        filter = is_crafting_component;
-    }
 
     // Go through all discovered repair items and see if we have any of them available
     std::vector<item_comp> comps;
@@ -3442,7 +3425,7 @@ bool repair_item_actor::handle_components( player &pl, const item &fix,
             if( crafting_inv.has_charges( component_id, items_needed ) ) {
                 comps.emplace_back( component_id, items_needed );
             }
-        } else if( crafting_inv.has_amount( component_id, items_needed, false, filter ) ) {
+        } else if( crafting_inv.has_amount( component_id, items_needed, false, is_crafting_component ) ) {
             comps.emplace_back( component_id, items_needed );
         }
     }
@@ -3471,7 +3454,7 @@ bool repair_item_actor::handle_components( player &pl, const item &fix,
             debugmsg( "Attempted repair with no components" );
         }
 
-        pl.consume_items( comps, 1, filter );
+        pl.consume_items( comps, 1, is_crafting_component );
     }
 
     return true;
@@ -3930,10 +3913,6 @@ int heal_actor::use( player &p, item &it, bool, const tripoint &pos ) const
     }
     if( p.is_mounted() ) {
         p.add_msg_if_player( m_info, _( "You can't do that while mounted." ) );
-        return 0;
-    }
-    if( get_option<bool>( "FILTHY_WOUNDS" ) && it.is_filthy() ) {
-        p.add_msg_if_player( m_info, _( "You can't use filthy items for healing." ) );
         return 0;
     }
 
