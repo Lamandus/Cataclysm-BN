@@ -26,15 +26,15 @@
 # Jaesung Han (Re_Star), 2024
 # DelFe, 2024
 # JJ J <congstrot@gmail.com>, 2024
-# Fruitybite, 2025
 # 김동현, 2025
 # Coolthulhu <Coolthulhu@gmail.com>, 2025
+# Fruitybite, 2025
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: cataclysm-bn\n"
-"POT-Creation-Date: 2025-05-04 01:33+0000\n"
-"Last-Translator: Coolthulhu <Coolthulhu@gmail.com>, 2025\n"
+"POT-Creation-Date: 2025-05-09 01:28+0000\n"
+"Last-Translator: Fruitybite, 2025\n"
 "Language-Team: Korean (https://app.transifex.com/bn-team/teams/113585/ko/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -4074,7 +4074,7 @@ msgstr "당신의 근육 시스템에 근섬유를 삽입하여 성능이 상승
 
 #: data/json/bionics.json
 msgid "Autonomous Surgical Scalpels"
-msgstr "자율작동 수술용 메스"
+msgstr "자동화 수술용 메스"
 
 #. ~ Description for {'str': 'Autonomous Surgical Scalpels'}
 #: data/json/bionics.json
@@ -11063,6 +11063,13 @@ msgstr "이 장비는 <good>근시를 교정</good>합니다."
 #. ~ Please leave anything in <angle brackets> unchanged.
 #: data/json/flags.json
 msgid ""
+"This clothing will <good>partially protect from a flash from a "
+"flashbang</good>."
+msgstr "이 의류는 <good>섬광탄의 섬광을 일부 차단</good>합니다."
+
+#. ~ Please leave anything in <angle brackets> unchanged.
+#: data/json/flags.json
+msgid ""
 "This clothing <info>prevents going underwater</info> including both "
 "<good>drowning</good> and <bad>diving</bad>."
 msgstr ""
@@ -11137,14 +11144,14 @@ msgstr "<info>불</info>위에 올려놓고 <good>음식을 데우는</good> 용
 #. ~ Please leave anything in <angle brackets> unchanged.
 #: data/json/flags.json
 msgid ""
-"This gear is equipped with an accurate hygrometer (which is used to measure "
-"humidity)."
-msgstr "이 장비는 대기 습도를 측정할 수 있는 정밀 습도계를 포함합니다."
+"This gear is equipped with an accurate hygrometer (which is used to "
+"<info>measure humidity</info>)."
+msgstr "이 장비는 <info>대기 습도를 측정</info>할 수 있는 정밀 습도계를 포함합니다."
 
 #. ~ Please leave anything in <angle brackets> unchanged.
 #: data/json/flags.json
-msgid "This gun mod catches ejected casings."
-msgstr "이 부착물은 배출되는 탄피를 자동으로 수집합니다."
+msgid "This gun mod <info>catches ejected casings</info>."
+msgstr "이 부착물은 <info>배출되는 탄피를 자동으로 수집</info>합니다."
 
 #. ~ Please leave anything in <angle brackets> unchanged.
 #: data/json/flags.json
@@ -11201,10 +11208,11 @@ msgstr "이 의류에 <info>주머니</info>가 있습니다. 손에 들고 있�
 #. ~ Please leave anything in <angle brackets> unchanged.
 #: data/json/flags.json
 msgid ""
-"As a weapon, this item needs considerable space to use properly and does 70%"
-" of its normal damage to adjacent enemies."
+"As a weapon, this item <info>needs considerable space to use</info> properly"
+" and <bad>does 70% of its normal damage to adjacent enemies</bad>."
 msgstr ""
-"이 물품을 무기로 사용하기 위해서는 주변에 충분한 공간이 있어야 하며, 근접한 적들에게 주 피해의 70%를 방사피해로 가합니다."
+"이 물품을 무기로 사용하기 위해서는 <info>주변에 충분한 공간이 있어야 하며</info>, <bad>근접한 적들에게 주 피해의 "
+"70%만을 입힙니다</bad>."
 
 #. ~ Please leave anything in <angle brackets> unchanged.
 #: data/json/flags.json
@@ -11488,11 +11496,11 @@ msgid ""
 "This weapon <bad>can only be fired if mounted</bad> on a vehicle or "
 "furniture (window, table, mound of dirt, etc.) to fire, <info>Large or "
 "Huge</info> mutants or those with active <info>Power Armor</info> can fire "
-"from the hip with <bad>reduced accuracy.</bad>"
+"from the hip with <bad>reduced accuracy</bad>."
 msgstr ""
-"이 무기는 차량이나 가구에 <bad>설치된 상태로만 사격</bad>할 수 있습니다. <info>몸집이 크거나 거대한 "
-"돌연변이</info>, 또는 <info>작동 중인 파워 아머를 착용 중인 개체</info>는 <bad>명중률 저하</bad>를 감수하고 "
-"지지대 없이 사격할 수 있습니다."
+"이 무기는 차량이나 가구(창문, 탁자, 흙무더기 등)에 <bad>설치된 상태로만 사격</bad>할 수 있습니다. <info>몸집이 크거나"
+" 거대한</info> 돌연변이, 또는 <info>작동 중인 파워 아머</info>를 착용 중인 개체는 <bad>명중률 저하를 "
+"감수</bad>하고 지지대 없이 사격할 수 있습니다."
 
 #. ~ Please leave anything in <angle brackets> unchanged.
 #: data/json/flags.json
@@ -11513,11 +11521,23 @@ msgstr ""
 #. ~ Please leave anything in <angle brackets> unchanged.
 #: data/json/flags.json
 msgid ""
+"This weapon's <info>reload speed</info> is <good>increased by "
+"strength</good>."
+msgstr "이 무기의 <info>재장전 속도</info>는 <good>힘에 의해 향상</good>됩니다."
+
+#. ~ Please leave anything in <angle brackets> unchanged.
+#: data/json/flags.json
+msgid ""
 "This item can be used as tinder in a firewood source, <info>automatically "
 "being used</info> to light fires if using a a firestarting tool that "
 "requires it."
 msgstr ""
 "이 물품은 불을 피울 때 불쏘시개로 쓸 수 있으며, 불쏘시개가 필요한 도구로 불을 피울 때 <info>자동적으로 사용</info>됩니다."
+
+#. ~ Please leave anything in <angle brackets> unchanged.
+#: data/json/flags.json
+msgid "This weapon is inherently <good>designed to work underwater</good>."
+msgstr "이 무기는 <good>수중에서 정상적으로 작동</good>하도록 설계되었습니다."
 
 #. ~ Please leave anything in <angle brackets> unchanged.
 #: data/json/flags.json
@@ -11535,10 +11555,20 @@ msgstr "이 장비는 <info>대화</info>를 <bad>할 수 없게</bad> 합니다
 msgid ""
 "This equipment <good>allows you to fire</good> unwieldy weapons without "
 "requiring support from mountable terrain, as a <info>Large or Huge</info> "
-"mutant could, at the expense of <bad>reduced accuracy.</bad>"
+"mutant could, at the expense of <bad>reduced accuracy</bad>."
 msgstr ""
-"이 장비는 <info>몸집이 크거나 거대한 돌연변이</info>처럼 <good>지지대 없이 대형 무기로 사격</good>할 수 있게 "
-"합니다. 단, <bad>명중률이 감소</bad>합니다."
+"이 장비는 <info>몸집이 크거나 거대한</info> 돌연변이처럼 <good>지지대 없이 대형 무기로 사격</good>할 수 있게 "
+"돕습니다. 단, <bad>명중률이 감소</bad>합니다."
+
+#. ~ Please leave anything in <angle brackets> unchanged.
+#: data/json/flags.json
+msgid ""
+"This weapon <good>can shoot underwater</good>, but <info>unless it was "
+"specifically designed to do so</info>, it <bad>will suffer from accuracy "
+"penalty</bad>."
+msgstr ""
+"이 무기는 <good>수중에서 사격</good>할 수 있지만, <info>수중용으로 설계</info>되지 않은 이상 <bad>명중률이 "
+"감소</bad>할 것입니다."
 
 #. ~ Please leave anything in <angle brackets> unchanged.
 #: data/json/flags.json
@@ -11568,8 +11598,15 @@ msgstr "총기에 장착하면, 총기의 <good>근접 피해에 영향을 줍�
 
 #. ~ Please leave anything in <angle brackets> unchanged.
 #: data/json/flags.json
-msgid "It can show the automated weather forcast."
-msgstr "자동으로 일기예보를 안내합니다."
+msgid "This item can show the <info>automated weather forecast</info>."
+msgstr "이 물품은 <info>자동 기상 예보</info>를 제공합니다."
+
+#. ~ Please leave anything in <angle brackets> unchanged.
+#: data/json/flags.json
+msgid ""
+"This item can show the <info>current heading and speed of the wind</info> as"
+" well as <info>perceived temperature</info>."
+msgstr "이 물품은 <info>현재 풍향 및 풍속을 확인</info>할 수 있고, <info>기온을 측정</info>할 수 있습니다."
 
 #. ~ Please leave anything in <angle brackets> unchanged.
 #: data/json/flags.json
@@ -41720,16 +41757,32 @@ msgid ""
 "A smaller window typically found in residential homes.  This one has been "
 "blocked out with duct tape.  You could remove the duct tape by cutting it "
 "off."
-msgstr ""
-"주택가에서 흔히 찾아볼 수 있는 작은 창문입니다. 이 창문은 덕트 테이프로 덮여있어, 햇빛과 시야를 차단합니다. 덕트 테이프를 잘라서 "
-"떼어낼 수 있습니다."
+msgstr "덕트 테이프를 발라놓은, 주택가에서 흔히 찾아볼 수 있는 작은 창문입니다. 덕트 테이프를 잘라서 떼어낼 수 있습니다."
+
+#. ~ Description for taped window
+#: data/json/furniture_and_terrain/terrain-windows.json
+msgid ""
+"An empty window.  This one has been blocked out with duct tape.  You could "
+"remove the duct tape by cutting it off."
+msgstr "덕트 테이프로 막아놓은 빈 창문입니다. 테이프를 잘라서 뗴어낼 수 있습니다."
+
+#: data/json/furniture_and_terrain/terrain-windows.json
+msgid "taped glass wall"
+msgstr "테이프 붙인 유리 벽"
+
+#. ~ Description for taped glass wall
+#: data/json/furniture_and_terrain/terrain-windows.json
+msgid ""
+"A glass wall.  This one has been blocked out with duct tape.  You could "
+"remove the duct tape by cutting it off."
+msgstr "덕트 테이프를 발라놓은 유리 벽입니다. 테이프를 잘라서 뗴어낼 수 있습니다."
 
 #. ~ Description for taped window
 #: data/json/furniture_and_terrain/terrain-windows.json
 msgid ""
 "A window with fancy curtains on the inside.  This one has been blocked out "
 "with duct tape.  You could remove the duct tape by cutting it off."
-msgstr "내부에 화려한 커튼이 달린 창. 덕트 테이프로 막아놓았습니다. 테이프를 잘라서 제거할 수 있습니다."
+msgstr "덕트 테이프를 발라놓은, 내부에 화려한 커튼이 달린 창문입니다. 덕트 테이프를 잘라서 떼어낼 수 있습니다."
 
 #: data/json/furniture_and_terrain/terrain-windows.json
 msgid "open window with curtains"
@@ -45239,7 +45292,7 @@ msgstr "근육 체계를 강화하는 근섬유입니다. 체력에 +2 보너스
 #: data/json/items/bionics.json
 msgid "Autonomous Surgical Scalpels CBM"
 msgid_plural "Autonomous Surgical Scalpels CBMs"
-msgstr[0] "CBM:자율작동 수술용 메스"
+msgstr[0] "CBM:자동화 수술용 메스"
 
 #. ~ Description for {'str': 'Autonomous Surgical Scalpels CBM'}
 #: data/json/items/bionics.json
@@ -45293,6 +45346,9 @@ msgid ""
 " of much power.  Note that prolonged or frequent use may have dangerous side"
 " effects."
 msgstr ""
+"짧은 거리 이내의 공간을 접어 사용자를 이동시킬 수 있는 매우 실험적인 장치로, 상당한 양의 전력을 소모해 사용자를 무작위 방향으로 최대"
+" 25ft (7.6m) 까지 순식간에 공간이동시킵니다. 오래 사용하거나 빈번하게 사용할 경우 위험한 부작용을 일으킬 수 있으니 "
+"주의하세요."
 
 #: data/json/items/bionics.json
 msgid "Time Dilation CBM"
@@ -47715,7 +47771,7 @@ msgstr[0] "바이오닉 고글"
 #: data/json/items/fake.json
 msgid "autonomous surgical scalpels"
 msgid_plural "autonomous surgical scalpels"
-msgstr[0] "자체 수술용 메스"
+msgstr[0] "자동화 수술용 메스"
 
 #. ~ Description for {'str_sp': 'autonomous surgical scalpels'}
 #: data/json/items/fake.json
@@ -66736,11 +66792,11 @@ msgstr[0] "군용 외골격"
 msgid ""
 "Although power armor took the world's militaries by storm, the technologies "
 "used to make them also allowed for smaller, less protective external rigging"
-" that rely on UPS to boost strength, ones designed for operatives or light "
-"infantry."
+" that rely on UPS to boost strength and speed, ones designed for operatives "
+"or light infantry."
 msgstr ""
-"파워 아머가 온 세상의 군대를 순식간에 사로잡은 것은 사실이지만, 그 기술이 꼭 파워 아머만을 위한 것은 아니었습니다. 이 외골격은 "
-"특수요원이나 경보병을 위한 장비로, UPS를 동력원으로 삼아 근력을 향상시키지만 크기가 더 작고 방어력도 낮습니다."
+"파워 아머의 매력이 온 세상의 군대를 순식간에 사로잡은 것은 분명 사실이지만, 파워 아머 기술을 응용한 다른 장비도 여럿 등장했습니다. "
+"이 외골격은 특수요원이나 경보병을 위한 장비로, UPS를 동력원으로 삼아 근력과 속도를 향상시키지만 크기가 작고 방어력도 더 낮습니다."
 
 #: data/json/items/armor/power_armor.json
 msgid "military exo-suit (active)"
@@ -66752,13 +66808,14 @@ msgstr[0] "군용 외골격 (켜짐)"
 #: data/json/items/armor/power_armor.json
 msgid ""
 "Although power armor took the world's militaries by storm, the technologies "
-"used to make them also allowed for smaller, more personalized suits of armor"
-" that rely on UPS, ones designed for operatives or light infantry rather "
-"than heavy infantry.  It is currently turned on, activate it to turn it off."
+"used to make them also allowed for smaller, less protective external rigging"
+" that rely on UPS to boost strength and speed, ones designed for operatives "
+"or light infantry rather than heavy infantry.  It is currently turned on, "
+"activate it to turn it off."
 msgstr ""
-"파워 아머가 온 세상의 군대를 순식간에 사로잡은 것은 사실이지만, 그 기술이 꼭 파워 아머만을 위한 것은 아니었습니다. 이 외골격은 "
-"특수요원이나 경보병을 위한 장비로, UPS를 동력원으로 삼아 근력을 향상시키지만 크기가 더 작고 방어력도 낮습니다. 현재 작동 중이며, "
-"다시 사용하여 끌 수 있습니다."
+"파워 아머의 매력이 온 세상의 군대를 순식간에 사로잡은 것은 분명 사실이지만, 파워 아머 기술을 응용한 다른 장비도 여럿 등장했습니다. "
+"이 외골격은 특수요원이나 경보병을 위한 장비로, UPS를 동력원으로 삼아 근력과 속도를 향상시키지만 크기가 작고 방어력도 더 낮습니다. "
+"현재 작동 중이며, 다시 사용하여 끌 수 있습니다."
 
 #: data/json/items/armor/power_armor.json
 msgid "industrial exo-suit"
@@ -71376,7 +71433,7 @@ msgstr ""
 #: data/json/items/book/electronics.json
 msgid "support turret schematics"
 msgid_plural "support turret schematics"
-msgstr[0] ""
+msgstr[0] "지원 터렛 설계도"
 
 #. ~ Description for {'str_sp': 'support turret schematics'}
 #: data/json/items/book/electronics.json
@@ -71385,6 +71442,8 @@ msgid ""
 "specialized turrets.  Most of this is useless to you, but you could use the "
 "assembly plans to re-assemble the robot from salvaged parts."
 msgstr ""
+"여러 종류의 특수 터렛의 조립 계획도, 설계 사양, 기술 도면이 포함된 설계도입니다. 대부분은 당신에게 아무 쓸모도 없지만, 조립 "
+"계획도를 바탕으로 분해된 부품을 재조립해 로봇을 다시 만들 수 있을 것 같습니다."
 
 #: data/json/items/book/electronics.json
 msgid "milspec searchlight schematics"
@@ -91292,7 +91351,7 @@ msgstr ""
 #: data/json/items/corpses/inactive_bots.json
 msgid "inactive autonomous light turret"
 msgid_plural "inactive autonomous light turrets"
-msgstr[0] "비활성화된 경량형 터렛"
+msgstr[0] "비활성화된 자동화 경량형 터렛"
 
 #. ~ Description for {'str': 'inactive autonomous light turret'}
 #: data/json/items/corpses/inactive_bots.json
@@ -91311,7 +91370,7 @@ msgstr ""
 #: data/json/items/corpses/inactive_bots.json
 msgid "inactive autonomous medium milspec turret"
 msgid_plural "inactive autonomous medium milspec turrets"
-msgstr[0] "비활성화된 군용 중형 터렛"
+msgstr[0] "비활성화된 자동화 중형 군용 터렛"
 
 #. ~ Description for {'str': 'inactive autonomous medium milspec turret'}
 #: data/json/items/corpses/inactive_bots.json
@@ -91330,7 +91389,7 @@ msgstr ""
 #: data/json/items/corpses/inactive_bots.json
 msgid "inactive autonomous longrange milspec turret"
 msgid_plural "inactive autonomous longrange milspec turrets"
-msgstr[0] "비활성화된 장거리 터렛"
+msgstr[0] "비활성화된 자동화 장거리용 군용 터렛"
 
 #. ~ Description for {'str': 'inactive autonomous longrange milspec turret'}
 #: data/json/items/corpses/inactive_bots.json
@@ -91346,7 +91405,7 @@ msgstr ""
 #: data/json/items/corpses/inactive_bots.json
 msgid "inactive autonomous anti-materiel milspec turret"
 msgid_plural "inactive autonomous anti-materiel milspec turrets"
-msgstr[0] ""
+msgstr[0] "비활성화된 자동화 대물소총 군용 터렛"
 
 #. ~ Description for {'str': 'inactive autonomous anti-materiel milspec
 #. turret'}
@@ -91363,7 +91422,7 @@ msgstr ""
 #: data/json/items/corpses/inactive_bots.json
 msgid "inactive autonomous grenade launcher milspec turret"
 msgid_plural "inactive autonomous grenade launcher milspec turrets"
-msgstr[0] ""
+msgstr[0] "비활성화된 군용 자동화 유탄발사기 터렛"
 
 #. ~ Description for {'str': 'inactive autonomous grenade launcher milspec
 #. turret'}
@@ -91377,6 +91436,9 @@ msgid ""
 "turret will then identify you as a friendly, and attack all enemies with its"
 " gun."
 msgstr ""
+"비활성화된 군용 유탄발사기 터렛입니다. 사용하면 공장제 .50 BMG 탄약을 장전하여 터렛을 작동시키고 바닥에 놓으며, 터렛이 스스로를 "
+"그 자리에 고정시킬 것입니다. (탄을 나눠두고 싶다면, 장전시키고 싶지 *않은* 탄약들을 한쪽에 치워두세요) 적절하게 재프로그래밍하면 "
+"터렛이 당신을 아군으로 인지하여, 탑재된 총기로 모든 적을 공격할 것입니다."
 
 #: data/json/items/corpses/inactive_bots.json
 msgid "inactive recon mech"
@@ -93324,7 +93386,7 @@ msgstr "클래식 AR-15의 7.5인치 단축총열 버전입니다. 자택 방어
 #: data/json/items/gun/223.json
 msgid "FAMAS G2"
 msgid_plural "FAMAS G2"
-msgstr[0] ""
+msgstr[0] "FAMAS G2"
 
 #: data/json/items/gun/223.json
 msgid ""
@@ -122789,7 +122851,7 @@ msgstr ""
 #: data/json/monsters/turrets.json
 msgid "grenade launcher milspec turret"
 msgid_plural "grenade launcher milspec turrets"
-msgstr[0] ""
+msgstr[0] "군용 유탄발사기 터렛"
 
 #. ~ Description for {'str': 'grenade launcher milspec turret'}
 #: data/json/monsters/turrets.json
@@ -122801,6 +122863,9 @@ msgid ""
 "range and the inability to return fire as a safety measure necessitates "
 "cover fire from other turret systems."
 msgstr ""
+"제너럴 아토믹스 사의 TX-12 '대물'은 MK19 유탄 기관총이 장착된 자동화 군용 터렛입니다. 중형 또는 경량 차량을 상대할 수 "
+"있도록 고속 40x53mm 유탄을 운용합니다. 네 발로 걸어다니거나 네 바퀴로 움직이는 모든 것을 박살낼 수 있을 정도로 강력하지만, "
+"안전장치 개념으로 존재하는 최소사거리 및 응사 능력 부재 문제로 인해 다른 터렛의 엄호사격이 필수적입니다."
 
 #: data/json/monsters/utility_bot.json
 msgid "eyebot"
@@ -148706,7 +148771,7 @@ msgstr "지금으로서는 그게 다야. 난 이만 갈게."
 
 #: data/json/npcs/isherwood_farm/NPC_Jack_Isherwood.json
 msgid "Find 20 3L jars"
-msgstr ""
+msgstr "3L 유리통 20개 찾기"
 
 #: data/json/npcs/isherwood_farm/NPC_Jack_Isherwood.json
 msgid "I could use some help scavenging."
@@ -219065,15 +219130,15 @@ msgstr "템플릿 삭제"
 
 #: data/raw/keybindings/keybindings.json
 msgid "Reroll random character"
-msgstr ""
+msgstr "무작위 캐릭터 재생성"
 
 #: data/raw/keybindings/keybindings.json
 msgid "Reroll random character with scenario"
-msgstr ""
+msgstr "무작위 캐릭터 재생성 (시나리오 포함)"
 
 #: data/raw/keybindings/keybindings.json
 msgid "Reroll appearance"
-msgstr ""
+msgstr "무작위 외모 재생성"
 
 #: data/raw/keybindings/keybindings.json
 msgid "Pick random character description"
@@ -220230,23 +220295,23 @@ msgstr "고급 소지품 관리자 필터 자동 초기화 활성화/비활성�
 
 #: data/raw/keybindings/keybindings.json
 msgid "Select random trait"
-msgstr ""
+msgstr "무작위 특성 선택"
 
 #: data/raw/keybindings/keybindings.json
 msgid "Select random profession"
-msgstr ""
+msgstr "무작위 직업 선택"
 
 #: data/raw/keybindings/keybindings.json
 msgid "Select random scenario"
-msgstr ""
+msgstr "무작위 시나리오 선택"
 
 #: data/raw/keybindings/keybindings.json
 msgid "Select random skill"
-msgstr ""
+msgstr "무작위 기술 선택"
 
 #: data/raw/keybindings/keybindings.json
 msgid "Select random stat"
-msgstr ""
+msgstr "무작위 능력치 선택"
 
 #: data/raw/keybindings/messages.json
 msgid "Toggle wide display"
@@ -240741,8 +240806,10 @@ msgstr ""
 "<bold>%s</bold>"
 
 #: src/item.cpp
-msgid "This ammo has been <bad>hand-loaded</bad>."
-msgstr "이 탄환은 <bad>수제품</bad>입니다."
+msgid ""
+"This ammo has been <info>hand-loaded</info> and has a <bad>small chance to "
+"misfire</bad>."
+msgstr "이 탄약은 <info>수제</info>로, <bad>불발 확률이 약간 있습니다</bad>."
 
 #: src/item.cpp
 msgid ""
